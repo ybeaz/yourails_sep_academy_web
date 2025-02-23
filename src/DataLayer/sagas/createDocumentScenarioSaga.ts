@@ -17,7 +17,7 @@ import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
 
 function* createDocumentScenarioGenerator(params: ActionReduxType | any): Iterable<any> {
   const {
-    data: { navigate, creatorID },
+    data: { navigate },
   } = params
 
   const data2 = [

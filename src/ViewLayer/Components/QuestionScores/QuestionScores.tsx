@@ -144,9 +144,7 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
         <NavLinkWithQuery {...propsOut.navLinkNextTaskProps}>
           <ButtonYrl {...propsOut.buttonNextTaskProps} />
         </NavLinkWithQuery>
-        <NavLinkWithQuery {...propsOut.navLinkCreditProps}>
-          <ButtonYrl {...propsOut.buttonCreditProps} />
-        </NavLinkWithQuery>
+        <ButtonYrl {...propsOut.buttonCreditProps} />
         <ButtonYrl {...propsOut.buttonIsEditNameVisibleProps} />
         <FormInputNamesWithButtons {...propsOut.formInputNamesWithButtonsProps} />
         <NavLinkWithQuery {...propsOut.navLinkAllMissionsProps}>

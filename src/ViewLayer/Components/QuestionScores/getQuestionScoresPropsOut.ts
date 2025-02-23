@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import { consoler } from 'yourails_common'
 import {
   withTryCatchFinallyWrapper,
@@ -103,6 +104,7 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
     profiles,
   }
 
+  const navigate = useNavigate()
   const scenario = getScenarioDict(getScenarioDictProps)
 
   const propsOut: QuestionScoresPropsOutType = {
@@ -128,18 +130,20 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
       tooltipText: DICTIONARY.Next_task[language],
       tooltipPosition: 'top',
     },
-    navLinkCreditProps: {
-      to: { pathname: '/' },
-      isDisplaying: scenarioCase === 'success' && !isEditNameVisible,
-    },
     buttonCreditProps: {
       icon: '',
       classAdded: 'Button_Credit',
       handleEvents,
-      action: {},
+      action: {
+        typeEvent: 'CREATE_DOCUMENT',
+        data: {
+          navigate,
+        },
+      },
       captureLeft: DICTIONARY.View_reward[language],
       tooltipText: DICTIONARY.View_reward[language],
       tooltipPosition: 'top',
+      isDisplaying: scenarioCase === 'success' && !isEditNameVisible,
     },
     buttonIsEditNameVisibleProps: {
       icon: '',
