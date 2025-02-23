@@ -69,7 +69,7 @@ export const expected01: GetQuestionScoresPropsOutResType = {
     captureLeft: 'Achievements',
     isDisplaying: true,
   },
-  navLinkAllMissionsProps: {
+  navLinkBackToTopicProps: {
     to: {
       pathname: '/',
       search: {
@@ -81,7 +81,7 @@ export const expected01: GetQuestionScoresPropsOutResType = {
       },
     },
   },
-  buttonAllMissionsProps: {
+  battonBackToTopicProps: {
     icon: 'MdForward',
     classAdded: 'Button_BackToTopic',
     handleEvents,

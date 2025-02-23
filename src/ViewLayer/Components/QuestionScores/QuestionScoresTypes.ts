@@ -35,15 +35,14 @@ export type QuestionScoresPropsType = Omit<
 export type QuestionScoresPropsOutType = {
   message: { greeting: string; line1: string; line2: string; line3: string }
   navLinkNextTaskProps: NavLinkWithQueryPropsType
-  navLinkAchievementsProps: NavLinkWithQueryPropsType
-  navLinkAllMissionsProps: NavLinkWithQueryPropsType
   buttonNextTaskProps: ButtonYrlPropsType
   buttonCreditProps: ButtonYrlPropsType
   buttonIsEditNameVisibleProps: ButtonYrlPropsType
-  buttonAchievementsProps: ButtonYrlPropsType
-  buttonAllMissionsProps: ButtonYrlPropsType
-  formInputNamesProps: FormInputNamesPropsType
   formInputNamesWithButtonsProps: FormInputNamesWithButtonsPropsType
+  navLinkBackToTopicProps: NavLinkWithQueryPropsType
+  buttonBackToTopicProps: ButtonYrlPropsType
+  navLinkAchievementsProps: NavLinkWithQueryPropsType
+  buttonAchievementsProps: ButtonYrlPropsType
 }
 
 /**

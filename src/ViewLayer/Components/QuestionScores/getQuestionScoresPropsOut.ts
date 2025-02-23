@@ -160,6 +160,32 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
       tooltipPosition: 'top',
       isDisplaying: !isEditNameVisible,
     },
+    formInputNamesWithButtonsProps: {
+      formInputNamesProps: {
+        language,
+        handleEvents,
+      },
+      buttonCancelEditNameProps: scenario.buttonBackwardProps,
+      buttonConfirmEditNameProps: scenario.buttonForwardProps,
+      isDisplaying: scenarioCase === ScenarioCaseType.success && isEditNameVisible,
+    },
+    navLinkBackToTopicProps: {
+      to: {
+        pathname: '/',
+        search: queryUrl,
+      },
+      /* onClick: () => navigate(-1), Alternative*/
+      isDisplaying: scenarioCase === 'success' && !isEditNameVisible,
+    },
+    buttonBackToTopicProps: {
+      icon: '',
+      classAdded: 'Button_BackToTopic',
+      handleEvents,
+      action: {},
+      captureLeft: DICTIONARY.Back_to_topic[language],
+      tooltipText: DICTIONARY.Back_to_topic[language],
+      tooltipPosition: 'top',
+    },
     navLinkAchievementsProps: {
       to: { pathname: '/my-documents' },
       isDisplaying: scenarioCase === 'success' && !isEditNameVisible,
@@ -172,36 +198,6 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
       captureLeft: DICTIONARY.Achievements[language],
       tooltipText: DICTIONARY.Achievements[language],
       tooltipPosition: 'top',
-    },
-    navLinkAllMissionsProps: {
-      to: {
-        pathname: '/',
-        search: queryUrl,
-      },
-      /* onClick: () => navigate(-1), Alternative*/
-      isDisplaying: scenarioCase === 'success' && !isEditNameVisible,
-    },
-    buttonAllMissionsProps: {
-      icon: '',
-      classAdded: 'Button_BackToTopic',
-      handleEvents,
-      action: {},
-      captureLeft: DICTIONARY.Back_to_topic[language],
-      tooltipText: DICTIONARY.Back_to_topic[language],
-      tooltipPosition: 'top',
-    },
-    formInputNamesProps: {
-      language,
-      handleEvents,
-    },
-    formInputNamesWithButtonsProps: {
-      formInputNamesProps: {
-        language,
-        handleEvents,
-      },
-      buttonCancelEditNameProps: scenario.buttonBackwardProps,
-      buttonConfirmEditNameProps: scenario.buttonForwardProps,
-      isDisplaying: scenarioCase === ScenarioCaseType.success && isEditNameVisible,
     },
   }
 
