@@ -174,7 +174,7 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
         pathname: '/',
         search: queryUrl,
       },
-      /* onClick: () => navigate(-1), Alternative*/
+      /* onClick: () => navigate(-1), Alternative */
       isDisplaying: scenarioCase === 'success' && !isEditNameVisible,
     },
     buttonBackToTopicProps: {
