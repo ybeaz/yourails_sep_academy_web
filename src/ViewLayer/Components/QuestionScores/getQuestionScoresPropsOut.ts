@@ -187,7 +187,10 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
       tooltipPosition: 'top',
     },
     navLinkAchievementsProps: {
-      to: { pathname: '/my-documents' },
+      to: {
+        pathname: '/my-documents',
+        search: queryUrl,
+      },
       isDisplaying: scenarioCase === 'success' && !isEditNameVisible,
     },
     buttonAchievementsProps: {
