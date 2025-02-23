@@ -30,6 +30,7 @@ export type GetScenarioDictPropsType = {
 export type GetScenarioDictResType = {
   scenarioCase: string
   message: { greeting: string; line1: string; line2: string; line3: string }
+  buttonBackwardProps: ButtonYrlPropsType
   buttonForwardProps: ButtonYrlPropsType
 }
 
@@ -112,8 +113,23 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
         line2: `${isCompletedWith} ${right} ${correctAnsweresFrom} ${total}`,
         line3: `${DICTIONARY.Keep_going[language]}!`,
       },
+      buttonBackwardProps: {
+        icon: '',
+        classAdded: 'Button_CancelEditName',
+        handleEvents,
+        action: {
+          typeEvent: 'SET_EDIT_NAME_VISIBILITY',
+          data: {
+            isEditNameVisible: false,
+          },
+        },
+        tooltipText: DICTIONARY.Cancel[language],
+        tooltipPosition: 'top',
+        captureLeft: DICTIONARY.Cancel[language],
+        isDisplaying: isEditNameVisible,
+      },
       buttonForwardProps: {
-        icon: 'MdForward',
+        icon: '',
         classAdded: 'Button_ConfirmEditName',
         handleEvents,
         action: {
@@ -135,8 +151,23 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
         line2: `${isCompletedWith} ${right} ${correctAnsweresFrom} ${total}`,
         line3: `${ToReceiveCertificateLogIn}!`,
       },
+      buttonBackwardProps: {
+        icon: '',
+        classAdded: 'Button_CancelEditName',
+        handleEvents,
+        action: {
+          typeEvent: 'SET_EDIT_NAME_VISIBILITY',
+          data: {
+            isEditNameVisible: false,
+          },
+        },
+        tooltipText: DICTIONARY.Cancel[language],
+        tooltipPosition: 'top',
+        captureLeft: DICTIONARY.Cancel[language],
+        isDisplaying: isEditNameVisible,
+      },
       buttonForwardProps: {
-        icon: 'MdForward',
+        icon: '',
         classAdded: 'Button_MdForward2',
         action: {
           typeEvent: 'CLICK_ON_SIGN_IN',
@@ -153,6 +184,21 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
         line1: `"${capture}"`,
         line2: `${andThisTimeAnswered} ${right} ${question} ${from} ${total}`,
         line3: `${YouCanTryOnceAgain}!`,
+      },
+      buttonBackwardProps: {
+        icon: '',
+        classAdded: 'Button_CancelEditName',
+        handleEvents,
+        action: {
+          typeEvent: 'SET_EDIT_NAME_VISIBILITY',
+          data: {
+            isEditNameVisible: false,
+          },
+        },
+        tooltipText: DICTIONARY.Cancel[language],
+        tooltipPosition: 'top',
+        captureLeft: DICTIONARY.Cancel[language],
+        isDisplaying: isEditNameVisible,
       },
       buttonForwardProps: {
         icon: 'MdForward',

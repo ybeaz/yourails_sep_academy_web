@@ -122,7 +122,14 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     getQuestionScoresPropsOutProps
   )
 
-  console.info('QuestionScores [142]', { nameFirst, nameLast, isEditNameVisible, modules })
+  console.info('QuestionScores [142]', {
+    'propsOut.navLinkNextTaskProps': propsOut.navLinkNextTaskProps,
+    propsOut,
+    nameFirst,
+    nameLast,
+    isEditNameVisible,
+    modules,
+  })
 
   return (
     <div className='QuestionScores'>

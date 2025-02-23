@@ -20,11 +20,18 @@ import {
 const FormInputNamesWithButtonsComponent: FormInputNamesWithButtonsComponentType = (
   props: FormInputNamesWithButtonsComponentPropsType
 ) => {
-  const { classAdded, formInputNamesProps, buttonConfirmEditNameProps, isDisplaying, isVisible } =
-    props
+  const {
+    classAdded,
+    formInputNamesProps,
+    buttonCancelEditNameProps,
+    buttonConfirmEditNameProps,
+    isDisplaying,
+    isVisible,
+  } = props
 
   const propsOut: FormInputNamesWithButtonsPropsOutType = {
     formInputNamesProps,
+    buttonCancelEditNameProps,
     buttonConfirmEditNameProps,
   }
 
@@ -37,7 +44,10 @@ const FormInputNamesWithButtonsComponent: FormInputNamesWithButtonsComponentType
       })}
     >
       <FormInputNames {...propsOut.formInputNamesProps} />
-      <ButtonYrl {...propsOut.buttonConfirmEditNameProps} />
+      <div className='_buttonsWrapper'>
+        <ButtonYrl {...propsOut.buttonCancelEditNameProps} />
+        <ButtonYrl {...propsOut.buttonConfirmEditNameProps} />
+      </div>
     </div>
   )
 }

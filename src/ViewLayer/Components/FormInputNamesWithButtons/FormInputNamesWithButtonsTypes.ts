@@ -5,6 +5,7 @@ import { ButtonYrlPropsType } from 'yourails_common'
 export type FormInputNamesWithButtonsComponentPropsType = {
   classAdded?: string | number | symbol | any
   formInputNamesProps: FormInputNamesPropsType
+  buttonCancelEditNameProps: ButtonYrlPropsType
   buttonConfirmEditNameProps: ButtonYrlPropsType
   isDisplaying?: boolean // is element present on the page and visible/ displaying?
   isVisible?: boolean // element is present on the page, but if it is visible/ displaying?
@@ -17,6 +18,7 @@ export type FormInputNamesWithButtonsPropsType = Omit<
 
 export type FormInputNamesWithButtonsPropsOutType = {
   formInputNamesProps: FormInputNamesPropsType
+  buttonCancelEditNameProps: ButtonYrlPropsType
   buttonConfirmEditNameProps: ButtonYrlPropsType
 }
 

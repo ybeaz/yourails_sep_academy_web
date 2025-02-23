@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { withPropsYrl, withStoreStateSelectedYrl } from 'yourails_common'
 import { getCreatedUrlSearchQuery } from 'yourails_common'
 import { getParsedUrlQuery } from 'yourails_common'
-import { getClasses } from 'yourails_common'
+import classNames from 'classnames'
 
 import {
   NavLinkWithQueryComponentPropsType,
@@ -26,6 +26,9 @@ const NavLinkWithQueryComponent: NavLinkWithQueryComponentType = (
       urlParamsQuery: { sendCc: sendCcState, sendBcc: sendBccState },
     },
     to,
+    isDisplaying,
+    isVisible,
+    classAdded,
     ...restProps
   } = props
 
@@ -45,6 +48,11 @@ const NavLinkWithQueryComponent: NavLinkWithQueryComponentType = (
 
   const propsOut: NavLinkWithQueryPropsOutType = {
     navLinkProps: {
+      className: classNames('NavLinkWithQuery', {
+        [classAdded]: !!classAdded,
+        NavLinkWithQuery_display_none: isDisplaying === false,
+        NavLinkWithQuery_visible_none: isVisible === false,
+      }),
       ...restProps,
       ...(to
         ? {
