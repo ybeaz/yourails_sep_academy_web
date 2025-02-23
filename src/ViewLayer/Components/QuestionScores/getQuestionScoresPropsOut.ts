@@ -125,6 +125,8 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
         data: {},
       },
       captureLeft: DICTIONARY.Next_task[language],
+      tooltipText: DICTIONARY.Next_task[language],
+      tooltipPosition: 'top',
     },
     navLinkCreditProps: {
       to: { pathname: '/' },
@@ -135,9 +137,9 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
       classAdded: 'Button_Credit',
       handleEvents,
       action: {},
+      captureLeft: DICTIONARY.View_reward[language],
       tooltipText: DICTIONARY.View_reward[language],
       tooltipPosition: 'top',
-      captureLeft: DICTIONARY.View_reward[language],
     },
     buttonIsEditNameVisibleProps: {
       icon: '',
@@ -149,9 +151,9 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
           isEditNameVisible: true,
         },
       },
+      captureLeft: `${DICTIONARY.Edit_name[language]}`,
       tooltipText: `${DICTIONARY.Edit_name[language]}`,
       tooltipPosition: 'top',
-      captureLeft: `${DICTIONARY.Edit_name[language]}`,
       isDisplaying: !isEditNameVisible,
     },
     navLinkAchievementsProps: {
@@ -163,9 +165,9 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
       classAdded: 'Button_Achievements',
       handleEvents,
       action: {},
+      captureLeft: DICTIONARY.Achievements[language],
       tooltipText: DICTIONARY.Achievements[language],
       tooltipPosition: 'top',
-      captureLeft: DICTIONARY.Achievements[language],
     },
     navLinkAllMissionsProps: {
       to: {
@@ -180,9 +182,9 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
       classAdded: 'Button_BackToTopic',
       handleEvents,
       action: {},
+      captureLeft: DICTIONARY.Back_to_topic[language],
       tooltipText: DICTIONARY.Back_to_topic[language],
       tooltipPosition: 'top',
-      captureLeft: DICTIONARY.Back_to_topic[language],
     },
     formInputNamesProps: {
       language,
