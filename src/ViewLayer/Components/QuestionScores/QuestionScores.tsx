@@ -39,7 +39,7 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
       language,
       moduleIDActive,
       modules,
-      nameFirst,
+      nameFirst: nameFirstIn,
       nameMiddle,
       nameLast,
       sub,
@@ -48,6 +48,8 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     },
     handleEvents,
   } = props
+
+  const nameFirst = ''
 
   const navigate = useNavigate()
 
@@ -68,7 +70,7 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
   passRateIn = passRateIn < 0.5 ? 0.5 : passRateIn
 
   const score: GetAnswersChecked2OutType = getAnswersChecked2(questionsActive, passRateIn)
-  const { total, right, result } = score
+  const { result } = score
 
   let scenarioCase: ScenarioCaseEnumType = result || ScenarioCaseEnumType.failure
   if (!sub && result === ScenarioCaseEnumType.success) {
@@ -77,6 +79,14 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
 
   useEffect(() => {
     stopVideoHandler && stopVideoHandler({}, {})
+    console.info('QuestionScores [82]', {
+      isEditNameVisible: (!nameFirst || !nameLast) && !!sub && !!profiles.length,
+      '!nameFirst || !nameLast': !nameFirst || !nameLast,
+      '!!sub': !!sub,
+      '!!profiles.length': !!profiles.length,
+      sub,
+      profiles,
+    })
 
     if (
       scenarioCase === ScenarioCaseEnumType.success ||
@@ -94,7 +104,15 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
 
       setTimeout(() => handleEvents({}, { typeEvent: 'TOGGLE_IS_CONFETTI', data: false }), 5000)
     }
-  }, [])
+  }, [
+    JSON.stringify({
+      nameFirst,
+      nameLast,
+      sub,
+      profiles,
+      scenarioCase,
+    }),
+  ])
 
   const queryUrl = getParsedUrlQueryBrowserApi()
 

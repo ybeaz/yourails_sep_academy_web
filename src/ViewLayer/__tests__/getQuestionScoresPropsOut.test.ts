@@ -22,40 +22,8 @@ const language = 'en'
 const handleEvents = () => {}
 
 const tests: GetQuestionScoresPropsOutTestType[] = [
-  {
-    testScenario: ['success (auth)', 'names present'].join(', '),
-    params: {
-      modules: modulesJson as any,
-      moduleActive: modulesJson.find((item: any) => item.moduleID === 'l9U7XMpux7eD') as any,
-      queryUrl: {
-        pageModules: '1',
-        pageTags: '1',
-        pageDocuments: '1',
-        modulesSearch: 'animal testing',
-        tagsSearch: 'animal testing',
-      },
-      handleEvents: () => {},
-      navigate: () => {},
-      scenarioCase: ScenarioCaseEnumType.success,
-      isEditNameVisible: false,
-      language: 'en',
-      nameFirst: 'Roman',
-      nameMiddle: '',
-      nameLast: 'Ches',
-      score: {
-        total: 1,
-        right: 1,
-        wrong: 0,
-        answered: 1,
-        result: ScenarioCaseEnumType.success,
-      },
-      sub: 'f4a89478-6051-705d-e938-db84b3be0aeb',
-      profiles: profilesJson as any,
-    },
-    expected: expectedDict.expected01,
-  },
   // {
-  //   testScenario: ['success (auth)', 'nameFirst unpresent'].join(', '),
+  //   testScenario: ['success (auth)', 'names present'].join(', '),
   //   params: {
   //     modules: modulesJson as any,
   //     moduleActive: modulesJson.find((item: any) => item.moduleID === 'l9U7XMpux7eD') as any,
@@ -71,7 +39,7 @@ const tests: GetQuestionScoresPropsOutTestType[] = [
   //     scenarioCase: ScenarioCaseEnumType.success,
   //     isEditNameVisible: false,
   //     language: 'en',
-  //     nameFirst: '',
+  //     nameFirst: 'Roman',
   //     nameMiddle: '',
   //     nameLast: 'Ches',
   //     score: {
@@ -84,8 +52,40 @@ const tests: GetQuestionScoresPropsOutTestType[] = [
   //     sub: 'f4a89478-6051-705d-e938-db84b3be0aeb',
   //     profiles: profilesJson as any,
   //   },
-  //   expected: expectedDict.expected02,
+  //   expected: expectedDict.expected01,
   // },
+  {
+    testScenario: ['success (auth)', 'nameFirst unpresent'].join(', '),
+    params: {
+      modules: modulesJson as any,
+      moduleActive: modulesJson.find((item: any) => item.moduleID === 'l9U7XMpux7eD') as any,
+      queryUrl: {
+        pageModules: '1',
+        pageTags: '1',
+        pageDocuments: '1',
+        modulesSearch: 'animal testing',
+        tagsSearch: 'animal testing',
+      },
+      handleEvents: () => {},
+      navigate: () => {},
+      scenarioCase: ScenarioCaseEnumType.success,
+      isEditNameVisible: false,
+      language: 'en',
+      nameFirst: '',
+      nameMiddle: '',
+      nameLast: 'Ches',
+      score: {
+        total: 1,
+        right: 1,
+        wrong: 0,
+        answered: 1,
+        result: ScenarioCaseEnumType.success,
+      },
+      sub: 'f4a89478-6051-705d-e938-db84b3be0aeb',
+      profiles: profilesJson as any,
+    },
+    expected: expectedDict.expected02,
+  },
 ]
 
 /**

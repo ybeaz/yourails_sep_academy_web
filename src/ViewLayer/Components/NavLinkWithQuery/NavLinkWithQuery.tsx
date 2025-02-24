@@ -32,6 +32,8 @@ const NavLinkWithQueryComponent: NavLinkWithQueryComponentType = (
     ...restProps
   } = props
 
+  console.info('NavLinkWithQuery [35]', { isDisplaying, classAdded })
+
   const pathname = props.to?.pathname
   const searchIn = props.to?.search
 

@@ -78,6 +78,9 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
   const { total, right } = score
 
   console.info('getQuestionScoresPropsOut [64]', {
+    navLinkNextTaskPropsIsDisplaying:
+      scenarioCase === 'success' && !!nameFirst && !!nameLast && !isEditNameVisible,
+    nameFirst,
     props: {
       modules,
       moduleActive,
@@ -118,6 +121,7 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
   const propsOut: QuestionScoresPropsOutType = {
     message: scenario.message,
     navLinkNextTaskProps: {
+      classAdded: 'NavLink_NextTask',
       to: {
         pathname: getMapJourneyData({ modules }).find(
           ({ isNextModule }: { isNextModule: boolean }) => isNextModule
@@ -127,8 +131,8 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
       isDisplaying: scenarioCase === 'success' && !isEditNameVisible,
     },
     buttonNextTaskProps: {
-      icon: '',
       classAdded: 'Button_NextTask',
+      icon: '',
       handleEvents,
       action: {
         typeEvent: 'TEST',
@@ -139,8 +143,8 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
       tooltipPosition: 'top',
     },
     buttonCreditProps: {
-      icon: '',
       classAdded: 'Button_Credit',
+      icon: '',
       handleEvents,
       action: {
         typeEvent: 'CREATE_DOCUMENT',
@@ -154,8 +158,8 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
       isDisplaying: scenarioCase === 'success' && !isEditNameVisible,
     },
     buttonIsEditNameVisibleProps: {
+      classAdded: 'Button_IsEditName',
       icon: '',
-      classAdded: 'Button_EditName',
       handleEvents,
       action: {
         typeEvent: 'SET_EDIT_NAME_VISIBILITY',

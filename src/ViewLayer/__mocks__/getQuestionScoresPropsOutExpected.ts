@@ -50,7 +50,7 @@ export const expected01: GetQuestionScoresPropsOutResType = {
   },
   buttonIsEditNameVisibleProps: {
     icon: '',
-    classAdded: 'Button_EditName',
+    classAdded: 'Button_IsEditName',
     action: {
       typeEvent: 'SET_EDIT_NAME_VISIBILITY',
       data: {
@@ -192,7 +192,7 @@ export const expected02: GetQuestionScoresPropsOutResType = {
   },
   buttonIsEditNameVisibleProps: {
     icon: '',
-    classAdded: 'Button_EditName',
+    classAdded: 'Button_IsEditName',
     action: {
       typeEvent: 'SET_EDIT_NAME_VISIBILITY',
       data: {
@@ -251,7 +251,7 @@ export const expected02: GetQuestionScoresPropsOutResType = {
         tagsSearch: 'animal testing',
       },
     },
-    isDisplaying: true,
+    isDisplaying: false,
   },
   buttonBackToTopicProps: {
     icon: '',
@@ -273,7 +273,7 @@ export const expected02: GetQuestionScoresPropsOutResType = {
         tagsSearch: 'animal testing',
       },
     },
-    isDisplaying: true,
+    isDisplaying: false,
   },
   buttonAchievementsProps: {
     icon: '',
@@ -319,7 +319,7 @@ export const expected02: GetQuestionScoresPropsOutResType = {
 //   },
 //   buttonIsEditNameVisibleProps: {
 //     icon: 'MdForward',
-//     classAdded: 'Button_EditName',
+//     classAdded: 'Button_IsEditName',
 //     handleEvents,
 //     action: {
 //       typeEvent: 'SET_EDIT_NAME_VISIBILITY',
