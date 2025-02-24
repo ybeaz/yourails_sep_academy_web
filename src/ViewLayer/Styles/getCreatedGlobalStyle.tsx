@@ -218,6 +218,7 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
     .ButtonYrl ._in {
       color: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
     }
+
     .ButtonYrl .__tooltipText {
       background: ${props2 => getColor(props2, 'colorSecondLighter2', medial, lighter2)};
       color: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
@@ -362,6 +363,9 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
         return DICTIONARY_STYLES[theme]
       }};}
 
+    .FormInputNames > ._form .ant-collapse-expand-icon,
+    .FormInputNames > ._form ._label,
+    .FormInputNames > ._form .ant-collapse-header-text > ._label,
     .Button_SiGoogleplay ._in,
     .Button_SiAppstore ._in,
     .Button_MdMenu ._in,

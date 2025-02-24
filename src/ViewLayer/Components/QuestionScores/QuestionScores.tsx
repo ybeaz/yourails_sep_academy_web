@@ -79,15 +79,6 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
 
   useEffect(() => {
     stopVideoHandler && stopVideoHandler({}, {})
-    console.info('QuestionScores [82]', {
-      isEditNameVisible: (!nameFirst || !nameLast) && !!sub && !!profiles.length,
-      '!nameFirst || !nameLast': !nameFirst || !nameLast,
-      '!!sub': !!sub,
-      '!!profiles.length': !!profiles.length,
-      sub,
-      profiles,
-    })
-
     if (
       scenarioCase === ScenarioCaseEnumType.success ||
       scenarioCase === ScenarioCaseEnumType.successNoAuth
