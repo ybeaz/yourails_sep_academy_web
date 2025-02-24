@@ -126,7 +126,7 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
         captureLeft: DICTIONARY.Cancel[language],
         tooltipText: DICTIONARY.Cancel[language],
         tooltipPosition: 'top',
-        isDisplaying: isEditNameVisible,
+        isDisplaying: true,
       },
       buttonForwardProps: {
         icon: '',
@@ -139,7 +139,7 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
         captureLeft: DICTIONARY.Confirm[language],
         tooltipText: DICTIONARY.Confirm[language],
         tooltipPosition: 'top',
-        isDisplaying: isEditNameVisible,
+        isDisplaying: true,
       },
     },
 
@@ -164,16 +164,17 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
         captureLeft: DICTIONARY.Cancel[language],
         tooltipText: DICTIONARY.Cancel[language],
         tooltipPosition: 'top',
-        isDisplaying: isEditNameVisible,
+        isDisplaying: true,
       },
       buttonForwardProps: {
         icon: '',
         classAdded: 'Button_MdForward2',
+        handleEvents,
         action: {
           typeEvent: 'CLICK_ON_SIGN_IN',
           data: {},
         },
-        handleEvents,
+        isDisplaying: true,
       },
     },
 
@@ -198,15 +199,16 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
         captureLeft: DICTIONARY.Cancel[language],
         tooltipText: DICTIONARY.Cancel[language],
         tooltipPosition: 'top',
-        isDisplaying: isEditNameVisible,
+        isDisplaying: true,
       },
       buttonForwardProps: {
         icon: 'MdForward',
         classAdded: 'Button_MdForward2',
+        handleEvents,
         action: {
           typeEvent: 'CLOSE_MODAL_GET_SCORES',
         },
-        handleEvents,
+        isDisplaying: true,
       },
     },
   }
