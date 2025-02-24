@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom'
 import { consoler } from 'yourails_common'
 import {
   withTryCatchFinallyWrapper,
@@ -21,6 +20,7 @@ type GetQuestionScoresPropsOutParamsType = {
   moduleActive: ModuleType
   queryUrl: any
   handleEvents: HandleEventType
+  navigate: any
   scenarioCase: ScenarioCaseEnumType
   isEditNameVisible: boolean
   language: RootStoreType['language']
@@ -62,6 +62,7 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
   moduleActive,
   queryUrl,
   handleEvents,
+  navigate,
   scenarioCase,
   isEditNameVisible,
   language,
@@ -92,13 +93,6 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
       sub,
       profiles,
     },
-    modules,
-    queryUrl,
-    handleEvents,
-    isEditNameVisible,
-    language,
-    nameFirst,
-    nameLast,
   })
 
   const getScenarioDictProps: GetScenarioDictPropsType = {
@@ -119,7 +113,6 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
     profiles,
   }
 
-  const navigate = useNavigate()
   const scenario = getScenarioDict(getScenarioDictProps)
 
   const propsOut: QuestionScoresPropsOutType = {

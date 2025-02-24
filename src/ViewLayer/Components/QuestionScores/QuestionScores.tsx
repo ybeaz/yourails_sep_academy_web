@@ -5,14 +5,12 @@ import { Tooltip } from 'antd'
 import { NavLinkWithQuery } from '../../Components/NavLinkWithQuery/NavLinkWithQuery'
 import { isParsableFloat } from 'yourails_common'
 import { getParsedUrlQuery } from 'yourails_common'
-import { getQuestionsWrongAnswered } from 'yourails_common'
 import { getParsedUrlQueryBrowserApi } from 'yourails_common'
 import { getAnswersChecked2, GetAnswersChecked2OutType } from 'yourails_common'
 import { getModuleByModuleID } from 'yourails_common'
 import { ScenarioCaseEnumType } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { FormInputNamesWithButtons } from '../FormInputNamesWithButtons/FormInputNamesWithButtons'
-import { FormInputNames } from '../FormInputNames/FormInputNames'
 import { withStoreStateSelectedYrl, withPropsYrl, ButtonYrl } from 'yourails_common'
 import {
   getQuestionScoresPropsOut,
@@ -51,7 +49,7 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     handleEvents,
   } = props
 
-  // const nameFirst = ''
+  const navigate = useNavigate()
 
   const moduleActive = getModuleByModuleID(
     {
@@ -104,26 +102,24 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     modules,
     moduleActive,
     queryUrl,
-    handleEvents,
     scenarioCase,
     isEditNameVisible,
     language,
     nameFirst,
     nameMiddle,
     nameLast,
-
     score,
-
     sub,
     profiles,
+    handleEvents,
+    navigate,
   }
 
   const propsOut: QuestionScoresPropsOutType = getQuestionScoresPropsOut(
     getQuestionScoresPropsOutProps
   )
 
-  console.info('QuestionScores [142]', {
-    'propsOut.navLinkNextTaskProps': propsOut.navLinkNextTaskProps,
+  console.info('QuestionScores [123]', {
     propsOut,
     nameFirst,
     nameLast,
