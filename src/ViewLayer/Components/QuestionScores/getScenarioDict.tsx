@@ -5,11 +5,11 @@ import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { ButtonYrlPropsType } from 'yourails_common'
 import { getProfileActiveToUpdate } from 'yourails_common'
 import { ModuleType, MetaCourseType } from 'yourails_common'
-import { ScenarioCaseType } from 'yourails_common'
+import { ScenarioCaseEnumType } from 'yourails_common'
 import { HandleEventType } from 'yourails_common'
 
 export type GetScenarioDictPropsType = {
-  scenarioCase: ScenarioCaseType
+  scenarioCase: ScenarioCaseEnumType
   language: RootStoreType['language']
   capture: string
   right: number

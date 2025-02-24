@@ -9,7 +9,7 @@ import { getQuestionsWrongAnswered } from 'yourails_common'
 import { getParsedUrlQueryBrowserApi } from 'yourails_common'
 import { getAnswersChecked2, GetAnswersChecked2OutType } from 'yourails_common'
 import { getModuleByModuleID } from 'yourails_common'
-import { ScenarioCaseType } from 'yourails_common'
+import { ScenarioCaseEnumType } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { FormInputNamesWithButtons } from '../FormInputNamesWithButtons/FormInputNamesWithButtons'
 import { FormInputNames } from '../FormInputNames/FormInputNames'
@@ -72,17 +72,17 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
   const score: GetAnswersChecked2OutType = getAnswersChecked2(questionsActive, passRateIn)
   const { total, right, result } = score
 
-  let scenarioCase: ScenarioCaseType = result || ScenarioCaseType.failure
-  if (!sub && result === ScenarioCaseType.success) {
-    scenarioCase = ScenarioCaseType.successNoAuth
+  let scenarioCase: ScenarioCaseEnumType = result || ScenarioCaseEnumType.failure
+  if (!sub && result === ScenarioCaseEnumType.success) {
+    scenarioCase = ScenarioCaseEnumType.successNoAuth
   }
 
   useEffect(() => {
     stopVideoHandler && stopVideoHandler({}, {})
 
     if (
-      scenarioCase === ScenarioCaseType.success ||
-      scenarioCase === ScenarioCaseType.successNoAuth
+      scenarioCase === ScenarioCaseEnumType.success ||
+      scenarioCase === ScenarioCaseEnumType.successNoAuth
     ) {
       if ((!nameFirst || !nameLast) && sub && profiles.length) {
         handleEvents(

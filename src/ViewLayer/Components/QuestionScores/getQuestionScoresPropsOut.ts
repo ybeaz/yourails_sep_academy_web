@@ -9,7 +9,7 @@ import { ModuleType } from 'yourails_common'
 import { HandleEventType } from 'yourails_common'
 import { DICTIONARY } from 'yourails_common'
 import { getMapJourneyData } from 'yourails_common'
-import { ScenarioCaseType } from 'yourails_common'
+import { ScenarioCaseEnumType } from 'yourails_common'
 import { QuestionScoresPropsOutType } from './QuestionScoresTypes'
 import { GetScenarioDictPropsType, GetScenarioDictResType } from './getScenarioDict'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
@@ -21,7 +21,7 @@ type GetQuestionScoresPropsOutParamsType = {
   moduleActive: ModuleType
   queryUrl: any
   handleEvents: HandleEventType
-  scenarioCase: ScenarioCaseType
+  scenarioCase: ScenarioCaseEnumType
   isEditNameVisible: boolean
   language: RootStoreType['language']
   nameFirst: RootStoreType['forms']['user']['nameFirst']
@@ -77,6 +77,21 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
   const { total, right } = score
 
   console.info('getQuestionScoresPropsOut [64]', {
+    props: {
+      modules,
+      moduleActive,
+      queryUrl,
+      handleEvents,
+      scenarioCase,
+      isEditNameVisible,
+      language,
+      nameFirst,
+      nameMiddle,
+      nameLast,
+      score,
+      sub,
+      profiles,
+    },
     modules,
     queryUrl,
     handleEvents,
@@ -167,7 +182,7 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
       },
       buttonCancelEditNameProps: scenario.buttonBackwardProps,
       buttonConfirmEditNameProps: scenario.buttonForwardProps,
-      isDisplaying: scenarioCase === ScenarioCaseType.success && isEditNameVisible,
+      isDisplaying: scenarioCase === ScenarioCaseEnumType.success && isEditNameVisible,
     },
     navLinkBackToTopicProps: {
       to: {
