@@ -4,6 +4,7 @@ import { Tooltip } from 'antd'
 
 import { NavLinkWithQuery } from '../../Components/NavLinkWithQuery/NavLinkWithQuery'
 import { isParsableFloat } from 'yourails_common'
+import { useIsFirstRenderYrl } from 'yourails_common'
 import { getParsedUrlQuery } from 'yourails_common'
 import { getParsedUrlQueryBrowserApi } from 'yourails_common'
 import { getAnswersChecked2, GetAnswersChecked2OutType } from 'yourails_common'
@@ -39,7 +40,7 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
       language,
       moduleIDActive,
       modules,
-      nameFirst: nameFirstIn,
+      nameFirst: nameFirst,
       nameMiddle,
       nameLast,
       sub,
@@ -49,8 +50,9 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     handleEvents,
   } = props
 
-  const nameFirst = ''
+  // const nameFirst = ''
 
+  const isFirstRender = useIsFirstRenderYrl()
   const navigate = useNavigate()
 
   const moduleActive = getModuleByModuleID(
@@ -90,15 +92,12 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
         )
       }
 
-      /* TODO: handleEvents is undefined, reasons are unknown and incomprehensible */
-      handleEvents({}, { typeEvent: 'TOGGLE_IS_CONFETTI', data: true })
+      if (isFirstRender) handleEvents({}, { typeEvent: 'TOGGLE_IS_CONFETTI', data: true })
 
       setTimeout(() => handleEvents({}, { typeEvent: 'TOGGLE_IS_CONFETTI', data: false }), 5000)
     }
   }, [
     JSON.stringify({
-      nameFirst,
-      nameLast,
       sub,
       profiles,
       scenarioCase,
