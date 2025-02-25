@@ -34,8 +34,8 @@ const tests: GetQuestionScoresPropsOutTestType[] = [
   //       modulesSearch: 'animal testing',
   //       tagsSearch: 'animal testing',
   //     },
-  //     handleEvents: () => {},
-  //     navigate: () => {},
+  //     handleEvents: expectedDict.handleEvents,
+  //     navigate: expectedDict.navigate,
   //     scenarioCase: ScenarioCaseEnumType.success,
   //     isEditNameVisible: false,
   //     language: 'en',
@@ -54,8 +54,41 @@ const tests: GetQuestionScoresPropsOutTestType[] = [
   //   },
   //   expected: expectedDict.expected01,
   // },
+  // {
+  //   testScenario: ['success (auth)', 'nameFirst unpresent'].join(', '),
+  //   params: {
+  //     modules: modulesJson as any,
+  //     moduleActive: modulesJson.find((item: any) => item.moduleID === 'l9U7XMpux7eD') as any,
+  //     queryUrl: {
+  //       pageModules: '1',
+  //       pageTags: '1',
+  //       pageDocuments: '1',
+  //       modulesSearch: 'animal testing',
+  //       tagsSearch: 'animal testing',
+  //     },
+  //     handleEvents: expectedDict.handleEvents,
+  //     navigate: expectedDict.navigate,
+  //     scenarioCase: ScenarioCaseEnumType.success,
+  //     isEditNameVisible: true,
+  //     language: 'en',
+  //     nameFirst: '',
+  //     nameMiddle: '',
+  //     nameLast: 'Ches',
+  //     score: {
+  //       total: 1,
+  //       right: 1,
+  //       wrong: 0,
+  //       answered: 1,
+  //       result: ScenarioCaseEnumType.success,
+  //     },
+  //     sub: 'f4a89478-6051-705d-e938-db84b3be0aeb',
+  //     profiles: profilesJson as any,
+  //   },
+  //   expected: expectedDict.expected02,
+  // },
+  // STOPPEN HERE, need to define the function getIsEditNameVisible
   {
-    testScenario: ['success (auth)', 'nameFirst unpresent'].join(', '),
+    testScenario: ['success (noAuth)', 'names present'].join(', '),
     params: {
       modules: modulesJson as any,
       moduleActive: modulesJson.find((item: any) => item.moduleID === 'l9U7XMpux7eD') as any,
@@ -66,12 +99,12 @@ const tests: GetQuestionScoresPropsOutTestType[] = [
         modulesSearch: 'animal testing',
         tagsSearch: 'animal testing',
       },
-      handleEvents: () => {},
-      navigate: () => {},
+      handleEvents: expectedDict.handleEvents,
+      navigate: expectedDict.navigate,
       scenarioCase: ScenarioCaseEnumType.success,
-      isEditNameVisible: false,
+      isEditNameVisible: true,
       language: 'en',
-      nameFirst: '',
+      nameFirst: 'Roman',
       nameMiddle: '',
       nameLast: 'Ches',
       score: {
@@ -81,11 +114,31 @@ const tests: GetQuestionScoresPropsOutTestType[] = [
         answered: 1,
         result: ScenarioCaseEnumType.success,
       },
-      sub: 'f4a89478-6051-705d-e938-db84b3be0aeb',
+      sub: null,
       profiles: profilesJson as any,
     },
     expected: expectedDict.expected02,
   },
+  // {
+  //   testScenario: ['success (noAuth)', 'names unpresent'].join(', '),
+
+  // },
+  // {
+  //   testScenario: ['failure (auth)', 'names present'].join(', '),
+
+  // },
+  // {
+  //   testScenario: ['failure (auth)', 'names unpresent'].join(', '),
+
+  // },
+  // {
+  //   testScenario: ['failure (noAuth)', 'names present'].join(', '),
+
+  // },
+  // {
+  //   testScenario: ['failure (noAuth)', 'names unpresent'].join(', '),
+
+  // },
 ]
 
 /**
@@ -101,8 +154,8 @@ describe('Algoritms', () => {
 
   it.each(tests)(`-- getQuestionScoresPropsOut.test: $testScenario`, ({ params, expected }) => {
     let output: GetQuestionScoresPropsOutResType = getQuestionScoresPropsOut(params)
-    // consoler('getQuestionScoresPropsOut.test', { output })
+    consoler('getQuestionScoresPropsOut.test', { output })
 
-    expect(JSON.stringify(output)).toEqual(JSON.stringify(expected))
+    expect(output).toEqual(expected)
   })
 })

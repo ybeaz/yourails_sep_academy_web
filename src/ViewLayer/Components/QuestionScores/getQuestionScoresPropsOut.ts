@@ -182,6 +182,7 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
       isDisplaying: scenarioCase === ScenarioCaseEnumType.success && isEditNameVisible,
     },
     navLinkBackToTopicProps: {
+      classAdded: 'NavLink_BackToTopic',
       to: {
         pathname: '/',
         search: queryUrl,
@@ -190,8 +191,8 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
       isDisplaying: scenarioCase === 'success' && !isEditNameVisible,
     },
     buttonBackToTopicProps: {
-      icon: '',
       classAdded: 'Button_BackToTopic',
+      icon: '',
       handleEvents,
       action: {},
       captureLeft: DICTIONARY.Back_to_topic[language],
@@ -199,6 +200,7 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
       tooltipPosition: 'top',
     },
     navLinkAchievementsProps: {
+      classAdded: 'NavLink_Achievements',
       to: {
         pathname: '/my-documents',
         search: queryUrl,
@@ -206,8 +208,8 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
       isDisplaying: scenarioCase === 'success' && !isEditNameVisible,
     },
     buttonAchievementsProps: {
-      icon: '',
       classAdded: 'Button_Achievements',
+      icon: '',
       handleEvents,
       action: {},
       captureLeft: DICTIONARY.Achievements[language],

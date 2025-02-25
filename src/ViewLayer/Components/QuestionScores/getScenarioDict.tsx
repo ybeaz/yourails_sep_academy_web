@@ -72,6 +72,7 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
 
   const question = getQuesionString(language, right)
 
+  const AuthoriseToReceiveCertificate = DICTIONARY.Authorise_to_receive_certificate[language]
   const ToReceiveCertificateFillTheForm = DICTIONARY.ToReceiveCertificateFillTheForm[language]
   const ToReceiveCertificateLogIn = DICTIONARY.ToReceiveCertificateLogIn[language]
   const correctAnsweresFrom = DICTIONARY.correctAnsweresFrom[language]
@@ -114,8 +115,8 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
         line3: `${DICTIONARY.Keep_going[language]}!`,
       },
       buttonBackwardProps: {
-        icon: '',
         classAdded: 'Button_CancelEditName',
+        icon: '',
         handleEvents,
         action: {
           typeEvent: 'SET_EDIT_NAME_VISIBILITY',
@@ -129,8 +130,8 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
         isDisplaying: true,
       },
       buttonForwardProps: {
-        icon: '',
         classAdded: 'Button_ConfirmEditName',
+        icon: '',
         handleEvents,
         action: {
           typeEvent: 'CLICK_ON_CONFIRM_NAMES',
@@ -149,11 +150,11 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
         greeting: Congratulations,
         line1: `"${capture}"`,
         line2: `${isCompletedWith} ${right} ${correctAnsweresFrom} ${total}`,
-        line3: `${ToReceiveCertificateLogIn}!`,
+        line3: `${AuthoriseToReceiveCertificate}.`,
       },
       buttonBackwardProps: {
-        icon: '',
         classAdded: 'Button_CancelEditName',
+        icon: '',
         handleEvents,
         action: {
           typeEvent: 'SET_EDIT_NAME_VISIBILITY',
@@ -167,13 +168,15 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
         isDisplaying: true,
       },
       buttonForwardProps: {
-        icon: '',
         classAdded: 'Button_MdForward2',
+        icon: '',
         handleEvents,
         action: {
           typeEvent: 'CLICK_ON_SIGN_IN',
           data: {},
         },
+        captureLeft: DICTIONARY.Confirm[language],
+        tooltipText: DICTIONARY.Confirm[language],
         isDisplaying: true,
       },
     },
@@ -187,8 +190,8 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
         line3: `${YouCanTryOnceAgain}!`,
       },
       buttonBackwardProps: {
-        icon: '',
         classAdded: 'Button_CancelEditName',
+        icon: '',
         handleEvents,
         action: {
           typeEvent: 'SET_EDIT_NAME_VISIBILITY',
@@ -202,8 +205,8 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
         isDisplaying: true,
       },
       buttonForwardProps: {
-        icon: 'MdForward',
         classAdded: 'Button_MdForward2',
+        icon: '',
         handleEvents,
         action: {
           typeEvent: 'CLOSE_MODAL_GET_SCORES',
