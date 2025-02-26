@@ -5,11 +5,11 @@ import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { ButtonYrlPropsType } from 'yourails_common'
 import { getProfileActiveToUpdate } from 'yourails_common'
 import { ModuleType, MetaCourseType } from 'yourails_common'
-import { ScenarioCaseEnumType } from 'yourails_common'
+import { QuestionsScoresCaseEnumType } from 'yourails_common'
 import { HandleEventType } from 'yourails_common'
 
 export type GetScenarioDictPropsType = {
-  scenarioCase: ScenarioCaseEnumType
+  scenarioCase: QuestionsScoresCaseEnumType
   language: RootStoreType['language']
   capture: string
   right: number
@@ -34,12 +34,17 @@ export type GetScenarioDictResType = {
   buttonForwardProps: ButtonYrlPropsType
 }
 
-export type ScenariousType = {
-  success: GetScenarioDictResType
-  successNoAuth: GetScenarioDictResType
-  failure: GetScenarioDictResType
-  debug?: GetScenarioDictResType
-}
+export type ScenariousType = Record<
+  keyof typeof QuestionsScoresCaseEnumType,
+  GetScenarioDictResType
+>
+
+//   {
+//   keyof QuestionsScoresCaseEnumType: GetScenarioDictResType
+//   successNoAuth: GetScenarioDictResType
+//   failure: GetScenarioDictResType
+//   debug?: GetScenarioDictResType
+// }
 
 interface GetScenarioDictType {
   (props: GetScenarioDictPropsType): GetScenarioDictResType
@@ -103,117 +108,125 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
   const { profileActive, isUpdatingProfile } = getProfileActiveToUpdate(
     getProfileActiveToUpdateProps
   )
-  console.info('getScenarioDict [87]', { isUpdatingProfile, profileActive })
+
+  const successTrue_AuthTrue = {
+    scenarioCase,
+    message: {
+      greeting: Congratulations,
+      line1: `"${capture}"`,
+      line2: `${isCompletedWith} ${right} ${correctAnsweresFrom} ${total}`,
+      line3: `${DICTIONARY.Keep_going[language]}!`,
+    },
+    buttonBackwardProps: {
+      classAdded: 'Button_CancelEditName',
+      icon: '',
+      handleEvents,
+      action: {
+        typeEvent: 'SET_EDIT_NAME_VISIBILITY',
+        data: {
+          isEditNameVisible: false,
+        },
+      },
+      captureLeft: DICTIONARY.Cancel[language],
+      tooltipText: DICTIONARY.Cancel[language],
+      tooltipPosition: 'top',
+      isDisplaying: true,
+    },
+    buttonForwardProps: {
+      classAdded: 'Button_ConfirmEditName',
+      icon: '',
+      handleEvents,
+      action: {
+        typeEvent: 'CLICK_ON_CONFIRM_NAMES',
+        data: {},
+      },
+      captureLeft: DICTIONARY.Confirm[language],
+      tooltipText: DICTIONARY.Confirm[language],
+      tooltipPosition: 'top',
+      isDisplaying: true,
+    },
+  }
+
+  const successTrue_AuthFalse = {
+    scenarioCase,
+    message: {
+      greeting: Congratulations,
+      line1: `"${capture}"`,
+      line2: `${isCompletedWith} ${right} ${correctAnsweresFrom} ${total}`,
+      line3: `${AuthoriseToReceiveCertificate}.`,
+    },
+    buttonBackwardProps: {
+      classAdded: 'Button_CancelEditName',
+      icon: '',
+      handleEvents,
+      action: {
+        typeEvent: 'SET_EDIT_NAME_VISIBILITY',
+        data: {
+          isEditNameVisible: false,
+        },
+      },
+      captureLeft: DICTIONARY.Cancel[language],
+      tooltipText: DICTIONARY.Cancel[language],
+      tooltipPosition: 'top',
+      isDisplaying: true,
+    },
+    buttonForwardProps: {
+      classAdded: 'Button_MdForward2',
+      icon: '',
+      handleEvents,
+      action: {
+        typeEvent: 'CLICK_ON_SIGN_IN',
+        data: {},
+      },
+      captureLeft: DICTIONARY.Confirm[language],
+      tooltipText: DICTIONARY.Confirm[language],
+      isDisplaying: true,
+    },
+  }
+
+  const successFalse = {
+    scenarioCase,
+    message: {
+      greeting: YouWereCommittedToSuccess,
+      line1: `"${capture}"`,
+      line2: `${andThisTimeAnswered} ${right} ${question} ${from} ${total}`,
+      line3: `${YouCanTryOnceAgain}!`,
+    },
+    buttonBackwardProps: {
+      classAdded: 'Button_CancelEditName',
+      icon: '',
+      handleEvents,
+      action: {
+        typeEvent: 'SET_EDIT_NAME_VISIBILITY',
+        data: {
+          isEditNameVisible: false,
+        },
+      },
+      captureLeft: DICTIONARY.Cancel[language],
+      tooltipText: DICTIONARY.Cancel[language],
+      tooltipPosition: 'top',
+      isDisplaying: true,
+    },
+    buttonForwardProps: {
+      classAdded: 'Button_MdForward2',
+      icon: '',
+      handleEvents,
+      action: {
+        typeEvent: 'CLOSE_MODAL_GET_SCORES',
+      },
+      isDisplaying: true,
+    },
+  }
 
   const scenarios: ScenariousType = {
-    success: {
-      scenarioCase,
-      message: {
-        greeting: Congratulations,
-        line1: `"${capture}"`,
-        line2: `${isCompletedWith} ${right} ${correctAnsweresFrom} ${total}`,
-        line3: `${DICTIONARY.Keep_going[language]}!`,
-      },
-      buttonBackwardProps: {
-        classAdded: 'Button_CancelEditName',
-        icon: '',
-        handleEvents,
-        action: {
-          typeEvent: 'SET_EDIT_NAME_VISIBILITY',
-          data: {
-            isEditNameVisible: false,
-          },
-        },
-        captureLeft: DICTIONARY.Cancel[language],
-        tooltipText: DICTIONARY.Cancel[language],
-        tooltipPosition: 'top',
-        isDisplaying: true,
-      },
-      buttonForwardProps: {
-        classAdded: 'Button_ConfirmEditName',
-        icon: '',
-        handleEvents,
-        action: {
-          typeEvent: 'CLICK_ON_CONFIRM_NAMES',
-          data: {},
-        },
-        captureLeft: DICTIONARY.Confirm[language],
-        tooltipText: DICTIONARY.Confirm[language],
-        tooltipPosition: 'top',
-        isDisplaying: true,
-      },
-    },
-
-    successNoAuth: {
-      scenarioCase,
-      message: {
-        greeting: Congratulations,
-        line1: `"${capture}"`,
-        line2: `${isCompletedWith} ${right} ${correctAnsweresFrom} ${total}`,
-        line3: `${AuthoriseToReceiveCertificate}.`,
-      },
-      buttonBackwardProps: {
-        classAdded: 'Button_CancelEditName',
-        icon: '',
-        handleEvents,
-        action: {
-          typeEvent: 'SET_EDIT_NAME_VISIBILITY',
-          data: {
-            isEditNameVisible: false,
-          },
-        },
-        captureLeft: DICTIONARY.Cancel[language],
-        tooltipText: DICTIONARY.Cancel[language],
-        tooltipPosition: 'top',
-        isDisplaying: true,
-      },
-      buttonForwardProps: {
-        classAdded: 'Button_MdForward2',
-        icon: '',
-        handleEvents,
-        action: {
-          typeEvent: 'CLICK_ON_SIGN_IN',
-          data: {},
-        },
-        captureLeft: DICTIONARY.Confirm[language],
-        tooltipText: DICTIONARY.Confirm[language],
-        isDisplaying: true,
-      },
-    },
-
-    failure: {
-      scenarioCase,
-      message: {
-        greeting: YouWereCommittedToSuccess,
-        line1: `"${capture}"`,
-        line2: `${andThisTimeAnswered} ${right} ${question} ${from} ${total}`,
-        line3: `${YouCanTryOnceAgain}!`,
-      },
-      buttonBackwardProps: {
-        classAdded: 'Button_CancelEditName',
-        icon: '',
-        handleEvents,
-        action: {
-          typeEvent: 'SET_EDIT_NAME_VISIBILITY',
-          data: {
-            isEditNameVisible: false,
-          },
-        },
-        captureLeft: DICTIONARY.Cancel[language],
-        tooltipText: DICTIONARY.Cancel[language],
-        tooltipPosition: 'top',
-        isDisplaying: true,
-      },
-      buttonForwardProps: {
-        classAdded: 'Button_MdForward2',
-        icon: '',
-        handleEvents,
-        action: {
-          typeEvent: 'CLOSE_MODAL_GET_SCORES',
-        },
-        isDisplaying: true,
-      },
-    },
+    successTrue_AuthTrue_NamesTrue: successTrue_AuthTrue,
+    successTrue_AuthTrue_NamesFalse: successTrue_AuthTrue,
+    successTrue_AuthFalse_NamesTrue: successTrue_AuthFalse,
+    successTrue_AuthFalse_NamesFalse: successTrue_AuthFalse,
+    successFalse_AuthTrue_NamesTrue: successFalse,
+    successFalse_AuthTrue_NamesFalse: successFalse,
+    successFalse_AuthFalse_NamesTrue: successFalse,
+    successFalse_AuthFalse_NamesFalse: successFalse,
   }
 
   return scenarios[scenarioCase]

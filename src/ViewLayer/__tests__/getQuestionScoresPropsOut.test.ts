@@ -1,9 +1,10 @@
 import { consoler } from 'yourails_common'
 
-import { ScenarioCaseEnumType } from 'yourails_common'
 import modulesJson from '../__mocks__/2025_02_20_modules.json'
 import profilesJson from '../__mocks__/2025_02_23_profiles.json'
 import * as expectedDict from '../__mocks__/getQuestionScoresPropsOutExpected'
+import { QuestionsAnswersCaseEnumType } from 'yourails_common'
+import { QuestionsScoresCaseEnumType } from 'yourails_common'
 
 import {
   getQuestionScoresPropsOut,
@@ -18,127 +19,106 @@ type GetQuestionScoresPropsOutTestType = {
   expected: GetQuestionScoresPropsOutResType
 }
 
-const language = 'en'
-const handleEvents = () => {}
+const paramsCommon = {
+  modules: modulesJson as any,
+  moduleActive: modulesJson.find((item: any) => item.moduleID === 'l9U7XMpux7eD') as any,
+  queryUrl: {
+    pageModules: '1',
+    pageTags: '1',
+    pageDocuments: '1',
+    modulesSearch: 'animal testing',
+    tagsSearch: 'animal testing',
+  },
+  handleEvents: expectedDict.handleEvents,
+  navigate: expectedDict.navigate,
+  language: 'en',
+  nameFirst: 'Roman',
+  nameMiddle: '',
+  nameLast: 'Ches',
+  score: {
+    total: 1,
+    right: 1,
+    wrong: 0,
+    answered: 1,
+    result: QuestionsAnswersCaseEnumType.successTrue,
+  },
+  sub: 'f4a89478-6051-705d-e938-db84b3be0aeb',
+  profiles: profilesJson as any,
+}
 
 const tests: GetQuestionScoresPropsOutTestType[] = [
-  // {
-  //   testScenario: ['success (auth)', 'names present'].join(', '),
-  //   params: {
-  //     modules: modulesJson as any,
-  //     moduleActive: modulesJson.find((item: any) => item.moduleID === 'l9U7XMpux7eD') as any,
-  //     queryUrl: {
-  //       pageModules: '1',
-  //       pageTags: '1',
-  //       pageDocuments: '1',
-  //       modulesSearch: 'animal testing',
-  //       tagsSearch: 'animal testing',
-  //     },
-  //     handleEvents: expectedDict.handleEvents,
-  //     navigate: expectedDict.navigate,
-  //     scenarioCase: ScenarioCaseEnumType.success,
-  //     isEditNameVisible: false,
-  //     language: 'en',
-  //     nameFirst: 'Roman',
-  //     nameMiddle: '',
-  //     nameLast: 'Ches',
-  //     score: {
-  //       total: 1,
-  //       right: 1,
-  //       wrong: 0,
-  //       answered: 1,
-  //       result: ScenarioCaseEnumType.success,
-  //     },
-  //     sub: 'f4a89478-6051-705d-e938-db84b3be0aeb',
-  //     profiles: profilesJson as any,
-  //   },
-  //   expected: expectedDict.expected01,
-  // },
-  // {
-  //   testScenario: ['success (auth)', 'nameFirst unpresent'].join(', '),
-  //   params: {
-  //     modules: modulesJson as any,
-  //     moduleActive: modulesJson.find((item: any) => item.moduleID === 'l9U7XMpux7eD') as any,
-  //     queryUrl: {
-  //       pageModules: '1',
-  //       pageTags: '1',
-  //       pageDocuments: '1',
-  //       modulesSearch: 'animal testing',
-  //       tagsSearch: 'animal testing',
-  //     },
-  //     handleEvents: expectedDict.handleEvents,
-  //     navigate: expectedDict.navigate,
-  //     scenarioCase: ScenarioCaseEnumType.success,
-  //     isEditNameVisible: true,
-  //     language: 'en',
-  //     nameFirst: '',
-  //     nameMiddle: '',
-  //     nameLast: 'Ches',
-  //     score: {
-  //       total: 1,
-  //       right: 1,
-  //       wrong: 0,
-  //       answered: 1,
-  //       result: ScenarioCaseEnumType.success,
-  //     },
-  //     sub: 'f4a89478-6051-705d-e938-db84b3be0aeb',
-  //     profiles: profilesJson as any,
-  //   },
-  //   expected: expectedDict.expected02,
-  // },
-  // STOPPEN HERE, need to define the function getIsEditNameVisible
   {
-    testScenario: ['success (noAuth)', 'names present'].join(', '),
+    testScenario: ['successTrue_AuthTrue_NamesTrue', 'isEditNameVisibleFalse'].join(', '),
     params: {
-      modules: modulesJson as any,
-      moduleActive: modulesJson.find((item: any) => item.moduleID === 'l9U7XMpux7eD') as any,
-      queryUrl: {
-        pageModules: '1',
-        pageTags: '1',
-        pageDocuments: '1',
-        modulesSearch: 'animal testing',
-        tagsSearch: 'animal testing',
-      },
-      handleEvents: expectedDict.handleEvents,
-      navigate: expectedDict.navigate,
-      scenarioCase: ScenarioCaseEnumType.success,
-      isEditNameVisible: true,
-      language: 'en',
-      nameFirst: 'Roman',
-      nameMiddle: '',
-      nameLast: 'Ches',
-      score: {
-        total: 1,
-        right: 1,
-        wrong: 0,
-        answered: 1,
-        result: ScenarioCaseEnumType.success,
-      },
-      sub: null,
-      profiles: profilesJson as any,
+      scenarioCase: QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesTrue,
+      isEditNameVisible: false,
+      ...paramsCommon,
+    },
+    expected: expectedDict.expected01,
+  },
+  {
+    testScenario: ['successTrue_AuthTrue_NamesFalse', 'isEditNameVisibleFalse'].join(', '),
+    params: {
+      scenarioCase: QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesFalse,
+      isEditNameVisible: false,
+      ...paramsCommon,
     },
     expected: expectedDict.expected02,
   },
-  // {
-  //   testScenario: ['success (noAuth)', 'names unpresent'].join(', '),
-
-  // },
-  // {
-  //   testScenario: ['failure (auth)', 'names present'].join(', '),
-
-  // },
-  // {
-  //   testScenario: ['failure (auth)', 'names unpresent'].join(', '),
-
-  // },
-  // {
-  //   testScenario: ['failure (noAuth)', 'names present'].join(', '),
-
-  // },
-  // {
-  //   testScenario: ['failure (noAuth)', 'names unpresent'].join(', '),
-
-  // },
+  {
+    testScenario: ['successTrue_AuthFalse_NamesTrue', 'isEditNameVisibleFalse'].join(', '),
+    params: {
+      scenarioCase: QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesTrue,
+      isEditNameVisible: false,
+      ...paramsCommon,
+    },
+    expected: expectedDict.expected02,
+  },
+  {
+    testScenario: ['successTrue_AuthFalse_NamesFalse', 'isEditNameVisibleFalse'].join(', '),
+    params: {
+      scenarioCase: QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesFalse,
+      isEditNameVisible: false,
+      ...paramsCommon,
+    },
+    expected: expectedDict.expected01, // to change
+  },
+  {
+    testScenario: ['successFalse_AuthTrue_NamesTrue', 'isEditNameVisibleFalse'].join(', '),
+    params: {
+      scenarioCase: QuestionsScoresCaseEnumType.successFalse_AuthTrue_NamesTrue,
+      isEditNameVisible: false,
+      ...paramsCommon,
+    },
+    expected: expectedDict.expected01, // to change
+  },
+  {
+    testScenario: ['successFalse_AuthTrue_NamesFalse', 'isEditNameVisibleFalse'].join(', '),
+    params: {
+      scenarioCase: QuestionsScoresCaseEnumType.successFalse_AuthTrue_NamesFalse,
+      isEditNameVisible: false,
+      ...paramsCommon,
+    },
+    expected: expectedDict.expected01, // to change
+  },
+  {
+    testScenario: ['successFalse_AuthFalse_NamesTrue', 'isEditNameVisibleFalse'].join(', '),
+    params: {
+      scenarioCase: QuestionsScoresCaseEnumType.successFalse_AuthFalse_NamesTrue,
+      isEditNameVisible: false,
+      ...paramsCommon,
+    },
+    expected: expectedDict.expected01, // to change
+  },
+  {
+    testScenario: ['successFalse_AuthFalse_NamesFalse', 'isEditNameVisibleFalse'].join(', '),
+    params: {
+      scenarioCase: QuestionsScoresCaseEnumType.successFalse_AuthFalse_NamesFalse,
+      isEditNameVisible: false,
+      ...paramsCommon,
+    },
+    expected: expectedDict.expected01, // to change
+  },
 ]
 
 /**

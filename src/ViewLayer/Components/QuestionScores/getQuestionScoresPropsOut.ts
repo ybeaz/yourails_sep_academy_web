@@ -8,12 +8,12 @@ import { ModuleType } from 'yourails_common'
 import { HandleEventType } from 'yourails_common'
 import { DICTIONARY } from 'yourails_common'
 import { getMapJourneyData } from 'yourails_common'
-import { ScenarioCaseEnumType } from 'yourails_common'
 import { QuestionScoresPropsOutType } from './QuestionScoresTypes'
 import { GetScenarioDictPropsType, GetScenarioDictResType } from './getScenarioDict'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { getScenarioDict } from './getScenarioDict'
 import { GetAnswersChecked2OutType } from 'yourails_common'
+import { QuestionsScoresCaseEnumType } from 'yourails_common'
 
 type GetQuestionScoresPropsOutParamsType = {
   modules: ModuleType[]
@@ -21,7 +21,7 @@ type GetQuestionScoresPropsOutParamsType = {
   queryUrl: any
   handleEvents: HandleEventType
   navigate: any
-  scenarioCase: ScenarioCaseEnumType
+  scenarioCase: QuestionsScoresCaseEnumType
   isEditNameVisible: boolean
   language: RootStoreType['language']
   nameFirst: RootStoreType['forms']['user']['nameFirst']
@@ -78,8 +78,6 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
   const { total, right } = score
 
   console.info('getQuestionScoresPropsOut [64]', {
-    navLinkNextTaskPropsIsDisplaying:
-      scenarioCase === 'success' && !!nameFirst && !!nameLast && !isEditNameVisible,
     nameFirst,
     props: {
       modules,
@@ -128,8 +126,20 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
         )?.pathnameModule,
         search: queryUrl,
       },
-      isDisplaying: scenarioCase === 'success' && !isEditNameVisible,
+      isDisplaying: scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesTrue,
     },
+
+    /*
+  successTrue_AuthTrue_NamesTrue = 'successTrue_AuthTrue_NamesTrue',
+  successTrue_AuthTrue_NamesFalse = 'successTrue_AuthTrue_NamesFalse',
+  successTrue_AuthFalse_NamesTrue = 'successTrue_AuthFalse_NamesTrue',
+  successTrue_AuthFalse_NamesFalse = 'successTrue_AuthFalse_NamesFalse',
+  successFalse_AuthTrue_NamesTrue = 'successFalse_AuthTrue_NamesTrue',
+  successFalse_AuthTrue_NamesFalse = 'successFalse_AuthTrue_NamesFalse',
+  successFalse_AuthFalse_NamesTrue = 'successFalse_AuthFalse_NamesTrue',
+  successFalse_AuthFalse_NamesFalse = 'successFalse_AuthFalse_NamesFalse',
+*/
+
     buttonNextTaskProps: {
       classAdded: 'Button_NextTask',
       icon: '',
@@ -155,7 +165,7 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
       captureLeft: DICTIONARY.View_reward[language],
       tooltipText: DICTIONARY.View_reward[language],
       tooltipPosition: 'top',
-      isDisplaying: scenarioCase === 'success' && !isEditNameVisible,
+      isDisplaying: scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesTrue,
     },
     buttonIsEditNameVisibleProps: {
       classAdded: 'Button_IsEditName',
@@ -170,7 +180,9 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
       captureLeft: `${DICTIONARY.Edit_name[language]}`,
       tooltipText: `${DICTIONARY.Edit_name[language]}`,
       tooltipPosition: 'top',
-      isDisplaying: !isEditNameVisible,
+      isDisplaying:
+        scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesTrue &&
+        !isEditNameVisible,
     },
     formInputNamesWithButtonsProps: {
       formInputNamesProps: {
@@ -179,7 +191,12 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
       },
       buttonCancelEditNameProps: scenario.buttonBackwardProps,
       buttonConfirmEditNameProps: scenario.buttonForwardProps,
-      isDisplaying: scenarioCase === ScenarioCaseEnumType.success && isEditNameVisible,
+      isDisplaying:
+        scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesFalse ||
+        scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesTrue ||
+        scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesFalse ||
+        (scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesTrue &&
+          isEditNameVisible),
     },
     navLinkBackToTopicProps: {
       classAdded: 'NavLink_BackToTopic',
@@ -188,7 +205,7 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
         search: queryUrl,
       },
       /* onClick: () => navigate(-1), Alternative */
-      isDisplaying: scenarioCase === 'success' && !isEditNameVisible,
+      isDisplaying: scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesTrue,
     },
     buttonBackToTopicProps: {
       classAdded: 'Button_BackToTopic',
@@ -205,7 +222,7 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
         pathname: '/my-documents',
         search: queryUrl,
       },
-      isDisplaying: scenarioCase === 'success' && !isEditNameVisible,
+      isDisplaying: scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesTrue,
     },
     buttonAchievementsProps: {
       classAdded: 'Button_Achievements',

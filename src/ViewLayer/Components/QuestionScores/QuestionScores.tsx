@@ -9,10 +9,11 @@ import { getParsedUrlQuery } from 'yourails_common'
 import { getParsedUrlQueryBrowserApi } from 'yourails_common'
 import { getAnswersChecked2, GetAnswersChecked2OutType } from 'yourails_common'
 import { getModuleByModuleID } from 'yourails_common'
-import { ScenarioCaseEnumType } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { FormInputNamesWithButtons } from '../FormInputNamesWithButtons/FormInputNamesWithButtons'
 import { withStoreStateSelectedYrl, withPropsYrl, ButtonYrl } from 'yourails_common'
+import { getQuestionScoresCase } from './getQuestionScoresCase'
+import { QuestionsScoresCaseEnumType } from 'yourails_common'
 import {
   getQuestionScoresPropsOut,
   GetQuestionScoresPropsOutParamsType,
@@ -74,21 +75,45 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
   const score: GetAnswersChecked2OutType = getAnswersChecked2(questionsActive, passRateIn)
   const { result } = score
 
-  let scenarioCase: ScenarioCaseEnumType = result || ScenarioCaseEnumType.failure
-  if (!sub && result === ScenarioCaseEnumType.success) {
-    scenarioCase = ScenarioCaseEnumType.successNoAuth
-  }
+  let scenarioCase: QuestionsScoresCaseEnumType = getQuestionScoresCase({
+    result,
+    sub,
+    nameFirst,
+    nameLast,
+  })
+
+  /*
+  successTrue_AuthTrue_NamesTrue = 'successTrue_AuthTrue_NamesTrue',
+  successTrue_AuthTrue_NamesFalse = 'successTrue_AuthTrue_NamesFalse', √
+  successTrue_AuthFalse_NamesTrue = 'successTrue_AuthFalse_NamesTrue', √
+  successTrue_AuthFalse_NamesFalse = 'successTrue_AuthFalse_NamesFalse', √
+  successFalse_AuthTrue_NamesTrue = 'successFalse_AuthTrue_NamesTrue',
+  successFalse_AuthTrue_NamesFalse = 'successFalse_AuthTrue_NamesFalse',
+  successFalse_AuthFalse_NamesTrue = 'successFalse_AuthFalse_NamesTrue',
+  successFalse_AuthFalse_NamesFalse = 'successFalse_AuthFalse_NamesFalse',
+*/
 
   useEffect(() => {
     stopVideoHandler && stopVideoHandler({}, {})
     if (
-      scenarioCase === ScenarioCaseEnumType.success ||
-      scenarioCase === ScenarioCaseEnumType.successNoAuth
+      scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesTrue ||
+      scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesFalse ||
+      scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesTrue ||
+      scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesFalse
     ) {
-      if ((!nameFirst || !nameLast) && sub && profiles.length) {
+      if (
+        scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesFalse ||
+        scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesTrue ||
+        scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesFalse
+      ) {
         handleEvents(
           {},
           { typeEvent: 'SET_EDIT_NAME_VISIBILITY', data: { isEditNameVisible: true } }
+        )
+      } else {
+        handleEvents(
+          {},
+          { typeEvent: 'SET_EDIT_NAME_VISIBILITY', data: { isEditNameVisible: false } }
         )
       }
 
@@ -128,10 +153,11 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
   )
 
   console.info('QuestionScores [123]', {
+    scenarioCase,
+    isEditNameVisible,
     propsOut,
     nameFirst,
     nameLast,
-    isEditNameVisible,
     modules,
   })
 
