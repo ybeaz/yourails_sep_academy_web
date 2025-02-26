@@ -26,6 +26,7 @@ const NavLinkWithQueryComponent: NavLinkWithQueryComponentType = (
       urlParamsQuery: { sendCc: sendCcState, sendBcc: sendBccState },
     },
     to,
+    isDisabled,
     isDisplaying,
     isVisible,
     classAdded,
@@ -50,6 +51,8 @@ const NavLinkWithQueryComponent: NavLinkWithQueryComponentType = (
     navLinkProps: {
       className: classNames('NavLinkWithQuery', {
         [classAdded]: !!classAdded,
+        NavLinkWithQuery_cursor_pointer: !isDisabled,
+        NavLinkWithQuery_cursor_not_allowed: isDisabled,
         NavLinkWithQuery_display_none: isDisplaying === false,
         NavLinkWithQuery_visible_none: isVisible === false,
       }),

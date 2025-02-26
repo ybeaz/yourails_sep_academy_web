@@ -11,6 +11,7 @@ export type NavLinkWithQueryComponentPropsType = Omit<NavLinkProps, 'to'> & {
     pathname?: string
     search?: Record<string, string | number>
   }
+  isDisabled?: boolean // is the button disabled
   isDisplaying?: boolean // is element present on the page and visible/ displaying?
   isVisible?: boolean // element is present on the page, but if it is visible/ displaying?
 }

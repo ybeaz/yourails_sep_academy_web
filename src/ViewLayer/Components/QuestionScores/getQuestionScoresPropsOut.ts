@@ -98,6 +98,7 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
 
   const getScenarioDictProps: GetScenarioDictPropsType = {
     scenarioCase,
+    isEditNameVisible,
     language,
     right,
     total,
@@ -110,7 +111,6 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
     contentID: contentID || '',
     sub,
     handleEvents,
-    isEditNameVisible,
     profiles,
   }
 
@@ -126,7 +126,8 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
         )?.pathnameModule,
         search: queryUrl,
       },
-      isDisplaying: scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesTrue,
+      isDisabled: false,
+      isDisplaying: !isEditNameVisible,
     },
 
     /*
@@ -138,7 +139,7 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
   successFalse_AuthTrue_NamesFalse = 'successFalse_AuthTrue_NamesFalse',
   successFalse_AuthFalse_NamesTrue = 'successFalse_AuthFalse_NamesTrue',
   successFalse_AuthFalse_NamesFalse = 'successFalse_AuthFalse_NamesFalse',
-*/
+  */
 
     buttonNextTaskProps: {
       classAdded: 'Button_NextTask',
@@ -151,6 +152,8 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
       captureLeft: DICTIONARY.Next_task[language],
       tooltipText: DICTIONARY.Next_task[language],
       tooltipPosition: 'top',
+      isDisabled: false,
+      isDisplaying: true,
     },
     buttonCreditProps: {
       classAdded: 'Button_Credit',
@@ -165,7 +168,10 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
       captureLeft: DICTIONARY.View_reward[language],
       tooltipText: DICTIONARY.View_reward[language],
       tooltipPosition: 'top',
-      isDisplaying: scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesTrue,
+      isDisabled:
+        scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesFalse &&
+        isEditNameVisible,
+      isDisplaying: !isEditNameVisible,
     },
     buttonIsEditNameVisibleProps: {
       classAdded: 'Button_IsEditName',
@@ -180,9 +186,8 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
       captureLeft: `${DICTIONARY.Edit_name[language]}`,
       tooltipText: `${DICTIONARY.Edit_name[language]}`,
       tooltipPosition: 'top',
-      isDisplaying:
-        scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesTrue &&
-        !isEditNameVisible,
+      isDisabled: false,
+      isDisplaying: !isEditNameVisible,
     },
     formInputNamesWithButtonsProps: {
       formInputNamesProps: {
@@ -191,12 +196,7 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
       },
       buttonCancelEditNameProps: scenario.buttonBackwardProps,
       buttonConfirmEditNameProps: scenario.buttonForwardProps,
-      isDisplaying:
-        scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesFalse ||
-        scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesTrue ||
-        scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesFalse ||
-        (scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesTrue &&
-          isEditNameVisible),
+      isDisplaying: isEditNameVisible,
     },
     navLinkBackToTopicProps: {
       classAdded: 'NavLink_BackToTopic',
@@ -205,7 +205,8 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
         search: queryUrl,
       },
       /* onClick: () => navigate(-1), Alternative */
-      isDisplaying: scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesTrue,
+      isDisabled: false,
+      isDisplaying: !isEditNameVisible,
     },
     buttonBackToTopicProps: {
       classAdded: 'Button_BackToTopic',
@@ -215,6 +216,8 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
       captureLeft: DICTIONARY.Back_to_topic[language],
       tooltipText: DICTIONARY.Back_to_topic[language],
       tooltipPosition: 'top',
+      isDisabled: false,
+      isDisplaying: true,
     },
     navLinkAchievementsProps: {
       classAdded: 'NavLink_Achievements',
@@ -222,7 +225,13 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
         pathname: '/my-documents',
         search: queryUrl,
       },
-      isDisplaying: scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesTrue,
+      isDisabled:
+        !isEditNameVisible &&
+        (scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesFalse ||
+          scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesFalse ||
+          scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthFalse_NamesTrue ||
+          scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthFalse_NamesFalse),
+      isDisplaying: !isEditNameVisible,
     },
     buttonAchievementsProps: {
       classAdded: 'Button_Achievements',
@@ -232,6 +241,13 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
       captureLeft: DICTIONARY.Achievements[language],
       tooltipText: DICTIONARY.Achievements[language],
       tooltipPosition: 'top',
+      isDisabled:
+        !isEditNameVisible &&
+        (scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesFalse ||
+          scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesFalse ||
+          scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthFalse_NamesTrue ||
+          scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthFalse_NamesFalse),
+      isDisplaying: true,
     },
   }
 

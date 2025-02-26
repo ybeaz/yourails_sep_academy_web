@@ -130,6 +130,7 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
       captureLeft: DICTIONARY.Cancel[language],
       tooltipText: DICTIONARY.Cancel[language],
       tooltipPosition: 'top',
+      isDisabled: false,
       isDisplaying: true,
     },
     buttonForwardProps: {
@@ -143,6 +144,7 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
       captureLeft: DICTIONARY.Confirm[language],
       tooltipText: DICTIONARY.Confirm[language],
       tooltipPosition: 'top',
+      isDisabled: false,
       isDisplaying: true,
     },
   }
@@ -160,14 +162,19 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
       icon: '',
       handleEvents,
       action: {
-        typeEvent: 'SET_EDIT_NAME_VISIBILITY',
-        data: {
-          isEditNameVisible: false,
-        },
+        typeEvent: 'SET_MODAL_FRAMES',
+        data: [
+          {
+            childName: 'QuestionScores',
+            isActive: false,
+            childProps: {},
+          },
+        ],
       },
       captureLeft: DICTIONARY.Cancel[language],
       tooltipText: DICTIONARY.Cancel[language],
       tooltipPosition: 'top',
+      isDisabled: false,
       isDisplaying: true,
     },
     buttonForwardProps: {
@@ -180,6 +187,7 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
       },
       captureLeft: DICTIONARY.Confirm[language],
       tooltipText: DICTIONARY.Confirm[language],
+      isDisabled: false,
       isDisplaying: true,
     },
   }
@@ -205,6 +213,7 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
       captureLeft: DICTIONARY.Cancel[language],
       tooltipText: DICTIONARY.Cancel[language],
       tooltipPosition: 'top',
+      isDisabled: false,
       isDisplaying: true,
     },
     buttonForwardProps: {
@@ -214,6 +223,7 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
       action: {
         typeEvent: 'CLOSE_MODAL_GET_SCORES',
       },
+      isDisabled: false,
       isDisplaying: true,
     },
   }

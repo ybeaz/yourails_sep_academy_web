@@ -26,6 +26,7 @@ import {
   QuestionScoresComponentType,
   QuestionScoresType,
 } from './QuestionScoresTypes'
+import { profile } from 'console'
 
 /**
  * @description Component to render QuestionScores
@@ -41,7 +42,7 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
       language,
       moduleIDActive,
       modules,
-      nameFirst: nameFirst,
+      nameFirst: nameFirstIn,
       nameMiddle,
       nameLast,
       sub,
@@ -51,7 +52,7 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     handleEvents,
   } = props
 
-  // const nameFirst = ''
+  const nameFirst = ''
 
   const isFirstRender = useIsFirstRenderYrl()
   const navigate = useNavigate()
