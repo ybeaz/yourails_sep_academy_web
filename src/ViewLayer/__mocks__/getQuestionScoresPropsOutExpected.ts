@@ -95,7 +95,7 @@ export const successTrue_AuthTrue_NamesTrue_isEditNameVisibleFalse: GetQuestionS
         isDisplaying: true,
       },
       buttonConfirmEditNameProps: {
-        classAdded: 'Button_ConfirmEditName',
+        classAdded: 'Button_ConfirmForward',
         icon: '',
         action: {
           typeEvent: 'CLICK_ON_CONFIRM_NAMES',
@@ -276,7 +276,7 @@ export const successTrue_AuthTrue_NamesTrue_isEditNameVisibleTrue: GetQuestionSc
         isDisplaying: true,
       },
       buttonConfirmEditNameProps: {
-        classAdded: 'Button_ConfirmEditName',
+        classAdded: 'Button_ConfirmForward',
         icon: '',
         action: {
           typeEvent: 'CLICK_ON_CONFIRM_NAMES',
@@ -457,7 +457,7 @@ export const successTrue_AuthTrue_NamesFalse_isEditNameVisibleFalse: GetQuestion
         isDisplaying: true,
       },
       buttonConfirmEditNameProps: {
-        classAdded: 'Button_ConfirmEditName',
+        classAdded: 'Button_ConfirmForward',
         icon: '',
         action: {
           typeEvent: 'CLICK_ON_CONFIRM_NAMES',
@@ -638,7 +638,7 @@ export const successTrue_AuthTrue_NamesFalse_isEditNameVisibleTrue: GetQuestionS
         isDisplaying: true,
       },
       buttonConfirmEditNameProps: {
-        classAdded: 'Button_ConfirmEditName',
+        classAdded: 'Button_ConfirmForward',
         icon: '',
         action: {
           typeEvent: 'CLICK_ON_SIGN_IN',

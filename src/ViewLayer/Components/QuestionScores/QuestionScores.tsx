@@ -42,7 +42,7 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
       language,
       moduleIDActive,
       modules,
-      nameFirst: nameFirstIn,
+      nameFirst: nameFirst,
       nameMiddle,
       nameLast,
       sub,
@@ -52,7 +52,7 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     handleEvents,
   } = props
 
-  const nameFirst = ''
+  // const nameFirst = ''
 
   const isFirstRender = useIsFirstRenderYrl()
   const navigate = useNavigate()
@@ -175,15 +175,15 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
         <NavLinkWithQuery {...propsOut.navLinkNextTaskProps}>
           <ButtonYrl {...propsOut.buttonNextTaskProps} />
         </NavLinkWithQuery>
-        <ButtonYrl {...propsOut.buttonCreditProps} />
-        <ButtonYrl {...propsOut.buttonIsEditNameVisibleProps} />
-        <FormInputNamesWithButtons {...propsOut.formInputNamesWithButtonsProps} />
         <NavLinkWithQuery {...propsOut.navLinkBackToTopicProps}>
           <ButtonYrl {...propsOut.buttonBackToTopicProps} />
         </NavLinkWithQuery>
+        <ButtonYrl {...propsOut.buttonCreditProps} />
         <NavLinkWithQuery {...propsOut.navLinkAchievementsProps}>
           <ButtonYrl {...propsOut.buttonAchievementsProps} />
         </NavLinkWithQuery>
+        <ButtonYrl {...propsOut.buttonIsEditNameVisibleProps} />
+        <FormInputNamesWithButtons {...propsOut.formInputNamesWithButtonsProps} />
         <ButtonYrl {...propsOut.buttonBackToModuleProps} />
       </div>
     </div>

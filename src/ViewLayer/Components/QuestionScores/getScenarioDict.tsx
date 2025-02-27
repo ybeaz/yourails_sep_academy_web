@@ -134,7 +134,7 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
       isDisplaying: true,
     },
     buttonForwardProps: {
-      classAdded: 'Button_ConfirmEditName',
+      classAdded: 'Button_ConfirmForward',
       icon: '',
       handleEvents,
       action: {
@@ -174,7 +174,7 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
       isDisplaying: true,
     },
     buttonForwardProps: {
-      classAdded: 'Button_MdForward2',
+      classAdded: 'Button_ConfirmForward',
       icon: '',
       handleEvents,
       action: {
@@ -213,7 +213,7 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
       isDisplaying: true,
     },
     buttonForwardProps: {
-      classAdded: 'Button_MdForward2',
+      classAdded: 'Button_ConfirmForward',
       icon: '',
       handleEvents,
       action: {
