@@ -162,14 +162,10 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
       icon: '',
       handleEvents,
       action: {
-        typeEvent: 'SET_MODAL_FRAMES',
-        data: [
-          {
-            childName: 'QuestionScores',
-            isActive: false,
-            childProps: {},
-          },
-        ],
+        typeEvent: 'SET_EDIT_NAME_VISIBILITY',
+        data: {
+          isEditNameVisible: false,
+        },
       },
       captureLeft: DICTIONARY.Cancel[language],
       tooltipText: DICTIONARY.Cancel[language],

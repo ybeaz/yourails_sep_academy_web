@@ -129,18 +129,6 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
       isDisabled: false,
       isDisplaying: !isEditNameVisible,
     },
-
-    /*
-  successTrue_AuthTrue_NamesTrue = 'successTrue_AuthTrue_NamesTrue',
-  successTrue_AuthTrue_NamesFalse = 'successTrue_AuthTrue_NamesFalse',
-  successTrue_AuthFalse_NamesTrue = 'successTrue_AuthFalse_NamesTrue',
-  successTrue_AuthFalse_NamesFalse = 'successTrue_AuthFalse_NamesFalse',
-  successFalse_AuthTrue_NamesTrue = 'successFalse_AuthTrue_NamesTrue',
-  successFalse_AuthTrue_NamesFalse = 'successFalse_AuthTrue_NamesFalse',
-  successFalse_AuthFalse_NamesTrue = 'successFalse_AuthFalse_NamesTrue',
-  successFalse_AuthFalse_NamesFalse = 'successFalse_AuthFalse_NamesFalse',
-  */
-
     buttonNextTaskProps: {
       classAdded: 'Button_NextTask',
       icon: '',
@@ -169,10 +157,26 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
       tooltipText: DICTIONARY.View_reward[language],
       tooltipPosition: 'top',
       isDisabled:
-        scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesFalse &&
-        isEditNameVisible,
+        scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesFalse ||
+        scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesTrue ||
+        scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesFalse ||
+        scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthTrue_NamesFalse ||
+        scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthFalse_NamesTrue ||
+        scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthFalse_NamesFalse,
       isDisplaying: !isEditNameVisible,
     },
+
+    /*
+  successTrue_AuthTrue_NamesTrue = 'successTrue_AuthTrue_NamesTrue',
+  successTrue_AuthTrue_NamesFalse = 'successTrue_AuthTrue_NamesFalse', √
+  successTrue_AuthFalse_NamesTrue = 'successTrue_AuthFalse_NamesTrue', √
+  successTrue_AuthFalse_NamesFalse = 'successTrue_AuthFalse_NamesFalse', √
+  successFalse_AuthTrue_NamesTrue = 'successFalse_AuthTrue_NamesTrue', 
+  successFalse_AuthTrue_NamesFalse = 'successFalse_AuthTrue_NamesFalse' √
+  successFalse_AuthFalse_NamesTrue = 'successFalse_AuthFalse_NamesTrue', √
+  successFalse_AuthFalse_NamesFalse = 'successFalse_AuthFalse_NamesFalse', √
+  */
+
     buttonIsEditNameVisibleProps: {
       classAdded: 'Button_IsEditName',
       icon: '',
@@ -183,8 +187,8 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
           isEditNameVisible: true,
         },
       },
-      captureLeft: `${DICTIONARY.Edit_name[language]}`,
-      tooltipText: `${DICTIONARY.Edit_name[language]}`,
+      captureLeft: `${DICTIONARY.Add_edit_name[language]}`,
+      tooltipText: `${DICTIONARY.Add_edit_name[language]}`,
       tooltipPosition: 'top',
       isDisabled: false,
       isDisplaying: !isEditNameVisible,
@@ -226,11 +230,12 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
         search: queryUrl,
       },
       isDisabled:
-        !isEditNameVisible &&
-        (scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesFalse ||
-          scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesFalse ||
-          scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthFalse_NamesTrue ||
-          scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthFalse_NamesFalse),
+        scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesFalse ||
+        scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesTrue ||
+        scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesFalse ||
+        scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthTrue_NamesFalse ||
+        scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthFalse_NamesTrue ||
+        scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthFalse_NamesFalse,
       isDisplaying: !isEditNameVisible,
     },
     buttonAchievementsProps: {
@@ -242,12 +247,33 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
       tooltipText: DICTIONARY.Achievements[language],
       tooltipPosition: 'top',
       isDisabled:
-        !isEditNameVisible &&
-        (scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesFalse ||
-          scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesFalse ||
-          scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthFalse_NamesTrue ||
-          scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthFalse_NamesFalse),
+        scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesFalse ||
+        scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesTrue ||
+        scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesFalse ||
+        scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthTrue_NamesFalse ||
+        scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthFalse_NamesTrue ||
+        scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthFalse_NamesFalse,
       isDisplaying: true,
+    },
+    buttonBackToModuleProps: {
+      classAdded: 'Button_BackToModule',
+      icon: '',
+      handleEvents,
+      action: {
+        typeEvent: 'SET_MODAL_FRAMES',
+        data: [
+          {
+            childName: 'QuestionScores',
+            isActive: false,
+            childProps: {},
+          },
+        ],
+      },
+      captureLeft: DICTIONARY.Back[language],
+      tooltipText: DICTIONARY.Back[language],
+      tooltipPosition: 'top',
+      isDisabled: false,
+      isDisplaying: !isEditNameVisible,
     },
   }
 

@@ -43,6 +43,7 @@ export type QuestionScoresPropsOutType = {
   buttonBackToTopicProps: ButtonYrlPropsType
   navLinkAchievementsProps: NavLinkWithQueryPropsType
   buttonAchievementsProps: ButtonYrlPropsType
+  buttonBackToModuleProps: ButtonYrlPropsType
 }
 
 /**

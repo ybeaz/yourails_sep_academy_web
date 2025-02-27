@@ -184,6 +184,7 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
         <NavLinkWithQuery {...propsOut.navLinkAchievementsProps}>
           <ButtonYrl {...propsOut.buttonAchievementsProps} />
         </NavLinkWithQuery>
+        <ButtonYrl {...propsOut.buttonBackToModuleProps} />
       </div>
     </div>
   )
