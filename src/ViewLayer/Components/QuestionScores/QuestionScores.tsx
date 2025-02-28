@@ -172,6 +172,9 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
       </div>
 
       <div className='_buttons'>
+        <NavLinkWithQuery {...propsOut.navLinkSignInUpProps}>
+          <ButtonYrl {...propsOut.buttonSignInUpProps} />
+        </NavLinkWithQuery>
         <NavLinkWithQuery {...propsOut.navLinkNextTaskProps}>
           <ButtonYrl {...propsOut.buttonNextTaskProps} />
         </NavLinkWithQuery>

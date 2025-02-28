@@ -2,7 +2,7 @@ import { consoler } from 'yourails_common'
 
 import modulesJson from '../__mocks__/2025_02_20_modules.json'
 import profilesJson from '../__mocks__/2025_02_23_profiles.json'
-import * as expectedDict from '../__mocks__/getQuestionScoresPropsOutExpected'
+import { expected, handleEvents, navigate } from '../__mocks__/getQuestionScoresPropsOutExpected'
 import { QuestionsAnswersCaseEnumType } from 'yourails_common'
 import { QuestionsScoresCaseEnumType } from 'yourails_common'
 
@@ -29,8 +29,8 @@ const paramsCommon = {
     modulesSearch: 'animal testing',
     tagsSearch: 'animal testing',
   },
-  handleEvents: expectedDict.handleEvents,
-  navigate: expectedDict.navigate,
+  handleEvents,
+  navigate,
   language: 'en',
   nameFirst: 'Roman',
   nameMiddle: '',
@@ -54,7 +54,7 @@ const tests: GetQuestionScoresPropsOutTestType[] = [
       isEditNameVisible: false,
       ...paramsCommon,
     },
-    expected: expectedDict.successTrue_AuthTrue_NamesTrue_isEditNameVisibleFalse,
+    expected: expected.successTrue_AuthTrue_NamesTrue_isEditNameVisibleFalse,
   },
 
   {
@@ -64,7 +64,7 @@ const tests: GetQuestionScoresPropsOutTestType[] = [
       isEditNameVisible: true,
       ...paramsCommon,
     },
-    expected: expectedDict.successTrue_AuthTrue_NamesTrue_isEditNameVisibleTrue,
+    expected: expected.successTrue_AuthTrue_NamesTrue_isEditNameVisibleTrue,
   },
 
   {
@@ -74,7 +74,7 @@ const tests: GetQuestionScoresPropsOutTestType[] = [
       isEditNameVisible: false,
       ...paramsCommon,
     },
-    expected: expectedDict.successTrue_AuthTrue_NamesFalse_isEditNameVisibleFalse,
+    expected: expected.successTrue_AuthTrue_NamesFalse_isEditNameVisibleFalse,
   },
 
   {
@@ -84,7 +84,7 @@ const tests: GetQuestionScoresPropsOutTestType[] = [
       isEditNameVisible: true,
       ...paramsCommon,
     },
-    expected: expectedDict.successTrue_AuthTrue_NamesFalse_isEditNameVisibleTrue,
+    expected: expected.successTrue_AuthTrue_NamesFalse_isEditNameVisibleTrue,
   },
 
   {
@@ -94,7 +94,7 @@ const tests: GetQuestionScoresPropsOutTestType[] = [
       isEditNameVisible: false,
       ...paramsCommon,
     },
-    expected: expectedDict.successTrue_AuthFalse_NamesTrue_isEditNameVisibleFalse,
+    expected: expected.successTrue_AuthFalse_NamesTrue_isEditNameVisibleFalse,
   },
 
   // {
@@ -157,7 +157,7 @@ describe('Algoritms', () => {
 
   it.each(tests)(`-- getQuestionScoresPropsOut.test: $testScenario`, ({ params, expected }) => {
     let output: GetQuestionScoresPropsOutResType = getQuestionScoresPropsOut(params)
-    consoler('getQuestionScoresPropsOut.test', { output })
+    // consoler('getQuestionScoresPropsOut.test', { output })
 
     expect(output).toEqual(expected)
   })

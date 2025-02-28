@@ -26,6 +26,7 @@ const NavLinkWithQueryComponent: NavLinkWithQueryComponentType = (
       urlParamsQuery: { sendCc: sendCcState, sendBcc: sendBccState },
     },
     to,
+    isExternal,
     isDisabled,
     isDisplaying,
     isVisible,
@@ -35,17 +36,20 @@ const NavLinkWithQueryComponent: NavLinkWithQueryComponentType = (
 
   const pathname = props.to?.pathname
   const searchIn = props.to?.search
+  const searchStr = props.to?.searchStr
 
   const { sendCc: sendCcQuery, sendBcc: sendBccQuery } = getParsedUrlQuery()
 
   const sendCc = sendCcState || sendCcQuery
   const sendBcc = sendBccState || sendBccQuery
 
-  const search = getCreatedUrlSearchQuery({
-    ...(searchIn ? searchIn : {}),
-    sendCc,
-    sendBcc,
-  })
+  const search = searchStr
+    ? searchStr
+    : getCreatedUrlSearchQuery({
+        ...(searchIn ? searchIn : {}),
+        sendCc,
+        sendBcc,
+      })
 
   const propsOut: NavLinkWithQueryPropsOutType = {
     navLinkProps: {
@@ -68,6 +72,8 @@ const NavLinkWithQueryComponent: NavLinkWithQueryComponentType = (
       end: true,
     },
   }
+
+  if (isExternal) return <a href={`${to?.pathname || ''}${search}`} {...propsOut.navLinkProps} />
 
   return <NavLink {...propsOut.navLinkProps} />
 }

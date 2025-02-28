@@ -34,6 +34,8 @@ export type QuestionScoresPropsType = Omit<
 
 export type QuestionScoresPropsOutType = {
   message: { greeting: string; line1: string; line2: string; line3: string }
+  navLinkSignInUpProps: NavLinkWithQueryPropsType
+  buttonSignInUpProps: ButtonYrlPropsType
   navLinkNextTaskProps: NavLinkWithQueryPropsType
   buttonNextTaskProps: ButtonYrlPropsType
   buttonCreditProps: ButtonYrlPropsType

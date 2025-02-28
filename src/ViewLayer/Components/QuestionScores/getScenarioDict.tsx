@@ -183,6 +183,7 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
       },
       captureLeft: DICTIONARY.Confirm[language],
       tooltipText: DICTIONARY.Confirm[language],
+      tooltipPosition: 'top',
       isDisabled: false,
       isDisplaying: true,
     },
@@ -219,6 +220,7 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
       action: {
         typeEvent: 'CLOSE_MODAL_GET_SCORES',
       },
+      tooltipPosition: 'top',
       isDisabled: false,
       isDisplaying: true,
     },
