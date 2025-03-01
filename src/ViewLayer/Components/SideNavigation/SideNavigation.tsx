@@ -1,17 +1,17 @@
-import React, { ReactElement } from 'react'
-
-import { useNavigate } from 'react-router-dom'
+import React from 'react'
 
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { LANGUAGES_APP } from 'yourails_common'
 import { SelectLanguage, SelectLanguagePropsType } from '../SelectLanguage'
-import { getSideNavigationItemsPropsArr } from './getSideNavigationItemsPropsArr'
-import { ButtonYrl, withStoreStateSelectedYrl } from 'yourails_common'
+import {
+  getSideNavigationItemsPropsArr,
+  GetSideNavigationItemsPropsArrResType,
+} from './getSideNavigationItemsPropsArr'
+import { withStoreStateSelectedYrl } from 'yourails_common'
 import { withPropsYrl } from 'yourails_common'
-import { NavLinkWithQuery } from '../../Components/NavLinkWithQuery/NavLinkWithQuery'
+import { getNavLinksButtonsItems } from '../../Hooks/getNavLinksButtonsItems'
 
 import {
-  GetSideNavigationItemsResType,
   SideNavigationComponentPropsType,
   SideNavigationPropsType,
   SideNavigationPropsOutType,
@@ -33,39 +33,12 @@ const SideNavigationComponent: SideNavigationComponentType = (
     handleEvents,
   } = props
 
-  const navigate = useNavigate()
-
-  const sideNavigationItemsPropsArr: GetSideNavigationItemsResType[] =
+  const sideNavigationItemsPropsArr: GetSideNavigationItemsPropsArrResType[] =
     getSideNavigationItemsPropsArr({
-      navigate,
       sub,
       language,
       handleEvents,
     })
-
-  const getSiteMenuItems: Function = (
-    sideNavigationItemsPropsArrIn: GetSideNavigationItemsResType[]
-  ): ReactElement[] => {
-    return sideNavigationItemsPropsArrIn.map(
-      (sideNavigationItemsProp: GetSideNavigationItemsResType, index: number) => {
-        const { navLinkProps, buttonYrlProps } = sideNavigationItemsProp
-        if (navLinkProps) {
-          return (
-            <div key={`sideNavLinkItem-${index}`} className='_item'>
-              <NavLinkWithQuery {...navLinkProps}>
-                <ButtonYrl {...buttonYrlProps} />
-              </NavLinkWithQuery>
-            </div>
-          )
-        }
-        return (
-          <div key={`sideNavigationItem-${index}`} className='_item'>
-            <ButtonYrl {...buttonYrlProps} />
-          </div>
-        )
-      }
-    )
-  }
 
   const classNameAdd = isSideNavLeftVisible ? 'SideNavigation_show' : ''
 
@@ -93,7 +66,7 @@ const SideNavigationComponent: SideNavigationComponentType = (
           <div className='_groupItem _languageSelect'>
             <SelectLanguage {...languageSelectProps} />
           </div>
-          {getSiteMenuItems(sideNavigationItemsPropsArr)}
+          {getNavLinksButtonsItems(sideNavigationItemsPropsArr)}
         </div>
       </div>
     </div>
