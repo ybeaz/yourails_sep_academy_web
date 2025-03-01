@@ -1,5 +1,6 @@
 import { ButtonYrlPropsType } from 'yourails_common'
 import { DICTIONARY } from 'yourails_common'
+import { getNavLinkSIngInUpToProp } from 'yourails_common'
 import {
   GetSideNavigationItemsPropsArrPropsType,
   GetSideNavigationItemsPropsArrType,
@@ -20,7 +21,12 @@ export const getSideNavigationItemsPropsArr: GetSideNavigationItemsPropsArrType 
 }: GetSideNavigationItemsPropsArrPropsType): GetSideNavigationItemsResType[] => {
   const sideNavigationItemsProps: GetSideNavigationItemsResType[] = [
     {
-      navLinkProps: undefined,
+      navLinkProps: {
+        to: getNavLinkSIngInUpToProp(),
+        isExternal: true,
+        isDisabled: false,
+        isDisplaying: isAwsCognitoAuth() && !sub,
+      },
       buttonYrlProps: {
         icon: 'MdLogin',
         captureRight: DICTIONARY.Login[language],

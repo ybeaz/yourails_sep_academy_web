@@ -8,7 +8,7 @@ import { ModuleType, MetaCourseType } from 'yourails_common'
 import { QuestionsScoresCaseEnumType } from 'yourails_common'
 import { HandleEventType } from 'yourails_common'
 
-export type GetScenarioDictPropsType = {
+export type GetMessagesDictPropsType = {
   scenarioCase: QuestionsScoresCaseEnumType
   language: RootStoreType['language']
   capture: string
@@ -27,35 +27,25 @@ export type GetScenarioDictPropsType = {
   profiles: RootStoreType['profiles']
 }
 
-export type GetScenarioDictResType = {
-  scenarioCase: string
+export type GetMessagesDictResType = {
   message: { greeting: string; line1: string; line2: string; line3: string }
-  buttonBackwardProps: ButtonYrlPropsType
-  buttonForwardProps: ButtonYrlPropsType
 }
 
 export type ScenariousType = Record<
   keyof typeof QuestionsScoresCaseEnumType,
-  GetScenarioDictResType
+  GetMessagesDictResType
 >
 
-//   {
-//   keyof QuestionsScoresCaseEnumType: GetScenarioDictResType
-//   successNoAuth: GetScenarioDictResType
-//   failure: GetScenarioDictResType
-//   debug?: GetScenarioDictResType
-// }
-
-interface GetScenarioDictType {
-  (props: GetScenarioDictPropsType): GetScenarioDictResType
+interface GetMessagesDictType {
+  (props: GetMessagesDictPropsType): GetMessagesDictResType
 }
 
 /**
- * @description Function to getScenarioDict
- * @run ts-node src/shared/utils/getScenarioDict.ts
- * @import import { getScenarioDict } from './getScenarioDict'
+ * @description Function to getMessagesDict
+ * @run ts-node src/shared/utils/getMessagesDict.ts
+ * @import import { getMessagesDict } from './getMessagesDict'
  */
-export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictPropsType) => {
+export const getMessagesDict: GetMessagesDictType = (props: GetMessagesDictPropsType) => {
   const {
     scenarioCase,
     language,
@@ -103,126 +93,32 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
     profiles,
   }
 
-  console.info('getScenarioDict [82]', getProfileActiveToUpdateProps)
-
-  const { profileActive, isUpdatingProfile } = getProfileActiveToUpdate(
-    getProfileActiveToUpdateProps
-  )
+  console.info('getMessagesDict [82]', getProfileActiveToUpdateProps)
 
   const successTrue_AuthTrue = {
-    scenarioCase,
     message: {
       greeting: Congratulations,
       line1: `"${capture}"`,
       line2: `${isCompletedWith} ${right} ${correctAnsweresFrom} ${total}`,
       line3: `${DICTIONARY.Keep_going[language]}!`,
     },
-    buttonBackwardProps: {
-      classAdded: 'Button_CancelEditName',
-      icon: '',
-      handleEvents,
-      action: {
-        typeEvent: 'SET_EDIT_NAME_VISIBILITY',
-        data: {
-          isEditNameVisible: false,
-        },
-      },
-      captureLeft: DICTIONARY.Cancel[language],
-      tooltipText: DICTIONARY.Cancel[language],
-      tooltipPosition: 'top',
-      isDisabled: false,
-      isDisplaying: true,
-    },
-    buttonForwardProps: {
-      classAdded: 'Button_ConfirmForward',
-      icon: '',
-      handleEvents,
-      action: {
-        typeEvent: 'CLICK_ON_CONFIRM_NAMES',
-        data: {},
-      },
-      captureLeft: DICTIONARY.Confirm[language],
-      tooltipText: DICTIONARY.Confirm[language],
-      tooltipPosition: 'top',
-      isDisabled: false,
-      isDisplaying: true,
-    },
   }
 
   const successTrue_AuthFalse = {
-    scenarioCase,
     message: {
       greeting: Congratulations,
       line1: `"${capture}"`,
       line2: `${isCompletedWith} ${right} ${correctAnsweresFrom} ${total}`,
       line3: `${AuthoriseToReceiveCertificate}.`,
     },
-    buttonBackwardProps: {
-      classAdded: 'Button_CancelEditName',
-      icon: '',
-      handleEvents,
-      action: {
-        typeEvent: 'SET_EDIT_NAME_VISIBILITY',
-        data: {
-          isEditNameVisible: false,
-        },
-      },
-      captureLeft: DICTIONARY.Cancel[language],
-      tooltipText: DICTIONARY.Cancel[language],
-      tooltipPosition: 'top',
-      isDisabled: false,
-      isDisplaying: true,
-    },
-    buttonForwardProps: {
-      classAdded: 'Button_ConfirmForward',
-      icon: '',
-      handleEvents,
-      action: {
-        typeEvent: 'CLICK_ON_SIGN_IN',
-        data: {},
-      },
-      captureLeft: DICTIONARY.Confirm[language],
-      tooltipText: DICTIONARY.Confirm[language],
-      tooltipPosition: 'top',
-      isDisabled: false,
-      isDisplaying: true,
-    },
   }
 
   const successFalse = {
-    scenarioCase,
     message: {
       greeting: YouWereCommittedToSuccess,
       line1: `"${capture}"`,
       line2: `${andThisTimeAnswered} ${right} ${question} ${from} ${total}`,
       line3: `${YouCanTryOnceAgain}!`,
-    },
-    buttonBackwardProps: {
-      classAdded: 'Button_CancelEditName',
-      icon: '',
-      handleEvents,
-      action: {
-        typeEvent: 'SET_EDIT_NAME_VISIBILITY',
-        data: {
-          isEditNameVisible: false,
-        },
-      },
-      captureLeft: DICTIONARY.Cancel[language],
-      tooltipText: DICTIONARY.Cancel[language],
-      tooltipPosition: 'top',
-      isDisabled: false,
-      isDisplaying: true,
-    },
-    buttonForwardProps: {
-      classAdded: 'Button_ConfirmForward',
-      icon: '',
-      handleEvents,
-      action: {
-        typeEvent: 'CLOSE_MODAL_GET_SCORES',
-      },
-      tooltipPosition: 'top',
-      isDisabled: false,
-      isDisplaying: true,
     },
   }
 

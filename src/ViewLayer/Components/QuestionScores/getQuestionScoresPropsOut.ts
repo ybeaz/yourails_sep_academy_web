@@ -4,17 +4,20 @@ import {
   FuncModeEnumType,
   WithTryCatchFinallyWrapperOptionsType,
 } from 'yourails_common'
+import { getNavLinkSIngInUpToProp } from 'yourails_common'
 import { ModuleType } from 'yourails_common'
 import { HandleEventType } from 'yourails_common'
 import { DICTIONARY } from 'yourails_common'
 import { getMapJourneyData } from 'yourails_common'
 import { QuestionScoresPropsOutType } from './QuestionScoresTypes'
-import { GetScenarioDictPropsType, GetScenarioDictResType } from './getScenarioDict'
+import {
+  type GetMessagesDictPropsType,
+  type GetMessagesDictResType,
+  getMessagesDict,
+} from './getMessagesDict'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
-import { getScenarioDict } from './getScenarioDict'
 import { GetAnswersChecked2OutType } from 'yourails_common'
 import { QuestionsScoresCaseEnumType } from 'yourails_common'
-import { AWS_COGNITO_URL, AWS_COGNITO_CLIENT_ID } from 'yourails_common'
 
 type GetQuestionScoresPropsOutParamsType = {
   modules: ModuleType[]
@@ -97,7 +100,7 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
     },
   })
 
-  const getScenarioDictProps: GetScenarioDictPropsType = {
+  const getMessagesDictProps: GetMessagesDictPropsType = {
     scenarioCase,
     isEditNameVisible,
     language,
@@ -115,8 +118,17 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
     profiles,
   }
 
-  // I STOPPED HERE: REMOVE getScenarioDict, SIMPLIFY CODE
-  const scenario = getScenarioDict(getScenarioDictProps)
+  const MESSAGES_DICT = {
+    successTrue_AuthTrue_NamesTrue: 'successTrue_AuthTrue_NamesTrue',
+    successTrue_AuthTrue_NamesFalse: 'successTrue_AuthTrue_NamesFalse',
+    successTrue_AuthFalse_NamesFalse: 'successTrue_AuthFalse_NamesFalse',
+    successFalse_AuthTrue_NamesTrue: 'successFalse_AuthTrue_NamesTrue',
+    successFalse_AuthTrue_NamesFalse: 'successFalse_AuthTrue_NamesFalse',
+    successFalse_AuthFalse_NamesFalse: 'successFalse_AuthFalse_NamesFalse',
+  }
+
+  // I STOPPED HERE: REMOVE getMessagesDict, SIMPLIFY CODE
+  const scenario = getMessagesDict(getMessagesDictProps)
 
   /*
   successTrue_AuthTrue_NamesTrue = 'successTrue_AuthTrue_NamesTrue',
@@ -129,17 +141,11 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
   successFalse_AuthFalse_NamesFalse = 'successFalse_AuthFalse_NamesFalse',
   */
 
-  const redirect_url: string = location.origin
-  const searchStr = `?client_id=${AWS_COGNITO_CLIENT_ID}&response_type=code&redirect_uri=${redirect_url}&scope=email+openid+profile`
-
   const propsOut: QuestionScoresPropsOutType = {
     message: scenario.message,
     navLinkSignInUpProps: {
       classAdded: 'NavLink_SignInUp',
-      to: {
-        pathname: `${AWS_COGNITO_URL}/login`,
-        searchStr,
-      },
+      to: getNavLinkSIngInUpToProp(),
       isExternal: true,
       isDisabled: false,
       isDisplaying: !isEditNameVisible,
@@ -227,8 +233,36 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
         language,
         handleEvents,
       },
-      buttonCancelEditNameProps: scenario.buttonBackwardProps,
-      buttonConfirmEditNameProps: scenario.buttonForwardProps,
+      buttonCancelEditNameProps: {
+        classAdded: 'Button_CancelEditName',
+        icon: '',
+        handleEvents,
+        action: {
+          typeEvent: 'SET_EDIT_NAME_VISIBILITY',
+          data: {
+            isEditNameVisible: false,
+          },
+        },
+        captureLeft: DICTIONARY.Cancel[language],
+        tooltipText: DICTIONARY.Cancel[language],
+        tooltipPosition: 'top',
+        isDisabled: false,
+        isDisplaying: true,
+      },
+      buttonConfirmEditNameProps: {
+        classAdded: 'Button_ConfirmForward',
+        icon: '',
+        handleEvents,
+        action: {
+          typeEvent: 'CLICK_ON_CONFIRM_NAMES',
+          data: {},
+        },
+        captureLeft: DICTIONARY.Confirm[language],
+        tooltipText: DICTIONARY.Confirm[language],
+        tooltipPosition: 'top',
+        isDisabled: false,
+        isDisplaying: true,
+      },
       isDisplaying: isEditNameVisible,
     },
     navLinkBackToTopicProps: {
