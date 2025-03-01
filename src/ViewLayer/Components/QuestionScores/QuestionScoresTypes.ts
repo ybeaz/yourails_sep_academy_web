@@ -1,8 +1,5 @@
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
-import {
-  FormInputNamesWithButtonsPropsType,
-  FormInputNamesWithButtonsType,
-} from '../FormInputNamesWithButtons/FormInputNamesWithButtons'
+import { FormInputNamesWithButtonsPropsType } from '../FormInputNamesWithButtons/FormInputNamesWithButtons'
 
 import { FormInputNamesPropsType } from '../FormInputNames/FormInputNames'
 import { ButtonYrlPropsType } from 'yourails_common'
@@ -33,7 +30,7 @@ export type QuestionScoresPropsType = Omit<
 >
 
 export type QuestionScoresPropsOutType = {
-  message: { greeting: string; line1: string; line2: string; line3: string }
+  messageProps: { title: string; line1: string; line2: string; line3: string }
   navLinkSignInUpProps: NavLinkWithQueryPropsType
   buttonSignInUpProps: ButtonYrlPropsType
   navLinkNextTaskProps: NavLinkWithQueryPropsType

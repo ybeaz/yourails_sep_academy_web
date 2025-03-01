@@ -18,6 +18,7 @@ import {
   getQuestionScoresPropsOut,
   GetQuestionScoresPropsOutParamsType,
 } from './getQuestionScoresPropsOut'
+import { getNavLinksButtonsItems } from '../../Hooks/getNavLinksButtonsItems'
 
 import {
   QuestionScoresComponentPropsType,
@@ -165,10 +166,10 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
   return (
     <div className='QuestionScores'>
       <div className='_text'>
-        <div className='_greeting'>{propsOut.message.greeting}</div>
-        <p>{propsOut.message.line1}</p>
-        <p>{propsOut.message.line2}</p>
-        <p>{propsOut.message.line3}</p>
+        <div className='_capture'>{propsOut.messageProps.title}</div>
+        <p>{propsOut.messageProps.line1}</p>
+        <p>{propsOut.messageProps.line2}</p>
+        <p>{propsOut.messageProps.line3}</p>
       </div>
 
       <div className='_buttons'>

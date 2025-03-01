@@ -31,9 +31,7 @@ type GetQuestionScoresPropsOutParamsType = {
   nameFirst: RootStoreType['forms']['user']['nameFirst']
   nameMiddle: RootStoreType['forms']['user']['nameMiddle']
   nameLast: RootStoreType['forms']['user']['nameLast']
-
   score: GetAnswersChecked2OutType
-
   sub: RootStoreType['authAwsCognitoUserData']['sub']
   profiles: RootStoreType['profiles']
 }
@@ -109,10 +107,7 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
     nameFirst,
     nameMiddle,
     nameLast,
-    capture: capture || '',
-    description: description || '',
-    moduleID: moduleID || '',
-    contentID: contentID || '',
+    moduleActive,
     sub,
     handleEvents,
     profiles,
@@ -142,7 +137,7 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
   */
 
   const propsOut: QuestionScoresPropsOutType = {
-    message: scenario.message,
+    messageProps: scenario.message,
     navLinkSignInUpProps: {
       classAdded: 'NavLink_SignInUp',
       to: getNavLinkSIngInUpToProp(),

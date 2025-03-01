@@ -11,16 +11,12 @@ import { HandleEventType } from 'yourails_common'
 export type GetMessagesDictPropsType = {
   scenarioCase: QuestionsScoresCaseEnumType
   language: RootStoreType['language']
-  capture: string
   right: number
   total: number
   nameFirst: RootStoreType['forms']['user']['nameFirst']
   nameMiddle: RootStoreType['forms']['user']['nameMiddle']
   nameLast: RootStoreType['forms']['user']['nameLast']
-  meta?: MetaCourseType | {}
-  description: string
-  moduleID: ModuleType['moduleID']
-  contentID: ModuleType['contentID']
+  moduleActive: ModuleType
   sub: RootStoreType['authAwsCognitoUserData']['sub']
   handleEvents: HandleEventType
   isEditNameVisible: RootStoreType['componentsState']['isEditNameVisible']
@@ -28,7 +24,7 @@ export type GetMessagesDictPropsType = {
 }
 
 export type GetMessagesDictResType = {
-  message: { greeting: string; line1: string; line2: string; line3: string }
+  message: { title: string; line1: string; line2: string; line3: string }
 }
 
 export type ScenariousType = Record<
@@ -54,16 +50,14 @@ export const getMessagesDict: GetMessagesDictType = (props: GetMessagesDictProps
     nameFirst,
     nameMiddle,
     nameLast,
-    meta,
-    capture,
-    description,
-    moduleID,
-    contentID,
+    moduleActive,
     sub,
     handleEvents,
     isEditNameVisible,
     profiles = [],
   } = props
+
+  const { capture } = moduleActive
 
   const question = getQuesionString(language, right)
 
@@ -97,7 +91,7 @@ export const getMessagesDict: GetMessagesDictType = (props: GetMessagesDictProps
 
   const successTrue_AuthTrue = {
     message: {
-      greeting: Congratulations,
+      title: Congratulations,
       line1: `"${capture}"`,
       line2: `${isCompletedWith} ${right} ${correctAnsweresFrom} ${total}`,
       line3: `${DICTIONARY.Keep_going[language]}!`,
@@ -106,7 +100,7 @@ export const getMessagesDict: GetMessagesDictType = (props: GetMessagesDictProps
 
   const successTrue_AuthFalse = {
     message: {
-      greeting: Congratulations,
+      title: Congratulations,
       line1: `"${capture}"`,
       line2: `${isCompletedWith} ${right} ${correctAnsweresFrom} ${total}`,
       line3: `${AuthoriseToReceiveCertificate}.`,
@@ -115,7 +109,7 @@ export const getMessagesDict: GetMessagesDictType = (props: GetMessagesDictProps
 
   const successFalse = {
     message: {
-      greeting: YouWereCommittedToSuccess,
+      title: YouWereCommittedToSuccess,
       line1: `"${capture}"`,
       line2: `${andThisTimeAnswered} ${right} ${question} ${from} ${total}`,
       line3: `${YouCanTryOnceAgain}!`,
