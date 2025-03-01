@@ -24,15 +24,13 @@ import { getComponentsList } from '../../Hooks/getComponentsList'
 import {
   QuestionScoresComponentPropsType,
   QuestionScoresPropsType,
-  QuestionScoresPropsOutType,
   QuestionScoresComponentType,
   QuestionScoresType,
 } from './QuestionScoresTypes'
-import { profile } from 'console'
 
 /**
  * @description Component to render QuestionScores
- * @import import { QuestionScores, QuestionScoresPropsType, QuestionScoresPropsOutType, QuestionScoresType } 
+ * @import import { QuestionScores, QuestionScoresPropsType, QuestionScoresType } 
              from '../Components/QuestionScores/QuestionScores'
  */
 const QuestionScoresComponent: QuestionScoresComponentType = (
@@ -165,9 +163,4 @@ export const QuestionScores = React.memo(
   )
 )
 
-export type {
-  QuestionScoresPropsType,
-  QuestionScoresPropsOutType,
-  QuestionScoresComponentType,
-  QuestionScoresType,
-}
+export type { QuestionScoresPropsType, QuestionScoresComponentType, QuestionScoresType }

@@ -9,7 +9,6 @@ import { ModuleType } from 'yourails_common'
 import { HandleEventType } from 'yourails_common'
 import { DICTIONARY } from 'yourails_common'
 import { getMapJourneyData } from 'yourails_common'
-import { QuestionScoresPropsOutType } from './QuestionScoresTypes'
 import {
   type GetMessagesDictPropsType,
   type GetMessagesDictResType,
@@ -122,7 +121,7 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
   }
 
   // I STOPPED HERE: REMOVE getMessagesDict, SIMPLIFY CODE
-  const scenario = getMessagesDict(getMessagesDictProps)
+  const scenario: GetMessagesDictResType = getMessagesDict(getMessagesDictProps)
 
   /*
   successTrue_AuthTrue_NamesTrue = 'successTrue_AuthTrue_NamesTrue',

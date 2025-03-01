@@ -28,22 +28,6 @@ export type QuestionScoresPropsType = Omit<
   'storeStateSlice' | 'handleEvents'
 >
 
-export type QuestionScoresPropsOutType = {
-  messageTileProps: MessageTilePropsType
-  navLinkSignInUpProps: NavLinkWithQueryPropsType
-  buttonSignInUpProps: ButtonYrlPropsType
-  navLinkNextTaskProps: NavLinkWithQueryPropsType
-  buttonNextTaskProps: ButtonYrlPropsType
-  buttonCreditProps: ButtonYrlPropsType
-  buttonIsEditNameVisibleProps: ButtonYrlPropsType
-  formInputNamesWithButtonsProps: FormInputNamesWithButtonsPropsType
-  navLinkBackToTopicProps: NavLinkWithQueryPropsType
-  buttonBackToTopicProps: ButtonYrlPropsType
-  navLinkAchievementsProps: NavLinkWithQueryPropsType
-  buttonAchievementsProps: ButtonYrlPropsType
-  buttonBackToModuleProps: ButtonYrlPropsType
-}
-
 /**
  * @import import { QuestionScoresType } from './QuestionScoresType'
  */
