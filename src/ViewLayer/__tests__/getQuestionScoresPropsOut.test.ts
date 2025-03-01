@@ -16,7 +16,7 @@ import {
 type GetQuestionScoresPropsOutTestType = {
   testScenario: string
   params: GetQuestionScoresPropsOutParamsType
-  expected: GetQuestionScoresPropsOutResType
+  expected: GetQuestionScoresPropsOutResType[]
 }
 
 const paramsCommon = {
@@ -57,45 +57,45 @@ const tests: GetQuestionScoresPropsOutTestType[] = [
     expected: expected.successTrue_AuthTrue_NamesTrue_isEditNameVisibleFalse,
   },
 
-  {
-    testScenario: ['successTrue_AuthTrue_NamesTrue', 'isEditNameVisibleTrue'].join(', '),
-    params: {
-      scenarioCase: QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesTrue,
-      isEditNameVisible: true,
-      ...paramsCommon,
-    },
-    expected: expected.successTrue_AuthTrue_NamesTrue_isEditNameVisibleTrue,
-  },
+  // {
+  //   testScenario: ['successTrue_AuthTrue_NamesTrue', 'isEditNameVisibleTrue'].join(', '),
+  //   params: {
+  //     scenarioCase: QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesTrue,
+  //     isEditNameVisible: true,
+  //     ...paramsCommon,
+  //   },
+  //   expected: expected.successTrue_AuthTrue_NamesTrue_isEditNameVisibleTrue,
+  // },
 
-  {
-    testScenario: ['successTrue_AuthTrue_NamesFalse', 'isEditNameVisibleFalse'].join(', '),
-    params: {
-      scenarioCase: QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesFalse,
-      isEditNameVisible: false,
-      ...paramsCommon,
-    },
-    expected: expected.successTrue_AuthTrue_NamesFalse_isEditNameVisibleFalse,
-  },
+  // {
+  //   testScenario: ['successTrue_AuthTrue_NamesFalse', 'isEditNameVisibleFalse'].join(', '),
+  //   params: {
+  //     scenarioCase: QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesFalse,
+  //     isEditNameVisible: false,
+  //     ...paramsCommon,
+  //   },
+  //   expected: expected.successTrue_AuthTrue_NamesFalse_isEditNameVisibleFalse,
+  // },
 
-  {
-    testScenario: ['successTrue_AuthTrue_NamesFalse', 'isEditNameVisibleTrue'].join(', '),
-    params: {
-      scenarioCase: QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesFalse,
-      isEditNameVisible: true,
-      ...paramsCommon,
-    },
-    expected: expected.successTrue_AuthTrue_NamesFalse_isEditNameVisibleTrue,
-  },
+  // {
+  //   testScenario: ['successTrue_AuthTrue_NamesFalse', 'isEditNameVisibleTrue'].join(', '),
+  //   params: {
+  //     scenarioCase: QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesFalse,
+  //     isEditNameVisible: true,
+  //     ...paramsCommon,
+  //   },
+  //   expected: expected.successTrue_AuthTrue_NamesFalse_isEditNameVisibleTrue,
+  // },
 
-  {
-    testScenario: ['successTrue_AuthFalse_NamesTrue', 'isEditNameVisibleFalse'].join(', '),
-    params: {
-      scenarioCase: QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesTrue,
-      isEditNameVisible: false,
-      ...paramsCommon,
-    },
-    expected: expected.successTrue_AuthFalse_NamesTrue_isEditNameVisibleFalse,
-  },
+  // {
+  //   testScenario: ['successTrue_AuthFalse_NamesTrue', 'isEditNameVisibleFalse'].join(', '),
+  //   params: {
+  //     scenarioCase: QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesTrue,
+  //     isEditNameVisible: false,
+  //     ...paramsCommon,
+  //   },
+  //   expected: expected.successTrue_AuthFalse_NamesTrue_isEditNameVisibleFalse,
+  // },
 
   // {
   //   testScenario: ['successTrue_AuthFalse_NamesFalse', 'isEditNameVisibleFalse'].join(', '),

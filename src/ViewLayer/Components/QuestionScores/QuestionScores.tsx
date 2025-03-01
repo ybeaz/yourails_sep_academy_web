@@ -138,11 +138,13 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     navigate,
   }
 
-  const propsOut: GetQuestionScoresPropsOutResType[] = getQuestionScoresPropsOut(
+  const componentsListProps: GetQuestionScoresPropsOutResType[] = getQuestionScoresPropsOut(
     getQuestionScoresPropsOutProps
   )
 
-  return <div className='QuestionScores'>{getComponentsList(propsOut)}</div>
+  console.info('QuestionScores [145]', { componentsListProps })
+
+  return <div className='QuestionScores'>{getComponentsList(componentsListProps)}</div>
 }
 
 const storeStateSliceProps: string[] = [

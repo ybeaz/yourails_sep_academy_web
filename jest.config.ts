@@ -11,4 +11,5 @@ export default {
   },
   testMatch: ['<rootDir>/**/(*.)test.(js|jsx|ts|tsx)'],
   testEnvironmentOptions: { url: 'http://127.0.0.1/' },
+  setupFilesAfterEnv: ['<rootDir>/jest.setupTests.ts'],
 }
