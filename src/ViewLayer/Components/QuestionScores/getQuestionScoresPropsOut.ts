@@ -18,6 +18,7 @@ import {
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { GetAnswersChecked2OutType } from 'yourails_common'
 import { QuestionsScoresCaseEnumType } from 'yourails_common'
+import { GetNavLinksButtonsItemParamType } from '../../Hooks/getNavLinksButtonsItems'
 
 type GetQuestionScoresPropsOutParamsType = {
   modules: ModuleType[]
@@ -38,20 +39,20 @@ type GetQuestionScoresPropsOutParamsType = {
 
 type GetQuestionScoresPropsOutOptionsType = { funcParent?: string }
 
-type GetQuestionScoresPropsOutResType = QuestionScoresPropsOutType
+type GetQuestionScoresPropsOutResType = GetNavLinksButtonsItemParamType
 
 interface GetQuestionScoresPropsOutType {
   (
     params: GetQuestionScoresPropsOutParamsType,
     options?: GetQuestionScoresPropsOutOptionsType
-  ): GetQuestionScoresPropsOutResType
+  ): GetQuestionScoresPropsOutResType[]
 }
 
 const optionsDefault: Required<GetQuestionScoresPropsOutOptionsType> = {
   funcParent: 'getQuestionScoresPropsOut',
 }
 
-const resDefault: GetQuestionScoresPropsOutResType | any = {}
+const resDefault: GetQuestionScoresPropsOutResType[] = []
 
 /**
  * @description Function to getQuestionScoresPropsOut
@@ -75,8 +76,6 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
   sub,
   profiles,
 }: GetQuestionScoresPropsOutParamsType) => {
-  const { capture, description, moduleID, contentID } = moduleActive
-
   const { total, right } = score
 
   console.info('getQuestionScoresPropsOut [64]', {
@@ -136,206 +135,223 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
   successFalse_AuthFalse_NamesFalse = 'successFalse_AuthFalse_NamesFalse',
   */
 
-  const propsOut: QuestionScoresPropsOutType = {
-    messageProps: scenario.message,
-    navLinkSignInUpProps: {
-      classAdded: 'NavLink_SignInUp',
-      to: getNavLinkSIngInUpToProp(),
-      isExternal: true,
-      isDisabled: false,
-      isDisplaying: !isEditNameVisible,
-    },
-    buttonSignInUpProps: {
-      classAdded: 'Button_SignInUp',
-      icon: '',
-      handleEvents,
-      action: {
-        typeEvent: 'CLICK_ON_SIGN_IN',
-        data: {},
+  const propsOut: GetNavLinksButtonsItemParamType[] = [
+    { messageTileProps: scenario.message },
+
+    {
+      navLinkProps: {
+        classAdded: 'NavLink_SignInUp',
+        to: getNavLinkSIngInUpToProp(),
+        isExternal: true,
+        isDisabled: false,
+        isDisplaying: !isEditNameVisible,
       },
-      captureLeft: DICTIONARY.Sign_in_up[language],
-      tooltipText: '',
-      tooltipPosition: 'top',
-      isDisabled: false,
-      isDisplaying: true,
-    },
-    navLinkNextTaskProps: {
-      classAdded: 'NavLink_NextTask',
-      to: {
-        pathname: getMapJourneyData({ modules }).find(
-          ({ isNextModule }: { isNextModule: boolean }) => isNextModule
-        )?.pathnameModule,
-        search: queryUrl,
-      },
-      isDisabled: false,
-      isDisplaying: !isEditNameVisible,
-    },
-    buttonNextTaskProps: {
-      classAdded: 'Button_NextTask',
-      icon: '',
-      handleEvents,
-      action: {
-        typeEvent: 'TEST',
-        data: {},
-      },
-      captureLeft: DICTIONARY.Next_task[language],
-      tooltipText: '',
-      tooltipPosition: 'top',
-      isDisabled: false,
-      isDisplaying: true,
-    },
-    buttonCreditProps: {
-      classAdded: 'Button_Credit',
-      icon: '',
-      handleEvents,
-      action: {
-        typeEvent: 'CREATE_DOCUMENT',
-        data: {
-          navigate,
-        },
-      },
-      captureLeft: DICTIONARY.View_reward[language],
-      tooltipText: '',
-      tooltipPosition: 'top',
-      isDisabled:
-        !isEditNameVisible &&
-        (scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesFalse ||
-          scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesTrue ||
-          scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesFalse ||
-          scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthTrue_NamesFalse ||
-          scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthFalse_NamesTrue ||
-          scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthFalse_NamesFalse),
-      isDisplaying: !isEditNameVisible,
-    },
-    buttonIsEditNameVisibleProps: {
-      classAdded: 'Button_IsEditName',
-      icon: '',
-      handleEvents,
-      action: {
-        typeEvent: 'SET_EDIT_NAME_VISIBILITY',
-        data: {
-          isEditNameVisible: true,
-        },
-      },
-      captureLeft: `${DICTIONARY.Add_edit_name[language]}`,
-      tooltipText: '',
-      tooltipPosition: 'top',
-      isDisabled: false,
-      isDisplaying: !isEditNameVisible,
-    },
-    formInputNamesWithButtonsProps: {
-      formInputNamesProps: {
-        language,
+      buttonYrlProps: {
+        classAdded: 'Button_SignInUp',
+        icon: '',
         handleEvents,
+        action: {
+          typeEvent: 'CLICK_ON_SIGN_IN',
+          data: {},
+        },
+        captureLeft: DICTIONARY.Sign_in_up[language],
+        tooltipText: '',
+        tooltipPosition: 'top',
+        isDisabled: false,
+        isDisplaying: true,
       },
-      buttonCancelEditNameProps: {
-        classAdded: 'Button_CancelEditName',
+    },
+    {
+      navLinkProps: {
+        classAdded: 'NavLink_NextTask',
+        to: {
+          pathname: getMapJourneyData({ modules }).find(
+            ({ isNextModule }: { isNextModule: boolean }) => isNextModule
+          )?.pathnameModule,
+          search: queryUrl,
+        },
+        isDisabled: false,
+        isDisplaying: !isEditNameVisible,
+      },
+      buttonYrlProps: {
+        classAdded: 'Button_NextTask',
+        icon: '',
+        handleEvents,
+        action: {
+          typeEvent: 'TEST',
+          data: {},
+        },
+        captureLeft: DICTIONARY.Next_task[language],
+        tooltipText: '',
+        tooltipPosition: 'top',
+        isDisabled: false,
+        isDisplaying: true,
+      },
+    },
+    {
+      buttonYrlProps: {
+        classAdded: 'Button_Credit',
+        icon: '',
+        handleEvents,
+        action: {
+          typeEvent: 'CREATE_DOCUMENT',
+          data: {
+            navigate,
+          },
+        },
+        captureLeft: DICTIONARY.View_reward[language],
+        tooltipText: '',
+        tooltipPosition: 'top',
+        isDisabled:
+          !isEditNameVisible &&
+          (scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesFalse ||
+            scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesTrue ||
+            scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesFalse ||
+            scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthTrue_NamesFalse ||
+            scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthFalse_NamesTrue ||
+            scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthFalse_NamesFalse),
+        isDisplaying: !isEditNameVisible,
+      },
+    },
+    {
+      buttonYrlProps: {
+        classAdded: 'Button_IsEditName',
         icon: '',
         handleEvents,
         action: {
           typeEvent: 'SET_EDIT_NAME_VISIBILITY',
           data: {
-            isEditNameVisible: false,
+            isEditNameVisible: true,
           },
         },
-        captureLeft: DICTIONARY.Cancel[language],
-        tooltipText: DICTIONARY.Cancel[language],
+        captureLeft: `${DICTIONARY.Add_edit_name[language]}`,
+        tooltipText: '',
+        tooltipPosition: 'top',
+        isDisabled: false,
+        isDisplaying: !isEditNameVisible,
+      },
+    },
+    {
+      formInputNamesWithButtonsProps: {
+        formInputNamesProps: {
+          language,
+          handleEvents,
+        },
+        buttonCancelEditNameProps: {
+          classAdded: 'Button_CancelEditName',
+          icon: '',
+          handleEvents,
+          action: {
+            typeEvent: 'SET_EDIT_NAME_VISIBILITY',
+            data: {
+              isEditNameVisible: false,
+            },
+          },
+          captureLeft: DICTIONARY.Cancel[language],
+          tooltipText: DICTIONARY.Cancel[language],
+          tooltipPosition: 'top',
+          isDisabled: false,
+          isDisplaying: true,
+        },
+        buttonConfirmEditNameProps: {
+          classAdded: 'Button_ConfirmForward',
+          icon: '',
+          handleEvents,
+          action: {
+            typeEvent: 'CLICK_ON_CONFIRM_NAMES',
+            data: {},
+          },
+          captureLeft: DICTIONARY.Confirm[language],
+          tooltipText: DICTIONARY.Confirm[language],
+          tooltipPosition: 'top',
+          isDisabled: false,
+          isDisplaying: true,
+        },
+        isDisplaying: isEditNameVisible,
+      },
+    },
+    {
+      navLinkProps: {
+        classAdded: 'NavLink_BackToTopic',
+        to: {
+          pathname: '/',
+          search: queryUrl,
+        },
+        /* onClick: () => navigate(-1), Alternative */
+        isDisabled: false,
+        isDisplaying: !isEditNameVisible,
+      },
+      buttonYrlProps: {
+        classAdded: 'Button_BackToTopic',
+        icon: '',
+        handleEvents,
+        action: {},
+        captureLeft: DICTIONARY.Back_to_topic[language],
+        tooltipText: '',
         tooltipPosition: 'top',
         isDisabled: false,
         isDisplaying: true,
       },
-      buttonConfirmEditNameProps: {
-        classAdded: 'Button_ConfirmForward',
+    },
+    {
+      navLinkProps: {
+        classAdded: 'NavLink_Achievements',
+        to: {
+          pathname: '/my-documents',
+          search: queryUrl,
+        },
+        isDisabled:
+          !isEditNameVisible &&
+          (scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesFalse ||
+            scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesTrue ||
+            scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesFalse ||
+            scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthTrue_NamesFalse ||
+            scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthFalse_NamesTrue ||
+            scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthFalse_NamesFalse),
+        isDisplaying: !isEditNameVisible,
+      },
+      buttonYrlProps: {
+        classAdded: 'Button_Achievements',
+        icon: '',
+        handleEvents,
+        action: {},
+        captureLeft: DICTIONARY.Achievements[language],
+        tooltipText: '',
+        tooltipPosition: 'top',
+        isDisabled:
+          !isEditNameVisible &&
+          (scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesFalse ||
+            scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesTrue ||
+            scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesFalse ||
+            scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthTrue_NamesFalse ||
+            scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthFalse_NamesTrue ||
+            scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthFalse_NamesFalse),
+        isDisplaying: true,
+      },
+    },
+    {
+      buttonYrlProps: {
+        classAdded: 'Button_BackToModule',
         icon: '',
         handleEvents,
         action: {
-          typeEvent: 'CLICK_ON_CONFIRM_NAMES',
-          data: {},
+          typeEvent: 'SET_MODAL_FRAMES',
+          data: [
+            {
+              childName: 'QuestionScores',
+              isActive: false,
+              childProps: {},
+            },
+          ],
         },
-        captureLeft: DICTIONARY.Confirm[language],
-        tooltipText: DICTIONARY.Confirm[language],
+        captureLeft: DICTIONARY.Back[language],
+        tooltipText: '',
         tooltipPosition: 'top',
         isDisabled: false,
-        isDisplaying: true,
+        isDisplaying: !isEditNameVisible,
       },
-      isDisplaying: isEditNameVisible,
     },
-    navLinkBackToTopicProps: {
-      classAdded: 'NavLink_BackToTopic',
-      to: {
-        pathname: '/',
-        search: queryUrl,
-      },
-      /* onClick: () => navigate(-1), Alternative */
-      isDisabled: false,
-      isDisplaying: !isEditNameVisible,
-    },
-    buttonBackToTopicProps: {
-      classAdded: 'Button_BackToTopic',
-      icon: '',
-      handleEvents,
-      action: {},
-      captureLeft: DICTIONARY.Back_to_topic[language],
-      tooltipText: '',
-      tooltipPosition: 'top',
-      isDisabled: false,
-      isDisplaying: true,
-    },
-    navLinkAchievementsProps: {
-      classAdded: 'NavLink_Achievements',
-      to: {
-        pathname: '/my-documents',
-        search: queryUrl,
-      },
-      isDisabled:
-        !isEditNameVisible &&
-        (scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesFalse ||
-          scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesTrue ||
-          scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesFalse ||
-          scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthTrue_NamesFalse ||
-          scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthFalse_NamesTrue ||
-          scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthFalse_NamesFalse),
-      isDisplaying: !isEditNameVisible,
-    },
-    buttonAchievementsProps: {
-      classAdded: 'Button_Achievements',
-      icon: '',
-      handleEvents,
-      action: {},
-      captureLeft: DICTIONARY.Achievements[language],
-      tooltipText: '',
-      tooltipPosition: 'top',
-      isDisabled:
-        !isEditNameVisible &&
-        (scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesFalse ||
-          scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesTrue ||
-          scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesFalse ||
-          scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthTrue_NamesFalse ||
-          scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthFalse_NamesTrue ||
-          scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthFalse_NamesFalse),
-      isDisplaying: true,
-    },
-    buttonBackToModuleProps: {
-      classAdded: 'Button_BackToModule',
-      icon: '',
-      handleEvents,
-      action: {
-        typeEvent: 'SET_MODAL_FRAMES',
-        data: [
-          {
-            childName: 'QuestionScores',
-            isActive: false,
-            childProps: {},
-          },
-        ],
-      },
-      captureLeft: DICTIONARY.Back[language],
-      tooltipText: '',
-      tooltipPosition: 'top',
-      isDisabled: false,
-      isDisplaying: !isEditNameVisible,
-    },
-  }
+  ]
 
   return propsOut
 }

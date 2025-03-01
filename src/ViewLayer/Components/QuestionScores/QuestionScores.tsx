@@ -17,6 +17,7 @@ import { QuestionsScoresCaseEnumType } from 'yourails_common'
 import {
   getQuestionScoresPropsOut,
   GetQuestionScoresPropsOutParamsType,
+  GetQuestionScoresPropsOutResType,
 } from './getQuestionScoresPropsOut'
 import { getNavLinksButtonsItems } from '../../Hooks/getNavLinksButtonsItems'
 
@@ -84,17 +85,6 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     nameLast,
   })
 
-  /*
-  successTrue_AuthTrue_NamesTrue = 'successTrue_AuthTrue_NamesTrue',
-  successTrue_AuthTrue_NamesFalse = 'successTrue_AuthTrue_NamesFalse', √
-  successTrue_AuthFalse_NamesTrue = 'successTrue_AuthFalse_NamesTrue', √
-  successTrue_AuthFalse_NamesFalse = 'successTrue_AuthFalse_NamesFalse', √
-  successFalse_AuthTrue_NamesTrue = 'successFalse_AuthTrue_NamesTrue',
-  successFalse_AuthTrue_NamesFalse = 'successFalse_AuthTrue_NamesFalse',
-  successFalse_AuthFalse_NamesTrue = 'successFalse_AuthFalse_NamesTrue',
-  successFalse_AuthFalse_NamesFalse = 'successFalse_AuthFalse_NamesFalse',
-*/
-
   useEffect(() => {
     stopVideoHandler && stopVideoHandler({}, {})
     if (
@@ -150,48 +140,11 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     navigate,
   }
 
-  const propsOut: QuestionScoresPropsOutType = getQuestionScoresPropsOut(
+  const propsOut: GetQuestionScoresPropsOutResType[] = getQuestionScoresPropsOut(
     getQuestionScoresPropsOutProps
   )
 
-  console.info('QuestionScores [123]', {
-    scenarioCase,
-    isEditNameVisible,
-    propsOut,
-    nameFirst,
-    nameLast,
-    modules,
-  })
-
-  return (
-    <div className='QuestionScores'>
-      <div className='_text'>
-        <div className='_capture'>{propsOut.messageProps.title}</div>
-        <p>{propsOut.messageProps.line1}</p>
-        <p>{propsOut.messageProps.line2}</p>
-        <p>{propsOut.messageProps.line3}</p>
-      </div>
-
-      <div className='_buttons'>
-        <NavLinkWithQuery {...propsOut.navLinkSignInUpProps}>
-          <ButtonYrl {...propsOut.buttonSignInUpProps} />
-        </NavLinkWithQuery>
-        <NavLinkWithQuery {...propsOut.navLinkNextTaskProps}>
-          <ButtonYrl {...propsOut.buttonNextTaskProps} />
-        </NavLinkWithQuery>
-        <NavLinkWithQuery {...propsOut.navLinkBackToTopicProps}>
-          <ButtonYrl {...propsOut.buttonBackToTopicProps} />
-        </NavLinkWithQuery>
-        <ButtonYrl {...propsOut.buttonCreditProps} />
-        <NavLinkWithQuery {...propsOut.navLinkAchievementsProps}>
-          <ButtonYrl {...propsOut.buttonAchievementsProps} />
-        </NavLinkWithQuery>
-        <ButtonYrl {...propsOut.buttonIsEditNameVisibleProps} />
-        <FormInputNamesWithButtons {...propsOut.formInputNamesWithButtonsProps} />
-        <ButtonYrl {...propsOut.buttonBackToModuleProps} />
-      </div>
-    </div>
-  )
+  return <div className='QuestionScores'>{getNavLinksButtonsItems(propsOut)}</div>
 }
 
 const storeStateSliceProps: string[] = [

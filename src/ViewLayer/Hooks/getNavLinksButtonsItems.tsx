@@ -8,6 +8,7 @@ import {
 } from '../Components/NavLinkWithQuery/NavLinkWithQuery'
 import { FormInputNamesWithButtonsPropsType } from '../Components/FormInputNamesWithButtons/FormInputNamesWithButtons'
 import { FormInputNamesWithButtons } from '../Components/FormInputNamesWithButtons/FormInputNamesWithButtons'
+import { MessageTile, MessageTilePropsType } from '../Components/MessageTile/MessageTile'
 
 type GetNavLinksButtonsItemParamType = {
   navLinkProps?: NavLinkWithQueryPropsType
@@ -15,6 +16,7 @@ type GetNavLinksButtonsItemParamType = {
   formInputNamesWithButtonsProps?: FormInputNamesWithButtonsPropsType
   buttonCancelEditNameProps?: ButtonYrlPropsType
   buttonConfirmEditNameProps?: ButtonYrlPropsType
+  messageTileProps?: MessageTilePropsType
 }
 
 type GetNavLinksButtonsItemsOptionsType = { funcParent?: string }
@@ -43,17 +45,7 @@ const getNavLinksButtonsItems: GetNavLinksButtonsItemsType = (
   }
 
   return navLinksButtonsItems.map(
-    (
-      {
-        id,
-        navLinkProps,
-        buttonYrlProps,
-        formInputNamesWithButtonsProps,
-        buttonCancelEditNameProps,
-        buttonConfirmEditNameProps,
-      },
-      index
-    ) => {
+    ({ id, navLinkProps, buttonYrlProps, formInputNamesWithButtonsProps, messageTileProps }) => {
       if (navLinkProps && buttonYrlProps)
         return (
           <NavLinkWithQuery
@@ -82,6 +74,7 @@ const getNavLinksButtonsItems: GetNavLinksButtonsItemsType = (
         )
       else if (formInputNamesWithButtonsProps)
         return <FormInputNamesWithButtons {...formInputNamesWithButtonsProps} />
+      else if (messageTileProps) return <MessageTile {...messageTileProps} />
     }
   )
 }

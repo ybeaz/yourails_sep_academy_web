@@ -1,11 +1,10 @@
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
-import { FormInputNamesWithButtonsPropsType } from '../FormInputNamesWithButtons/FormInputNamesWithButtons'
 
-import { FormInputNamesPropsType } from '../FormInputNames/FormInputNames'
+import { FormInputNamesWithButtonsPropsType } from '../FormInputNamesWithButtons/FormInputNamesWithButtons'
 import { ButtonYrlPropsType } from 'yourails_common'
 import { HandleEventType } from 'yourails_common'
 import { NavLinkWithQueryPropsType } from '../../Components/NavLinkWithQuery/NavLinkWithQuery'
-import { from } from '@apollo/client'
+import { MessageTilePropsType } from '../MessageTile/MessageTile'
 
 export type QuestionScoresComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
@@ -30,7 +29,7 @@ export type QuestionScoresPropsType = Omit<
 >
 
 export type QuestionScoresPropsOutType = {
-  messageProps: { title: string; line1: string; line2: string; line3: string }
+  messageTileProps: MessageTilePropsType
   navLinkSignInUpProps: NavLinkWithQueryPropsType
   buttonSignInUpProps: ButtonYrlPropsType
   navLinkNextTaskProps: NavLinkWithQueryPropsType
