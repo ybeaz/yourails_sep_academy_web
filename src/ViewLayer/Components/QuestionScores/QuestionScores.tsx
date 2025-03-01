@@ -19,7 +19,7 @@ import {
   GetQuestionScoresPropsOutParamsType,
   GetQuestionScoresPropsOutResType,
 } from './getQuestionScoresPropsOut'
-import { getNavLinksButtonsItems } from '../../Hooks/getNavLinksButtonsItems'
+import { getComponentsList } from '../../Hooks/getComponentsList'
 
 import {
   QuestionScoresComponentPropsType,
@@ -144,7 +144,7 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     getQuestionScoresPropsOutProps
   )
 
-  return <div className='QuestionScores'>{getNavLinksButtonsItems(propsOut)}</div>
+  return <div className='QuestionScores'>{getComponentsList(propsOut)}</div>
 }
 
 const storeStateSliceProps: string[] = [

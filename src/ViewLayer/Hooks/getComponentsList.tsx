@@ -19,22 +19,22 @@ type GetNavLinksButtonsItemParamType = {
   messageTileProps?: MessageTilePropsType
 }
 
-type GetNavLinksButtonsItemsOptionsType = { funcParent?: string }
+type GetComponentsListOptionsType = { funcParent?: string }
 
-type GetNavLinksButtonsItemsResType = JSX.Element
+type GetComponentsListResType = JSX.Element
 
-interface GetNavLinksButtonsItemsType {
-  (params: GetNavLinksButtonsItemParamType[]): GetNavLinksButtonsItemsResType[]
+interface GetComponentsListType {
+  (params: GetNavLinksButtonsItemParamType[]): GetComponentsListResType[]
 }
 
 /**
- * @description Function to getNavLinksButtonsItems
- * @import import { getNavLinksButtonsItems } from './getNavLinksButtonsItems'
+ * @description Function to getComponentsList
+ * @import import { getComponentsList } from './getComponentsList'
  */
 
-const getNavLinksButtonsItems: GetNavLinksButtonsItemsType = (
+const getComponentsList: GetComponentsListType = (
   navLinksButtonsItemsIn: GetNavLinksButtonsItemParamType[]
-): GetNavLinksButtonsItemsResType[] => {
+): GetComponentsListResType[] => {
   const navLinksButtonsItems = navLinksButtonsItemsIn.map(
     (item: GetNavLinksButtonsItemParamType) => ({ id: nanoid(), ...item })
   )
@@ -79,10 +79,10 @@ const getNavLinksButtonsItems: GetNavLinksButtonsItemsType = (
   )
 }
 
-export { getNavLinksButtonsItems }
+export { getComponentsList }
 export type {
   GetNavLinksButtonsItemParamType,
-  GetNavLinksButtonsItemsOptionsType,
-  GetNavLinksButtonsItemsResType,
-  GetNavLinksButtonsItemsType,
+  GetComponentsListOptionsType,
+  GetComponentsListResType,
+  GetComponentsListType,
 }

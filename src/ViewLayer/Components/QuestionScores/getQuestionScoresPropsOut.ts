@@ -18,7 +18,7 @@ import {
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { GetAnswersChecked2OutType } from 'yourails_common'
 import { QuestionsScoresCaseEnumType } from 'yourails_common'
-import { GetNavLinksButtonsItemParamType } from '../../Hooks/getNavLinksButtonsItems'
+import { GetNavLinksButtonsItemParamType } from '../../Hooks/getComponentsList'
 
 type GetQuestionScoresPropsOutParamsType = {
   modules: ModuleType[]
@@ -137,7 +137,6 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
 
   const propsOut: GetNavLinksButtonsItemParamType[] = [
     { messageTileProps: scenario.message },
-
     {
       navLinkProps: {
         classAdded: 'NavLink_SignInUp',

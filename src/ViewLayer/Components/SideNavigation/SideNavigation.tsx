@@ -9,7 +9,7 @@ import {
 } from './getSideNavigationItemsPropsArr'
 import { withStoreStateSelectedYrl } from 'yourails_common'
 import { withPropsYrl } from 'yourails_common'
-import { getNavLinksButtonsItems } from '../../Hooks/getNavLinksButtonsItems'
+import { getComponentsList } from '../../Hooks/getComponentsList'
 
 import {
   SideNavigationComponentPropsType,
@@ -66,7 +66,7 @@ const SideNavigationComponent: SideNavigationComponentType = (
           <div className='_groupItem _languageSelect'>
             <SelectLanguage {...languageSelectProps} />
           </div>
-          {getNavLinksButtonsItems(sideNavigationItemsPropsArr)}
+          {getComponentsList(sideNavigationItemsPropsArr)}
         </div>
       </div>
     </div>

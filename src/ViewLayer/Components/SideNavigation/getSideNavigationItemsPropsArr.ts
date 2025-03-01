@@ -5,7 +5,7 @@ import { RootStoreType } from '../../../Interfaces/'
 import { HandleEventType } from 'yourails_common'
 import { isAwsCognitoAuth } from '../../../FeatureFlags'
 import { isCourseCreateSectionFlag } from '../../../FeatureFlags'
-import { GetNavLinksButtonsItemParamType } from '../../Hooks/getNavLinksButtonsItems'
+import { GetNavLinksButtonsItemParamType } from '../../Hooks/getComponentsList'
 
 export type GetSideNavigationItemsPropsArrPropsType = {
   language: RootStoreType['language']
