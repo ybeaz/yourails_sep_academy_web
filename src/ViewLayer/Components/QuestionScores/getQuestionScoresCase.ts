@@ -55,13 +55,7 @@ const getQuestionScoresCaseUnsafe: GetQuestionScoresCaseType = (
       } else {
         scenarioCase = QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesFalse
       }
-    } else {
-      if (nameFirst && nameLast) {
-        scenarioCase = QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesTrue
-      } else {
-        scenarioCase = QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesFalse
-      }
-    }
+    } else scenarioCase = QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesFalse
   } else {
     if (sub) {
       if (nameFirst && nameLast) {
@@ -69,13 +63,7 @@ const getQuestionScoresCaseUnsafe: GetQuestionScoresCaseType = (
       } else {
         scenarioCase = QuestionsScoresCaseEnumType.successFalse_AuthTrue_NamesFalse
       }
-    } else {
-      if (nameFirst && nameLast) {
-        scenarioCase = QuestionsScoresCaseEnumType.successFalse_AuthFalse_NamesTrue
-      } else {
-        scenarioCase = QuestionsScoresCaseEnumType.successFalse_AuthFalse_NamesFalse
-      }
-    }
+    } else scenarioCase = QuestionsScoresCaseEnumType.successFalse_AuthFalse_NamesFalse
   }
 
   return scenarioCase

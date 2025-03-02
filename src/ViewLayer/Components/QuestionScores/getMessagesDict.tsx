@@ -89,12 +89,21 @@ export const getMessagesDict: GetMessagesDictType = (props: GetMessagesDictProps
 
   console.info('getMessagesDict [82]', getProfileActiveToUpdateProps)
 
-  const successTrue_AuthTrue = {
+  const successTrue_AuthTrue_NamesTrue = {
     message: {
       title: Congratulations,
       line1: `"${capture}"`,
-      line2: `${isCompletedWith} ${right} ${correctAnsweresFrom} ${total}`,
+      line2: `${isCompletedWith} ${right} ${correctAnsweresFrom} ${total}.`,
       line3: `${DICTIONARY.Keep_going[language]}!`,
+    },
+  }
+
+  const successTrue_AuthTrue_NamesFalse = {
+    message: {
+      title: Congratulations,
+      line1: `"${capture}"`,
+      line2: `${isCompletedWith} ${right} ${correctAnsweresFrom} ${total}.`,
+      line3: `${DICTIONARY.Add_edit_name[language]}.`,
     },
   }
 
@@ -117,13 +126,11 @@ export const getMessagesDict: GetMessagesDictType = (props: GetMessagesDictProps
   }
 
   const scenarios: ScenariousType = {
-    successTrue_AuthTrue_NamesTrue: successTrue_AuthTrue,
-    successTrue_AuthTrue_NamesFalse: successTrue_AuthTrue,
-    successTrue_AuthFalse_NamesTrue: successTrue_AuthFalse,
+    successTrue_AuthTrue_NamesTrue,
+    successTrue_AuthTrue_NamesFalse,
     successTrue_AuthFalse_NamesFalse: successTrue_AuthFalse,
     successFalse_AuthTrue_NamesTrue: successFalse,
     successFalse_AuthTrue_NamesFalse: successFalse,
-    successFalse_AuthFalse_NamesTrue: successFalse,
     successFalse_AuthFalse_NamesFalse: successFalse,
   }
 

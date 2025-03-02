@@ -88,14 +88,9 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     if (
       scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesTrue ||
       scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesFalse ||
-      scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesTrue ||
       scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesFalse
     ) {
-      if (
-        scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesFalse ||
-        scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesTrue ||
-        scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesFalse
-      ) {
+      if (scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesFalse) {
         handleEvents(
           {},
           { typeEvent: 'SET_EDIT_NAME_VISIBILITY', data: { isEditNameVisible: true } }

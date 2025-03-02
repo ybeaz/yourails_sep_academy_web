@@ -27,9 +27,9 @@ const NavLinkWithQueryComponent: NavLinkWithQueryComponentType = (
     },
     to,
     isExternal,
-    isDisabled,
-    isDisplaying,
-    isVisible,
+    isDisabled = false,
+    isDisplaying = true,
+    isVisible = true,
     classAdded,
     ...restProps
   } = props
@@ -69,6 +69,8 @@ const NavLinkWithQueryComponent: NavLinkWithQueryComponentType = (
             },
           }
         : {}),
+      'aria-disabled': isDisabled,
+      onClick: (event: any) => isDisabled && event.preventDefault(),
       end: true,
     },
   }

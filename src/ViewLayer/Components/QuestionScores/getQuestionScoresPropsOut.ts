@@ -142,7 +142,10 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
         to: getNavLinkSIngInUpToProp(),
         isExternal: true,
         isDisabled: false,
-        isDisplaying: !isEditNameVisible,
+        isDisplaying:
+          !isEditNameVisible &&
+          (scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesFalse ||
+            scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthFalse_NamesFalse),
       },
       buttonYrlProps: {
         classAdded: 'Button_SignInUp',
@@ -156,7 +159,10 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
         tooltipText: '',
         tooltipPosition: 'top',
         isDisabled: false,
-        isDisplaying: true,
+        isDisplaying:
+          !isEditNameVisible &&
+          (scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesFalse ||
+            scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthFalse_NamesFalse),
       },
     },
     {
@@ -183,7 +189,30 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
         tooltipText: '',
         tooltipPosition: 'top',
         isDisabled: false,
-        isDisplaying: true,
+        isDisplaying: !isEditNameVisible,
+      },
+    },
+    {
+      navLinkProps: {
+        classAdded: 'NavLink_BackToTopic',
+        to: {
+          pathname: '/',
+          search: queryUrl,
+        },
+        /* onClick: () => navigate(-1), Alternative */
+        isDisabled: false,
+        isDisplaying: !isEditNameVisible,
+      },
+      buttonYrlProps: {
+        classAdded: 'Button_BackToTopic',
+        icon: '',
+        handleEvents,
+        action: {},
+        captureLeft: DICTIONARY.Back_to_topic[language],
+        tooltipText: '',
+        tooltipPosition: 'top',
+        isDisabled: false,
+        isDisplaying: !isEditNameVisible,
       },
     },
     {
@@ -203,10 +232,8 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
         isDisabled:
           !isEditNameVisible &&
           (scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesFalse ||
-            scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesTrue ||
             scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesFalse ||
             scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthTrue_NamesFalse ||
-            scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthFalse_NamesTrue ||
             scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthFalse_NamesFalse),
         isDisplaying: !isEditNameVisible,
       },
@@ -225,7 +252,10 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
         captureLeft: `${DICTIONARY.Add_edit_name[language]}`,
         tooltipText: '',
         tooltipPosition: 'top',
-        isDisabled: false,
+        isDisabled:
+          !isEditNameVisible &&
+          (scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesFalse ||
+            scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthFalse_NamesFalse),
         isDisplaying: !isEditNameVisible,
       },
     },
@@ -270,29 +300,6 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
     },
     {
       navLinkProps: {
-        classAdded: 'NavLink_BackToTopic',
-        to: {
-          pathname: '/',
-          search: queryUrl,
-        },
-        /* onClick: () => navigate(-1), Alternative */
-        isDisabled: false,
-        isDisplaying: !isEditNameVisible,
-      },
-      buttonYrlProps: {
-        classAdded: 'Button_BackToTopic',
-        icon: '',
-        handleEvents,
-        action: {},
-        captureLeft: DICTIONARY.Back_to_topic[language],
-        tooltipText: '',
-        tooltipPosition: 'top',
-        isDisabled: false,
-        isDisplaying: true,
-      },
-    },
-    {
-      navLinkProps: {
         classAdded: 'NavLink_Achievements',
         to: {
           pathname: '/my-documents',
@@ -301,10 +308,8 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
         isDisabled:
           !isEditNameVisible &&
           (scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesFalse ||
-            scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesTrue ||
             scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesFalse ||
             scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthTrue_NamesFalse ||
-            scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthFalse_NamesTrue ||
             scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthFalse_NamesFalse),
         isDisplaying: !isEditNameVisible,
       },
@@ -319,12 +324,10 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
         isDisabled:
           !isEditNameVisible &&
           (scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesFalse ||
-            scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesTrue ||
             scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesFalse ||
             scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthTrue_NamesFalse ||
-            scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthFalse_NamesTrue ||
             scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthFalse_NamesFalse),
-        isDisplaying: true,
+        isDisplaying: !isEditNameVisible,
       },
     },
     {
