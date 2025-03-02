@@ -137,8 +137,6 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     getQuestionScoresPropsOutProps
   )
 
-  console.info('QuestionScores [145]', { componentsListProps })
-
   return <div className='QuestionScores'>{getComponentsList(componentsListProps)}</div>
 }
 

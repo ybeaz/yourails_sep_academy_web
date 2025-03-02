@@ -78,25 +78,6 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
 }: GetQuestionScoresPropsOutParamsType) => {
   const { total, right } = score
 
-  console.info('getQuestionScoresPropsOut [64]', {
-    nameFirst,
-    props: {
-      modules,
-      moduleActive,
-      queryUrl,
-      handleEvents,
-      scenarioCase,
-      isEditNameVisible,
-      language,
-      nameFirst,
-      nameMiddle,
-      nameLast,
-      score,
-      sub,
-      profiles,
-    },
-  })
-
   const getMessagesDictProps: GetMessagesDictPropsType = {
     scenarioCase,
     isEditNameVisible,
@@ -232,6 +213,7 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
           (scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesFalse ||
             scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesFalse ||
             scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthTrue_NamesFalse ||
+            scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthTrue_NamesTrue ||
             scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthFalse_NamesFalse),
         isDisplaying: !isEditNameVisible,
       },

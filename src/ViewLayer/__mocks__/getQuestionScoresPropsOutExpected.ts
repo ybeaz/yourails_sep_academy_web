@@ -1124,15 +1124,37 @@ const successTrue_AuthFalse_NamesFalse_isEditNameVisibleFalse: GetQuestionScores
     },
   ]
 
-/* - */
+/* √ */
 const successFalse_AuthTrue_NamesTrue_isEditNameVisibleFalse: GetQuestionScoresPropsOutResType[] = [
   {
     messageTileProps: {
       classAdded: 'MessageTile_QuestionScores',
-      title: 'Congratulations',
+      title: 'You were committed to success.',
       line1: '"Test module"',
-      line2: 'is completed with 1 correct answeres from 1.',
-      line3: 'Authorise to receive certificate.',
+      line2: 'and this time answered correcly 0  from 1.',
+      line3: 'You can try once again!',
+    },
+  },
+  {
+    buttonYrlProps: {
+      classAdded: 'Button_BackToModule',
+      icon: '',
+      handleEvents,
+      action: {
+        typeEvent: 'SET_MODAL_FRAMES',
+        data: [
+          {
+            childName: 'QuestionScores',
+            isActive: false,
+            childProps: {},
+          },
+        ],
+      },
+      captureLeft: 'Back',
+      tooltipText: '',
+      tooltipPosition: 'top',
+      isDisabled: false,
+      isDisplaying: true,
     },
   },
   {
@@ -1145,7 +1167,7 @@ const successFalse_AuthTrue_NamesTrue_isEditNameVisibleFalse: GetQuestionScoresP
       },
       isExternal: true,
       isDisabled: false,
-      isDisplaying: true,
+      isDisplaying: false,
     },
     buttonYrlProps: {
       classAdded: 'Button_SignInUp',
@@ -1159,7 +1181,7 @@ const successFalse_AuthTrue_NamesTrue_isEditNameVisibleFalse: GetQuestionScoresP
       tooltipText: '',
       tooltipPosition: 'top',
       isDisabled: false,
-      isDisplaying: true,
+      isDisplaying: false,
     },
   },
   {
@@ -1253,7 +1275,7 @@ const successFalse_AuthTrue_NamesTrue_isEditNameVisibleFalse: GetQuestionScoresP
       captureLeft: 'Add/ edit name',
       tooltipText: '',
       tooltipPosition: 'top',
-      isDisabled: true,
+      isDisabled: false,
       isDisplaying: true,
     },
   },
@@ -1309,7 +1331,7 @@ const successFalse_AuthTrue_NamesTrue_isEditNameVisibleFalse: GetQuestionScoresP
           tagsSearch: 'animal testing',
         },
       },
-      isDisabled: true,
+      isDisabled: false,
       isDisplaying: true,
     },
     buttonYrlProps: {
@@ -1320,8 +1342,21 @@ const successFalse_AuthTrue_NamesTrue_isEditNameVisibleFalse: GetQuestionScoresP
       captureLeft: 'Achievements',
       tooltipText: '',
       tooltipPosition: 'top',
-      isDisabled: true,
+      isDisabled: false,
       isDisplaying: true,
+    },
+  },
+]
+
+/* √ */
+const successFalse_AuthTrue_NamesTrue_isEditNameVisibleTrue: GetQuestionScoresPropsOutResType[] = [
+  {
+    messageTileProps: {
+      classAdded: 'MessageTile_QuestionScores',
+      title: 'You were committed to success.',
+      line1: '"Test module"',
+      line2: 'and this time answered correcly 0  from 1.',
+      line3: 'You can try once again!',
     },
   },
   {
@@ -1343,21 +1378,648 @@ const successFalse_AuthTrue_NamesTrue_isEditNameVisibleFalse: GetQuestionScoresP
       tooltipText: '',
       tooltipPosition: 'top',
       isDisabled: false,
+      isDisplaying: false,
+    },
+  },
+  {
+    navLinkProps: {
+      classAdded: 'NavLink_SignInUp',
+      to: {
+        pathname: 'https://yourails-email.auth.us-east-1.amazoncognito.com/login',
+        searchStr:
+          '?client_id=635evv2b44uuluiu6au25djr64&response_type=code&redirect_uri=&scope=email+openid+profile',
+      },
+      isExternal: true,
+      isDisabled: false,
+      isDisplaying: false,
+    },
+    buttonYrlProps: {
+      classAdded: 'Button_SignInUp',
+      icon: '',
+      handleEvents,
+      action: {
+        typeEvent: 'CLICK_ON_SIGN_IN',
+        data: {},
+      },
+      captureLeft: 'Sign in/up',
+      tooltipText: '',
+      tooltipPosition: 'top',
+      isDisabled: false,
+      isDisplaying: false,
+    },
+  },
+  {
+    navLinkProps: {
+      classAdded: 'NavLink_NextTask',
+      to: {
+        pathname: '/m/ZC9oQ3X37KQi/How-do-animals-experience-pain---Robyn-J-Crook',
+        search: {
+          pageModules: '1',
+          pageTags: '1',
+          pageDocuments: '1',
+          modulesSearch: 'animal testing',
+          tagsSearch: 'animal testing',
+        },
+      },
+      isDisabled: false,
+      isDisplaying: false,
+    },
+    buttonYrlProps: {
+      classAdded: 'Button_NextTask',
+      icon: '',
+      handleEvents,
+      action: {
+        typeEvent: 'TEST',
+        data: {},
+      },
+      captureLeft: 'Next task',
+      tooltipText: '',
+      tooltipPosition: 'top',
+      isDisabled: false,
+      isDisplaying: false,
+    },
+  },
+  {
+    navLinkProps: {
+      classAdded: 'NavLink_BackToTopic',
+      to: {
+        pathname: '/',
+        search: {
+          pageModules: '1',
+          pageTags: '1',
+          pageDocuments: '1',
+          modulesSearch: 'animal testing',
+          tagsSearch: 'animal testing',
+        },
+      },
+      isDisabled: false,
+      isDisplaying: false,
+    },
+    buttonYrlProps: {
+      classAdded: 'Button_BackToTopic',
+      icon: '',
+      handleEvents,
+      action: {},
+      captureLeft: 'Back to topic',
+      tooltipText: '',
+      tooltipPosition: 'top',
+      isDisabled: false,
+      isDisplaying: false,
+    },
+  },
+  {
+    buttonYrlProps: {
+      classAdded: 'Button_Credit',
+      icon: '',
+      handleEvents,
+      action: {
+        typeEvent: 'CREATE_DOCUMENT',
+        data: {
+          navigate,
+        },
+      },
+      captureLeft: 'View certificate',
+      tooltipText: '',
+      tooltipPosition: 'top',
+      isDisabled: false,
+      isDisplaying: false,
+    },
+  },
+  {
+    buttonYrlProps: {
+      classAdded: 'Button_IsEditName',
+      icon: '',
+      handleEvents,
+      action: {
+        typeEvent: 'SET_EDIT_NAME_VISIBILITY',
+        data: {
+          isEditNameVisible: true,
+        },
+      },
+      captureLeft: 'Add/ edit name',
+      tooltipText: '',
+      tooltipPosition: 'top',
+      isDisabled: false,
+      isDisplaying: false,
+    },
+  },
+  {
+    formInputNamesWithButtonsProps: {
+      formInputNamesProps: {
+        handleEvents,
+        language: 'en',
+      },
+      buttonCancelEditNameProps: {
+        classAdded: 'Button_CancelEditName',
+        icon: '',
+        handleEvents,
+        action: {
+          typeEvent: 'SET_EDIT_NAME_VISIBILITY',
+          data: {
+            isEditNameVisible: false,
+          },
+        },
+        captureLeft: 'Cancel',
+        tooltipText: 'Cancel',
+        tooltipPosition: 'top',
+        isDisabled: false,
+        isDisplaying: true,
+      },
+      buttonConfirmEditNameProps: {
+        classAdded: 'Button_ConfirmForward',
+        icon: '',
+        handleEvents,
+        action: {
+          typeEvent: 'CLICK_ON_CONFIRM_NAMES',
+          data: {},
+        },
+        captureLeft: 'Confirm',
+        tooltipText: 'Confirm',
+        tooltipPosition: 'top',
+        isDisabled: false,
+        isDisplaying: true,
+      },
       isDisplaying: true,
+    },
+  },
+  {
+    navLinkProps: {
+      classAdded: 'NavLink_Achievements',
+      to: {
+        pathname: '/my-documents',
+        search: {
+          pageModules: '1',
+          pageTags: '1',
+          pageDocuments: '1',
+          modulesSearch: 'animal testing',
+          tagsSearch: 'animal testing',
+        },
+      },
+      isDisabled: false,
+      isDisplaying: false,
+    },
+    buttonYrlProps: {
+      classAdded: 'Button_Achievements',
+      icon: '',
+      handleEvents,
+      action: {},
+      captureLeft: 'Achievements',
+      tooltipText: '',
+      tooltipPosition: 'top',
+      isDisabled: false,
+      isDisplaying: false,
     },
   },
 ]
 
-/*  */
-const successFalse_AuthTrue_NamesTrue_isEditNameVisibleTrue: GetQuestionScoresPropsOutResType[] = []
-
-/*  */
+/* √ */
 const successFalse_AuthTrue_NamesFalse_isEditNameVisibleFalse: GetQuestionScoresPropsOutResType[] =
-  []
+  [
+    {
+      messageTileProps: {
+        classAdded: 'MessageTile_QuestionScores',
+        title: 'You were committed to success.',
+        line1: '"Test module"',
+        line2: 'and this time answered correcly 0  from 1.',
+        line3: 'You can try once again!',
+      },
+    },
+    {
+      buttonYrlProps: {
+        classAdded: 'Button_BackToModule',
+        icon: '',
+        handleEvents,
+        action: {
+          typeEvent: 'SET_MODAL_FRAMES',
+          data: [
+            {
+              childName: 'QuestionScores',
+              isActive: false,
+              childProps: {},
+            },
+          ],
+        },
+        captureLeft: 'Back',
+        tooltipText: '',
+        tooltipPosition: 'top',
+        isDisabled: false,
+        isDisplaying: true,
+      },
+    },
+    {
+      navLinkProps: {
+        classAdded: 'NavLink_SignInUp',
+        to: {
+          pathname: 'https://yourails-email.auth.us-east-1.amazoncognito.com/login',
+          searchStr:
+            '?client_id=635evv2b44uuluiu6au25djr64&response_type=code&redirect_uri=&scope=email+openid+profile',
+        },
+        isExternal: true,
+        isDisabled: false,
+        isDisplaying: false,
+      },
+      buttonYrlProps: {
+        classAdded: 'Button_SignInUp',
+        icon: '',
+        handleEvents,
+        action: {
+          typeEvent: 'CLICK_ON_SIGN_IN',
+          data: {},
+        },
+        captureLeft: 'Sign in/up',
+        tooltipText: '',
+        tooltipPosition: 'top',
+        isDisabled: false,
+        isDisplaying: false,
+      },
+    },
+    {
+      navLinkProps: {
+        classAdded: 'NavLink_NextTask',
+        to: {
+          pathname: '/m/ZC9oQ3X37KQi/How-do-animals-experience-pain---Robyn-J-Crook',
+          search: {
+            pageModules: '1',
+            pageTags: '1',
+            pageDocuments: '1',
+            modulesSearch: 'animal testing',
+            tagsSearch: 'animal testing',
+          },
+        },
+        isDisabled: false,
+        isDisplaying: true,
+      },
+      buttonYrlProps: {
+        classAdded: 'Button_NextTask',
+        icon: '',
+        handleEvents,
+        action: {
+          typeEvent: 'TEST',
+          data: {},
+        },
+        captureLeft: 'Next task',
+        tooltipText: '',
+        tooltipPosition: 'top',
+        isDisabled: false,
+        isDisplaying: true,
+      },
+    },
+    {
+      navLinkProps: {
+        classAdded: 'NavLink_BackToTopic',
+        to: {
+          pathname: '/',
+          search: {
+            pageModules: '1',
+            pageTags: '1',
+            pageDocuments: '1',
+            modulesSearch: 'animal testing',
+            tagsSearch: 'animal testing',
+          },
+        },
+        isDisabled: false,
+        isDisplaying: true,
+      },
+      buttonYrlProps: {
+        classAdded: 'Button_BackToTopic',
+        icon: '',
+        handleEvents,
+        action: {},
+        captureLeft: 'Back to topic',
+        tooltipText: '',
+        tooltipPosition: 'top',
+        isDisabled: false,
+        isDisplaying: true,
+      },
+    },
+    {
+      buttonYrlProps: {
+        classAdded: 'Button_Credit',
+        icon: '',
+        handleEvents,
+        action: {
+          typeEvent: 'CREATE_DOCUMENT',
+          data: {
+            navigate,
+          },
+        },
+        captureLeft: 'View certificate',
+        tooltipText: '',
+        tooltipPosition: 'top',
+        isDisabled: true,
+        isDisplaying: true,
+      },
+    },
+    {
+      buttonYrlProps: {
+        classAdded: 'Button_IsEditName',
+        icon: '',
+        handleEvents,
+        action: {
+          typeEvent: 'SET_EDIT_NAME_VISIBILITY',
+          data: {
+            isEditNameVisible: true,
+          },
+        },
+        captureLeft: 'Add/ edit name',
+        tooltipText: '',
+        tooltipPosition: 'top',
+        isDisabled: false,
+        isDisplaying: true,
+      },
+    },
+    {
+      formInputNamesWithButtonsProps: {
+        formInputNamesProps: {
+          handleEvents,
+          language: 'en',
+        },
+        buttonCancelEditNameProps: {
+          classAdded: 'Button_CancelEditName',
+          icon: '',
+          handleEvents,
+          action: {
+            typeEvent: 'SET_EDIT_NAME_VISIBILITY',
+            data: {
+              isEditNameVisible: false,
+            },
+          },
+          captureLeft: 'Cancel',
+          tooltipText: 'Cancel',
+          tooltipPosition: 'top',
+          isDisabled: false,
+          isDisplaying: true,
+        },
+        buttonConfirmEditNameProps: {
+          classAdded: 'Button_ConfirmForward',
+          icon: '',
+          handleEvents,
+          action: {
+            typeEvent: 'CLICK_ON_CONFIRM_NAMES',
+            data: {},
+          },
+          captureLeft: 'Confirm',
+          tooltipText: 'Confirm',
+          tooltipPosition: 'top',
+          isDisabled: false,
+          isDisplaying: true,
+        },
+        isDisplaying: false,
+      },
+    },
+    {
+      navLinkProps: {
+        classAdded: 'NavLink_Achievements',
+        to: {
+          pathname: '/my-documents',
+          search: {
+            pageModules: '1',
+            pageTags: '1',
+            pageDocuments: '1',
+            modulesSearch: 'animal testing',
+            tagsSearch: 'animal testing',
+          },
+        },
+        isDisabled: true,
+        isDisplaying: true,
+      },
+      buttonYrlProps: {
+        classAdded: 'Button_Achievements',
+        icon: '',
+        handleEvents,
+        action: {},
+        captureLeft: 'Achievements',
+        tooltipText: '',
+        tooltipPosition: 'top',
+        isDisabled: true,
+        isDisplaying: true,
+      },
+    },
+  ]
 
-/*  */
-const successFalse_AuthTrue_NamesFalse_isEditNameVisibleTrue: GetQuestionScoresPropsOutResType[] =
-  []
+/* √ */
+const successFalse_AuthTrue_NamesFalse_isEditNameVisibleTrue: GetQuestionScoresPropsOutResType[] = [
+  {
+    messageTileProps: {
+      classAdded: 'MessageTile_QuestionScores',
+      title: 'You were committed to success.',
+      line1: '"Test module"',
+      line2: 'and this time answered correcly 0  from 1.',
+      line3: 'You can try once again!',
+    },
+  },
+  {
+    buttonYrlProps: {
+      classAdded: 'Button_BackToModule',
+      icon: '',
+      handleEvents,
+      action: {
+        typeEvent: 'SET_MODAL_FRAMES',
+        data: [
+          {
+            childName: 'QuestionScores',
+            isActive: false,
+            childProps: {},
+          },
+        ],
+      },
+      captureLeft: 'Back',
+      tooltipText: '',
+      tooltipPosition: 'top',
+      isDisabled: false,
+      isDisplaying: false,
+    },
+  },
+  {
+    navLinkProps: {
+      classAdded: 'NavLink_SignInUp',
+      to: {
+        pathname: 'https://yourails-email.auth.us-east-1.amazoncognito.com/login',
+        searchStr:
+          '?client_id=635evv2b44uuluiu6au25djr64&response_type=code&redirect_uri=&scope=email+openid+profile',
+      },
+      isExternal: true,
+      isDisabled: false,
+      isDisplaying: false,
+    },
+    buttonYrlProps: {
+      classAdded: 'Button_SignInUp',
+      icon: '',
+      handleEvents,
+      action: {
+        typeEvent: 'CLICK_ON_SIGN_IN',
+        data: {},
+      },
+      captureLeft: 'Sign in/up',
+      tooltipText: '',
+      tooltipPosition: 'top',
+      isDisabled: false,
+      isDisplaying: false,
+    },
+  },
+  {
+    navLinkProps: {
+      classAdded: 'NavLink_NextTask',
+      to: {
+        pathname: '/m/ZC9oQ3X37KQi/How-do-animals-experience-pain---Robyn-J-Crook',
+        search: {
+          pageModules: '1',
+          pageTags: '1',
+          pageDocuments: '1',
+          modulesSearch: 'animal testing',
+          tagsSearch: 'animal testing',
+        },
+      },
+      isDisabled: false,
+      isDisplaying: false,
+    },
+    buttonYrlProps: {
+      classAdded: 'Button_NextTask',
+      icon: '',
+      handleEvents,
+      action: {
+        typeEvent: 'TEST',
+        data: {},
+      },
+      captureLeft: 'Next task',
+      tooltipText: '',
+      tooltipPosition: 'top',
+      isDisabled: false,
+      isDisplaying: false,
+    },
+  },
+  {
+    navLinkProps: {
+      classAdded: 'NavLink_BackToTopic',
+      to: {
+        pathname: '/',
+        search: {
+          pageModules: '1',
+          pageTags: '1',
+          pageDocuments: '1',
+          modulesSearch: 'animal testing',
+          tagsSearch: 'animal testing',
+        },
+      },
+      isDisabled: false,
+      isDisplaying: false,
+    },
+    buttonYrlProps: {
+      classAdded: 'Button_BackToTopic',
+      icon: '',
+      handleEvents,
+      action: {},
+      captureLeft: 'Back to topic',
+      tooltipText: '',
+      tooltipPosition: 'top',
+      isDisabled: false,
+      isDisplaying: false,
+    },
+  },
+  {
+    buttonYrlProps: {
+      classAdded: 'Button_Credit',
+      icon: '',
+      handleEvents,
+      action: {
+        typeEvent: 'CREATE_DOCUMENT',
+        data: {
+          navigate,
+        },
+      },
+      captureLeft: 'View certificate',
+      tooltipText: '',
+      tooltipPosition: 'top',
+      isDisabled: false,
+      isDisplaying: false,
+    },
+  },
+  {
+    buttonYrlProps: {
+      classAdded: 'Button_IsEditName',
+      icon: '',
+      handleEvents,
+      action: {
+        typeEvent: 'SET_EDIT_NAME_VISIBILITY',
+        data: {
+          isEditNameVisible: true,
+        },
+      },
+      captureLeft: 'Add/ edit name',
+      tooltipText: '',
+      tooltipPosition: 'top',
+      isDisabled: false,
+      isDisplaying: false,
+    },
+  },
+  {
+    formInputNamesWithButtonsProps: {
+      formInputNamesProps: {
+        handleEvents,
+        language: 'en',
+      },
+      buttonCancelEditNameProps: {
+        classAdded: 'Button_CancelEditName',
+        icon: '',
+        handleEvents,
+        action: {
+          typeEvent: 'SET_EDIT_NAME_VISIBILITY',
+          data: {
+            isEditNameVisible: false,
+          },
+        },
+        captureLeft: 'Cancel',
+        tooltipText: 'Cancel',
+        tooltipPosition: 'top',
+        isDisabled: false,
+        isDisplaying: true,
+      },
+      buttonConfirmEditNameProps: {
+        classAdded: 'Button_ConfirmForward',
+        icon: '',
+        handleEvents,
+        action: {
+          typeEvent: 'CLICK_ON_CONFIRM_NAMES',
+          data: {},
+        },
+        captureLeft: 'Confirm',
+        tooltipText: 'Confirm',
+        tooltipPosition: 'top',
+        isDisabled: false,
+        isDisplaying: true,
+      },
+      isDisplaying: true,
+    },
+  },
+  {
+    navLinkProps: {
+      classAdded: 'NavLink_Achievements',
+      to: {
+        pathname: '/my-documents',
+        search: {
+          pageModules: '1',
+          pageTags: '1',
+          pageDocuments: '1',
+          modulesSearch: 'animal testing',
+          tagsSearch: 'animal testing',
+        },
+      },
+      isDisabled: false,
+      isDisplaying: false,
+    },
+    buttonYrlProps: {
+      classAdded: 'Button_Achievements',
+      icon: '',
+      handleEvents,
+      action: {},
+      captureLeft: 'Achievements',
+      tooltipText: '',
+      tooltipPosition: 'top',
+      isDisabled: false,
+      isDisplaying: false,
+    },
+  },
+]
 
 /*  */
 const successFalse_AuthFalse_NamesFalse_isEditNameVisibleFalse: GetQuestionScoresPropsOutResType[] =
