@@ -111,23 +111,17 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
     profiles,
   }
 
-  const MESSAGES_DICT = {
-    successTrue_AuthTrue_NamesTrue: 'successTrue_AuthTrue_NamesTrue',
-    successTrue_AuthTrue_NamesFalse: 'successTrue_AuthTrue_NamesFalse',
-    successTrue_AuthFalse_NamesFalse: 'successTrue_AuthFalse_NamesFalse',
-    successFalse_AuthTrue_NamesTrue: 'successFalse_AuthTrue_NamesTrue',
-    successFalse_AuthTrue_NamesFalse: 'successFalse_AuthTrue_NamesFalse',
-    successFalse_AuthFalse_NamesFalse: 'successFalse_AuthFalse_NamesFalse',
-  }
-
-  // I STOPPED HERE: REMOVE getMessagesDict, SIMPLIFY CODE
   const scenario: GetMessagesDictResType = getMessagesDict(getMessagesDictProps)
 
+  const pathNextTask = getMapJourneyData({ modules }).find(
+    ({ isNextModule }: { isNextModule: boolean }) => isNextModule
+  )?.pathnameModule
+
   /*
-  successTrue_AuthTrue_NamesTrue = 'successTrue_AuthTrue_NamesTrue',
-  successTrue_AuthTrue_NamesFalse = 'successTrue_AuthTrue_NamesFalse',
+  successTrue_AuthTrue_NamesTrue = 'successTrue_AuthTrue_NamesTrue', √
+  successTrue_AuthTrue_NamesFalse = 'successTrue_AuthTrue_NamesFalse', √
                                     successTrue_AuthFalse_NamesTrue = 'successTrue_AuthFalse_NamesTrue', -
-  successTrue_AuthFalse_NamesFalse = 'successTrue_AuthFalse_NamesFalse',
+  successTrue_AuthFalse_NamesFalse = 'successTrue_AuthFalse_NamesFalse', √
   successFalse_AuthTrue_NamesTrue = 'successFalse_AuthTrue_NamesTrue', 
   successFalse_AuthTrue_NamesFalse = 'successFalse_AuthTrue_NamesFalse',
                                     successFalse_AuthFalse_NamesTrue = 'successFalse_AuthFalse_NamesTrue', -
@@ -169,9 +163,7 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
       navLinkProps: {
         classAdded: 'NavLink_NextTask',
         to: {
-          pathname: getMapJourneyData({ modules }).find(
-            ({ isNextModule }: { isNextModule: boolean }) => isNextModule
-          )?.pathnameModule,
+          pathname: pathNextTask,
           search: queryUrl,
         },
         isDisabled: false,
@@ -226,7 +218,7 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
             navigate,
           },
         },
-        captureLeft: DICTIONARY.View_reward[language],
+        captureLeft: DICTIONARY.View_certificate[language],
         tooltipText: '',
         tooltipPosition: 'top',
         isDisabled:

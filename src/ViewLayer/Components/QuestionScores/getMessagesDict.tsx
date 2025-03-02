@@ -94,7 +94,9 @@ export const getMessagesDict: GetMessagesDictType = (props: GetMessagesDictProps
       title: Congratulations,
       line1: `"${capture}"`,
       line2: `${isCompletedWith} ${right} ${correctAnsweresFrom} ${total}.`,
-      line3: `${DICTIONARY.Keep_going[language]}!`,
+      line3: isEditNameVisible
+        ? `${DICTIONARY.Add_edit_name[language]}.`
+        : `${DICTIONARY.Keep_going[language]}!`,
     },
   }
 
@@ -111,7 +113,7 @@ export const getMessagesDict: GetMessagesDictType = (props: GetMessagesDictProps
     message: {
       title: Congratulations,
       line1: `"${capture}"`,
-      line2: `${isCompletedWith} ${right} ${correctAnsweresFrom} ${total}`,
+      line2: `${isCompletedWith} ${right} ${correctAnsweresFrom} ${total}.`,
       line3: `${AuthoriseToReceiveCertificate}.`,
     },
   }
@@ -120,7 +122,7 @@ export const getMessagesDict: GetMessagesDictType = (props: GetMessagesDictProps
     message: {
       title: YouWereCommittedToSuccess,
       line1: `"${capture}"`,
-      line2: `${andThisTimeAnswered} ${right} ${question} ${from} ${total}`,
+      line2: `${andThisTimeAnswered} ${right} ${question} ${from} ${total}.`,
       line3: `${YouCanTryOnceAgain}!`,
     },
   }
