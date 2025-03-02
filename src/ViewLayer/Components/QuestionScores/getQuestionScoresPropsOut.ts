@@ -17,6 +17,7 @@ import {
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { GetAnswersChecked2OutType } from 'yourails_common'
 import { QuestionsScoresCaseEnumType } from 'yourails_common'
+import { getClonedDeep } from 'yourails_common'
 import { GetNavLinksButtonsItemParamType } from '../../Hooks/getComponentsList'
 
 type GetQuestionScoresPropsOutParamsType = {
@@ -129,7 +130,12 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
   */
 
   const propsOut: GetNavLinksButtonsItemParamType[] = [
-    { messageTileProps: scenario.message },
+    {
+      messageTileProps: {
+        classAdded: 'MessageTile_QuestionScores',
+        ...scenario.message,
+      },
+    },
     {
       navLinkProps: {
         classAdded: 'NavLink_SignInUp',
@@ -346,7 +352,31 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
     },
   ]
 
-  return propsOut
+  let propsOutNext = getClonedDeep(propsOut)
+  if (
+    scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthTrue_NamesTrue ||
+    scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthTrue_NamesFalse ||
+    scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthFalse_NamesFalse
+  ) {
+    const messageTileQuestionScores = propsOutNext.filter(
+      (prop: GetNavLinksButtonsItemParamType) =>
+        prop?.messageTileProps?.classAdded === 'MessageTile_QuestionScores'
+    )
+    const buttonBackToModule = propsOutNext.filter(
+      (prop: GetNavLinksButtonsItemParamType) =>
+        prop?.buttonYrlProps?.classAdded === 'Button_BackToModule'
+    )
+
+    propsOutNext = propsOutNext.filter(
+      (prop: GetNavLinksButtonsItemParamType) =>
+        prop?.messageTileProps?.classAdded !== 'MessageTile_QuestionScores' &&
+        prop?.buttonYrlProps?.classAdded !== 'Button_BackToModule'
+    )
+
+    propsOutNext = [...messageTileQuestionScores, ...buttonBackToModule, ...propsOutNext]
+  }
+
+  return propsOutNext
 }
 
 const getQuestionScoresPropsOut = withTryCatchFinallyWrapper(getQuestionScoresPropsOutUnsafe, {

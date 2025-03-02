@@ -1,5 +1,3 @@
-import { getClonedDeep } from 'yourails_common'
-
 import { GetQuestionScoresPropsOutResType } from '../Components/QuestionScores/getQuestionScoresPropsOut'
 
 export const handleEvents = () => {}
@@ -9,6 +7,7 @@ export const navigate = () => {}
 const successTrue_AuthTrue_NamesTrue_isEditNameVisibleFalse: GetQuestionScoresPropsOutResType[] = [
   {
     messageTileProps: {
+      classAdded: 'MessageTile_QuestionScores',
       title: 'Congratulations',
       line1: '"Test module"',
       line2: 'is completed with 1 correct answeres from 1.',
@@ -232,6 +231,7 @@ const successTrue_AuthTrue_NamesTrue_isEditNameVisibleFalse: GetQuestionScoresPr
 const successTrue_AuthTrue_NamesTrue_isEditNameVisibleTrue: GetQuestionScoresPropsOutResType[] = [
   {
     messageTileProps: {
+      classAdded: 'MessageTile_QuestionScores',
       title: 'Congratulations',
       line1: '"Test module"',
       line2: 'is completed with 1 correct answeres from 1.',
@@ -455,6 +455,7 @@ const successTrue_AuthTrue_NamesTrue_isEditNameVisibleTrue: GetQuestionScoresPro
 const successTrue_AuthTrue_NamesFalse_isEditNameVisibleFalse: GetQuestionScoresPropsOutResType[] = [
   {
     messageTileProps: {
+      classAdded: 'MessageTile_QuestionScores',
       title: 'Congratulations',
       line1: '"Test module"',
       line2: 'is completed with 1 correct answeres from 1.',
@@ -678,6 +679,7 @@ const successTrue_AuthTrue_NamesFalse_isEditNameVisibleFalse: GetQuestionScoresP
 const successTrue_AuthTrue_NamesFalse_isEditNameVisibleTrue: GetQuestionScoresPropsOutResType[] = [
   {
     messageTileProps: {
+      classAdded: 'MessageTile_QuestionScores',
       title: 'Congratulations',
       line1: '"Test module"',
       line2: 'is completed with 1 correct answeres from 1.',
@@ -902,6 +904,7 @@ const successTrue_AuthFalse_NamesFalse_isEditNameVisibleFalse: GetQuestionScores
   [
     {
       messageTileProps: {
+        classAdded: 'MessageTile_QuestionScores',
         title: 'Congratulations',
         line1: '"Test module"',
         line2: 'is completed with 1 correct answeres from 1.',
@@ -1121,9 +1124,11 @@ const successTrue_AuthFalse_NamesFalse_isEditNameVisibleFalse: GetQuestionScores
     },
   ]
 
+/* - */
 const successFalse_AuthTrue_NamesTrue_isEditNameVisibleFalse: GetQuestionScoresPropsOutResType[] = [
   {
     messageTileProps: {
+      classAdded: 'MessageTile_QuestionScores',
       title: 'Congratulations',
       line1: '"Test module"',
       line2: 'is completed with 1 correct answeres from 1.',
@@ -1343,17 +1348,22 @@ const successFalse_AuthTrue_NamesTrue_isEditNameVisibleFalse: GetQuestionScoresP
   },
 ]
 
+/*  */
 const successFalse_AuthTrue_NamesTrue_isEditNameVisibleTrue: GetQuestionScoresPropsOutResType[] = []
 
+/*  */
 const successFalse_AuthTrue_NamesFalse_isEditNameVisibleFalse: GetQuestionScoresPropsOutResType[] =
   []
 
+/*  */
 const successFalse_AuthTrue_NamesFalse_isEditNameVisibleTrue: GetQuestionScoresPropsOutResType[] =
   []
 
+/*  */
 const successFalse_AuthFalse_NamesFalse_isEditNameVisibleFalse: GetQuestionScoresPropsOutResType[] =
   []
 
+/*  */
 const successFalse_AuthFalse_NamesFalse_isEditNameVisibleTrue: GetQuestionScoresPropsOutResType[] =
   []
 
