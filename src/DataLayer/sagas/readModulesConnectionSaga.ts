@@ -119,14 +119,6 @@ export function* readModulesConnectionGenerator(params: ActionReduxType | any): 
     .exec(getSortedArrayEntityTags).result
 
   let modulesNext2 = modulesNext
-  console.info('readModulesConnectionSaga [122]', {
-    isAddingModules,
-    moduleID,
-    arrObjs: modulesNext,
-    objIn: modules[0],
-    propName: 'moduleID',
-    propsValsToKeepOfArrObjs: ['isCompleted'],
-  })
 
   if (isAddingModules && moduleID) {
     const getReplacedArrObjsByPropNameValParams: GetReplacedArrObjsByPropNameValParamsType<any> = {

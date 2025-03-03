@@ -138,13 +138,7 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
         handleEvents,
         action: {
           typeEvent: 'SET_MODAL_FRAMES',
-          data: [
-            {
-              childName: 'QuestionScores',
-              isActive: false,
-              childProps: {},
-            },
-          ],
+          data: [],
         },
         captureLeft: DICTIONARY.Next_task[language],
         tooltipText: '',
@@ -170,13 +164,7 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
         handleEvents,
         action: {
           typeEvent: 'SET_MODAL_FRAMES',
-          data: [
-            {
-              childName: 'QuestionScores',
-              isActive: false,
-              childProps: {},
-            },
-          ],
+          data: [],
         },
         captureLeft: DICTIONARY.Back_to_topic[language],
         tooltipText: '',
@@ -308,13 +296,7 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
         handleEvents,
         action: {
           typeEvent: 'SET_MODAL_FRAMES',
-          data: [
-            {
-              childName: 'QuestionScores',
-              isActive: false,
-              childProps: {},
-            },
-          ],
+          data: [],
         },
         captureLeft: DICTIONARY.Back[language],
         tooltipText: '',
