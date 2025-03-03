@@ -134,7 +134,10 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
         handleEvents,
         action: {
           typeEvent: 'CLICK_ON_SIGN_IN',
-          data: {},
+          data: {
+            typeEvent: 'SET_MODAL_FRAMES',
+            data: [],
+          },
         },
         captureLeft: DICTIONARY.Sign_in_up[language],
         tooltipText: '',
@@ -161,8 +164,14 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
         icon: '',
         handleEvents,
         action: {
-          typeEvent: 'TEST',
-          data: {},
+          typeEvent: 'SET_MODAL_FRAMES',
+          data: [
+            {
+              childName: 'QuestionScores',
+              isActive: false,
+              childProps: {},
+            },
+          ],
         },
         captureLeft: DICTIONARY.Next_task[language],
         tooltipText: '',
@@ -186,7 +195,16 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
         classAdded: 'Button_BackToTopic',
         icon: '',
         handleEvents,
-        action: {},
+        action: {
+          typeEvent: 'SET_MODAL_FRAMES',
+          data: [
+            {
+              childName: 'QuestionScores',
+              isActive: false,
+              childProps: {},
+            },
+          ],
+        },
         captureLeft: DICTIONARY.Back_to_topic[language],
         tooltipText: '',
         tooltipPosition: 'top',
