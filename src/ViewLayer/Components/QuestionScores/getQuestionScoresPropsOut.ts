@@ -84,13 +84,7 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
     language,
     right,
     total,
-    nameFirst,
-    nameMiddle,
-    nameLast,
     moduleActive,
-    sub,
-    handleEvents,
-    profiles,
   }
 
   const scenario: GetMessagesDictResType = getMessagesDict(getMessagesDictProps)
@@ -98,17 +92,6 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
   const pathNextTask = getMapJourneyData({ modules }).find(
     ({ isNextModule }: { isNextModule: boolean }) => isNextModule
   )?.pathnameModule
-
-  /*
-  successTrue_AuthTrue_NamesTrue = 'successTrue_AuthTrue_NamesTrue', √
-  successTrue_AuthTrue_NamesFalse = 'successTrue_AuthTrue_NamesFalse', √
-                                    successTrue_AuthFalse_NamesTrue = 'successTrue_AuthFalse_NamesTrue', -
-  successTrue_AuthFalse_NamesFalse = 'successTrue_AuthFalse_NamesFalse', √
-  successFalse_AuthTrue_NamesTrue = 'successFalse_AuthTrue_NamesTrue', 
-  successFalse_AuthTrue_NamesFalse = 'successFalse_AuthTrue_NamesFalse',
-                                    successFalse_AuthFalse_NamesTrue = 'successFalse_AuthFalse_NamesTrue', -
-  successFalse_AuthFalse_NamesFalse = 'successFalse_AuthFalse_NamesFalse',
-  */
 
   const propsOut: GetNavLinksButtonsItemParamType[] = [
     {

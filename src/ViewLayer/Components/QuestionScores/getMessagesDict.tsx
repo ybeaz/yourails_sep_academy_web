@@ -13,14 +13,8 @@ export type GetMessagesDictPropsType = {
   language: RootStoreType['language']
   right: number
   total: number
-  nameFirst: RootStoreType['forms']['user']['nameFirst']
-  nameMiddle: RootStoreType['forms']['user']['nameMiddle']
-  nameLast: RootStoreType['forms']['user']['nameLast']
   moduleActive: ModuleType
-  sub: RootStoreType['authAwsCognitoUserData']['sub']
-  handleEvents: HandleEventType
   isEditNameVisible: RootStoreType['componentsState']['isEditNameVisible']
-  profiles: RootStoreType['profiles']
 }
 
 export type GetMessagesDictResType = {
@@ -42,52 +36,21 @@ interface GetMessagesDictType {
  * @import import { getMessagesDict } from './getMessagesDict'
  */
 export const getMessagesDict: GetMessagesDictType = (props: GetMessagesDictPropsType) => {
-  const {
-    scenarioCase,
-    language,
-    right,
-    total,
-    nameFirst,
-    nameMiddle,
-    nameLast,
-    moduleActive,
-    sub,
-    handleEvents,
-    isEditNameVisible,
-    profiles = [],
-  } = props
+  const { scenarioCase, language, right, total, moduleActive, isEditNameVisible } = props
 
   const { capture } = moduleActive
 
   const question = getQuesionString(language, right)
 
   const AuthoriseToReceiveCertificate = DICTIONARY.Authorise_to_receive_certificate[language]
-  const ToReceiveCertificateFillTheForm = DICTIONARY.ToReceiveCertificateFillTheForm[language]
-  const ToReceiveCertificateLogIn = DICTIONARY.ToReceiveCertificateLogIn[language]
   const correctAnsweresFrom = DICTIONARY.correctAnsweresFrom[language]
   const isCompletedWith = DICTIONARY.is_completed_with[language]
   const Congratulations = DICTIONARY.Congratulations[language]
 
   const YouCanTryOnceAgain = DICTIONARY.YouCanTryOnceAgain[language]
-  const andReceiveTheCertificate = DICTIONARY.andReceiveTheCertificate[language]
-  const ThisIsNotEnough = DICTIONARY.ThisIsNotEnough[language]
   const from = DICTIONARY.from[language]
   const andThisTimeAnswered = DICTIONARY.andThisTimeAnswered[language]
   const YouWereCommittedToSuccess = DICTIONARY.YouWereCommittedToSuccess[language]
-
-  const getProfileActiveToUpdateProps = {
-    forms: {
-      profileActive: {
-        nameFirst,
-        nameMiddle,
-        nameLast,
-      },
-    },
-    authAwsCognitoUserData: { sub },
-    profiles,
-  }
-
-  // console.info('getMessagesDict [82]', getProfileActiveToUpdateProps)
 
   const successTrue_AuthTrue_NamesTrue = {
     message: {
