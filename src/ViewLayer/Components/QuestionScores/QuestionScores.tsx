@@ -52,7 +52,7 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     handleEvents,
   } = props
 
-  // const nameFirst = ''
+  console.info('QuestionScores [55]', { modules, moduleIDActive })
 
   const isFirstRender = useIsFirstRenderYrl()
   const navigate = useNavigate()
@@ -123,12 +123,7 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     scenarioCase,
     isEditNameVisible,
     language,
-    nameFirst,
-    nameMiddle,
-    nameLast,
     score,
-    sub,
-    profiles,
     handleEvents,
     navigate,
   }

@@ -29,12 +29,7 @@ type GetQuestionScoresPropsOutParamsType = {
   scenarioCase: QuestionsScoresCaseEnumType
   isEditNameVisible: boolean
   language: RootStoreType['language']
-  nameFirst: RootStoreType['forms']['user']['nameFirst']
-  nameMiddle: RootStoreType['forms']['user']['nameMiddle']
-  nameLast: RootStoreType['forms']['user']['nameLast']
   score: GetAnswersChecked2OutType
-  sub: RootStoreType['authAwsCognitoUserData']['sub']
-  profiles: RootStoreType['profiles']
 }
 
 type GetQuestionScoresPropsOutOptionsType = { funcParent?: string }
@@ -69,12 +64,7 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
   scenarioCase,
   isEditNameVisible,
   language,
-  nameFirst,
-  nameMiddle,
-  nameLast,
   score,
-  sub,
-  profiles,
 }: GetQuestionScoresPropsOutParamsType) => {
   const { total, right } = score
 

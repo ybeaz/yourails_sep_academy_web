@@ -105,8 +105,9 @@ function* getModuleGenerator(params: ActionReduxType | any): Iterable<any> {
   }
 
   const queryUrl = getParsedUrlQueryBrowserApi()
+  console.info('getModuleSaga [108]', { queryUrl, modules })
 
-  if (JSON.stringify(queryUrl) !== '{}' && !modules.length) {
+  if (JSON.stringify(queryUrl) !== '{}') {
     yield call(waitForStoreDataSaga, { path: 'authAwsCognitoUserData.sub', interval: 50 })
     yield call(readModulesConnection, {
       data: { isAddingModules: true, moduleID },
