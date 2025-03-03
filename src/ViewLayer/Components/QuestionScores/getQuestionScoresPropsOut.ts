@@ -8,7 +8,7 @@ import { getNavLinkSIngInUpToProp } from 'yourails_common'
 import { ModuleType } from 'yourails_common'
 import { HandleEventType } from 'yourails_common'
 import { DICTIONARY } from 'yourails_common'
-import { getMapJourneyData } from 'yourails_common'
+import { getPathNextTask } from 'yourails_common'
 import {
   type GetMessagesDictPropsType,
   type GetMessagesDictResType,
@@ -56,7 +56,7 @@ const resDefault: GetQuestionScoresPropsOutResType[] = []
  */
 
 const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
-  modules,
+  modules: modulesIn,
   moduleActive,
   queryUrl,
   handleEvents,
@@ -68,6 +68,8 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
 }: GetQuestionScoresPropsOutParamsType) => {
   const { total, right } = score
 
+  const pathNextTask = getPathNextTask({ modules: modulesIn })
+
   const getMessagesDictProps: GetMessagesDictPropsType = {
     scenarioCase,
     isEditNameVisible,
@@ -75,13 +77,10 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
     right,
     total,
     moduleActive,
+    pathNextTask,
   }
 
   const scenario: GetMessagesDictResType = getMessagesDict(getMessagesDictProps)
-
-  const pathNextTask = getMapJourneyData({ modules }).find(
-    ({ isNextModule }: { isNextModule: boolean }) => isNextModule
-  )?.pathnameModule
 
   const propsOut: GetNavLinksButtonsItemParamType[] = [
     {
@@ -130,7 +129,7 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
           search: queryUrl,
         },
         isDisabled: false,
-        isDisplaying: !isEditNameVisible,
+        isDisplaying: !!pathNextTask && !isEditNameVisible,
       },
       buttonYrlProps: {
         classAdded: 'Button_NextTask',
@@ -144,7 +143,7 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
         tooltipText: '',
         tooltipPosition: 'top',
         isDisabled: false,
-        isDisplaying: !isEditNameVisible,
+        isDisplaying: !!pathNextTask && !isEditNameVisible,
       },
     },
     {
@@ -152,7 +151,7 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
         classAdded: 'NavLink_BackToTopic',
         to: {
           pathname: '/',
-          search: queryUrl,
+          search: !!pathNextTask ? queryUrl : { pageModules: 1, pageTags: 1, pageDocuments: 1 },
         },
         /* onClick: () => navigate(-1), Alternative */
         isDisabled: false,
@@ -166,7 +165,9 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
           typeEvent: 'SET_MODAL_FRAMES',
           data: [],
         },
-        captureLeft: DICTIONARY.Back_to_topic[language],
+        captureLeft: !!pathNextTask
+          ? DICTIONARY.Back_to_mission[language]
+          : DICTIONARY.Back_to_choice[language],
         tooltipText: '',
         tooltipPosition: 'top',
         isDisabled: false,

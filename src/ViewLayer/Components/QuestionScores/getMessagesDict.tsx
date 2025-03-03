@@ -15,6 +15,7 @@ export type GetMessagesDictPropsType = {
   total: number
   moduleActive: ModuleType
   isEditNameVisible: RootStoreType['componentsState']['isEditNameVisible']
+  pathNextTask: string | undefined
 }
 
 export type GetMessagesDictResType = {
@@ -36,7 +37,8 @@ interface GetMessagesDictType {
  * @import import { getMessagesDict } from './getMessagesDict'
  */
 export const getMessagesDict: GetMessagesDictType = (props: GetMessagesDictPropsType) => {
-  const { scenarioCase, language, right, total, moduleActive, isEditNameVisible } = props
+  const { scenarioCase, language, right, total, moduleActive, isEditNameVisible, pathNextTask } =
+    props
 
   const { capture } = moduleActive
 
@@ -59,7 +61,9 @@ export const getMessagesDict: GetMessagesDictType = (props: GetMessagesDictProps
       line2: `${isCompletedWith} ${right} ${correctAnsweresFrom} ${total}.`,
       line3: isEditNameVisible
         ? `${DICTIONARY.Add_edit_name[language]}.`
-        : `${DICTIONARY.Keep_going[language]}!`,
+        : pathNextTask
+          ? `${DICTIONARY.Keep_going[language]}!`
+          : `${DICTIONARY.You_have_finished_the_mission_successfully[language]}!`,
     },
   }
 

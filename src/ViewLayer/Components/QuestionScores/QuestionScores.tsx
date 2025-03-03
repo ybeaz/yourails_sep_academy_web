@@ -52,8 +52,6 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     handleEvents,
   } = props
 
-  console.info('QuestionScores [55]', { modules, moduleIDActive })
-
   const isFirstRender = useIsFirstRenderYrl()
   const navigate = useNavigate()
 
