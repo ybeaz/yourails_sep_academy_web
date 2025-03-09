@@ -32,7 +32,10 @@ const successTrue_AuthTrue_NamesTrue_isEditNameVisibleFalse: GetQuestionScoresPr
       handleEvents,
       action: {
         typeEvent: 'CLICK_ON_SIGN_IN',
-        data: {},
+        data: {
+          typeEvent: 'SET_MODAL_FRAMES',
+          data: [],
+        },
       },
       captureLeft: 'Sign in/up',
       tooltipText: '',
@@ -62,8 +65,8 @@ const successTrue_AuthTrue_NamesTrue_isEditNameVisibleFalse: GetQuestionScoresPr
       icon: '',
       handleEvents,
       action: {
-        typeEvent: 'TEST',
-        data: {},
+        data: [],
+        typeEvent: 'SET_MODAL_FRAMES',
       },
       captureLeft: 'Next task',
       tooltipText: '',
@@ -92,8 +95,11 @@ const successTrue_AuthTrue_NamesTrue_isEditNameVisibleFalse: GetQuestionScoresPr
       classAdded: 'Button_BackToTopic',
       icon: '',
       handleEvents,
-      action: {},
-      captureLeft: 'Back to topic',
+      action: {
+        data: [],
+        typeEvent: 'SET_MODAL_FRAMES',
+      },
+      captureLeft: 'Back to mission',
       tooltipText: '',
       tooltipPosition: 'top',
       isDisabled: false,
@@ -210,13 +216,7 @@ const successTrue_AuthTrue_NamesTrue_isEditNameVisibleFalse: GetQuestionScoresPr
       handleEvents,
       action: {
         typeEvent: 'SET_MODAL_FRAMES',
-        data: [
-          {
-            childName: 'QuestionScores',
-            isActive: false,
-            childProps: {},
-          },
-        ],
+        data: [],
       },
       captureLeft: 'Back',
       tooltipText: '',
@@ -256,7 +256,10 @@ const successTrue_AuthTrue_NamesTrue_isEditNameVisibleTrue: GetQuestionScoresPro
       handleEvents,
       action: {
         typeEvent: 'CLICK_ON_SIGN_IN',
-        data: {},
+        data: {
+          typeEvent: 'SET_MODAL_FRAMES',
+          data: [],
+        },
       },
       captureLeft: 'Sign in/up',
       tooltipText: '',
@@ -286,8 +289,8 @@ const successTrue_AuthTrue_NamesTrue_isEditNameVisibleTrue: GetQuestionScoresPro
       icon: '',
       handleEvents,
       action: {
-        typeEvent: 'TEST',
-        data: {},
+        data: [],
+        typeEvent: 'SET_MODAL_FRAMES',
       },
       captureLeft: 'Next task',
       tooltipText: '',
@@ -316,8 +319,11 @@ const successTrue_AuthTrue_NamesTrue_isEditNameVisibleTrue: GetQuestionScoresPro
       classAdded: 'Button_BackToTopic',
       icon: '',
       handleEvents,
-      action: {},
-      captureLeft: 'Back to topic',
+      action: {
+        data: [],
+        typeEvent: 'SET_MODAL_FRAMES',
+      },
+      captureLeft: 'Back to mission',
       tooltipText: '',
       tooltipPosition: 'top',
       isDisabled: false,
@@ -434,13 +440,7 @@ const successTrue_AuthTrue_NamesTrue_isEditNameVisibleTrue: GetQuestionScoresPro
       handleEvents,
       action: {
         typeEvent: 'SET_MODAL_FRAMES',
-        data: [
-          {
-            childName: 'QuestionScores',
-            isActive: false,
-            childProps: {},
-          },
-        ],
+        data: [],
       },
       captureLeft: 'Back',
       tooltipText: '',
@@ -480,7 +480,10 @@ const successTrue_AuthTrue_NamesFalse_isEditNameVisibleFalse: GetQuestionScoresP
       handleEvents,
       action: {
         typeEvent: 'CLICK_ON_SIGN_IN',
-        data: {},
+        data: {
+          typeEvent: 'SET_MODAL_FRAMES',
+          data: [],
+        },
       },
       captureLeft: 'Sign in/up',
       tooltipText: '',
@@ -510,8 +513,8 @@ const successTrue_AuthTrue_NamesFalse_isEditNameVisibleFalse: GetQuestionScoresP
       icon: '',
       handleEvents,
       action: {
-        typeEvent: 'TEST',
-        data: {},
+        data: [],
+        typeEvent: 'SET_MODAL_FRAMES',
       },
       captureLeft: 'Next task',
       tooltipText: '',
@@ -540,8 +543,11 @@ const successTrue_AuthTrue_NamesFalse_isEditNameVisibleFalse: GetQuestionScoresP
       classAdded: 'Button_BackToTopic',
       icon: '',
       handleEvents,
-      action: {},
-      captureLeft: 'Back to topic',
+      action: {
+        data: [],
+        typeEvent: 'SET_MODAL_FRAMES',
+      },
+      captureLeft: 'Back to mission',
       tooltipText: '',
       tooltipPosition: 'top',
       isDisabled: false,
@@ -658,13 +664,7 @@ const successTrue_AuthTrue_NamesFalse_isEditNameVisibleFalse: GetQuestionScoresP
       handleEvents,
       action: {
         typeEvent: 'SET_MODAL_FRAMES',
-        data: [
-          {
-            childName: 'QuestionScores',
-            isActive: false,
-            childProps: {},
-          },
-        ],
+        data: [],
       },
       captureLeft: 'Back',
       tooltipText: '',
@@ -704,7 +704,10 @@ const successTrue_AuthTrue_NamesFalse_isEditNameVisibleTrue: GetQuestionScoresPr
       handleEvents,
       action: {
         typeEvent: 'CLICK_ON_SIGN_IN',
-        data: {},
+        data: {
+          typeEvent: 'SET_MODAL_FRAMES',
+          data: [],
+        },
       },
       captureLeft: 'Sign in/up',
       tooltipText: '',
@@ -734,8 +737,8 @@ const successTrue_AuthTrue_NamesFalse_isEditNameVisibleTrue: GetQuestionScoresPr
       icon: '',
       handleEvents,
       action: {
-        typeEvent: 'TEST',
-        data: {},
+        data: [],
+        typeEvent: 'SET_MODAL_FRAMES',
       },
       captureLeft: 'Next task',
       tooltipText: '',
@@ -764,8 +767,11 @@ const successTrue_AuthTrue_NamesFalse_isEditNameVisibleTrue: GetQuestionScoresPr
       classAdded: 'Button_BackToTopic',
       icon: '',
       handleEvents,
-      action: {},
-      captureLeft: 'Back to topic',
+      action: {
+        data: [],
+        typeEvent: 'SET_MODAL_FRAMES',
+      },
+      captureLeft: 'Back to mission',
       tooltipText: '',
       tooltipPosition: 'top',
       isDisabled: false,
@@ -882,13 +888,7 @@ const successTrue_AuthTrue_NamesFalse_isEditNameVisibleTrue: GetQuestionScoresPr
       handleEvents,
       action: {
         typeEvent: 'SET_MODAL_FRAMES',
-        data: [
-          {
-            childName: 'QuestionScores',
-            isActive: false,
-            childProps: {},
-          },
-        ],
+        data: [],
       },
       captureLeft: 'Back',
       tooltipText: '',
@@ -929,7 +929,10 @@ const successTrue_AuthFalse_NamesFalse_isEditNameVisibleFalse: GetQuestionScores
         handleEvents,
         action: {
           typeEvent: 'CLICK_ON_SIGN_IN',
-          data: {},
+          data: {
+            typeEvent: 'SET_MODAL_FRAMES',
+            data: [],
+          },
         },
         captureLeft: 'Sign in/up',
         tooltipText: '',
@@ -959,8 +962,8 @@ const successTrue_AuthFalse_NamesFalse_isEditNameVisibleFalse: GetQuestionScores
         icon: '',
         handleEvents,
         action: {
-          typeEvent: 'TEST',
-          data: {},
+          data: [],
+          typeEvent: 'SET_MODAL_FRAMES',
         },
         captureLeft: 'Next task',
         tooltipText: '',
@@ -989,8 +992,11 @@ const successTrue_AuthFalse_NamesFalse_isEditNameVisibleFalse: GetQuestionScores
         classAdded: 'Button_BackToTopic',
         icon: '',
         handleEvents,
-        action: {},
-        captureLeft: 'Back to topic',
+        action: {
+          data: [],
+          typeEvent: 'SET_MODAL_FRAMES',
+        },
+        captureLeft: 'Back to mission',
         tooltipText: '',
         tooltipPosition: 'top',
         isDisabled: false,
@@ -1107,13 +1113,7 @@ const successTrue_AuthFalse_NamesFalse_isEditNameVisibleFalse: GetQuestionScores
         handleEvents,
         action: {
           typeEvent: 'SET_MODAL_FRAMES',
-          data: [
-            {
-              childName: 'QuestionScores',
-              isActive: false,
-              childProps: {},
-            },
-          ],
+          data: [],
         },
         captureLeft: 'Back',
         tooltipText: '',
@@ -1142,13 +1142,7 @@ const successFalse_AuthTrue_NamesTrue_isEditNameVisibleFalse: GetQuestionScoresP
       handleEvents,
       action: {
         typeEvent: 'SET_MODAL_FRAMES',
-        data: [
-          {
-            childName: 'QuestionScores',
-            isActive: false,
-            childProps: {},
-          },
-        ],
+        data: [],
       },
       captureLeft: 'Back',
       tooltipText: '',
@@ -1175,7 +1169,10 @@ const successFalse_AuthTrue_NamesTrue_isEditNameVisibleFalse: GetQuestionScoresP
       handleEvents,
       action: {
         typeEvent: 'CLICK_ON_SIGN_IN',
-        data: {},
+        data: {
+          typeEvent: 'SET_MODAL_FRAMES',
+          data: [],
+        },
       },
       captureLeft: 'Sign in/up',
       tooltipText: '',
@@ -1205,8 +1202,8 @@ const successFalse_AuthTrue_NamesTrue_isEditNameVisibleFalse: GetQuestionScoresP
       icon: '',
       handleEvents,
       action: {
-        typeEvent: 'TEST',
-        data: {},
+        data: [],
+        typeEvent: 'SET_MODAL_FRAMES',
       },
       captureLeft: 'Next task',
       tooltipText: '',
@@ -1235,8 +1232,11 @@ const successFalse_AuthTrue_NamesTrue_isEditNameVisibleFalse: GetQuestionScoresP
       classAdded: 'Button_BackToTopic',
       icon: '',
       handleEvents,
-      action: {},
-      captureLeft: 'Back to topic',
+      action: {
+        data: [],
+        typeEvent: 'SET_MODAL_FRAMES',
+      },
+      captureLeft: 'Back to mission',
       tooltipText: '',
       tooltipPosition: 'top',
       isDisabled: false,
@@ -1366,13 +1366,7 @@ const successFalse_AuthTrue_NamesTrue_isEditNameVisibleTrue: GetQuestionScoresPr
       handleEvents,
       action: {
         typeEvent: 'SET_MODAL_FRAMES',
-        data: [
-          {
-            childName: 'QuestionScores',
-            isActive: false,
-            childProps: {},
-          },
-        ],
+        data: [],
       },
       captureLeft: 'Back',
       tooltipText: '',
@@ -1399,7 +1393,10 @@ const successFalse_AuthTrue_NamesTrue_isEditNameVisibleTrue: GetQuestionScoresPr
       handleEvents,
       action: {
         typeEvent: 'CLICK_ON_SIGN_IN',
-        data: {},
+        data: {
+          typeEvent: 'SET_MODAL_FRAMES',
+          data: [],
+        },
       },
       captureLeft: 'Sign in/up',
       tooltipText: '',
@@ -1429,8 +1426,8 @@ const successFalse_AuthTrue_NamesTrue_isEditNameVisibleTrue: GetQuestionScoresPr
       icon: '',
       handleEvents,
       action: {
-        typeEvent: 'TEST',
-        data: {},
+        data: [],
+        typeEvent: 'SET_MODAL_FRAMES',
       },
       captureLeft: 'Next task',
       tooltipText: '',
@@ -1459,8 +1456,11 @@ const successFalse_AuthTrue_NamesTrue_isEditNameVisibleTrue: GetQuestionScoresPr
       classAdded: 'Button_BackToTopic',
       icon: '',
       handleEvents,
-      action: {},
-      captureLeft: 'Back to topic',
+      action: {
+        data: [],
+        typeEvent: 'SET_MODAL_FRAMES',
+      },
+      captureLeft: 'Back to mission',
       tooltipText: '',
       tooltipPosition: 'top',
       isDisabled: false,
@@ -1591,13 +1591,7 @@ const successFalse_AuthTrue_NamesFalse_isEditNameVisibleFalse: GetQuestionScores
         handleEvents,
         action: {
           typeEvent: 'SET_MODAL_FRAMES',
-          data: [
-            {
-              childName: 'QuestionScores',
-              isActive: false,
-              childProps: {},
-            },
-          ],
+          data: [],
         },
         captureLeft: 'Back',
         tooltipText: '',
@@ -1624,7 +1618,10 @@ const successFalse_AuthTrue_NamesFalse_isEditNameVisibleFalse: GetQuestionScores
         handleEvents,
         action: {
           typeEvent: 'CLICK_ON_SIGN_IN',
-          data: {},
+          data: {
+            typeEvent: 'SET_MODAL_FRAMES',
+            data: [],
+          },
         },
         captureLeft: 'Sign in/up',
         tooltipText: '',
@@ -1654,8 +1651,8 @@ const successFalse_AuthTrue_NamesFalse_isEditNameVisibleFalse: GetQuestionScores
         icon: '',
         handleEvents,
         action: {
-          typeEvent: 'TEST',
-          data: {},
+          data: [],
+          typeEvent: 'SET_MODAL_FRAMES',
         },
         captureLeft: 'Next task',
         tooltipText: '',
@@ -1684,8 +1681,11 @@ const successFalse_AuthTrue_NamesFalse_isEditNameVisibleFalse: GetQuestionScores
         classAdded: 'Button_BackToTopic',
         icon: '',
         handleEvents,
-        action: {},
-        captureLeft: 'Back to topic',
+        action: {
+          data: [],
+          typeEvent: 'SET_MODAL_FRAMES',
+        },
+        captureLeft: 'Back to mission',
         tooltipText: '',
         tooltipPosition: 'top',
         isDisabled: false,
@@ -1815,13 +1815,7 @@ const successFalse_AuthTrue_NamesFalse_isEditNameVisibleTrue: GetQuestionScoresP
       handleEvents,
       action: {
         typeEvent: 'SET_MODAL_FRAMES',
-        data: [
-          {
-            childName: 'QuestionScores',
-            isActive: false,
-            childProps: {},
-          },
-        ],
+        data: [],
       },
       captureLeft: 'Back',
       tooltipText: '',
@@ -1848,7 +1842,10 @@ const successFalse_AuthTrue_NamesFalse_isEditNameVisibleTrue: GetQuestionScoresP
       handleEvents,
       action: {
         typeEvent: 'CLICK_ON_SIGN_IN',
-        data: {},
+        data: {
+          typeEvent: 'SET_MODAL_FRAMES',
+          data: [],
+        },
       },
       captureLeft: 'Sign in/up',
       tooltipText: '',
@@ -1878,8 +1875,8 @@ const successFalse_AuthTrue_NamesFalse_isEditNameVisibleTrue: GetQuestionScoresP
       icon: '',
       handleEvents,
       action: {
-        typeEvent: 'TEST',
-        data: {},
+        data: [],
+        typeEvent: 'SET_MODAL_FRAMES',
       },
       captureLeft: 'Next task',
       tooltipText: '',
@@ -1908,8 +1905,11 @@ const successFalse_AuthTrue_NamesFalse_isEditNameVisibleTrue: GetQuestionScoresP
       classAdded: 'Button_BackToTopic',
       icon: '',
       handleEvents,
-      action: {},
-      captureLeft: 'Back to topic',
+      action: {
+        data: [],
+        typeEvent: 'SET_MODAL_FRAMES',
+      },
+      captureLeft: 'Back to mission',
       tooltipText: '',
       tooltipPosition: 'top',
       isDisabled: false,
@@ -2040,13 +2040,7 @@ const successFalse_AuthFalse_NamesFalse_isEditNameVisibleFalse: GetQuestionScore
         handleEvents,
         action: {
           typeEvent: 'SET_MODAL_FRAMES',
-          data: [
-            {
-              childName: 'QuestionScores',
-              isActive: false,
-              childProps: {},
-            },
-          ],
+          data: [],
         },
         captureLeft: 'Back',
         tooltipText: '',
@@ -2073,7 +2067,10 @@ const successFalse_AuthFalse_NamesFalse_isEditNameVisibleFalse: GetQuestionScore
         handleEvents,
         action: {
           typeEvent: 'CLICK_ON_SIGN_IN',
-          data: {},
+          data: {
+            typeEvent: 'SET_MODAL_FRAMES',
+            data: [],
+          },
         },
         captureLeft: 'Sign in/up',
         tooltipText: '',
@@ -2103,8 +2100,8 @@ const successFalse_AuthFalse_NamesFalse_isEditNameVisibleFalse: GetQuestionScore
         icon: '',
         handleEvents,
         action: {
-          typeEvent: 'TEST',
-          data: {},
+          data: [],
+          typeEvent: 'SET_MODAL_FRAMES',
         },
         captureLeft: 'Next task',
         tooltipText: '',
@@ -2133,8 +2130,11 @@ const successFalse_AuthFalse_NamesFalse_isEditNameVisibleFalse: GetQuestionScore
         classAdded: 'Button_BackToTopic',
         icon: '',
         handleEvents,
-        action: {},
-        captureLeft: 'Back to topic',
+        action: {
+          data: [],
+          typeEvent: 'SET_MODAL_FRAMES',
+        },
+        captureLeft: 'Back to mission',
         tooltipText: '',
         tooltipPosition: 'top',
         isDisabled: false,

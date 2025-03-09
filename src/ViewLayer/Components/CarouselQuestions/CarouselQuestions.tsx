@@ -179,14 +179,8 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
       classAdded: 'Button_MdForward',
       handleEvents,
       action: {
-        typeEvent: 'SET_MODAL_FRAMES',
-        data: [
-          {
-            childName: 'QuestionScores',
-            isActive: true,
-            childProps: {},
-          },
-        ],
+        typeEvent: 'CLICK_ON_TO_QUESTIONS_SCORES',
+        data: {},
       },
       isDisplaying: isButtonToCertificate,
     },

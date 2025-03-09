@@ -58,12 +58,15 @@ function* createDocumentScenarioGenerator(params: ActionReduxType | any): Iterab
       isSendingBcc: false,
     },
   })
-  const slug = getSlug(capture)
-  const pathname = `/d/${documentID}/${slug}`
-  yield navigate(pathname)
-  delay(500)
-  if (decodeURIComponent(location.pathname) !== pathname)
-    window.location.href = `${window.location.origin}${pathname}`
+
+  console.info('createDocumentScenarioSaga [62]', { documentID, documents })
+
+  // const slug = getSlug(capture)
+  // const pathname = `/d/${documentID}/${slug}`
+  // yield navigate(pathname)
+  // delay(500)
+  // if (decodeURIComponent(location.pathname) !== pathname)
+  //   window.location.href = `${window.location.origin}${pathname}`
 
   getLocalStorageSetObjTo({
     modulesInProgress: [],
