@@ -68,7 +68,7 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
 }: GetQuestionScoresPropsOutParamsType) => {
   const { total, right } = score
 
-  const pathNextTask = getPathNextTask({ modules: modulesIn})
+  const pathNextTask = getPathNextTask({ modules: modulesIn })
 
   const getMessagesDictProps: GetMessagesDictPropsType = {
     scenarioCase,

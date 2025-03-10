@@ -4,6 +4,7 @@ import { actionAsync, actionSync } from '../../DataLayer/index.action'
 
 const { dispatch, getState } = store
 
+// Remove it
 export const CREATE_DOCUMENT: ActionEventType = (event, data) => {
-  dispatch(actionAsync.CREATE_DOCUMENT_SCENARIO.REQUEST(data))
+  // dispatch(actionAsync.CREATE_DOCUMENT_SCENARIO.REQUEST(data))
 }

@@ -19,9 +19,7 @@ export const GlobalTheme: React.FunctionComponent<GlobalThemePropsType> = (
 ): ReactElement => {
   const getThemeRemotely: Function = () => {
     try {
-      document.getElementsByTagName('body')[0].style.display = 'none'
       require(`./index.style.less`)
-      document.getElementsByTagName('body')[0].style.display = 'block'
     } catch (error: any) {
       console.info('RouterScreensConfig [115]', { msg: error.message })
     }
