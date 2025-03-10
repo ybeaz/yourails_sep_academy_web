@@ -83,6 +83,7 @@ export type UrlParamsQueryType = { sendCc: string; sendBcc: string }
 export type ScormType = {
   courseIDActive: string | null
   moduleIDActive: string | null
+  documentIDActive: string | null
   numberQuestionsInSlide: number
   durationMultiplier: number
 }

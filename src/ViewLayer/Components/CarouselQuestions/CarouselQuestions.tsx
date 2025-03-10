@@ -180,7 +180,7 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
       classAdded: 'Button_MdForward',
       handleEvents,
       action: {
-        typeEvent: 'CLICK_ON_TO_QUESTIONS_SCORES',
+        typeEvent: 'GO_TO_QUESTIONS_SCORES',
         data: {},
       },
       isDisplaying: isButtonToCertificate,

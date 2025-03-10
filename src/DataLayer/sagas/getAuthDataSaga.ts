@@ -99,8 +99,6 @@ function* getAuthDataGenerator(params: ActionReduxType | any): Iterable<any> {
     })
   )
 
-  console.info('getAuthDataSaga [102]')
-
   document.getElementsByTagName('body')[0].style.display = 'block'
 }
 

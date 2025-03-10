@@ -182,6 +182,7 @@ export const rootStoreDefault: RootStoreType = {
   scorm: {
     courseIDActive: null,
     moduleIDActive: null,
+    documentIDActive: null,
     numberQuestionsInSlide: 2,
     durationMultiplier: 1,
   },

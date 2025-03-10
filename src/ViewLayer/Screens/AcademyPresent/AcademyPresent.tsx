@@ -64,6 +64,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   props: AcademyPresentComponentPropsType
 ) => {
   const {
+    handleEvents,
     storeStateSlice: {
       language: languageSite,
       durationMultiplier,
@@ -103,6 +104,12 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     ],
     [moduleID]
   )
+
+  useEffect(() => {
+    if (moduleID && modules.length) {
+      handleEvents({}, { typeEvent: 'GO_TO_QUESTIONS_SCORES' })
+    }
+  }, [modules.length])
 
   useLoadedInitialTeachContent()
   useflagsDebug(mediaLoadedModulesString)

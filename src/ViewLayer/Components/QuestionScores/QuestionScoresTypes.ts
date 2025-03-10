@@ -19,6 +19,7 @@ export type QuestionScoresComponentPropsType = {
     sub: RootStoreType['authAwsCognitoUserData']['sub']
     profiles: RootStoreType['profiles']
     isEditNameVisible: RootStoreType['componentsState']['isEditNameVisible']
+    documentIDActive: RootStoreType['scorm']['documentIDActive']
   }
   handleEvents: HandleEventType
 }

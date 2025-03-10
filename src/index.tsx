@@ -7,5 +7,5 @@ window.addEventListener('load', function () {
     document.getElementsByTagName('body')[0].style.display = 'block'
   }, 2000)
   initializeBrowserApp()
-  /* The main display = 'block' happens in src/DataLayer/sagas/getAuthDataSaga.ts*/
+  /* The main display = 'block' happens at the end of in src/DataLayer/sagas/getAuthDataSaga.ts */
 })

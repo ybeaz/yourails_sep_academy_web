@@ -19,13 +19,14 @@ import { GetAnswersChecked2OutType } from 'yourails_common'
 import { QuestionsScoresCaseEnumType } from 'yourails_common'
 import { getClonedDeep } from 'yourails_common'
 import { GetNavLinksButtonsItemParamType } from '../../Hooks/getComponentsList'
+import { getSlug } from 'yourails_common'
 
 type GetQuestionScoresPropsOutParamsType = {
   modules: ModuleType[]
   moduleActive: ModuleType
+  documentIDActive: RootStoreType['scorm']['documentIDActive']
   queryUrl: any
   handleEvents: HandleEventType
-  navigate: any
   scenarioCase: QuestionsScoresCaseEnumType
   isEditNameVisible: boolean
   language: RootStoreType['language']
@@ -59,8 +60,8 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
   modules: modulesIn,
   moduleActive,
   queryUrl,
+  documentIDActive,
   handleEvents,
-  navigate,
   scenarioCase,
   isEditNameVisible,
   language,
@@ -175,16 +176,21 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
       },
     },
     {
+      navLinkProps: {
+        classAdded: 'NavLink_Credit',
+        to: {
+          pathname: `/d/${documentIDActive}/${getSlug(moduleActive.capture)}`,
+          search: queryUrl,
+        },
+        /* onClick: () => navigate(-1), Alternative */
+        isDisabled: false,
+        isDisplaying: !isEditNameVisible,
+      },
       buttonYrlProps: {
         classAdded: 'Button_Credit',
         icon: '',
         handleEvents,
-        action: {
-          typeEvent: 'CREATE_DOCUMENT',
-          data: {
-            navigate,
-          },
-        },
+        action: {},
         captureLeft: DICTIONARY.View_certificate[language],
         tooltipText: '',
         tooltipPosition: 'top',
