@@ -62,19 +62,10 @@ function* createDocumentScenarioGenerator(params: ActionReduxType | any): Iterab
 
   yield put(actionSync.SET_DOCUMENT_ID_ACTIVE({ documentID }))
 
-  console.info('createDocumentScenarioSaga [62]', { documentID, documents })
-
   // Remove it
-  // const slug = getSlug(capture)
-  // const pathname = `/d/${documentID}/${slug}`
-  // yield navigate(pathname)
-  // delay(500)
-  // if (decodeURIComponent(location.pathname) !== pathname)
-  //   window.location.href = `${window.location.origin}${pathname}`
-
-  getLocalStorageSetObjTo({
-    modulesInProgress: [],
-  })
+  // getLocalStorageSetObjTo({
+  //   modulesInProgress: [],
+  // })
 }
 
 export const createDocumentScenario = withDebounce(
