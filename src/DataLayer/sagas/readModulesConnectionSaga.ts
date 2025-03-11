@@ -20,6 +20,7 @@ import {
   getReplacedArrObjsByPropNameVal,
   GetReplacedArrObjsByPropNameValParamsType,
 } from 'yourails_common'
+import { getModuleByModuleID } from 'yourails_common'
 
 export function* readModulesConnectionGenerator(params: ActionReduxType | any): Iterable<any> {
   const isAddingModules = params?.data?.isAddingModules || false
@@ -123,7 +124,7 @@ export function* readModulesConnectionGenerator(params: ActionReduxType | any): 
   if (isAddingModules && moduleID) {
     const getReplacedArrObjsByPropNameValParams: GetReplacedArrObjsByPropNameValParamsType<any> = {
       arrObjs: modulesNext,
-      objIn: modules[0],
+      objIn: getModuleByModuleID({ modules, moduleID }),
       propName: 'moduleID',
       propsValsToKeepOfArrObjs: ['isCompleted'],
     }

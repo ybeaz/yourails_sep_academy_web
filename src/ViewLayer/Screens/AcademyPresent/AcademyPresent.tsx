@@ -87,6 +87,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     { modules, moduleID: moduleIDActive || moduleID },
     { parentFunction: 'AcademyPresentComponent' }
   )
+
   const canonicalUrl = `${SERVERS_MAIN.remote}${decodeURIComponent(location.pathname)}`
 
   const screenType = ScreensEnumType['AcademyPresent']

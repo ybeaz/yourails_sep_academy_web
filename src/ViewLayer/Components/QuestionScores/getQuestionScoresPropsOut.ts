@@ -283,7 +283,10 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
         classAdded: 'Button_Achievements',
         icon: '',
         handleEvents,
-        action: {},
+        action: {
+          typeEvent: 'SET_MODAL_FRAMES',
+          data: [],
+        },
         captureLeft: DICTIONARY.Achievements[language],
         tooltipText: '',
         tooltipPosition: 'top',
