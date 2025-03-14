@@ -29,19 +29,9 @@ export const GO_TO_QUESTIONS_SCORES: ActionEventType = async (event, data) => {
     { parentFunction: 'QuestionScoresComponent' }
   )
 
-  console.info('GO_TO_QUESTIONS_SCORES [32]', {
-    // moduleIDActiveIn,
-    moduleIDActive,
-    moduleActive,
-  })
-
   const isAnswered = getCheckedModulesAnswered([moduleActive])
-  console.info('GO_TO_QUESTIONS_SCORES [36]', { isAnswered, state: getState() })
-  if (!isAnswered) return
 
-  console.info('GO_TO_QUESTIONS_SCORES [45]', { isAnswered, state: getState() })
-  // return
-  // sub && dispatch(actionAsync.CREATE_DOCUMENT_SCENARIO.REQUEST(data))
+  if (!isAnswered) return
 
   const data2 = [
     {
