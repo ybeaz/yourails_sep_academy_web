@@ -20,6 +20,7 @@ type GetQuestionScoresPropsOutTestType = {
 
 const paramsCommon = {
   modules: modulesJson as any,
+  documentIDActive: 'abcdef123456',
   moduleActive: modulesJson.find((item: any) => item.moduleID === 'l9U7XMpux7eD') as any,
   queryUrl: {
     pageModules: '1',

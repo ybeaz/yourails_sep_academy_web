@@ -183,14 +183,23 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
           search: queryUrl,
         },
         /* onClick: () => navigate(-1), Alternative */
-        isDisabled: false,
+        isDisabled:
+          !isEditNameVisible &&
+          (scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesFalse ||
+            scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesFalse ||
+            scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthTrue_NamesFalse ||
+            scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthTrue_NamesTrue ||
+            scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthFalse_NamesFalse),
         isDisplaying: !isEditNameVisible,
       },
       buttonYrlProps: {
         classAdded: 'Button_Credit',
         icon: '',
         handleEvents,
-        action: {},
+        action: {
+          typeEvent: 'SET_MODAL_FRAMES',
+          data: [],
+        },
         captureLeft: DICTIONARY.View_certificate[language],
         tooltipText: '',
         tooltipPosition: 'top',
