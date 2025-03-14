@@ -16,20 +16,6 @@ import { withLoaderWrapperSaga } from './withLoaderWrapperSaga'
 import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
 
 function* createDocumentScenarioGenerator(params: ActionReduxType | any): Iterable<any> {
-  // Remove it
-  // const {
-  //   data: { navigate },
-  // } = params
-
-  // const data2 = [
-  //   {
-  //     childName: 'QuestionScores',
-  //     isActive: false,
-  //     childProps: {},
-  //   },
-  // ]
-  // yield put(actionSync.SET_MODAL_FRAMES(data2))
-
   const stateSelected: RootStoreType | any = yield select((state: RootStoreType) => state)
 
   const { profileActive, isUpdatingProfile } = getProfileActiveToUpdate(stateSelected)
@@ -61,11 +47,6 @@ function* createDocumentScenarioGenerator(params: ActionReduxType | any): Iterab
   })
 
   yield put(actionSync.SET_DOCUMENT_ID_ACTIVE({ documentID }))
-
-  // Remove it
-  // getLocalStorageSetObjTo({
-  //   modulesInProgress: [],
-  // })
 }
 
 export const createDocumentScenario = withDebounce(
