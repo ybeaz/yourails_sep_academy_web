@@ -50,8 +50,6 @@ const MyDocumentsComponent: MyDocumentsComponentType = (props: MyDocumentsCompon
   })
   const tagsSearchQuery = getNestedProp({ entity: query, path: 'tagsSearch', resDefault: '' })
 
-  console.info('MyDocuments [49]', { tagsSearchQuery, documentsSearchQuery })
-
   useEffectedInitialRequests([{ type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } }])
 
   useEffect(() => {

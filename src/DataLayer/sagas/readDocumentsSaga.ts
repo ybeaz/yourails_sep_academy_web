@@ -35,8 +35,6 @@ export function* readDocumentsGenerator(params: ActionReduxType | any): Iterable
     profiles,
   } = stateSelected as RootStoreType
 
-  console.info('readDocumentsSaga [38]', { documentsSearchApplied })
-
   if ((screenActive === 'MyModules' || screenActive === 'MyDocuments') && !sub) return
 
   const { profileIDs } = getUserProfileData({ sub, screenActive, profiles })
