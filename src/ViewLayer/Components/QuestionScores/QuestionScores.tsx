@@ -109,15 +109,8 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
         !documentIDActive &&
         (scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesTrue ||
           scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesFalse)
-        // scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesFalse
       ) {
         handleEvents({}, { typeEvent: 'CREATE_DOCUMENT', data: { isEditNameVisible: false } })
-        // successTrue_AuthTrue_NamesTrue = 'successTrue_AuthTrue_NamesTrue',
-        // successTrue_AuthTrue_NamesFalse = 'successTrue_AuthTrue_NamesFalse', ? Create a record and persist documentID
-        // successTrue_AuthFalse_NamesFalse = 'successTrue_AuthFalse_NamesFalse', Don't create a record and proceed to the modale window
-        // successFalse_AuthTrue_NamesTrue = 'successFalse_AuthTrue_NamesTrue',
-        // successFalse_AuthTrue_NamesFalse = 'successFalse_AuthTrue_NamesFalse',
-        // successFalse_AuthFalse_NamesFalse = 'successFalse_AuthFalse_NamesFalse',
       }
     }
   }, [
