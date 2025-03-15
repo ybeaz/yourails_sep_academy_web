@@ -13,7 +13,7 @@ export type GetMessagesDictPropsType = {
   language: RootStoreType['language']
   right: number
   total: number
-  moduleActive: ModuleType
+  capture: string
   isEditNameVisible: RootStoreType['componentsState']['isEditNameVisible']
   pathNextTask: string | undefined
 }
@@ -37,10 +37,7 @@ interface GetMessagesDictType {
  * @import import { getMessagesDict } from './getMessagesDict'
  */
 export const getMessagesDict: GetMessagesDictType = (props: GetMessagesDictPropsType) => {
-  const { scenarioCase, language, right, total, moduleActive, isEditNameVisible, pathNextTask } =
-    props
-
-  const { capture } = moduleActive
+  const { scenarioCase, language, right, total, capture, isEditNameVisible, pathNextTask } = props
 
   const question = getQuesionString(language, right)
 

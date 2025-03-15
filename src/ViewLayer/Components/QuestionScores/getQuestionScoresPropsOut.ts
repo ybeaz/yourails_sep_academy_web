@@ -77,17 +77,17 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
     language,
     right,
     total,
-    moduleActive,
+    capture: moduleActive.capture,
     pathNextTask,
   }
 
-  const scenario: GetMessagesDictResType = getMessagesDict(getMessagesDictProps)
+  const scenarioMsg: GetMessagesDictResType = getMessagesDict(getMessagesDictProps)
 
   const propsOut: GetNavLinksButtonsItemParamType[] = [
     {
       messageTileProps: {
         classAdded: 'MessageTile_QuestionScores',
-        ...scenario.message,
+        ...scenarioMsg.message,
       },
     },
     {
@@ -152,7 +152,9 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
         classAdded: 'NavLink_BackToTopic',
         to: {
           pathname: '/',
-          search: !!pathNextTask ? queryUrl : { pageModules: 1, pageTags: 1, pageDocuments: 1 },
+          search: !!pathNextTask
+            ? queryUrl
+            : { pageModules: '1', pageTags: '1', pageDocuments: '1' },
         },
         /* onClick: () => navigate(-1), Alternative */
         isDisabled: false,

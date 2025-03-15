@@ -1,6 +1,7 @@
 import { consoler } from 'yourails_common'
 
 import modulesJson from '../__mocks__/2025_02_20_modules.json'
+import modulesJson01 from '../__mocks__/2025_02_21_modules.json'
 import profilesJson from '../__mocks__/2025_02_23_profiles.json'
 import { expected, handleEvents, navigate } from '../__mocks__/getQuestionScoresPropsOutExpected'
 import { QuestionsAnswersCaseEnumType } from 'yourails_common'
@@ -181,6 +182,20 @@ const tests: GetQuestionScoresPropsOutTestType[] = [
     },
     expected: expected.successFalse_AuthFalse_NamesFalse_isEditNameVisibleFalse,
   },
+
+  {
+    testScenario: [
+      'successTrue_AuthTrue_NamesTrue',
+      'isEditNameVisibleFalse',
+      'modulesJson01',
+    ].join(', '),
+    params: {
+      scenarioCase: QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesTrue,
+      isEditNameVisible: false,
+      ...{ ...paramsCommon, modules: modulesJson01 as any },
+    },
+    expected: expected.successTrue_AuthTrue_NamesTrue_isEditNameVisibleFalse_noPathNextTask,
+  },
 ]
 
 /**
@@ -199,5 +214,6 @@ describe('Algoritms', () => {
     // consoler('getQuestionScoresPropsOut.test', { output })
 
     expect(output).toEqual(expected)
+    expect(JSON.stringify(output)).toEqual(JSON.stringify(expected))
   })
 })

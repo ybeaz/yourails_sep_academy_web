@@ -65,8 +65,8 @@ const successTrue_AuthTrue_NamesTrue_isEditNameVisibleFalse: GetQuestionScoresPr
       icon: '',
       handleEvents,
       action: {
-        data: [],
         typeEvent: 'SET_MODAL_FRAMES',
+        data: [],
       },
       captureLeft: 'Next task',
       tooltipText: '',
@@ -96,8 +96,8 @@ const successTrue_AuthTrue_NamesTrue_isEditNameVisibleFalse: GetQuestionScoresPr
       icon: '',
       handleEvents,
       action: {
-        data: [],
         typeEvent: 'SET_MODAL_FRAMES',
+        data: [],
       },
       captureLeft: 'Back to mission',
       tooltipText: '',
@@ -109,18 +109,18 @@ const successTrue_AuthTrue_NamesTrue_isEditNameVisibleFalse: GetQuestionScoresPr
   {
     navLinkProps: {
       classAdded: 'NavLink_Credit',
-      isDisabled: false,
-      isDisplaying: true,
       to: {
         pathname: '/d/abcdef123456/Test-module',
         search: {
-          modulesSearch: 'animal testing',
-          pageDocuments: '1',
           pageModules: '1',
           pageTags: '1',
+          pageDocuments: '1',
+          modulesSearch: 'animal testing',
           tagsSearch: 'animal testing',
         },
       },
+      isDisabled: false,
+      isDisplaying: true,
     },
     buttonYrlProps: {
       classAdded: 'Button_Credit',
@@ -305,8 +305,8 @@ const successTrue_AuthTrue_NamesTrue_isEditNameVisibleTrue: GetQuestionScoresPro
       icon: '',
       handleEvents,
       action: {
-        data: [],
         typeEvent: 'SET_MODAL_FRAMES',
+        data: [],
       },
       captureLeft: 'Next task',
       tooltipText: '',
@@ -336,8 +336,8 @@ const successTrue_AuthTrue_NamesTrue_isEditNameVisibleTrue: GetQuestionScoresPro
       icon: '',
       handleEvents,
       action: {
-        data: [],
         typeEvent: 'SET_MODAL_FRAMES',
+        data: [],
       },
       captureLeft: 'Back to mission',
       tooltipText: '',
@@ -349,18 +349,18 @@ const successTrue_AuthTrue_NamesTrue_isEditNameVisibleTrue: GetQuestionScoresPro
   {
     navLinkProps: {
       classAdded: 'NavLink_Credit',
-      isDisabled: false,
-      isDisplaying: false,
       to: {
         pathname: '/d/abcdef123456/Test-module',
         search: {
-          modulesSearch: 'animal testing',
-          pageDocuments: '1',
           pageModules: '1',
           pageTags: '1',
+          pageDocuments: '1',
+          modulesSearch: 'animal testing',
           tagsSearch: 'animal testing',
         },
       },
+      isDisabled: false,
+      isDisplaying: false,
     },
     buttonYrlProps: {
       classAdded: 'Button_Credit',
@@ -545,8 +545,8 @@ const successTrue_AuthTrue_NamesFalse_isEditNameVisibleFalse: GetQuestionScoresP
       icon: '',
       handleEvents,
       action: {
-        data: [],
         typeEvent: 'SET_MODAL_FRAMES',
+        data: [],
       },
       captureLeft: 'Next task',
       tooltipText: '',
@@ -576,8 +576,8 @@ const successTrue_AuthTrue_NamesFalse_isEditNameVisibleFalse: GetQuestionScoresP
       icon: '',
       handleEvents,
       action: {
-        data: [],
         typeEvent: 'SET_MODAL_FRAMES',
+        data: [],
       },
       captureLeft: 'Back to mission',
       tooltipText: '',
@@ -589,18 +589,18 @@ const successTrue_AuthTrue_NamesFalse_isEditNameVisibleFalse: GetQuestionScoresP
   {
     navLinkProps: {
       classAdded: 'NavLink_Credit',
-      isDisabled: true,
-      isDisplaying: true,
       to: {
         pathname: '/d/abcdef123456/Test-module',
         search: {
-          modulesSearch: 'animal testing',
-          pageDocuments: '1',
           pageModules: '1',
           pageTags: '1',
+          pageDocuments: '1',
+          modulesSearch: 'animal testing',
           tagsSearch: 'animal testing',
         },
       },
+      isDisabled: true,
+      isDisplaying: true,
     },
     buttonYrlProps: {
       classAdded: 'Button_Credit',
@@ -785,8 +785,8 @@ const successTrue_AuthTrue_NamesFalse_isEditNameVisibleTrue: GetQuestionScoresPr
       icon: '',
       handleEvents,
       action: {
-        data: [],
         typeEvent: 'SET_MODAL_FRAMES',
+        data: [],
       },
       captureLeft: 'Next task',
       tooltipText: '',
@@ -816,8 +816,8 @@ const successTrue_AuthTrue_NamesFalse_isEditNameVisibleTrue: GetQuestionScoresPr
       icon: '',
       handleEvents,
       action: {
-        data: [],
         typeEvent: 'SET_MODAL_FRAMES',
+        data: [],
       },
       captureLeft: 'Back to mission',
       tooltipText: '',
@@ -829,18 +829,18 @@ const successTrue_AuthTrue_NamesFalse_isEditNameVisibleTrue: GetQuestionScoresPr
   {
     navLinkProps: {
       classAdded: 'NavLink_Credit',
-      isDisabled: false,
-      isDisplaying: false,
       to: {
         pathname: '/d/abcdef123456/Test-module',
         search: {
-          modulesSearch: 'animal testing',
-          pageDocuments: '1',
           pageModules: '1',
           pageTags: '1',
+          pageDocuments: '1',
+          modulesSearch: 'animal testing',
           tagsSearch: 'animal testing',
         },
       },
+      isDisabled: false,
+      isDisplaying: false,
     },
     buttonYrlProps: {
       classAdded: 'Button_Credit',
@@ -1026,8 +1026,8 @@ const successTrue_AuthFalse_NamesFalse_isEditNameVisibleFalse: GetQuestionScores
         icon: '',
         handleEvents,
         action: {
-          data: [],
           typeEvent: 'SET_MODAL_FRAMES',
+          data: [],
         },
         captureLeft: 'Next task',
         tooltipText: '',
@@ -1057,8 +1057,8 @@ const successTrue_AuthFalse_NamesFalse_isEditNameVisibleFalse: GetQuestionScores
         icon: '',
         handleEvents,
         action: {
-          data: [],
           typeEvent: 'SET_MODAL_FRAMES',
+          data: [],
         },
         captureLeft: 'Back to mission',
         tooltipText: '',
@@ -1070,18 +1070,18 @@ const successTrue_AuthFalse_NamesFalse_isEditNameVisibleFalse: GetQuestionScores
     {
       navLinkProps: {
         classAdded: 'NavLink_Credit',
-        isDisabled: true,
-        isDisplaying: true,
         to: {
           pathname: '/d/abcdef123456/Test-module',
           search: {
-            modulesSearch: 'animal testing',
-            pageDocuments: '1',
             pageModules: '1',
             pageTags: '1',
+            pageDocuments: '1',
+            modulesSearch: 'animal testing',
             tagsSearch: 'animal testing',
           },
         },
+        isDisabled: true,
+        isDisplaying: true,
       },
       buttonYrlProps: {
         classAdded: 'Button_Credit',
@@ -1282,8 +1282,8 @@ const successFalse_AuthTrue_NamesTrue_isEditNameVisibleFalse: GetQuestionScoresP
       icon: '',
       handleEvents,
       action: {
-        data: [],
         typeEvent: 'SET_MODAL_FRAMES',
+        data: [],
       },
       captureLeft: 'Next task',
       tooltipText: '',
@@ -1313,8 +1313,8 @@ const successFalse_AuthTrue_NamesTrue_isEditNameVisibleFalse: GetQuestionScoresP
       icon: '',
       handleEvents,
       action: {
-        data: [],
         typeEvent: 'SET_MODAL_FRAMES',
+        data: [],
       },
       captureLeft: 'Back to mission',
       tooltipText: '',
@@ -1326,18 +1326,18 @@ const successFalse_AuthTrue_NamesTrue_isEditNameVisibleFalse: GetQuestionScoresP
   {
     navLinkProps: {
       classAdded: 'NavLink_Credit',
-      isDisabled: true,
-      isDisplaying: true,
       to: {
         pathname: '/d/abcdef123456/Test-module',
         search: {
-          modulesSearch: 'animal testing',
-          pageDocuments: '1',
           pageModules: '1',
           pageTags: '1',
+          pageDocuments: '1',
+          modulesSearch: 'animal testing',
           tagsSearch: 'animal testing',
         },
       },
+      isDisabled: true,
+      isDisplaying: true,
     },
     buttonYrlProps: {
       classAdded: 'Button_Credit',
@@ -1522,8 +1522,8 @@ const successFalse_AuthTrue_NamesTrue_isEditNameVisibleTrue: GetQuestionScoresPr
       icon: '',
       handleEvents,
       action: {
-        data: [],
         typeEvent: 'SET_MODAL_FRAMES',
+        data: [],
       },
       captureLeft: 'Next task',
       tooltipText: '',
@@ -1553,8 +1553,8 @@ const successFalse_AuthTrue_NamesTrue_isEditNameVisibleTrue: GetQuestionScoresPr
       icon: '',
       handleEvents,
       action: {
-        data: [],
         typeEvent: 'SET_MODAL_FRAMES',
+        data: [],
       },
       captureLeft: 'Back to mission',
       tooltipText: '',
@@ -1566,18 +1566,18 @@ const successFalse_AuthTrue_NamesTrue_isEditNameVisibleTrue: GetQuestionScoresPr
   {
     navLinkProps: {
       classAdded: 'NavLink_Credit',
-      isDisabled: false,
-      isDisplaying: false,
       to: {
         pathname: '/d/abcdef123456/Test-module',
         search: {
-          modulesSearch: 'animal testing',
-          pageDocuments: '1',
           pageModules: '1',
           pageTags: '1',
+          pageDocuments: '1',
+          modulesSearch: 'animal testing',
           tagsSearch: 'animal testing',
         },
       },
+      isDisabled: false,
+      isDisplaying: false,
     },
     buttonYrlProps: {
       classAdded: 'Button_Credit',
@@ -1763,8 +1763,8 @@ const successFalse_AuthTrue_NamesFalse_isEditNameVisibleFalse: GetQuestionScores
         icon: '',
         handleEvents,
         action: {
-          data: [],
           typeEvent: 'SET_MODAL_FRAMES',
+          data: [],
         },
         captureLeft: 'Next task',
         tooltipText: '',
@@ -1794,8 +1794,8 @@ const successFalse_AuthTrue_NamesFalse_isEditNameVisibleFalse: GetQuestionScores
         icon: '',
         handleEvents,
         action: {
-          data: [],
           typeEvent: 'SET_MODAL_FRAMES',
+          data: [],
         },
         captureLeft: 'Back to mission',
         tooltipText: '',
@@ -1807,18 +1807,18 @@ const successFalse_AuthTrue_NamesFalse_isEditNameVisibleFalse: GetQuestionScores
     {
       navLinkProps: {
         classAdded: 'NavLink_Credit',
-        isDisabled: true,
-        isDisplaying: true,
         to: {
           pathname: '/d/abcdef123456/Test-module',
           search: {
-            modulesSearch: 'animal testing',
-            pageDocuments: '1',
             pageModules: '1',
             pageTags: '1',
+            pageDocuments: '1',
+            modulesSearch: 'animal testing',
             tagsSearch: 'animal testing',
           },
         },
+        isDisabled: true,
+        isDisplaying: true,
       },
       buttonYrlProps: {
         classAdded: 'Button_Credit',
@@ -2003,8 +2003,8 @@ const successFalse_AuthTrue_NamesFalse_isEditNameVisibleTrue: GetQuestionScoresP
       icon: '',
       handleEvents,
       action: {
-        data: [],
         typeEvent: 'SET_MODAL_FRAMES',
+        data: [],
       },
       captureLeft: 'Next task',
       tooltipText: '',
@@ -2034,8 +2034,8 @@ const successFalse_AuthTrue_NamesFalse_isEditNameVisibleTrue: GetQuestionScoresP
       icon: '',
       handleEvents,
       action: {
-        data: [],
         typeEvent: 'SET_MODAL_FRAMES',
+        data: [],
       },
       captureLeft: 'Back to mission',
       tooltipText: '',
@@ -2047,18 +2047,18 @@ const successFalse_AuthTrue_NamesFalse_isEditNameVisibleTrue: GetQuestionScoresP
   {
     navLinkProps: {
       classAdded: 'NavLink_Credit',
-      isDisabled: false,
-      isDisplaying: false,
       to: {
         pathname: '/d/abcdef123456/Test-module',
         search: {
-          modulesSearch: 'animal testing',
-          pageDocuments: '1',
           pageModules: '1',
           pageTags: '1',
+          pageDocuments: '1',
+          modulesSearch: 'animal testing',
           tagsSearch: 'animal testing',
         },
       },
+      isDisabled: false,
+      isDisplaying: false,
     },
     buttonYrlProps: {
       classAdded: 'Button_Credit',
@@ -2244,8 +2244,8 @@ const successFalse_AuthFalse_NamesFalse_isEditNameVisibleFalse: GetQuestionScore
         icon: '',
         handleEvents,
         action: {
-          data: [],
           typeEvent: 'SET_MODAL_FRAMES',
+          data: [],
         },
         captureLeft: 'Next task',
         tooltipText: '',
@@ -2275,8 +2275,8 @@ const successFalse_AuthFalse_NamesFalse_isEditNameVisibleFalse: GetQuestionScore
         icon: '',
         handleEvents,
         action: {
-          data: [],
           typeEvent: 'SET_MODAL_FRAMES',
+          data: [],
         },
         captureLeft: 'Back to mission',
         tooltipText: '',
@@ -2288,18 +2288,18 @@ const successFalse_AuthFalse_NamesFalse_isEditNameVisibleFalse: GetQuestionScore
     {
       navLinkProps: {
         classAdded: 'NavLink_Credit',
-        isDisabled: true,
-        isDisplaying: true,
         to: {
           pathname: '/d/abcdef123456/Test-module',
           search: {
-            modulesSearch: 'animal testing',
-            pageDocuments: '1',
             pageModules: '1',
             pageTags: '1',
+            pageDocuments: '1',
+            modulesSearch: 'animal testing',
             tagsSearch: 'animal testing',
           },
         },
+        isDisabled: true,
+        isDisplaying: true,
       },
       buttonYrlProps: {
         classAdded: 'Button_Credit',
@@ -2406,6 +2406,245 @@ const successFalse_AuthFalse_NamesFalse_isEditNameVisibleFalse: GetQuestionScore
     },
   ]
 
+/* √ */
+const successTrue_AuthTrue_NamesTrue_isEditNameVisibleFalse_noPathNextTask: GetQuestionScoresPropsOutResType[] =
+  [
+    {
+      messageTileProps: {
+        classAdded: 'MessageTile_QuestionScores',
+        title: 'Congratulations',
+        line1: '"Test module"',
+        line2: 'is completed with 1 correct answeres from 1.',
+        line3: 'You have finished the mission successfully!',
+      },
+    },
+    {
+      navLinkProps: {
+        classAdded: 'NavLink_SignInUp',
+        to: {
+          pathname: 'https://yourails-email.auth.us-east-1.amazoncognito.com/login',
+          searchStr:
+            '?client_id=635evv2b44uuluiu6au25djr64&response_type=code&redirect_uri=&scope=email+openid+profile',
+        },
+        isExternal: true,
+        isDisabled: false,
+        isDisplaying: false,
+      },
+      buttonYrlProps: {
+        classAdded: 'Button_SignInUp',
+        icon: '',
+        handleEvents,
+        action: {
+          typeEvent: 'CLICK_ON_SIGN_IN',
+          data: {
+            typeEvent: 'SET_MODAL_FRAMES',
+            data: [],
+          },
+        },
+        captureLeft: 'Sign in/up',
+        tooltipText: '',
+        tooltipPosition: 'top',
+        isDisabled: false,
+        isDisplaying: false,
+      },
+    },
+    {
+      navLinkProps: {
+        classAdded: 'NavLink_NextTask',
+        to: {
+          pathname: undefined,
+          search: {
+            pageModules: '1',
+            pageTags: '1',
+            pageDocuments: '1',
+            modulesSearch: 'animal testing',
+            tagsSearch: 'animal testing',
+          },
+        },
+        isDisabled: false,
+        isDisplaying: false,
+      },
+      buttonYrlProps: {
+        classAdded: 'Button_NextTask',
+        icon: '',
+        handleEvents,
+        action: {
+          typeEvent: 'SET_MODAL_FRAMES',
+          data: [],
+        },
+        captureLeft: 'Next task',
+        tooltipText: '',
+        tooltipPosition: 'top',
+        isDisabled: false,
+        isDisplaying: false,
+      },
+    },
+    {
+      navLinkProps: {
+        classAdded: 'NavLink_BackToTopic',
+        to: {
+          pathname: '/',
+          search: {
+            pageModules: '1',
+            pageTags: '1',
+            pageDocuments: '1',
+          },
+        },
+        isDisabled: false,
+        isDisplaying: true,
+      },
+      buttonYrlProps: {
+        classAdded: 'Button_BackToTopic',
+        icon: '',
+        handleEvents,
+        action: {
+          typeEvent: 'SET_MODAL_FRAMES',
+          data: [],
+        },
+        captureLeft: 'Back to choice',
+        tooltipText: '',
+        tooltipPosition: 'top',
+        isDisabled: false,
+        isDisplaying: true,
+      },
+    },
+    {
+      navLinkProps: {
+        classAdded: 'NavLink_Credit',
+        to: {
+          pathname: '/d/abcdef123456/Test-module',
+          search: {
+            pageModules: '1',
+            pageTags: '1',
+            pageDocuments: '1',
+            modulesSearch: 'animal testing',
+            tagsSearch: 'animal testing',
+          },
+        },
+        isDisabled: false,
+        isDisplaying: true,
+      },
+      buttonYrlProps: {
+        classAdded: 'Button_Credit',
+        icon: '',
+        handleEvents,
+        action: {
+          typeEvent: 'SET_MODAL_FRAMES',
+          data: [],
+        },
+        captureLeft: 'View certificate',
+        tooltipText: '',
+        tooltipPosition: 'top',
+        isDisabled: false,
+        isDisplaying: true,
+      },
+    },
+    {
+      buttonYrlProps: {
+        classAdded: 'Button_IsEditName',
+        icon: '',
+        handleEvents,
+        action: {
+          typeEvent: 'SET_EDIT_NAME_VISIBILITY',
+          data: {
+            isEditNameVisible: true,
+          },
+        },
+        captureLeft: 'Add/ edit name',
+        tooltipText: '',
+        tooltipPosition: 'top',
+        isDisabled: false,
+        isDisplaying: true,
+      },
+    },
+    {
+      formInputNamesWithButtonsProps: {
+        formInputNamesProps: {
+          handleEvents,
+          language: 'en',
+        },
+        buttonCancelEditNameProps: {
+          classAdded: 'Button_CancelEditName',
+          icon: '',
+          handleEvents,
+          action: {
+            typeEvent: 'SET_EDIT_NAME_VISIBILITY',
+            data: {
+              isEditNameVisible: false,
+            },
+          },
+          captureLeft: 'Cancel',
+          tooltipText: 'Cancel',
+          tooltipPosition: 'top',
+          isDisabled: false,
+          isDisplaying: true,
+        },
+        buttonConfirmEditNameProps: {
+          classAdded: 'Button_ConfirmForward',
+          icon: '',
+          handleEvents,
+          action: {
+            typeEvent: 'CLICK_ON_CONFIRM_NAMES',
+            data: {},
+          },
+          captureLeft: 'Confirm',
+          tooltipText: 'Confirm',
+          tooltipPosition: 'top',
+          isDisabled: false,
+          isDisplaying: true,
+        },
+        isDisplaying: false,
+      },
+    },
+    {
+      navLinkProps: {
+        classAdded: 'NavLink_Achievements',
+        to: {
+          pathname: '/my-documents',
+          search: {
+            pageModules: '1',
+            pageTags: '1',
+            pageDocuments: '1',
+            modulesSearch: 'animal testing',
+            tagsSearch: 'animal testing',
+          },
+        },
+        isDisabled: false,
+        isDisplaying: true,
+      },
+      buttonYrlProps: {
+        classAdded: 'Button_Achievements',
+        icon: '',
+        handleEvents,
+        action: {
+          typeEvent: 'SET_MODAL_FRAMES',
+          data: [],
+        },
+        captureLeft: 'Achievements',
+        tooltipText: '',
+        tooltipPosition: 'top',
+        isDisabled: false,
+        isDisplaying: true,
+      },
+    },
+    {
+      buttonYrlProps: {
+        classAdded: 'Button_BackToModule',
+        icon: '',
+        handleEvents,
+        action: {
+          typeEvent: 'SET_MODAL_FRAMES',
+          data: [],
+        },
+        captureLeft: 'Back',
+        tooltipText: '',
+        tooltipPosition: 'top',
+        isDisabled: false,
+        isDisplaying: true,
+      },
+    },
+  ]
+
 /* expected */
 export const expected: Record<
   | 'successTrue_AuthTrue_NamesTrue_isEditNameVisibleFalse'
@@ -2417,7 +2656,8 @@ export const expected: Record<
   | 'successFalse_AuthTrue_NamesTrue_isEditNameVisibleTrue'
   | 'successFalse_AuthTrue_NamesFalse_isEditNameVisibleFalse'
   | 'successFalse_AuthTrue_NamesFalse_isEditNameVisibleTrue'
-  | 'successFalse_AuthFalse_NamesFalse_isEditNameVisibleFalse',
+  | 'successFalse_AuthFalse_NamesFalse_isEditNameVisibleFalse'
+  | 'successTrue_AuthTrue_NamesTrue_isEditNameVisibleFalse_noPathNextTask',
   GetQuestionScoresPropsOutResType[]
 > = {
   successTrue_AuthTrue_NamesTrue_isEditNameVisibleFalse,
@@ -2430,4 +2670,5 @@ export const expected: Record<
   successFalse_AuthTrue_NamesFalse_isEditNameVisibleFalse,
   successFalse_AuthTrue_NamesFalse_isEditNameVisibleTrue,
   successFalse_AuthFalse_NamesFalse_isEditNameVisibleFalse,
+  successTrue_AuthTrue_NamesTrue_isEditNameVisibleFalse_noPathNextTask,
 }
