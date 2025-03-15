@@ -10,7 +10,7 @@ import { HandleEventType } from 'yourails_common'
 import { DICTIONARY } from 'yourails_common'
 import { getPathNextTask } from 'yourails_common'
 import {
-  type GetMessagesDictPropsType,
+  type GetMessagesDictParamsType,
   type GetMessagesDictResType,
   getMessagesDict,
 } from './getMessagesDict'
@@ -20,6 +20,7 @@ import { QuestionsScoresCaseEnumType } from 'yourails_common'
 import { getClonedDeep } from 'yourails_common'
 import { GetNavLinksButtonsItemParamType } from '../../Hooks/getComponentsList'
 import { getSlug } from 'yourails_common'
+import { getRearrangedQuestionScoresProps } from 'yourails_common'
 
 type GetQuestionScoresPropsOutParamsType = {
   modules: ModuleType[]
@@ -71,7 +72,7 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
 
   const pathNextTask = getPathNextTask({ modules: modulesIn })
 
-  const getMessagesDictProps: GetMessagesDictPropsType = {
+  const getMessagesDictParams: GetMessagesDictParamsType = {
     scenarioCase,
     isEditNameVisible,
     language,
@@ -81,7 +82,7 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
     pathNextTask,
   }
 
-  const scenarioMsg: GetMessagesDictResType = getMessagesDict(getMessagesDictProps)
+  const scenarioMsg: GetMessagesDictResType = getMessagesDict(getMessagesDictParams)
 
   const propsOut: GetNavLinksButtonsItemParamType[] = [
     {
@@ -328,28 +329,13 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
     },
   ]
 
-  let propsOutNext = getClonedDeep(propsOut)
+  let propsOutNext: GetQuestionScoresPropsOutResType[] = getClonedDeep(propsOut)
   if (
     scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthTrue_NamesTrue ||
     scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthTrue_NamesFalse ||
     scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthFalse_NamesFalse
   ) {
-    const messageTileQuestionScores = propsOutNext.filter(
-      (prop: GetNavLinksButtonsItemParamType) =>
-        prop?.messageTileProps?.classAdded === 'MessageTile_QuestionScores'
-    )
-    const buttonBackToModule = propsOutNext.filter(
-      (prop: GetNavLinksButtonsItemParamType) =>
-        prop?.buttonYrlProps?.classAdded === 'Button_BackToModule'
-    )
-
-    propsOutNext = propsOutNext.filter(
-      (prop: GetNavLinksButtonsItemParamType) =>
-        prop?.messageTileProps?.classAdded !== 'MessageTile_QuestionScores' &&
-        prop?.buttonYrlProps?.classAdded !== 'Button_BackToModule'
-    )
-
-    propsOutNext = [...messageTileQuestionScores, ...buttonBackToModule, ...propsOutNext]
+    propsOutNext = getRearrangedQuestionScoresProps(propsOutNext)
   }
 
   return propsOutNext

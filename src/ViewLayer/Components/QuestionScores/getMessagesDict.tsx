@@ -8,7 +8,7 @@ import { ModuleType, MetaCourseType } from 'yourails_common'
 import { QuestionsScoresCaseEnumType } from 'yourails_common'
 import { HandleEventType } from 'yourails_common'
 
-export type GetMessagesDictPropsType = {
+export type GetMessagesDictParamsType = {
   scenarioCase: QuestionsScoresCaseEnumType
   language: RootStoreType['language']
   right: number
@@ -28,7 +28,7 @@ export type ScenariousType = Record<
 >
 
 interface GetMessagesDictType {
-  (props: GetMessagesDictPropsType): GetMessagesDictResType
+  (props: GetMessagesDictParamsType): GetMessagesDictResType
 }
 
 /**
@@ -36,7 +36,7 @@ interface GetMessagesDictType {
  * @run ts-node src/shared/utils/getMessagesDict.ts
  * @import import { getMessagesDict } from './getMessagesDict'
  */
-export const getMessagesDict: GetMessagesDictType = (props: GetMessagesDictPropsType) => {
+export const getMessagesDict: GetMessagesDictType = (props: GetMessagesDictParamsType) => {
   const { scenarioCase, language, right, total, capture, isEditNameVisible, pathNextTask } = props
 
   const question = getQuesionString(language, right)
