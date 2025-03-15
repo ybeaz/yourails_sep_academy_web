@@ -39,6 +39,8 @@ import { ReaderIframeType } from '../../Frames/ReaderIframe/ReaderIframe'
 import { PlayerYoutubeIframeType } from '../../Frames/PlayerYoutubeIframe/PlayerYoutubeIframe'
 import { getTagLine } from 'yourails_common'
 import { TextToSpeechYrl, TextToSpeechYrlPropsType } from 'yourails_common'
+import { getLocalStorageReadKeyObj } from 'yourails_common'
+import { getLocalStorageDeletedObjFrom } from 'yourails_common'
 
 const COMPONENT: Record<string, React.FunctionComponent<any>> = {
   ReaderIframe,
@@ -64,6 +66,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   props: AcademyPresentComponentPropsType
 ) => {
   const {
+    handleEvents,
     storeStateSlice: {
       language: languageSite,
       durationMultiplier,
@@ -86,6 +89,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     { modules, moduleID: moduleIDActive || moduleID },
     { parentFunction: 'AcademyPresentComponent' }
   )
+
   const canonicalUrl = `${SERVERS_MAIN.remote}${decodeURIComponent(location.pathname)}`
 
   const screenType = ScreensEnumType['AcademyPresent']
@@ -103,6 +107,14 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     ],
     [moduleID]
   )
+
+  useEffect(() => {
+    const redirectAuthFrom = getLocalStorageReadKeyObj('redirectAuthFrom')
+    if (redirectAuthFrom && moduleID && modules.length) {
+      getLocalStorageDeletedObjFrom({ redirectAuthFrom: null })
+      handleEvents({}, { typeEvent: 'GO_TO_QUESTIONS_SCORES' })
+    }
+  }, [modules.length])
 
   useLoadedInitialTeachContent()
   useflagsDebug(mediaLoadedModulesString)
@@ -313,7 +325,6 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
 
   const propsOut: AcademyPresentPropsOutType = {
     headerFrameProps: {
-      contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,
       isLogoGroup: true,
       isButtonAddCourse: true,

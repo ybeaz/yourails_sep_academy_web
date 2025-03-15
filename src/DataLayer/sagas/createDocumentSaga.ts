@@ -22,6 +22,8 @@ function* createDocumentGenerator(params: ActionReduxType | any): Iterable<any> 
     authAwsCognitoUserData: { sub },
   } = stateSelected as RootStoreType
 
+  console.info('createDocumentSaga [25]', { profiles, modules, moduleIDActive, sub })
+
   const module = getArrayItemByProp({
     arr: modules,
     propName: 'moduleID',

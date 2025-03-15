@@ -68,6 +68,7 @@ export type FormsType = {
   inputCourseCreate: string
   modulesSearch: string
   documentsSearch: string
+  searchFormSep: any
   tagsSearch: string
   coursesSearch: string
   profileActive: {
@@ -82,6 +83,7 @@ export type UrlParamsQueryType = { sendCc: string; sendBcc: string }
 export type ScormType = {
   courseIDActive: string | null
   moduleIDActive: string | null
+  documentIDActive: string | null
   numberQuestionsInSlide: number
   durationMultiplier: number
 }

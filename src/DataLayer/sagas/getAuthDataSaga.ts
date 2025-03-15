@@ -28,9 +28,8 @@ function* getAuthDataGenerator(params: ActionReduxType | any): Iterable<any> {
     yield call(getAuthAwsCognitoUserData, { data: { code } })
 
     const redirectAuthFrom = getLocalStorageReadKeyObj('redirectAuthFrom')
-    if (redirectAuthFrom) {
-      getLocalStorageDeletedObjFrom({ redirectAuthFrom: null })
 
+    if (redirectAuthFrom) {
       getRedirected(redirectAuthFrom, {
         isOrigin: true,
         parentFunction: 'getAuthData [34]',
@@ -96,6 +95,8 @@ function* getAuthDataGenerator(params: ActionReduxType | any): Iterable<any> {
       isSideNavLeftVisible: false,
     })
   )
+
+  document.getElementsByTagName('body')[0].style.display = 'block'
 }
 
 export const getAuthData = withDebounce(

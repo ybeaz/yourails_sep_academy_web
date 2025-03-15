@@ -87,17 +87,6 @@ function* getModuleGenerator(params: ActionReduxType | any): Iterable<any> {
   yield put(actionSync.SET_MODULE_ID_ACTIVE({ moduleID }))
 
   yield put(actionSync.SET_MODULES(modulesNext2))
-  if (
-    caseScenario === AcademyPresentCaseEnumType['moduleInProgress'] ||
-    caseScenario === AcademyPresentCaseEnumType['moduleCompleted']
-  ) {
-    yield put(actionSync.TOGGLE_START_MODULE(true))
-
-    if (caseScenario === AcademyPresentCaseEnumType['moduleCompleted']) {
-      const data = [{ childName: 'QuestionScores', isActive: true, childProps: {} }]
-      yield put(actionSync.SET_MODAL_FRAMES(data))
-    }
-  }
 
   const { width } = getSizeWindow()
   if (width <= 480) {
@@ -106,7 +95,7 @@ function* getModuleGenerator(params: ActionReduxType | any): Iterable<any> {
 
   const queryUrl = getParsedUrlQueryBrowserApi()
 
-  if (JSON.stringify(queryUrl) !== '{}' && !modules.length) {
+  if (JSON.stringify(queryUrl) !== '{}') {
     yield call(waitForStoreDataSaga, { path: 'authAwsCognitoUserData.sub', interval: 50 })
     yield call(readModulesConnection, {
       data: { isAddingModules: true, moduleID },

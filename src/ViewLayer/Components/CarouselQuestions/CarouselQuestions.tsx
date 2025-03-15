@@ -125,6 +125,7 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
   const CertificateDash = DICTIONARY['Certificate'][language]
   const questionStr = getQuesionString(language, questionsActive.length)
 
+  // Remove it
   const youCanCheckYourUnderstanding = DICTIONARY.youCanCheckYourUnderstanding[language]
 
   const propsOut: CarouselQuestionsPropsOutType = {
@@ -179,14 +180,8 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
       classAdded: 'Button_MdForward',
       handleEvents,
       action: {
-        typeEvent: 'SET_MODAL_FRAMES',
-        data: [
-          {
-            childName: 'QuestionScores',
-            isActive: true,
-            childProps: {},
-          },
-        ],
+        typeEvent: 'GO_TO_QUESTIONS_SCORES',
+        data: {},
       },
       isDisplaying: isButtonToCertificate,
     },

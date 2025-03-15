@@ -831,18 +831,22 @@
   }
 }
 
+.Button_SignInUp,
 .Button_NextTask,
 .Button_Credit,
-.Button_EditName,
-.Button_ConfirmEditName,
+.Button_IsEditName,
+.Button_CancelEditName,
+.Button_ConfirmForward,
 .Button_Achievements,
+.Button_BackToModule,
 .Button_BackToTopic,
-.Button_UseCertificate {
+.Button_Certificate {
   flex: 1;
   align-items: center;
   .__button {
     height: 2.5rem;
     border-radius: @borderRadius0P5;
+    width: 100%;
 
     &:active,
     &:focus {
@@ -1383,12 +1387,4 @@
   100% {
     top: 0em;
   }
-}
-
-.Button_display_none {
-  display: none;
-}
-
-.Button_visible_none {
-  opacity: 0;
 }

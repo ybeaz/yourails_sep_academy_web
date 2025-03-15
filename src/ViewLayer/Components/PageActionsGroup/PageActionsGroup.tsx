@@ -28,7 +28,7 @@ export const PageActionsGroupComponent: PageActionsGroupComponentType = (
   const propsOut: PageActionsGroupPropsOutType = {
     buttonPrintProps: {
       icon: 'MdPrint',
-      classAdded: 'Button_UseCertificate',
+      classAdded: 'Button_Certificate',
       handleEvents,
       action: {
         typeEvent: 'PRINT_DOCUMENT',
@@ -40,7 +40,7 @@ export const PageActionsGroupComponent: PageActionsGroupComponentType = (
 
     buttonEmailProps: {
       icon: 'MdMailOutline',
-      classAdded: 'Button_UseCertificate',
+      classAdded: 'Button_Certificate',
       handleEvents,
       action: {
         typeEvent: 'SET_MODAL_FRAMES',
@@ -58,7 +58,7 @@ export const PageActionsGroupComponent: PageActionsGroupComponentType = (
 
     buttonCopyLinkProps: {
       icon: 'BsLink45Deg',
-      classAdded: 'Button_UseCertificate',
+      classAdded: 'Button_Certificate',
       handleEvents,
       action: {
         typeEvent: 'COPY_URL_TO_CLIPBOARD',

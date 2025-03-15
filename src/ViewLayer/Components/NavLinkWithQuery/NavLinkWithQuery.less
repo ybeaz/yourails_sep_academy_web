@@ -1,6 +1,4 @@
 .NavLinkWithQuery {
-  display: flex;
-
   @media @large {
   }
   @media @desktop, @desktop-strict {
@@ -9,4 +7,22 @@
   }
   @media @phone, @phone-strict {
   }
+}
+
+.NavLinkWithQuery_cursor_pointer {
+  cursor: pointer;
+}
+
+.NavLinkWithQuery_cursor_not_allowed {
+  cursor: not-allowed;
+  opacity: 50%;
+}
+
+.NavLinkWithQuery_display_none {
+  display: none;
+}
+
+.NavLinkWithQuery_visible_none {
+  visibility: hidden;
+  opacity: 0;
 }

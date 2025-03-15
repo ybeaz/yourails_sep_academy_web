@@ -1,26 +1,41 @@
-import { ButtonYrlPropsType } from 'yourails_common'
+import { nanoid } from 'nanoid'
 import { DICTIONARY } from 'yourails_common'
-import {
-  GetSideNavigationItemsPropsArrPropsType,
-  GetSideNavigationItemsPropsArrType,
-  GetSideNavigationItemsResType,
-} from './SideNavigationTypes'
+import { getNavLinkSIngInUpToProp } from 'yourails_common'
+import { RootStoreType } from '../../../Interfaces/'
+import { HandleEventType } from 'yourails_common'
 import { isAwsCognitoAuth } from '../../../FeatureFlags'
 import { isCourseCreateSectionFlag } from '../../../FeatureFlags'
+import { GetNavLinksButtonsItemParamType } from '../../Hooks/getComponentsList'
+
+export type GetSideNavigationItemsPropsArrPropsType = {
+  language: RootStoreType['language']
+  sub: RootStoreType['authAwsCognitoUserData']['sub']
+  handleEvents: HandleEventType
+}
+
+export type GetSideNavigationItemsPropsArrResType = GetNavLinksButtonsItemParamType
+
+export interface GetSideNavigationItemsPropsArrType {
+  (props: GetSideNavigationItemsPropsArrPropsType): GetNavLinksButtonsItemParamType[]
+}
 
 /**
  * @description Function to getSideNavigationItemsPropsArr
  * @import import { getSideNavigationItemsPropsArr, GetSideNavigationItemsPropsArrParamsType } from './getSideNavigationItemsPropsArr'
  */
 export const getSideNavigationItemsPropsArr: GetSideNavigationItemsPropsArrType = ({
-  navigate,
   language,
   sub,
   handleEvents,
-}: GetSideNavigationItemsPropsArrPropsType): GetSideNavigationItemsResType[] => {
-  const sideNavigationItemsProps: GetSideNavigationItemsResType[] = [
+}: GetSideNavigationItemsPropsArrPropsType): GetSideNavigationItemsPropsArrResType[] => {
+  const sideNavigationItemsProps: GetSideNavigationItemsPropsArrResType[] = [
     {
-      navLinkProps: undefined,
+      navLinkProps: {
+        to: getNavLinkSIngInUpToProp(),
+        isExternal: true,
+        isDisabled: false,
+        isDisplaying: isAwsCognitoAuth() && !sub,
+      },
       buttonYrlProps: {
         icon: 'MdLogin',
         captureRight: DICTIONARY.Login[language],

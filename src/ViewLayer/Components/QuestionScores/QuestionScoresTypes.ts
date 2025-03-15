@@ -1,28 +1,10 @@
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
-import { FormInputNamesPropsType } from '../FormInputNames/FormInputNames'
+
+import { FormInputNamesWithButtonsPropsType } from '../FormInputNamesWithButtons/FormInputNamesWithButtons'
 import { ButtonYrlPropsType } from 'yourails_common'
-import { CourseType, ModuleType, MetaCourseType } from 'yourails_common'
-import { ResultType } from 'yourails_common'
 import { HandleEventType } from 'yourails_common'
 import { NavLinkWithQueryPropsType } from '../../Components/NavLinkWithQuery/NavLinkWithQuery'
-
-export type GetScenarioDictPropsType = {
-  result: ResultType
-  language: RootStoreType['language']
-  capture: string
-  right: number
-  total: number
-  nameFirst: RootStoreType['forms']['user']['nameFirst']
-  nameMiddle: RootStoreType['forms']['user']['nameMiddle']
-  nameLast: RootStoreType['forms']['user']['nameLast']
-  meta?: MetaCourseType | {}
-  description: string
-  moduleID: ModuleType['moduleID']
-  contentID: ModuleType['contentID']
-  sub: RootStoreType['authAwsCognitoUserData']['sub']
-  navigate: any
-  handleEvents: HandleEventType
-}
+import { MessageTilePropsType } from '../MessageTile/MessageTile'
 
 export type QuestionScoresComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
@@ -37,6 +19,7 @@ export type QuestionScoresComponentPropsType = {
     sub: RootStoreType['authAwsCognitoUserData']['sub']
     profiles: RootStoreType['profiles']
     isEditNameVisible: RootStoreType['componentsState']['isEditNameVisible']
+    documentIDActive: RootStoreType['scorm']['documentIDActive']
   }
   handleEvents: HandleEventType
 }
@@ -45,20 +28,6 @@ export type QuestionScoresPropsType = Omit<
   QuestionScoresComponentPropsType,
   'storeStateSlice' | 'handleEvents'
 >
-
-export type QuestionScoresPropsOutType = {
-  navLinkNextTaskProps: NavLinkWithQueryPropsType
-  navLinkCreditProps: NavLinkWithQueryPropsType
-  navLinkAchievementsProps: NavLinkWithQueryPropsType
-  navLinkAllMissionsProps: NavLinkWithQueryPropsType
-  buttonNextTaskProps: ButtonYrlPropsType
-  buttonCreditProps: ButtonYrlPropsType
-  buttonEditNameProps: ButtonYrlPropsType
-  buttonAchievementsProps: ButtonYrlPropsType
-  buttonAllMissionsProps: ButtonYrlPropsType
-  formInputNamesProps: FormInputNamesPropsType
-  buttonConfirmEditNameProps: ButtonYrlPropsType
-}
 
 /**
  * @import import { QuestionScoresType } from './QuestionScoresType'
