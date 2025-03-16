@@ -2,7 +2,7 @@ import React from 'react'
 import { Collapse } from 'antd'
 
 import { TagsCloudBody } from '../TagsCloudBody/TagsCloudBody'
-import { TagsCloudList } from '../TagsCloudList/TagsCloudList'
+import { isMobile } from 'yourails_common'
 import { ModulesBody } from '../ModulesBody/ModulesBody'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { withPropsYrl, withStoreStateSelectedYrl } from 'yourails_common'
@@ -48,7 +48,7 @@ const AcademyMatrixBodyComponent: AcademyMatrixBodyComponentType = (
         <Collapse
           className='_collapse'
           collapsible='icon'
-          defaultActiveKey={['1']}
+          defaultActiveKey={[isMobile() ? '0' : '1']}
           items={[
             {
               key: '1',
@@ -57,7 +57,6 @@ const AcademyMatrixBodyComponent: AcademyMatrixBodyComponentType = (
             },
           ]}
         />
-        {/* <TagsCloudBody {...propsOut.tagsCloudBodyProps} /> */}
       </div>
       <div className='_modulesBodyWrapper'>
         <ModulesBody {...propsOut.modulesBodyProps} />
