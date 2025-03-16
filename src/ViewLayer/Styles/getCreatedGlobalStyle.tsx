@@ -30,11 +30,13 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
 
   const output = createGlobalStyle`
 
+    .AcademyMatrixBody > div._tagsCloudBodyWrapper div.ant-collapse-header.ant-collapse-collapsible-icon > div > span,
+    .AcademyMatrixBody > div._tagsCloudBodyWrapper div.ant-collapse-header.ant-collapse-collapsible-icon > span > h2,
     .Icon_TagsTooltip ._icon,
+    .ModulesBody.ModulesBody_AcademyMatrixBody > ._h2Wrapper > ._link >._h2,
     .PlayerPanel ._capture,
     .AvatarPlusInfo,
     .AvatarPlusInfo > ._link > ._captureText,
-    .ModulesBody.ModulesBody_AcademyMatrixBody > ._h2Wrapper > ._link >._h2,
     .LogoGroup,
     .AbInCircle,
     .Button_MdClose ._in {
@@ -79,6 +81,7 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
       background: ${props2 => getColor(props2, 'colorSecond', medial, middle)};
     }
 
+    .AcademyMatrixBody > div._tagsCloudBodyWrapper > div > div > div.ant-collapse-content.ant-collapse-content-active,
     .SearchFormSep .__searchForm ._row ._selectElement._submitGroup {
       background-color: unset;
     }

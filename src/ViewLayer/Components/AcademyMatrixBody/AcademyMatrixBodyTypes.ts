@@ -21,7 +21,6 @@ export type AcademyMatrixBodyPropsType = Omit<
 
 export type AcademyMatrixBodyPropsOutType = {
   tagsCloudBodyProps: TagsCloudBodyPropsType
-  tagsCloudListProps: any
   modulesBodyProps: ModulesBodyPropsType
 }
 

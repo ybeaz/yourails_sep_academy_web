@@ -32,11 +32,6 @@ const AcademyMatrixBodyComponent: AcademyMatrixBodyComponentType = (
   } = props
 
   const propsOut: AcademyMatrixBodyPropsOutType = {
-    tagsCloudListProps: {
-      tagsCloud,
-      handleEvents,
-      screenActive,
-    },
     tagsCloudBodyProps: {
       classAdded: 'TagsCloudBody_AcademyMatrixBody',
       headline: DICTIONARY.Tags[language],
@@ -50,21 +45,19 @@ const AcademyMatrixBodyComponent: AcademyMatrixBodyComponentType = (
   return (
     <div className={getClasses('AcademyMatrixBody', classAdded)}>
       <div className='_tagsCloudBodyWrapper'>
-        {/* <Collapse
+        <Collapse
           className='_collapse'
           collapsible='icon'
           defaultActiveKey={['1']}
           items={[
             {
               key: '1',
-              label: <h2 className='_h2'>{DICTIONARY.Credits[language]}</h2>,
-              children: <TagsCloudList {...propsOut.tagsCloudListProps} />,
-              // children: <TagsCloudBody {...propsOut.tagsCloudBodyProps} />,
+              label: <h2 className='_h2'>{DICTIONARY.Tags[language]}</h2>,
+              children: <TagsCloudBody {...propsOut.tagsCloudBodyProps} />,
             },
           ]}
-        /> */}
-        <TagsCloudBody {...propsOut.tagsCloudBodyProps} />
-        {/* <TagsCloudList {...propsOut.tagsCloudListProps} /> */}
+        />
+        {/* <TagsCloudBody {...propsOut.tagsCloudBodyProps} /> */}
       </div>
       <div className='_modulesBodyWrapper'>
         <ModulesBody {...propsOut.modulesBodyProps} />
