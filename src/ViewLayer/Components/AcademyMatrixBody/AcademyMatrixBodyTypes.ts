@@ -2,12 +2,16 @@ import React from 'react'
 import { TagsCloudBodyPropsType } from '../TagsCloudBody/TagsCloudBodyTypes'
 import { ModulesBodyPropsType } from '../ModulesBody/ModulesBodyTypes'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
+import { HandleEventType } from 'yourails_common'
 
 export type AcademyMatrixBodyComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
   storeStateSlice: {
     language: RootStoreType['language']
+    tagsCloud: RootStoreType['tagsCloud']
+    screenActive: RootStoreType['componentsState']['screenActive']
   }
+  handleEvents: HandleEventType
 }
 
 export type AcademyMatrixBodyPropsType = Omit<
@@ -17,6 +21,7 @@ export type AcademyMatrixBodyPropsType = Omit<
 
 export type AcademyMatrixBodyPropsOutType = {
   tagsCloudBodyProps: TagsCloudBodyPropsType
+  tagsCloudListProps: any
   modulesBodyProps: ModulesBodyPropsType
 }
 

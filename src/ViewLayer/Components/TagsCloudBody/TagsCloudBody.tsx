@@ -13,6 +13,7 @@ import { PaginationNavigation } from '../../Components/PaginationNavigation/Pagi
 import { getExpertiseInfo, GetExpertiseInfoResType } from 'yourails_common'
 import { getRangeOfNumbers } from 'yourails_common'
 import { getColorsRandomDarkTheme } from 'yourails_common'
+import { TagsCloudList as TagsCloudListComponent } from '../TagsCloudList/TagsCloudList'
 import {
   TagsCloudBodyComponentPropsType,
   TagsCloudBodyPropsType,
@@ -21,6 +22,123 @@ import {
   TagsCloudBodyComponentType,
   TagsCloudBodyType,
 } from './TagsCloudBodyTypes'
+
+// Remove it
+export const TagsCloudList = (props: {
+  tagsCloud: TagType[]
+  handleEvents: any
+  screenActive: ScreensEnumType
+}) => {
+  const { tagsCloud: tagsCloudIn, handleEvents, screenActive } = props
+
+  let navigate: any = useNavigate()
+  if (screenActive === ScreensEnumType['AcademyMatrix']) navigate = null
+
+  if (!tagsCloudIn.length) return null
+
+  const range = getRangeOfNumbers({
+    min: 16,
+    max: 36,
+    steps: tagsCloudIn.length,
+    decimals: 2,
+    isReverse: true,
+  })
+  const colorsRandomDarkTheme = getColorsRandomDarkTheme({
+    numberOfColors: tagsCloudIn.length,
+  })
+  return tagsCloudIn.map((tagCloud: TagType, index: number) => {
+    const { tagID, completed, count, value } = tagCloud
+
+    const {
+      level,
+      name,
+      min,
+      max,
+      iconName,
+      left,
+      levelNext: {
+        level: nextLevel,
+        name: nextName,
+        min: nextMin,
+        max: nextMax,
+        iconName: nextIconName,
+      },
+    }: GetExpertiseInfoResType = getExpertiseInfo({ completed })
+
+    const propsOut: GetTagsCloudListType = {
+      buttonTagMdCheckProps: {
+        classAdded: 'Button_tagMdCheck',
+        icon: 'MdCheck',
+        iconColor: colorsRandomDarkTheme[index],
+        handleEvents,
+        action: {
+          typeEvent: '',
+          data: {},
+        },
+        isDisplaying: true,
+      },
+      buttonTagExpertiseProps: {
+        classAdded: 'Button_tagExpertise',
+        icon: iconName,
+        iconColor: colorsRandomDarkTheme[index],
+        handleEvents,
+        action: {
+          typeEvent: '',
+          data: {},
+        },
+        isDisplaying: true,
+      },
+    }
+
+    const tagsCloudBodyTooltipContentTagButton = (
+      <div className='_tagsCloudBodyTooltipContentTagButton'>
+        {name && (
+          <div className='_tooltipRow'>
+            <b>{name}</b> level of proficiency.
+          </div>
+        )}
+        <div className='_tooltipRow'>
+          <b>{completed}</b> of <b>{count}</b> modules are completed.
+        </div>
+        {completed < count && (
+          <>
+            <div className='_tooltipRow'>
+              <b>{left}</b> modules to the next level.
+            </div>
+            <div className='_tooltipRow'>
+              <b>{nextName}</b> is the next level.
+            </div>
+          </>
+        )}
+        {completed >= count && <div className='_tooltipRow'>You finished. Congratulations.</div>}
+      </div>
+    )
+
+    return (
+      <div
+        key={tagID}
+        className='_tagCloud'
+        onClick={() => handleEvents({}, { type: 'CLICK_ON_TAG', data: { tagCloud, navigate } })}
+      >
+        <Tooltip className='_tooltip' title={tagsCloudBodyTooltipContentTagButton}>
+          <div
+            className='_tagCloudWrapper'
+            style={{
+              fontSize: `${range[index]}px`,
+              color: colorsRandomDarkTheme[index],
+            }}
+          >
+            {completed >= count && <ButtonYrl {...propsOut.buttonTagMdCheckProps} />}
+            <span className='_spanTagName'>{value}</span>
+            <span className='_spanCount'>{count}</span>
+            <span className='_spanCompleted'>{completed}</span>
+            <ButtonYrl {...propsOut.buttonTagExpertiseProps} />
+          </div>
+        </Tooltip>
+      </div>
+    )
+  })
+}
 
 /**
  * @description Component to render TagsCloudBody
@@ -37,116 +155,6 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
     storeStateSlice: { tagsCloud, pageTags, screenActive },
     handleEvents,
   } = props
-
-  let navigate: any = useNavigate()
-  if (screenActive === ScreensEnumType['AcademyMatrix']) navigate = null
-
-  const getTagsCloudList = (tagsCloudIn: TagType[]) => {
-    if (!tagsCloudIn.length) return null
-
-    const range = getRangeOfNumbers({
-      min: 16,
-      max: 36,
-      steps: tagsCloudIn.length,
-      decimals: 2,
-      isReverse: true,
-    })
-    const colorsRandomDarkTheme = getColorsRandomDarkTheme({
-      numberOfColors: tagsCloudIn.length,
-    })
-    return tagsCloudIn.map((tagCloud: TagType, index: number) => {
-      const { tagID, completed, count, value } = tagCloud
-
-      const {
-        level,
-        name,
-        min,
-        max,
-        iconName,
-        left,
-        levelNext: {
-          level: nextLevel,
-          name: nextName,
-          min: nextMin,
-          max: nextMax,
-          iconName: nextIconName,
-        },
-      }: GetExpertiseInfoResType = getExpertiseInfo({ completed })
-
-      const propsOut: GetTagsCloudListType = {
-        buttonTagMdCheckProps: {
-          classAdded: 'Button_tagMdCheck',
-          icon: 'MdCheck',
-          iconColor: colorsRandomDarkTheme[index],
-          handleEvents,
-          action: {
-            typeEvent: '',
-            data: {},
-          },
-          isDisplaying: true,
-        },
-        buttonTagExpertiseProps: {
-          classAdded: 'Button_tagExpertise',
-          icon: iconName,
-          iconColor: colorsRandomDarkTheme[index],
-          handleEvents,
-          action: {
-            typeEvent: '',
-            data: {},
-          },
-          isDisplaying: true,
-        },
-      }
-
-      const tagsCloudBodyTooltipContentTagButton = (
-        <div className='_tagsCloudBodyTooltipContentTagButton'>
-          {name && (
-            <div className='_tooltipRow'>
-              <b>{name}</b> level of proficiency.
-            </div>
-          )}
-          <div className='_tooltipRow'>
-            <b>{completed}</b> of <b>{count}</b> modules are completed.
-          </div>
-          {completed < count && (
-            <>
-              <div className='_tooltipRow'>
-                <b>{left}</b> modules to the next level.
-              </div>
-              <div className='_tooltipRow'>
-                <b>{nextName}</b> is the next level.
-              </div>
-            </>
-          )}
-          {completed >= count && <div className='_tooltipRow'>You finished. Congratulations.</div>}
-        </div>
-      )
-
-      return (
-        <div
-          key={tagID}
-          className='_tagCloud'
-          onClick={() => handleEvents({}, { type: 'CLICK_ON_TAG', data: { tagCloud, navigate } })}
-        >
-          <Tooltip className='_tooltip' title={tagsCloudBodyTooltipContentTagButton}>
-            <div
-              className='_tagCloudWrapper'
-              style={{
-                fontSize: `${range[index]}px`,
-                color: colorsRandomDarkTheme[index],
-              }}
-            >
-              {completed >= count && <ButtonYrl {...propsOut.buttonTagMdCheckProps} />}
-              <span className='_spanTagName'>{value}</span>
-              <span className='_spanCount'>{count}</span>
-              <span className='_spanCompleted'>{completed}</span>
-              <ButtonYrl {...propsOut.buttonTagExpertiseProps} />
-            </div>
-          </Tooltip>
-        </div>
-      )
-    })
-  }
 
   const propsOut: TagsCloudBodyPropsOutType = {
     paginationNavigationProps: {
@@ -205,7 +213,11 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
           gridTemplateColumns,
         }}
       >
-        {getTagsCloudList(tagsCloud)}
+        <TagsCloudList
+          tagsCloud={tagsCloud}
+          handleEvents={handleEvents}
+          screenActive={screenActive}
+        />
       </div>
       {!(pageTags.first === 0 && pageTags.offset > tagsCloud.length) && (
         <div className='_paginationNavigationWrapper'>

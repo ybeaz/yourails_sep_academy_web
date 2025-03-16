@@ -1,8 +1,10 @@
 import React from 'react'
+import { Collapse } from 'antd'
 
 import { TagsCloudBody } from '../TagsCloudBody/TagsCloudBody'
+import { TagsCloudList } from '../TagsCloudList/TagsCloudList'
 import { ModulesBody } from '../ModulesBody/ModulesBody'
-
+import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { withPropsYrl, withStoreStateSelectedYrl } from 'yourails_common'
 import { getClasses } from 'yourails_common'
 import { DICTIONARY } from 'yourails_common'
@@ -25,10 +27,16 @@ const AcademyMatrixBodyComponent: AcademyMatrixBodyComponentType = (
 ) => {
   const {
     classAdded,
-    storeStateSlice: { language },
+    storeStateSlice: { language, tagsCloud, screenActive },
+    handleEvents,
   } = props
 
   const propsOut: AcademyMatrixBodyPropsOutType = {
+    tagsCloudListProps: {
+      tagsCloud,
+      handleEvents,
+      screenActive,
+    },
     tagsCloudBodyProps: {
       classAdded: 'TagsCloudBody_AcademyMatrixBody',
       headline: DICTIONARY.Tags[language],
@@ -42,7 +50,21 @@ const AcademyMatrixBodyComponent: AcademyMatrixBodyComponentType = (
   return (
     <div className={getClasses('AcademyMatrixBody', classAdded)}>
       <div className='_tagsCloudBodyWrapper'>
+        {/* <Collapse
+          className='_collapse'
+          collapsible='icon'
+          defaultActiveKey={['1']}
+          items={[
+            {
+              key: '1',
+              label: <h2 className='_h2'>{DICTIONARY.Credits[language]}</h2>,
+              children: <TagsCloudList {...propsOut.tagsCloudListProps} />,
+              // children: <TagsCloudBody {...propsOut.tagsCloudBodyProps} />,
+            },
+          ]}
+        /> */}
         <TagsCloudBody {...propsOut.tagsCloudBodyProps} />
+        {/* <TagsCloudList {...propsOut.tagsCloudListProps} /> */}
       </div>
       <div className='_modulesBodyWrapper'>
         <ModulesBody {...propsOut.modulesBodyProps} />
@@ -51,11 +73,10 @@ const AcademyMatrixBodyComponent: AcademyMatrixBodyComponentType = (
   )
 }
 
-const storeStateSliceProps: string[] = ['language']
-export const AcademyMatrixBody: AcademyMatrixBodyType = withStoreStateSelectedYrl(
-  storeStateSliceProps,
-  React.memo(AcademyMatrixBodyComponent)
-)
+const storeStateSliceProps: string[] = ['language', 'tagsCloud', 'screenActive']
+export const AcademyMatrixBody: AcademyMatrixBodyType = withPropsYrl({
+  handleEvents: handleEventsIn,
+})(withStoreStateSelectedYrl(storeStateSliceProps, React.memo(AcademyMatrixBodyComponent)))
 
 export type {
   AcademyMatrixBodyPropsType,
