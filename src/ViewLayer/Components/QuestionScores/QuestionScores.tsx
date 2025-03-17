@@ -10,6 +10,9 @@ import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleE
 import { withStoreStateSelectedYrl, withPropsYrl, ButtonYrl } from 'yourails_common'
 import { getQuestionScoresCase } from './getQuestionScoresCase'
 import { QuestionsScoresCaseEnumType } from 'yourails_common'
+import { getQuestionsWrongAnswered } from 'yourails_common'
+import { DICTIONARY } from 'yourails_common'
+import { QuestionsCaptures } from '../QuestionsCaptures/QuestionsCaptures'
 import {
   getQuestionScoresPropsOut,
   GetQuestionScoresPropsOutParamsType,
@@ -66,6 +69,8 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
   passRateIn = passRateIn && isParsableFloat(passRateIn) && parseFloat(passRateIn)
   passRateIn = passRateIn ? passRateIn : passRate
   passRateIn = passRateIn < 0.5 ? 0.5 : passRateIn
+
+  const questionsWrongAnswered = getQuestionsWrongAnswered(questionsActive)
 
   const score: GetAnswersChecked2OutType = getAnswersChecked2(questionsActive, passRateIn)
   const { result } = score
@@ -128,12 +133,29 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     isEditNameVisible,
     language,
     score,
+    questionsWrongAnswered,
     handleEvents,
   }
 
   const componentsListProps: GetQuestionScoresPropsOutResType[] = getQuestionScoresPropsOut(
     getQuestionScoresPropsOutProps
   )
+
+  const getRendedQuestionsWrongAnswered: Function = (questions: any[]): ReactElement => {
+    return (
+      <ul className='_ul'>
+        {questions.map(question => {
+          const { questionID, capture: questionCapture } = question
+
+          return (
+            <li key={questionID} className='_li'>
+              {questionCapture}
+            </li>
+          )
+        })}
+      </ul>
+    )
+  }
 
   return <div className='QuestionScores'>{getComponentsList(componentsListProps)}</div>
 }

@@ -1,10 +1,5 @@
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
-
-import { FormInputNamesWithButtonsPropsType } from '../FormInputNamesWithButtons/FormInputNamesWithButtons'
-import { ButtonYrlPropsType } from 'yourails_common'
 import { HandleEventType } from 'yourails_common'
-import { NavLinkWithQueryPropsType } from '../../Components/NavLinkWithQuery/NavLinkWithQuery'
-import { MessageTilePropsType } from '../MessageTile/MessageTile'
 
 export type QuestionScoresComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>

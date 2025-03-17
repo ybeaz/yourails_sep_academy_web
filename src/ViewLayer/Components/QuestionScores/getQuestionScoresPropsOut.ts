@@ -4,6 +4,7 @@ import {
   FuncModeEnumType,
   WithTryCatchFinallyWrapperOptionsType,
 } from 'yourails_common'
+import { QuestionType } from 'yourails_common'
 import { getNavLinkSIngInUpToProp } from 'yourails_common'
 import { ModuleType } from 'yourails_common'
 import { HandleEventType } from 'yourails_common'
@@ -32,6 +33,7 @@ type GetQuestionScoresPropsOutParamsType = {
   isEditNameVisible: boolean
   language: RootStoreType['language']
   score: GetAnswersChecked2OutType
+  questionsWrongAnswered: QuestionType[]
 }
 
 type GetQuestionScoresPropsOutOptionsType = { funcParent?: string }
@@ -67,6 +69,7 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
   isEditNameVisible,
   language,
   score,
+  questionsWrongAnswered,
 }: GetQuestionScoresPropsOutParamsType) => {
   const { total, right } = score
 
@@ -325,6 +328,18 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
         tooltipPosition: 'top',
         isDisabled: false,
         isDisplaying: !isEditNameVisible,
+      },
+    },
+    {
+      questionsCapturesProps: {
+        classAdded: 'QuestionsCaptures_QuestionScores',
+        language,
+        questions: questionsWrongAnswered,
+        isDisplaying:
+          scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthTrue_NamesFalse ||
+          scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthTrue_NamesTrue ||
+          scenarioCase === QuestionsScoresCaseEnumType.successFalse_AuthFalse_NamesFalse,
+        isVisible: true,
       },
     },
   ]
