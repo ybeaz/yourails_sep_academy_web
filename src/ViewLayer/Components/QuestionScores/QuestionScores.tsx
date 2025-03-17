@@ -1,8 +1,5 @@
 import React, { useEffect, ReactElement } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { Tooltip } from 'antd'
 
-import { NavLinkWithQuery } from '../../Components/NavLinkWithQuery/NavLinkWithQuery'
 import { isParsableFloat } from 'yourails_common'
 import { useIsFirstRenderYrl } from 'yourails_common'
 import { getParsedUrlQuery } from 'yourails_common'
@@ -10,7 +7,6 @@ import { getParsedUrlQueryBrowserApi } from 'yourails_common'
 import { getAnswersChecked2, GetAnswersChecked2OutType } from 'yourails_common'
 import { getModuleByModuleID } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
-import { FormInputNamesWithButtons } from '../FormInputNamesWithButtons/FormInputNamesWithButtons'
 import { withStoreStateSelectedYrl, withPropsYrl, ButtonYrl } from 'yourails_common'
 import { getQuestionScoresCase } from './getQuestionScoresCase'
 import { QuestionsScoresCaseEnumType } from 'yourails_common'
@@ -54,7 +50,6 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
   } = props
 
   const isFirstRender = useIsFirstRenderYrl()
-  const navigate = useNavigate()
 
   const moduleActive = getModuleByModuleID(
     {
