@@ -6,6 +6,7 @@ import {
   RootStoreType,
 } from '../Interfaces/RootStoreType'
 import { PaginationNameEnumType } from 'yourails_common'
+import { isMobile } from 'yourails_common'
 
 import { ScreensEnumType, CreateModuleStatusEnumType } from 'yourails_common'
 
@@ -72,7 +73,7 @@ export const componentsStateDefault: ComponentsStateType = {
   isOAuthFacebookScriptLoaded: false,
   isOAuthVKontakteScriptLoaded: false,
   isOAuthGoogleScriptLoaded: false,
-  isMobileSearchInput: false,
+  isMobileSearchInput: isMobile ? true : false,
   isEditNameVisible: false,
   oAuthStage: null,
   modalFrames: [

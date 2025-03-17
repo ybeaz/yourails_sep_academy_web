@@ -4,8 +4,17 @@
 
   ._tagsCloudBodyWrapper {
     display: flex;
+    flex-direction: column;
     flex: 1;
     min-width: 25vw;
+
+    ._h2 {
+      display: flex;
+      align-self: flex-start;
+      text-transform: capitalize;
+      line-height: 2.25rem;
+      font-size: @fontSizeH4;
+    }
   }
 
   ._modulesBodyWrapper {
@@ -26,12 +35,32 @@
     width: 100vw;
 
     ._tagsCloudBodyWrapper {
-      flex: 1;
+      padding: 0 0 1rem 0;
     }
 
     ._modulesBodyWrapper {
       flex: 1;
       padding-left: 0;
     }
+  }
+}
+
+.AcademyMatrixBody > div._tagsCloudBodyWrapper > div {
+  border: unset;
+
+  div.ant-collapse-content.ant-collapse-content-active {
+    border-top: unset;
+
+    div.ant-collapse-content-box {
+      padding: 0;
+    }
+  }
+
+  div.ant-collapse-header.ant-collapse-collapsible-icon {
+    align-items: center;
+  }
+
+  div.ant-collapse-item > .ant-collapse-header {
+    padding: 12px 16px 0 16px;
   }
 }

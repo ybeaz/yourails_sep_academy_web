@@ -17,6 +17,7 @@ import { YOURAILS_ORGANIZATION } from 'yourails_common'
 import { SERVERS_MAIN } from 'yourails_common'
 import { getTagLine } from 'yourails_common'
 import { ScreensEnumType } from 'yourails_common'
+import { isMobile } from 'yourails_common'
 import {
   withPropsYrl,
   InputGroupYrl,
@@ -67,6 +68,8 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
     },
     handleEvents,
   } = props
+
+  // const isMobileSearchInput = isMobile ? !isMobileSearchInputIn : isMobileSearchInputIn
 
   const { brand: brandName } = YOURAILS_ORGANIZATION
   const moto = getTagLine()

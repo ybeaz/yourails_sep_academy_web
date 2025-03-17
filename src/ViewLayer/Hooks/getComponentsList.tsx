@@ -9,6 +9,10 @@ import {
 import { FormInputNamesWithButtonsPropsType } from '../Components/FormInputNamesWithButtons/FormInputNamesWithButtons'
 import { FormInputNamesWithButtons } from '../Components/FormInputNamesWithButtons/FormInputNamesWithButtons'
 import { MessageTile, MessageTilePropsType } from '../Components/MessageTile/MessageTile'
+import {
+  QuestionsCaptures,
+  QuestionsCapturesPropsType,
+} from '../Components/QuestionsCaptures/QuestionsCaptures'
 
 type GetNavLinksButtonsItemParamType = {
   navLinkProps?: NavLinkWithQueryPropsType
@@ -17,6 +21,7 @@ type GetNavLinksButtonsItemParamType = {
   buttonCancelEditNameProps?: ButtonYrlPropsType
   buttonConfirmEditNameProps?: ButtonYrlPropsType
   messageTileProps?: MessageTilePropsType
+  questionsCapturesProps?: QuestionsCapturesPropsType
 }
 
 type GetComponentsListOptionsType = { funcParent?: string }
@@ -45,7 +50,14 @@ const getComponentsList: GetComponentsListType = (
   }
 
   return navLinksButtonsItems.map(
-    ({ id, navLinkProps, buttonYrlProps, formInputNamesWithButtonsProps, messageTileProps }) => {
+    ({
+      id,
+      navLinkProps,
+      buttonYrlProps,
+      formInputNamesWithButtonsProps,
+      messageTileProps,
+      questionsCapturesProps,
+    }) => {
       if (navLinkProps && buttonYrlProps)
         return (
           <NavLinkWithQuery
@@ -75,6 +87,7 @@ const getComponentsList: GetComponentsListType = (
       else if (formInputNamesWithButtonsProps)
         return <FormInputNamesWithButtons {...formInputNamesWithButtonsProps} />
       else if (messageTileProps) return <MessageTile {...messageTileProps} />
+      else if (questionsCapturesProps) return <QuestionsCaptures {...questionsCapturesProps} />
     }
   )
 }

@@ -1,8 +1,5 @@
 import React, { useEffect, ReactElement } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { Tooltip } from 'antd'
 
-import { NavLinkWithQuery } from '../../Components/NavLinkWithQuery/NavLinkWithQuery'
 import { isParsableFloat } from 'yourails_common'
 import { useIsFirstRenderYrl } from 'yourails_common'
 import { getParsedUrlQuery } from 'yourails_common'
@@ -10,10 +7,12 @@ import { getParsedUrlQueryBrowserApi } from 'yourails_common'
 import { getAnswersChecked2, GetAnswersChecked2OutType } from 'yourails_common'
 import { getModuleByModuleID } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
-import { FormInputNamesWithButtons } from '../FormInputNamesWithButtons/FormInputNamesWithButtons'
 import { withStoreStateSelectedYrl, withPropsYrl, ButtonYrl } from 'yourails_common'
 import { getQuestionScoresCase } from './getQuestionScoresCase'
 import { QuestionsScoresCaseEnumType } from 'yourails_common'
+import { getQuestionsWrongAnswered } from 'yourails_common'
+import { DICTIONARY } from 'yourails_common'
+import { QuestionsCaptures } from '../QuestionsCaptures/QuestionsCaptures'
 import {
   getQuestionScoresPropsOut,
   GetQuestionScoresPropsOutParamsType,
@@ -54,7 +53,6 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
   } = props
 
   const isFirstRender = useIsFirstRenderYrl()
-  const navigate = useNavigate()
 
   const moduleActive = getModuleByModuleID(
     {
@@ -71,6 +69,8 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
   passRateIn = passRateIn && isParsableFloat(passRateIn) && parseFloat(passRateIn)
   passRateIn = passRateIn ? passRateIn : passRate
   passRateIn = passRateIn < 0.5 ? 0.5 : passRateIn
+
+  const questionsWrongAnswered = getQuestionsWrongAnswered(questionsActive)
 
   const score: GetAnswersChecked2OutType = getAnswersChecked2(questionsActive, passRateIn)
   const { result } = score
@@ -133,12 +133,29 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     isEditNameVisible,
     language,
     score,
+    questionsWrongAnswered,
     handleEvents,
   }
 
   const componentsListProps: GetQuestionScoresPropsOutResType[] = getQuestionScoresPropsOut(
     getQuestionScoresPropsOutProps
   )
+
+  const getRendedQuestionsWrongAnswered: Function = (questions: any[]): ReactElement => {
+    return (
+      <ul className='_ul'>
+        {questions.map(question => {
+          const { questionID, capture: questionCapture } = question
+
+          return (
+            <li key={questionID} className='_li'>
+              {questionCapture}
+            </li>
+          )
+        })}
+      </ul>
+    )
+  }
 
   return <div className='QuestionScores'>{getComponentsList(componentsListProps)}</div>
 }
