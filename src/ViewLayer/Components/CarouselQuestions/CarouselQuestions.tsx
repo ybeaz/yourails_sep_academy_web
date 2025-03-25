@@ -125,9 +125,6 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
   const CertificateDash = DICTIONARY['Certificate'][language]
   const questionStr = getQuesionString(language, questionsActive.length)
 
-  // Remove it
-  const youCanCheckYourUnderstanding = DICTIONARY.youCanCheckYourUnderstanding[language]
-
   const propsOut: CarouselQuestionsPropsOutType = {
     buttonStartProps: {
       captureLeft: (

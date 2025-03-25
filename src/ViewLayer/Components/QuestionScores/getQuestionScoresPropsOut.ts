@@ -327,7 +327,13 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
         tooltipText: '',
         tooltipPosition: 'top',
         isDisabled: false,
-        isDisplaying: !isEditNameVisible,
+        isDisplaying:
+          !isEditNameVisible &&
+          !(
+            scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesTrue ||
+            scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesFalse ||
+            scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesFalse
+          ),
       },
     },
     {
