@@ -73,7 +73,22 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
 }: GetQuestionScoresPropsOutParamsType) => {
   const { total, right } = score
 
-  const pathNextTask = getPathNextTask({ modules: modulesIn })
+  /* Modify active module isCompleted according to scenario */
+  let modules = modulesIn
+  if (
+    scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesTrue ||
+    scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesFalse ||
+    scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthFalse_NamesFalse
+  ) {
+    modules = modulesIn.map((module: ModuleType) => {
+      if (module.moduleID === moduleActive.moduleID) {
+        module.isCompleted = true
+      }
+      return module
+    })
+  }
+
+  const pathNextTask = getPathNextTask({ modules })
 
   const getMessagesDictParams: GetMessagesDictParamsType = {
     scenarioCase,
@@ -156,9 +171,11 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
         classAdded: 'NavLink_BackToTopic',
         to: {
           pathname: '/',
-          search: !!pathNextTask
-            ? queryUrl
-            : { pageModules: '1', pageTags: '1', pageDocuments: '1' },
+          search: queryUrl,
+          /* Alternative logic to navigate to the main page */
+          // !!pathNextTask
+          // ? queryUrl
+          // : { pageModules: '1', pageTags: '1', pageDocuments: '1' },
         },
         /* onClick: () => navigate(-1), Alternative */
         isDisabled: false,
@@ -172,9 +189,7 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
           typeEvent: 'SET_MODAL_FRAMES',
           data: [],
         },
-        captureLeft: !!pathNextTask
-          ? DICTIONARY.Back_to_mission[language]
-          : DICTIONARY.Back_to_choice[language],
+        captureLeft: DICTIONARY.Back_to_topic[language],
         tooltipText: '',
         tooltipPosition: 'top',
         isDisabled: false,
