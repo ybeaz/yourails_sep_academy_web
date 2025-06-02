@@ -1,10 +1,10 @@
 import { store } from '../store'
 import { ActionEventType } from 'yourails_common'
 import { actionAsync, actionSync } from '../../DataLayer/index.action'
-import { getObjectSlice } from 'yourails_common'
-import { getWaitedForVarChange, GetWaitedForVarChangeParamsType } from 'yourails_common'
-import { getCheckedModulesAnswered } from 'yourails_common'
-import { getModuleByModuleID } from 'yourails_common'
+// import { getObjectSlice } from 'yourails_common'
+// import { getWaitedForVarChange, GetWaitedForVarChangeParamsType } from 'yourails_common'
+// import { getCheckedModulesAnswered } from 'yourails_common'
+// import { getModuleByModuleID } from 'yourails_common'
 // getWaitedForVarChangeUnsafe: GetWaitedForVarChangeType = async (
 //   params: GetWaitedForVarChangeParamsType,
 //   options?: GetWaitedForVarChangeOptionsType
@@ -13,26 +13,18 @@ import { getModuleByModuleID } from 'yourails_common'
 
 const { dispatch, getState } = store
 
+/**
+ * @description Action GO_TO_QUESTIONS_SCORES
+ * CREATE_DOCUMENT happens in src/ViewLayer/Components/QuestionScores/QuestionScores.tsx
+      if (
+        !documentIDActive &&
+        (scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesTrue ||
+          scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesFalse)
+      ) {
+        handleEvents({}, { typeEvent: 'CREATE_DOCUMENT', data: { isEditNameVisible: false } })
+      }
+ */
 export const GO_TO_QUESTIONS_SCORES: ActionEventType = async (event, data) => {
-  // Remove it
-  const { modules, moduleIDActive } = getObjectSlice({
-    entity: getState(),
-    arrProps: ['sub', 'modules', 'moduleIDActive'],
-  })
-
-  if (!moduleIDActive || !modules.length) return
-  const moduleActive = getModuleByModuleID(
-    {
-      moduleID: moduleIDActive || '',
-      modules,
-    },
-    { parentFunction: 'QuestionScoresComponent' }
-  )
-
-  const isAnswered = getCheckedModulesAnswered([moduleActive])
-
-  if (!isAnswered) return
-
   const data2 = [
     {
       childName: 'QuestionScores',

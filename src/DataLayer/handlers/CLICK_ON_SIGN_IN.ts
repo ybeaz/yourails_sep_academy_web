@@ -13,14 +13,14 @@ export const CLICK_ON_SIGN_IN: ActionEventType = (event, data) => {
 
   if (regex.test(window.location.pathname)) {
     // Remove it
-    const { sub } = getObjectSlice({
-      entity: getState(),
-      arrProps: ['sub'],
-    })
+    // const { sub } = getObjectSlice({
+    //   entity: getState(),
+    //   arrProps: ['sub'],
+    // })
 
-    console.info('CLICK_ON_SIGN_IN [20]', { sub })
+    // console.info('CLICK_ON_SIGN_IN [20]', { sub })
 
-    sub && dispatch(actionAsync.CREATE_DOCUMENT_SCENARIO.REQUEST(data))
+    // sub && dispatch(actionAsync.CREATE_DOCUMENT_SCENARIO.REQUEST(data))
 
     getLocalStorageSetObjTo({
       redirectAuthFrom: decodeURIComponent(`${window.location.pathname}${window.location.search}`),

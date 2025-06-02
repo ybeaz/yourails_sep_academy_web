@@ -1,10 +1,9 @@
 {
   "name": "yourails_sep_academy_web",
-  "version": "0.94.1",
+  "version": "0.95.1use",
   "description": "webpack5 react",
   "main": "index.tsx",
   "scripts": {
-    "buildYourailsCommon": "rm -rf node_modules/yourails_common/node_modules && tsc -p tsconfig.yourails_common.json",
     "bump": "yarn remove yourails_common && yarn add yourails_common && yarn buildYourailsCommon",
     "start:dev": "webpack serve --port 3440 --config webpack.dev.js --hot",
     "removeDir": "ts-node tools/getRemovedFilesInDirectory.ts",
@@ -66,7 +65,8 @@
     "ts-node": "^10.9.1",
     "yargs": "17.7.2",
     "yarn": "@1.22.17",
-    "yourails_common": "^0.11.2"
+    "yourails_common": "^0.16.8",
+    "yourails_node": "^0.16.7"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.24.7",

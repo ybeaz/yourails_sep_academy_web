@@ -1,6 +1,6 @@
 import fs from 'fs'
 
-import { getCopiedFileSync } from '@yourails_common'
+import { getCopiedFileSync } from 'yourails_node'
 import { copyArr } from './config'
 
 /**

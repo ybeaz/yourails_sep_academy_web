@@ -2,7 +2,7 @@ import {
   getMinifiedBundle,
   GetMinifiedBundleParamsType,
   GetMinifiedBundleOptionsType,
-} from '@yourails_common'
+} from 'yourails_node'
 
 interface GetIteratedAndMinifiedFilesType {
   (inputDir: string, jsFiles: string[]): Promise<string[]>

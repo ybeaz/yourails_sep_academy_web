@@ -266,7 +266,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
             </div>
           )}
         </div>
-        {isMobileSearchInput && isSeachGroup ? (
+        {isMobile() && isMobileSearchInput && isSeachGroup ? (
           <div className='__rightMobile'>
             <InputGroupYrl {...propsOut.inputGroupProps} />
           </div>
