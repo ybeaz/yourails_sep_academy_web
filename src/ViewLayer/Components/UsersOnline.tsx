@@ -2,12 +2,13 @@ import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
-import { DICTIONARY } from '../../Constants/dictionary.const'
-import { ActionReduxType } from '../../Interfaces/ActionReduxType'
+import { withPropsYrl, ButtonYrl, ImageYrl } from 'yourails_common'
+import { handleEvents as handleEventsIn } from '../../DataLayer/index.handleEvents'
+import { HandleEventType } from 'yourails_common'
+import { DICTIONARY } from 'yourails_common'
+import { ActionReduxType } from 'yourails_common'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
-import { ImageYrl } from '../ComponentsLibrary/ImageYrl/ImageYrl'
-import { SERVERS_MAIN } from '../../Constants/servers.const'
+import { SERVERS_MAIN } from 'yourails_common'
 
 const USERS_MAMBA_FACES = [
   { fileName: '1868053633_square_small.jpg', userName: '' },
@@ -30,30 +31,34 @@ const USERS_MAMBA_FACES = [
   { fileName: '2096712036_square.jpg', userName: '' },
 ]
 
-interface IUserOnline {
+interface UserOnlineType {
   fileName: string
   userName: string
 }
 
-interface IGetUsersJsx {
-  (usersOnline: IUserOnline[], language: string): ReactElement[]
+interface GetUsersJsxType {
+  (usersOnline: UserOnlineType[], language: string): ReactElement[]
 }
 
-interface UsersOnlineArgs {}
+interface UsersOnlinePropsType {
+  handleEvents: HandleEventType
+}
 
-export const UsersOnline: React.FunctionComponent<UsersOnlineArgs> = (
-  props: UsersOnlineArgs
-): ReactElement => {
+export const UsersOnlineComponent: React.FunctionComponent<UsersOnlinePropsType> = ({
+  handleEvents,
+}: UsersOnlinePropsType): ReactElement => {
   const navigate = useNavigate()
   const { language } = useSelector((store2: RootStoreType) => store2)
 
-  const getUsersJsx: IGetUsersJsx = (usersOnline, language2) =>
-    usersOnline.map((userOnline: IUserOnline) => {
+  const getUsersJsx: GetUsersJsxType = (usersOnline, language2) =>
+    usersOnline.map((userOnline: UserOnlineType) => {
       const { fileName, userName } = userOnline
 
       const imageProps = {
         classAdded: 'Image_UsersOnline',
         src: `${SERVERS_MAIN.remote}/images/faces_mamba/${fileName}`,
+        alt: `${fileName} ${userName}`,
+        handleEvents,
         action: {
           typeEvent: 'SEP_CLICK_BUTTON_SEARCH',
           data: {
@@ -80,6 +85,7 @@ export const UsersOnline: React.FunctionComponent<UsersOnlineArgs> = (
       captureLeft: '',
       captureRight: '',
       classAdded: 'Button_MdArrowRight2',
+      handleEvents,
       action: {
         typeEvent: 'SEP_CLICK_BUTTON_SEARCH',
         data: {
@@ -106,3 +112,7 @@ export const UsersOnline: React.FunctionComponent<UsersOnlineArgs> = (
     </div>
   )
 }
+
+export const UsersOnline: React.FunctionComponent<UsersOnlinePropsType> = withPropsYrl({
+  handleEvents: handleEventsIn,
+})(React.memo(UsersOnlineComponent))

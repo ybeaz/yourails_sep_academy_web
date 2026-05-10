@@ -1,33 +1,41 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { SERVERS_MAIN } from '../../Constants/servers.const'
+import { SERVERS_MAIN } from 'yourails_common'
 
-import { ImageYrl } from '../ComponentsLibrary/ImageYrl/ImageYrl'
+import { withPropsYrl, ImageYrl } from 'yourails_common'
+import { handleEvents as handleEventsIn } from '../../DataLayer/index.handleEvents'
+import { HandleEventType } from 'yourails_common'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
-import { DICTIONARY } from '../../Constants/dictionary.const'
+import { DICTIONARY } from 'yourails_common'
 
-interface HowItWorksSepArgs {}
+interface HowItWorksSepPropsType {
+  handleEvents: HandleEventType
+}
 
-export const HowItWorksSep: React.FunctionComponent<HowItWorksSepArgs> = (
-  props: HowItWorksSepArgs
-): ReactElement => {
+export const HowItWorksSepComponent: React.FunctionComponent<HowItWorksSepPropsType> = ({
+  handleEvents,
+}: HowItWorksSepPropsType): ReactElement => {
   const { language } = useSelector((store2: RootStoreType) => store2)
 
   const propsOut = {
     illustration_5_1_1: {
       classAdded: 'Image_illustration',
+      handleEvents,
       src: `${SERVERS_MAIN.remote}/images/illustrations/illustration_5_1_1.png`,
     },
     illustration_5_2_1: {
       classAdded: 'Image_illustration',
+      handleEvents,
       src: `${SERVERS_MAIN.remote}/images/illustrations/illustration_5_2_1.png`,
     },
     illustration_5_3_1: {
       classAdded: 'Image_illustration',
+      handleEvents,
       src: `${SERVERS_MAIN.remote}/images/illustrations/illustration_5_3_1.png`,
     },
     illustration_5_4_1: {
       classAdded: 'Image_illustration',
+      handleEvents,
       src: `${SERVERS_MAIN.remote}/images/illustrations/illustration_5_4_1.png`,
     },
   }
@@ -43,9 +51,7 @@ export const HowItWorksSep: React.FunctionComponent<HowItWorksSepArgs> = (
                 {', '}
                 {DICTIONARY['clarify_the_question'][language]}
               </div>
-              <div className='_text'>
-                {DICTIONARY['Receive_users_by_topic'][language]}
-              </div>
+              <div className='_text'>{DICTIONARY['Receive_users_by_topic'][language]}</div>
             </div>
 
             <div className='_images'>
@@ -61,12 +67,9 @@ export const HowItWorksSep: React.FunctionComponent<HowItWorksSepArgs> = (
           <div className='_col _flex_1'>
             <div className='_capturesImage'>
               <div className='_text'>
-                {DICTIONARY['Choose'][language]}{' '}
-                {DICTIONARY['person'][language]}
+                {DICTIONARY['Choose'][language]} {DICTIONARY['person'][language]}
               </div>
-              <div className='_text'>
-                {DICTIONARY['Say_hello_and_hear_new_things'][language]}
-              </div>
+              <div className='_text'>{DICTIONARY['Say_hello_and_hear_new_things'][language]}</div>
             </div>
             <div className='_images'>
               <div className='_image'>
@@ -82,3 +85,7 @@ export const HowItWorksSep: React.FunctionComponent<HowItWorksSepArgs> = (
     </div>
   )
 }
+
+export const HowItWorksSep: React.FunctionComponent<HowItWorksSepPropsType> = withPropsYrl({
+  handleEvents: handleEventsIn,
+})(React.memo(HowItWorksSepComponent))

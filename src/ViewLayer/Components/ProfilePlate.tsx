@@ -4,32 +4,34 @@ import { nanoid } from 'nanoid'
 import { Select as SelectAntd } from 'antd'
 // import 'antd/dist/antd.css'
 
-import { getOptionsUserLocaleCountry } from '../../Shared/getOptionsUserLocaleCountry'
-import { getOptionsUserLanguages } from '../../Shared/getOptionsUserLanguages'
-import { getOptionsAntdStandard } from '../../Shared/getOptionsAntdStandard'
-import { COUNTRIES } from '../../Constants/countries.const'
-import { MEDIA } from '../../Constants/media.const'
-import { GENDER } from '../../Constants/gender.const'
-import { LANGUAGES } from '../../Constants/languages.const'
-import { CATEGORIES_TO_EXCHANGE } from '../../Constants/categoriesToExchange.const'
-import { DICTIONARY } from '../../Constants/dictionary.const'
-import { PropsAddedType } from '../../Interfaces/PropsAddedType'
-import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
-import { UserType } from '../../Interfaces/UserType'
+import { getOptionsUserLocaleCountry } from 'yourails_common'
+import { getOptionsUserLanguages } from 'yourails_common'
+import { getOptionsAntdStandard } from 'yourails_common'
+import { COUNTRIES } from 'yourails_common'
+import { MEDIA } from 'yourails_common'
+import { GENDER } from 'yourails_common'
+import { LANGUAGES } from 'yourails_common'
+import { CATEGORIES_TO_EXCHANGE } from 'yourails_common'
+import { DICTIONARY } from 'yourails_common'
+import { withPropsYrl, ButtonYrl } from 'yourails_common'
+import { handleEvents as handleEventsIn } from '../../DataLayer/index.handleEvents'
+import { HandleEventType } from 'yourails_common'
+import { UserType } from 'yourails_common'
 
 interface IOptionStandard {
   label: string
   value: string
 }
-interface IProfilePlateArgs {
+interface ProfilePlatePropsType {
   profile: UserType
   language: string
+  handleEvents: HandleEventType
 }
 
-export const ProfilePlate: React.FunctionComponent<IProfilePlateArgs> = (
-  props: IProfilePlateArgs
+export const ProfilePlateComponent: React.FunctionComponent<ProfilePlatePropsType> = (
+  props: ProfilePlatePropsType
 ): ReactElement => {
-  const { language, profile } = props
+  const { language, profile, handleEvents } = props
 
   const {
     userAvatar,
@@ -62,7 +64,8 @@ export const ProfilePlate: React.FunctionComponent<IProfilePlateArgs> = (
     buttonAvatarProps: {
       icon: userAvatar ? null : 'FaUserCircle',
       icon2: null,
-      imageSrc: userAvatar,
+      imageSrc: userAvatar || '',
+      imageAlt: 'user avatar',
       captureLeft: '',
       captureRight: '',
       classAdded: 'Button_Avatar',
@@ -72,6 +75,7 @@ export const ProfilePlate: React.FunctionComponent<IProfilePlateArgs> = (
       tooltipPosition: '',
       isTooltipVisibleForced: false,
       isUnderlined: false,
+      handleEvents,
     },
     selectCommonPart: {
       allowClear: false,
@@ -94,11 +98,7 @@ export const ProfilePlate: React.FunctionComponent<IProfilePlateArgs> = (
       return {
         ...this.selectCommonPart,
         ...getSelectAntdAddedProps(userSkillsExpertise),
-        options: getOptionsAntdStandard(
-          userSkillsExpertise,
-          CATEGORIES_TO_EXCHANGE,
-          language
-        ),
+        options: getOptionsAntdStandard(userSkillsExpertise, CATEGORIES_TO_EXCHANGE, language),
       }
     },
     userLanguagesProps() {
@@ -119,20 +119,14 @@ export const ProfilePlate: React.FunctionComponent<IProfilePlateArgs> = (
       return {
         ...this.selectCommonPart,
         ...getSelectAntdAddedProps([userGender]),
-        options: userGender
-          ? getOptionsAntdStandard([userGender], GENDER, language)
-          : [],
+        options: userGender ? getOptionsAntdStandard([userGender], GENDER, language) : [],
       }
     },
     userLocaleCountryProps() {
       return {
         ...this.selectCommonPart,
         ...getSelectAntdAddedProps([userLocaleCountry]),
-        options: getOptionsUserLocaleCountry(
-          userLocaleCountry,
-          COUNTRIES,
-          language
-        ),
+        options: getOptionsUserLocaleCountry(userLocaleCountry, COUNTRIES, language),
       }
     },
   }
@@ -190,3 +184,7 @@ export const ProfilePlate: React.FunctionComponent<IProfilePlateArgs> = (
     </div>
   )
 }
+
+export const ProfilePlate: React.FunctionComponent<ProfilePlatePropsType> = withPropsYrl({
+  handleEvents: handleEventsIn,
+})(React.memo(ProfilePlateComponent))

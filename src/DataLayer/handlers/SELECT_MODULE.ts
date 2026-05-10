@@ -1,16 +1,15 @@
 import { store } from '../store'
-import { ActionEventType } from '../../Interfaces/ActionEventType'
+import { ActionEventType } from 'yourails_common'
 import { actionSync } from '../../DataLayer/index.action'
 
 const { dispatch } = store
 
 export const SELECT_MODULE: ActionEventType = (
   event,
-  data: Record<'capture' | 'moduleID' | 'contentID' | 'navigate', any> = {
+  data: Record<'capture' | 'moduleID' | 'contentID', any> = {
     capture: '',
     moduleID: '',
     contentID: '',
-    navigate: () => {},
   }
 ) => {
   try {

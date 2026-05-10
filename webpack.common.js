@@ -2,8 +2,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const WebpackBar = require('webpackbar')
 const webpack = require('webpack')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const nodeExternals = require('webpack-node-externals')
 
 // css/css module
 const cssRegex = /\.css$/
@@ -25,9 +24,6 @@ module.exports = () => {
       index: './src/index.tsx',
     },
     target: 'web',
-    output: {
-      path: path.resolve(__dirname, 'web-build/'),
-    },
     plugins: [
       new HtmlWebpackPlugin({
         filename: 'index.html',
@@ -35,12 +31,6 @@ module.exports = () => {
       }),
       new WebpackBar(),
       new webpack.ProgressPlugin(),
-      new CleanWebpackPlugin(),
-      // new BundleAnalyzerPlugin({
-      //   analyzerMode: 'disabled',
-      //   generateStatsFile: true,
-      //   statsOptions: { source: false },
-      // }),
       /* Need to research configuration, pro/cons
       new webpack.DllReferencePlugin({
         context: __dirname,
@@ -58,16 +48,83 @@ module.exports = () => {
     resolve: {
       extensions: ['.tsx', '.jsx', '.ts', '.js', '.json', '.wasm'],
       alias: {
-        '@abs': path.resolve(__dirname, './src'),
-        '@communication': path.resolve(__dirname, '../yourails_communication_layer'),
+        yourails_common: path.resolve(__dirname, 'node_modules/yourails_common'),
+        '@yourails_common': path.resolve(__dirname, 'node_modules/@yourails_common'),
+        zlib: require.resolve('browserify-zlib'),
+        // '@communication': path.resolve(__dirname, '../yourails_communication_layer'),
+      },
+      fallback: {
+        fs: false,
+        path: require.resolve('path-browserify'),
+        zlib: require.resolve('browserify-zlib'),
       },
     },
+    snapshot: {
+      managedPaths: [/^(.+?[\\/]node_modules[\\/](?!(@yourails_common))(@.+?[\\/])?.+?)[\\/]/],
+    },
+    externals: [
+      'stream',
+      'child_process',
+      'ncp',
+      'fs',
+      'os',
+      'cluster',
+      'js-sha3',
+      '@noble/hashes/sha3',
+      '@noble/hashes/utils',
+      'buffer',
+      'crypto',
+      'yarg',
+      'yarg-parse',
+    ],
     module: {
       rules: [
+        // {
+        //   test: /\.(js|jsx|ts|tsx)$/,
+        //   exclude: /node_modules/,
+        //   // exclude: /node_modules\/(?!yourails_view_layer_web)/,
+        //   use: {
+        //     loader: 'babel-loader',
+        //     options: {
+        //       presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
+        //     },
+        //   },
+        //   include: [
+        //     path.resolve(__dirname, 'src'),
+        //     // path.resolve(__dirname, 'node_modules/yourails_view_layer_web'),
+        //   ],
+        // },
         {
-          test: /\.(jsx|js|ts|tsx)?$/,
-          use: ['thread-loader', 'swc-loader'],
-          include: path.resolve(__dirname, 'src'),
+          test: /\.(jsx|js|ts|tsx)?$/, // You already have this rule
+          use: [
+            'thread-loader',
+            {
+              loader: 'swc-loader',
+              options: {
+                jsc: {
+                  parser: {
+                    syntax: 'typescript', // If you're using TypeScript
+                    tsx: true, // Enable JSX parsing in TypeScript
+                    jsx: true, // For regular JSX files
+                  },
+                  transform: {
+                    react: {
+                      pragma: 'React.createElement', // Defaults to React
+                      pragmaFrag: 'React.Fragment',
+                      throwIfNamespace: false, // React namespace handling
+                      development: process.env.NODE_ENV === 'development',
+                      useBuiltins: true, // Optimizes React usage
+                    },
+                  },
+                },
+              },
+            },
+          ],
+          include: [
+            path.resolve(__dirname, 'src'),
+            path.resolve(__dirname, 'node_modules/yourails_common'),
+            path.resolve(__dirname, '.yalc/yourails_common'),
+          ], // Make sure it includes your source folder
         },
         {
           test: cssRegex,
@@ -150,6 +207,18 @@ module.exports = () => {
           type: 'asset/resource',
         },
       ],
+    },
+    optimization: {
+      splitChunks: {
+        chunks: 'all' /* 'async' is more conservative */,
+        cacheGroups: {
+          vendors: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+            chunks: 'all',
+          },
+        },
+      },
     },
   }
 }

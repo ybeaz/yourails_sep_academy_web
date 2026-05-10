@@ -1,10 +1,10 @@
 import React from 'react'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
-import { DICTIONARY } from '../../../Constants/dictionary.const'
-import { withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
-import { ButtonYrl } from '../../ComponentsLibrary/ButtonYrl/ButtonYrl'
-import { getClasses, getDateString } from '../../../Shared/'
+import { DICTIONARY } from 'yourails_common'
+import { withPropsYrl, ButtonYrl, withStoreStateSelectedYrl } from 'yourails_common'
+import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
+import { getClasses, getDateString } from 'yourails_common'
 import {
   ModulesTablePropsOutType,
   MyModulesTableComponentPropsType,
@@ -13,10 +13,10 @@ import {
   MyModulesTableComponentType,
   MyModulesTableType,
 } from './MyModulesTableTypes'
-import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
-import { ModuleType } from '../../../@types/'
-import { getSlug } from '../../../Shared/getSlug'
-import { getDurationFromYoutubeSnippet } from '../../../Shared/getDurationFromYoutubeSnippet'
+import { ModuleType } from 'yourails_common'
+import { getSlug } from 'yourails_common'
+import { getDurationFromYoutubeSnippet } from 'yourails_common'
+import { NavLinkWithQuery } from '../../Components/NavLinkWithQuery/NavLinkWithQuery'
 
 /**
  * @description Component to render MyModulesTable
@@ -33,7 +33,9 @@ const MyModulesTableComponent: MyModulesTableComponentType = (
     const modulesRows: React.ReactElement[] = modulesIn.map((module: ModuleType) => {
       const { moduleID, capture, dateCreated, duration: durationStrIn, contentID } = module
 
-      const durationObj = getDurationFromYoutubeSnippet(durationStrIn)
+      const durationObj = getDurationFromYoutubeSnippet(durationStrIn, {
+        funcParent: 'MyModulesTable',
+      })
       const { timeReadable: duration } = durationObj
 
       const dateString = getDateString({
@@ -46,26 +48,17 @@ const MyModulesTableComponent: MyModulesTableComponentType = (
       const propsOut: ModulesTablePropsOutType = {
         linkToModuleProps: {
           className: '__shield',
-          to: { pathname: pathnameModule },
-          children: capture,
-          onClick: (event: any) => {
-            handleEvents(event, {
-              typeEvent: 'SET_MODULES',
-              data: [],
-            })
-            handleEvents(event, {
-              typeEvent: 'SELECT_MODULE',
-              data: { capture, moduleID, contentID, navigate },
-            })
-            handleEvents(event, {
-              typeEvent: 'GO_LINK_PATH',
-              data: { navigate, pathname: pathnameModule },
-            })
+          to: {
+            pathname: pathnameModule,
+            search: { pageModules: 1, pageTags: 1, pageDocuments: 1 },
           },
+          children: capture,
+          onClick: (event: any) => {},
         },
         buttonDeactivateModuleProps: {
           icon: 'MdDeleteOutline',
           classAdded: 'Button_DeactivateModule',
+          handleEvents,
           action: {
             typeEvent: 'SET_MODAL_FRAMES',
             data: [
@@ -102,7 +95,7 @@ const MyModulesTableComponent: MyModulesTableComponentType = (
         <div key={moduleID} className='_row _row_weather'>
           <div className='_cell _date'>{dateString}</div>
           <div className='_cell _module_name'>
-            <NavLink {...propsOut.linkToModuleProps} />
+            <NavLinkWithQuery {...propsOut.linkToModuleProps} />
           </div>
           <div className='_cell _module_duration'>{duration}</div>
           <div className='_cell _module_button_edit'>
@@ -142,8 +135,11 @@ const MyModulesTableComponent: MyModulesTableComponentType = (
 }
 
 const storeStateSliceProps: string[] = []
-export const MyModulesTable = withPropsYrl({ handleEvents: handleEventsIn })(
-  withStoreStateSelectedYrl(storeStateSliceProps, React.memo(MyModulesTableComponent))
+
+export const MyModulesTable: MyModulesTableType = withPropsYrl({ handleEvents: handleEventsIn })(
+  withPropsYrl({ handleEvents: handleEventsIn })(
+    withStoreStateSelectedYrl(storeStateSliceProps, React.memo(MyModulesTableComponent))
+  )
 )
 
 export type {

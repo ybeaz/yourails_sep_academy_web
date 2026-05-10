@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { TextStructured } from '../TextStructured/TextStructured'
+import { TextStructuredYrl } from 'yourails_common'
 
-import { getClasses } from '../../../Shared/getClasses'
+import { getClasses } from 'yourails_common'
 import {
   ArticlePresentBodyComponentPropsType,
   ArticlePresentBodyPropsType,
@@ -32,14 +32,12 @@ const ArticlePresentBodyComponent: ArticlePresentBodyComponentType = (
 
   return (
     <article className={getClasses('ArticlePresentBody', classAdded)}>
-      <TextStructured {...propsOut.textStructuredProps} />
+      <TextStructuredYrl {...propsOut.textStructuredProps} />
     </article>
   )
 }
 
-export const ArticlePresentBody: ArticlePresentBodyType = React.memo(
-  ArticlePresentBodyComponent
-)
+export const ArticlePresentBody: ArticlePresentBodyType = React.memo(ArticlePresentBodyComponent)
 
 export type {
   ArticlePresentBodyPropsType,

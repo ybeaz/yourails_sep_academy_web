@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 
-import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
-import { DICTIONARY } from '../../../Constants/dictionary.const'
+import { ScreensEnumType } from 'yourails_common'
+import { DICTIONARY } from 'yourails_common'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
-import { SERVERS_MAIN } from '../../../Constants/servers.const'
-import { SITE_META_DATA } from '../../../Constants/siteMetaData.const'
+import { SERVERS_MAIN } from 'yourails_common'
+import { SITE_META_DATA } from 'yourails_common'
 import { MyModulesBody } from '../../Components/MyModulesBody/MyModulesBody'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
-import { CreateModuleStatusEnumType, CreateModuleStagesEnumType } from '../../../Interfaces/'
-import { withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
-import { getClasses } from '../../../Shared/getClasses'
+import { getTagLine } from 'yourails_common'
+import { CreateModuleStatusEnumType, CreateModuleStagesEnumType } from 'yourails_common'
+import { withPropsYrl, withStoreStateSelectedYrl } from 'yourails_common'
+import { getClasses } from 'yourails_common'
 import {
   MyModulesComponentPropsType,
   MyModulesPropsType,
@@ -107,10 +108,6 @@ const MyModulesComponent: MyModulesComponentType = (props: MyModulesComponentPro
 
   const propsOut: MyModulesPropsOutType = {
     headerFrameProps: {
-      brandName: 'YouRails Academy',
-      moto: DICTIONARY['Watch_Videos_With_a_Purpose'][language],
-      logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
-      contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,
       isLogoGroup: true,
       isButtonAddCourse: true,
@@ -169,8 +166,10 @@ const storeStateSliceProps: string[] = [
   'moduleCreateProgress',
   'modules',
 ]
-export const MyModules = withPropsYrl({ handleEvents: handleEventsIn })(
+const MyModules = withPropsYrl({ handleEvents: handleEventsIn })(
   withStoreStateSelectedYrl(storeStateSliceProps, React.memo(MyModulesComponent))
 )
+
+export { MyModules as default }
 
 export type { MyModulesPropsType, MyModulesPropsOutType, MyModulesComponentType, MyModulesType }

@@ -1,11 +1,7 @@
 import React from 'react'
 
-import {
-  InputYrl,
-  ButtonYrl,
-  withStoreStateSelectedYrl,
-} from '../../ComponentsLibrary/'
-
+import { withPropsYrl, InputYrl, ButtonYrl, withStoreStateSelectedYrl } from 'yourails_common'
+import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import {
   EmalInputsComponentPropsType,
   EmalInputsPropsType,
@@ -19,25 +15,13 @@ import {
  * @import import { EmalInputs, EmalInputsPropsType, EmalInputsPropsOutType, EmalInputsType } 
              from '../Components/EmalInputs/EmalInputs'
  */
-const EmalInputsComponent: EmalInputsComponentType = (
-  props: EmalInputsComponentPropsType
-) => {
+const EmalInputsComponent: EmalInputsComponentType = (props: EmalInputsComponentPropsType) => {
   const {
     classAdded,
     documentID,
     storeStateSlice: { documents, sendTo, sendCc },
+    handleEvents,
   } = props
-
-  // const documentsLen = documents?.length
-  // let documentDefault = {
-  //   meta: {
-  //     email: '',
-  //     isSendingBcc: false,
-  //   },
-  // }
-  // const {
-  //   // meta: { email: emailBcc = '', isSendingBcc = false },
-  // } = (documentsLen && documents[documentsLen - 1]) || documentDefault
 
   const propsOut: EmalInputsPropsOutType = {
     inputEmailToProps: {
@@ -45,6 +29,7 @@ const EmalInputsComponent: EmalInputsComponentType = (
       key: 'InputEmailToKey',
       type: 'text',
       placeholder: 'email...',
+      handleEvents,
       typeEvent: 'ONCHANGE_EMAIL_TO',
       storeFormProp: 'sendTo',
     },
@@ -53,19 +38,21 @@ const EmalInputsComponent: EmalInputsComponentType = (
       key: 'InputEmailCcKey',
       type: 'text',
       placeholder: 'email cc...',
+      handleEvents,
       typeEvent: 'ONCHANGE_EMAIL_CC',
       storeFormProp: 'sendCc',
     },
     buttonForwardProps: {
       icon: 'MdForward',
       classAdded: 'Button_MdForward',
+      handleEvents,
       action: {
         typeEvent: 'SEND_EMAIL_DOCUMENT',
         data: {
           documentID,
           sendTo,
           sendCc,
-          emailBcc: '',
+          sendBcc: '',
           isSendingBcc: false,
         },
       },
@@ -93,14 +80,9 @@ const EmalInputsComponent: EmalInputsComponentType = (
 }
 
 const storeStateSliceProps: string[] = ['documents', 'sendTo', 'sendCc']
-export const EmalInputs = withStoreStateSelectedYrl(
-  storeStateSliceProps,
-  React.memo(EmalInputsComponent)
+
+export const EmalInputs: EmalInputsType = withPropsYrl({ handleEvents: handleEventsIn })(
+  withStoreStateSelectedYrl(storeStateSliceProps, React.memo(EmalInputsComponent))
 )
 
-export type {
-  EmalInputsPropsType,
-  EmalInputsPropsOutType,
-  EmalInputsComponentType,
-  EmalInputsType,
-}
+export type { EmalInputsPropsType, EmalInputsPropsOutType, EmalInputsComponentType, EmalInputsType }

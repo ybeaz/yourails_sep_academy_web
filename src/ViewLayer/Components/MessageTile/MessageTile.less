@@ -1,0 +1,35 @@
+.MessageTile {
+  display: flex;
+  padding: 1rem 0 1rem 0;
+  flex-direction: column;
+  text-align: initial;
+
+  ._capture {
+    display: flex;
+    font-size: @fontSizeH1;
+    font-family: cursive;
+    padding: 0rem 0rem 0.3rem 0rem;
+  }
+
+  p {
+    padding: 0.5rem 0 0.5rem 0;
+  }
+
+  @media @large {
+  }
+  @media @desktop, @desktop-strict {
+  }
+  @media @tablet, @tablet-strict {
+  }
+  @media @phone, @phone-strict {
+  }
+}
+
+.MessageTile_display_none {
+  display: none;
+}
+
+.MessageTile_visible_none {
+  visibility: hidden;
+  opacity: 0;
+}

@@ -1,21 +1,20 @@
 import React, { useEffect, ReactElement } from 'react'
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 
-import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
-import { DICTIONARY } from '../../../Constants/dictionary.const'
+import { ScreensEnumType } from 'yourails_common'
+import { DICTIONARY } from 'yourails_common'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 import { useLoadedInitialTeachContent } from '../../Hooks/useLoadedInitialTeachContent'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
-import { SITE_META_DATA } from '../../../Constants/siteMetaData.const'
-import { PAGINATION_OFFSET } from '../../../Constants/pagination.const'
-import { SERVERS_MAIN } from '../../../Constants/servers.const'
-import { withStoreStateSelectedYrl, withPropsYrl } from '../../ComponentsLibrary/'
+import { SITE_META_DATA } from 'yourails_common'
+import { PAGINATION_OFFSET } from 'yourails_common'
+import { SERVERS_MAIN } from 'yourails_common'
+import { withStoreStateSelectedYrl, withPropsYrl } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { ModulesBody } from '../../Components/ModulesBody/ModulesBody'
-import { PaginationNameEnumType } from '../../../Interfaces/RootStoreType'
-import { getSizeWindow } from '../../../Shared/getSizeWindow'
-
+import { PaginationNameEnumType } from 'yourails_common'
+import { getTagLine } from 'yourails_common'
 import {
   ModulesPresentPropsType,
   ModulesPresentPropsOutType,
@@ -38,13 +37,8 @@ const ModulesPresentComponent: ModulesPresentComponentType = (props: ModulesPres
   const { titleSite, descriptionSite, canonicalUrlSite, langSite } = SITE_META_DATA
   const canonicalUrl = `${SERVERS_MAIN.remote}${decodeURIComponent(location.pathname)}`
 
-  const { width } = getSizeWindow()
-  let pageModulesOffset = PAGINATION_OFFSET['pageModules']
-  let pageTagsOffset = PAGINATION_OFFSET['pageTags']
-  if (width <= 480) {
-    pageModulesOffset = 9
-    pageTagsOffset = 24
-  }
+  const pageModulesOffset = PAGINATION_OFFSET['pageModules']
+  const pageTagsOffset = PAGINATION_OFFSET['pageTags']
 
   useEffectedInitialRequests([
     { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } },
@@ -62,10 +56,6 @@ const ModulesPresentComponent: ModulesPresentComponentType = (props: ModulesPres
 
   const propsOut: ModulesPresentPropsOutType = {
     headerFrameProps: {
-      brandName: 'YouRails Academy',
-      moto: DICTIONARY['Watch_Videos_With_a_Purpose'][language],
-      logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
-      contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,
       isLogoGroup: true,
       isButtonAddCourse: true,
@@ -81,7 +71,7 @@ const ModulesPresentComponent: ModulesPresentComponentType = (props: ModulesPres
       screenType,
     },
     modulesBodyProps: {
-      headline: DICTIONARY['All_interactive_videos'][language],
+      headline: DICTIONARY['See_all'][language],
     },
   }
 
@@ -113,9 +103,11 @@ const ModulesPresentComponent: ModulesPresentComponentType = (props: ModulesPres
 }
 
 const storeStateSliceProps: string[] = ['language']
-export const ModulesPresent: ModulesPresentType = withPropsYrl({
+const ModulesPresent: ModulesPresentType = withPropsYrl({
   handleEvents: handleEventsIn,
 })(withStoreStateSelectedYrl(storeStateSliceProps, React.memo(ModulesPresentComponent)))
+
+export { ModulesPresent as default }
 
 export type {
   ModulesPresentPropsType,

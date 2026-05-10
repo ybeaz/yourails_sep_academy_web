@@ -1,24 +1,22 @@
 import { takeEvery, put, select } from 'redux-saga/effects'
 
-import { MutationCreateYoutubeTranscriptArgs } from '../../@types/GraphqlTypes'
-import { ActionReduxType } from '../../Interfaces'
+import { MutationCreateYoutubeTranscriptArgs } from 'yourails_common'
+import { ActionReduxType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
-import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
+import { getHeadersAuthDict } from 'yourails_common'
+import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_common'
 
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import {
-  RootStoreType,
+  withDebounce,
   CreateModuleStagesEnumType,
   CreateModuleStatusEnumType,
-} from '../../Interfaces/RootStoreType'
-import { withDebounce } from '../../Shared/withDebounce'
+} from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
-import { getChunkedString } from '../../Shared/getChunkedString'
-import {
-  connectionsTimeouts,
-  ConnectionsTimeoutNameEnumType,
-} from '../../Constants/connectionsTimeouts.const'
-import { CHUNKS_FROM_TRANSCRIPT_STRING } from '../../Constants/chunkParamsLlm.const'
+import { getChunkedString } from 'yourails_common'
+import { CONNECTIONS_TIMEOUTS, ConnectionsTimeoutNameEnumType } from 'yourails_common'
+import { CHUNKS_FROM_TRANSCRIPT_STRING } from 'yourails_common'
+import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
 
 export function* getModule20TranscriptCreatedGenerator(
   params: ActionReduxType | any
@@ -38,26 +36,26 @@ export function* getModule20TranscriptCreatedGenerator(
 
     let variables: MutationCreateYoutubeTranscriptArgs = {
       createYoutubeTranscriptInput: {
-        originID: inputCourseCreate,
+        contentID: inputCourseCreate,
       },
     }
 
     if (inputCourseCreate.includes('youtube.com'))
       variables = {
         createYoutubeTranscriptInput: {
-          originUrl: inputCourseCreate,
+          contentUrl: inputCourseCreate,
         },
       }
 
     const createYoutubeTranscript: any = yield getResponseGraphqlAsync(
       {
         variables,
-        resolveGraphqlName: 'createYoutubeTranscript',
+        resolveGraphqlName: ResolveGraphqlEnumType['createYoutubeTranscript'],
       },
       {
         ...getHeadersAuthDict(),
         clientHttpType: selectGraphqlHttpClientFlag(),
-        timeout: connectionsTimeouts[ConnectionsTimeoutNameEnumType.transcript],
+        timeout: CONNECTIONS_TIMEOUTS[ConnectionsTimeoutNameEnumType.transcript],
       }
     )
 
@@ -73,7 +71,6 @@ export function* getModule20TranscriptCreatedGenerator(
     }
 
     const transcriptChunks = getChunkedString(params, {
-      printRes: false,
       ...CHUNKS_FROM_TRANSCRIPT_STRING,
     })
 
@@ -101,7 +98,13 @@ export function* getModule20TranscriptCreatedGenerator(
   }
 }
 
-export const getModule20TranscriptCreated = withDebounce(getModule20TranscriptCreatedGenerator, 500)
+export const getModule20TranscriptCreated = withDebounce(
+  withTryCatchFinallySaga(getModule20TranscriptCreatedGenerator, {
+    optionsDefault: { funcParent: 'getModule20TranscriptCreatedSaga' },
+    resDefault: [],
+  }),
+  500
+)
 
 export default function* getModule20TranscriptCreatedSaga() {
   yield takeEvery(

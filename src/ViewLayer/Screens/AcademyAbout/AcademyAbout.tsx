@@ -1,18 +1,15 @@
 import React, { useEffect } from 'react'
 
-import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
-import { DICTIONARY } from '../../../Constants/dictionary.const'
-import { ImageYrl } from '../../ComponentsLibrary/ImageYrl/ImageYrl'
+import { ScreensEnumType } from 'yourails_common'
+import { DICTIONARY } from 'yourails_common'
+import { withStoreStateSelectedYrl } from 'yourails_common'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
-import { FooterFrame } from '../../Frames/FooterFrame/FooterFrame'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
-import { SERVERS_MAIN } from '../../../Constants/servers.const'
-import { handleEvents } from '../../../DataLayer/index.handleEvents'
+import { SERVERS_MAIN } from 'yourails_common'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 import { AcademyAboutBody } from '../../Components/AcademyAboutBody/AcademyAboutBody'
-
-import { withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
-import { getClasses } from '../../../Shared/getClasses'
+import { getTagLine } from 'yourails_common'
+import { getClasses } from 'yourails_common'
 import {
   AcademyAboutComponentPropsType,
   AcademyAboutPropsType,
@@ -40,10 +37,6 @@ const AcademyAboutComponent: AcademyAboutComponentType = (
 
   const propsOut: AcademyAboutPropsOutType = {
     headerFrameProps: {
-      brandName: 'YouRails Academy',
-      moto: DICTIONARY['Watch_Videos_With_a_Purpose'][language],
-      logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
-      contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,
       isLogoGroup: true,
       isButtonAddCourse: true,
@@ -82,10 +75,12 @@ const AcademyAboutComponent: AcademyAboutComponentType = (
 }
 
 const storeStateSliceProps: string[] = ['language']
-export const AcademyAbout = withStoreStateSelectedYrl(
+const AcademyAbout = withStoreStateSelectedYrl(
   storeStateSliceProps,
   React.memo(AcademyAboutComponent)
 )
+
+export { AcademyAbout as default }
 
 export type {
   AcademyAboutPropsType,

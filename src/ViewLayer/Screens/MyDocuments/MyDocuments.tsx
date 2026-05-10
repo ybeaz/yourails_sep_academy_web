@@ -1,20 +1,22 @@
 import React, { useEffect, useRef } from 'react'
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 
-import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
-import { DICTIONARY } from '../../../Constants/dictionary.const'
+import { ScreensEnumType } from 'yourails_common'
+import { DICTIONARY } from 'yourails_common'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { FooterFrame } from '../../Frames/FooterFrame/FooterFrame'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
-import { SERVERS_MAIN } from '../../../Constants/servers.const'
-import { SITE_META_DATA } from '../../../Constants/siteMetaData.const'
+import { SERVERS_MAIN } from 'yourails_common'
+import { SITE_META_DATA } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { MyDocumentsBody } from '../../Components/'
-import { PAGINATION_OFFSET } from '../../../Constants/pagination.const'
-import { PaginationNameEnumType } from '../../../Interfaces/RootStoreType'
-import { withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
+import { PAGINATION_OFFSET } from 'yourails_common'
+import { getTagLine } from 'yourails_common'
+import { withPropsYrl, withStoreStateSelectedYrl } from 'yourails_common'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
-import { getClasses, getParsedUrlQueryBrowserApi } from '../../../Shared/'
+import { getClasses } from 'yourails_common'
+import { getParsedUrlQueryBrowserApi } from 'yourails_common'
+import { getNestedProp } from 'yourails_common'
 import {
   MyDocumentsComponentPropsType,
   MyDocumentsPropsType,
@@ -31,7 +33,7 @@ import {
 const MyDocumentsComponent: MyDocumentsComponentType = (props: MyDocumentsComponentPropsType) => {
   const {
     classAdded,
-    storeStateSlice: { language, sub, documents },
+    storeStateSlice: { language, sub, documents, tagsCloud, pageDocuments, pageTags },
     handleEvents,
   } = props
 
@@ -39,6 +41,14 @@ const MyDocumentsComponent: MyDocumentsComponentType = (props: MyDocumentsCompon
   const { titleSite, descriptionSite, canonicalUrlSite, langSite } = SITE_META_DATA
   const canonicalUrl = `${SERVERS_MAIN.remote}${decodeURIComponent(location.pathname)}`
   const firstRender = useRef(true)
+
+  const query = getParsedUrlQueryBrowserApi()
+  const documentsSearchQuery = getNestedProp({
+    entity: query,
+    path: 'documentsSearch',
+    resDefault: '',
+  })
+  const tagsSearchQuery = getNestedProp({ entity: query, path: 'tagsSearch', resDefault: '' })
 
   useEffectedInitialRequests([{ type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } }])
 
@@ -53,17 +63,20 @@ const MyDocumentsComponent: MyDocumentsComponentType = (props: MyDocumentsCompon
       )
     }
     if (sub) {
+      handleEvents({}, { type: 'SET_PARAMS_FROM_QUERY_URL_TO_STATE' })
       handleEvents({}, { typeEvent: 'GET_DOCUMENTS' })
-      handleEvents({}, { type: 'GET_TAGS_CONNECTION', data: { isLoaderOverlay: true } })
+      handleEvents(
+        {},
+        {
+          type: 'GET_TAGS_CONNECTION',
+          data: { offset: 1000, minCount: 3, minCompleted: 3, isLoaderOverlay: true },
+        }
+      )
     }
-  }, [sub])
+  }, [JSON.stringify({ tagsSearchQuery, documentsSearchQuery, sub })])
 
   const propsOut: MyDocumentsPropsOutType = {
     headerFrameProps: {
-      brandName: 'YouRails Academy',
-      moto: DICTIONARY['Watch_Videos_With_a_Purpose'][language],
-      logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
-      contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,
       isLogoGroup: true,
       isButtonAddCourse: true,
@@ -79,8 +92,11 @@ const MyDocumentsComponent: MyDocumentsComponentType = (props: MyDocumentsCompon
       screenType: 'MyDocuments',
     },
     myMyDocumentsBodyProps: {
-      documents,
       language,
+      documents,
+      tagsCloud,
+      pageDocuments,
+      pageTags,
     },
   }
 
@@ -101,9 +117,7 @@ const MyDocumentsComponent: MyDocumentsComponentType = (props: MyDocumentsCompon
         {/* middle-left */}
         {null}
         {/* middle-main */}
-        <div>
-          {documents.length ? <MyDocumentsBody {...propsOut.myMyDocumentsBodyProps} /> : null}
-        </div>
+        <MyDocumentsBody {...propsOut.myMyDocumentsBodyProps} />
         {/* <ProfileBody {...propsOut.profileBodyProps} /> */}
         {/* middle-right */}
         {null}
@@ -114,10 +128,19 @@ const MyDocumentsComponent: MyDocumentsComponentType = (props: MyDocumentsCompon
   )
 }
 
-const storeStateSliceProps: string[] = ['language', 'sub', 'documents']
-export const MyDocuments = withPropsYrl({ handleEvents: handleEventsIn })(
+const storeStateSliceProps: string[] = [
+  'language',
+  'sub',
+  'documents',
+  'tagsCloud',
+  'pageDocuments',
+  'pageTags',
+]
+const MyDocuments = withPropsYrl({ handleEvents: handleEventsIn })(
   withStoreStateSelectedYrl(storeStateSliceProps, React.memo(MyDocumentsComponent))
 )
+
+export { MyDocuments as default }
 
 export type {
   MyDocumentsPropsType,

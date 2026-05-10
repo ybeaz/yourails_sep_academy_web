@@ -2,10 +2,10 @@ import React, { ReactElement } from 'react'
 import { Select as SelectAntd } from 'antd'
 // import 'antd/dist/antd.css'
 
-import { LanguagesType } from '../../Interfaces/LanguagesType'
-import { getLanguagesOptionsJsx } from '../../Shared/getLanguagesOptions'
-import { SVG_FILE_DIR } from '../../Constants/languages.const'
-import { DICTIONARY } from '../../Constants/dictionary.const'
+import { LanguagesType } from 'yourails_common'
+import { GetLanguagesOptionsJsx } from './GetLanguagesOptions'
+import { SVG_FILE_DIR } from 'yourails_common'
+import { DICTIONARY } from 'yourails_common'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 
 export type SelectLanguagePropsType = {
@@ -21,17 +21,10 @@ export type SelectLanguagePropsOutType = {
   selectAntdProps: any
 }
 
-export const SelectLanguage: React.FunctionComponent<
-  SelectLanguagePropsType
-> = (props: SelectLanguagePropsType): ReactElement => {
-  const {
-    languagesSelected,
-    classAdded,
-    LANGUAGES,
-    language: languageIn,
-    mode,
-    typeEvent,
-  } = props
+export const SelectLanguage: React.FunctionComponent<SelectLanguagePropsType> = (
+  props: SelectLanguagePropsType
+): ReactElement => {
+  const { languagesSelected, classAdded, LANGUAGES, language: languageIn, mode, typeEvent } = props
 
   const language = languageIn || 'en'
 
@@ -44,12 +37,7 @@ export const SelectLanguage: React.FunctionComponent<
     )
   }
 
-  const lagnguagesMapped = getLanguagesOptionsJsx(
-    LANGUAGES,
-    language,
-    SVG_FILE_DIR,
-    classAdded
-  )
+  const lagnguagesMapped = GetLanguagesOptionsJsx(LANGUAGES, language, SVG_FILE_DIR, classAdded)
 
   const propsOut: SelectLanguagePropsOutType = {
     selectAntdProps: {

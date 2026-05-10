@@ -1,15 +1,15 @@
-import React, { ReactElement } from 'react'
-
-import { useNavigate } from 'react-router-dom'
-import { nanoid } from 'nanoid'
+import React from 'react'
 
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
-import { LANGUAGES_APP } from '../../../Constants/languagesApp.const'
+import { LANGUAGES_APP } from 'yourails_common'
 import { SelectLanguage, SelectLanguagePropsType } from '../SelectLanguage'
-import { getSideNavigationButtons } from './getSideNavigationButtons'
-
-import { ButtonYrl, ButtonYrlPropsType, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
-import { withPropsYrl } from '../../ComponentsLibrary/Hooks/withPropsYrl'
+import {
+  getSideNavigationItemsPropsArr,
+  GetSideNavigationItemsPropsArrResType,
+} from './getSideNavigationItemsPropsArr'
+import { withStoreStateSelectedYrl } from 'yourails_common'
+import { withPropsYrl } from 'yourails_common'
+import { getComponentsList } from '../../Hooks/getComponentsList'
 
 import {
   SideNavigationComponentPropsType,
@@ -33,24 +33,12 @@ const SideNavigationComponent: SideNavigationComponentType = (
     handleEvents,
   } = props
 
-  const navigate = useNavigate()
-
-  const buttonPropsArr: ButtonYrlPropsType[] = getSideNavigationButtons({
-    navigate,
-    sub,
-    language,
-  })
-
-  const getButtons: Function = (buttonPropsArr2: any[]): ReactElement[] => {
-    return buttonPropsArr2.map(buttonProps => {
-      const key = nanoid()
-      return (
-        <div key={key} className='_item'>
-          <ButtonYrl {...buttonProps} />
-        </div>
-      )
+  const sideNavigationItemsPropsArr: GetSideNavigationItemsPropsArrResType[] =
+    getSideNavigationItemsPropsArr({
+      sub,
+      language,
+      handleEvents,
     })
-  }
 
   const classNameAdd = isSideNavLeftVisible ? 'SideNavigation_show' : ''
 
@@ -72,13 +60,13 @@ const SideNavigationComponent: SideNavigationComponentType = (
     >
       <div
         className='__content'
-        onClick={event => handleEvents(event, { typeEvent: 'STOP_PROPAGATION' })}
+        // onClick={event => handleEvents(event, { typeEvent: 'STOP_PROPAGATION' })}
       >
         <div className='__menuGroup'>
           <div className='_groupItem _languageSelect'>
             <SelectLanguage {...languageSelectProps} />
           </div>
-          {getButtons(buttonPropsArr)}
+          {getComponentsList(sideNavigationItemsPropsArr)}
         </div>
       </div>
     </div>

@@ -1,61 +1,65 @@
 import { takeEvery, put, select } from 'redux-saga/effects'
 
-import { QueryGetAuthAwsCognitoUserDataArgs } from '../../@types/GraphqlTypes'
-import { ActionReduxType } from '../../Interfaces'
+import { QueryGetAuthAwsCognitoUserDataArgs } from 'yourails_common'
+import { ActionReduxType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { CLIENTS_URI } from '../../Constants/clientsUri.const'
-import { getDetectedEnv } from '../../Shared/getDetectedEnv'
-import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
-import { ClientAppType } from '../../@types/ClientAppType'
-import { getLocalStorageSetObjTo } from '../../Shared/getLocalStorageSetObjTo'
+import { getDetectedEnv } from 'yourails_common'
+import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_common'
+import { ClientAppEnumType } from 'yourails_common'
+import { getLocalStorageSetObjTo } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
-import { getModules } from './getModulesSaga'
+import { readModulesConnection } from './readModulesConnectionSaga'
+import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
 
-export function* getAuthAwsCognitoUserData(params: ActionReduxType | any): Iterable<any> {
+export function* getAuthAwsCognitoUserDataGenerator(params: ActionReduxType | any): Iterable<any> {
   const {
     data: { code },
   } = params
 
-  try {
-    const envType = getDetectedEnv()
-    const redirect_uri = CLIENTS_URI[envType]
+  const envType = getDetectedEnv()
+  const redirect_uri = location.origin
 
-    const variables: QueryGetAuthAwsCognitoUserDataArgs = {
-      userIdDataAwsCognitoInput: {
-        code,
-        redirect_uri,
-        client_app: ClientAppType['ACADEMY'],
-      },
-    }
-
-    const authAwsCognitoUserData: any = yield getResponseGraphqlAsync(
-      {
-        variables,
-        resolveGraphqlName: 'getAuthAwsCognitoUserData',
-      },
-      {
-        clientHttpType: selectGraphqlHttpClientFlag(),
-        timeout: 5000,
-      }
-    )
-
-    yield getLocalStorageSetObjTo({
-      refresh_token: authAwsCognitoUserData.refresh_token,
-      sub: authAwsCognitoUserData.sub,
-    })
-
-    yield put(
-      actionSync.SET_AUTH_AWS_COGNITO_USER_DATA({
-        authAwsCognitoUserData,
-        source: 'getAuthAwsCognitoUserDataSaga',
-      })
-    )
-
-    yield getModules()
-  } catch (error: any) {
-    console.log('getAuthAwsCognitoUserDataSaga [53] ERROR', `${error.name}: ${error.message}`)
+  const variables: QueryGetAuthAwsCognitoUserDataArgs = {
+    userIdDataAwsCognitoInput: {
+      code,
+      redirect_uri,
+      client_app: ClientAppEnumType['ACADEMY'],
+    },
   }
+
+  const authAwsCognitoUserData: any = yield getResponseGraphqlAsync(
+    {
+      variables,
+      resolveGraphqlName: ResolveGraphqlEnumType['getAuthAwsCognitoUserData'],
+    },
+    {
+      clientHttpType: selectGraphqlHttpClientFlag(),
+      timeout: 5000,
+    }
+  )
+
+  yield getLocalStorageSetObjTo({
+    refresh_token: authAwsCognitoUserData.refresh_token,
+    sub: authAwsCognitoUserData.sub,
+  })
+
+  yield put(
+    actionSync.SET_AUTH_AWS_COGNITO_USER_DATA({
+      authAwsCognitoUserData,
+      source: 'getAuthAwsCognitoUserDataSaga',
+    })
+  )
+
+  yield readModulesConnection()
 }
+
+export const getAuthAwsCognitoUserData = withTryCatchFinallySaga(
+  getAuthAwsCognitoUserDataGenerator,
+  {
+    optionsDefault: { funcParent: 'getAuthAwsCognitoUserDataSaga' },
+    resDefault: [],
+  }
+)
 
 /**
  * @description Function to getAuthAwsCognitoUserDataSaga

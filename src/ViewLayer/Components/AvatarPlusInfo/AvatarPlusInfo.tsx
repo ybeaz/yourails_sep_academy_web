@@ -1,10 +1,10 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
 
+import { NavLinkWithQuery } from '../../Components/NavLinkWithQuery/NavLinkWithQuery'
 import { useNavigate } from 'react-router-dom'
-import { ImageYrl, withPropsYrl } from '../../ComponentsLibrary/'
+import { ImageYrl, withPropsYrl } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
-import { getClasses } from '../../../Shared/getClasses'
+import { getClasses } from 'yourails_common'
 
 import {
   AvatarPlusInfoPropsType,
@@ -22,38 +22,54 @@ import {
 const AvatarPlusInfoComponent: AvatarPlusInfoComponentType = (
   props: AvatarPlusInfoComponentPropsType
 ) => {
-  const { classProps, pathname, handleEvents, typeEvent, imgSrc, capture, text } = props
+  const {
+    classProps,
+    pathname,
+    handleEvents,
+    typeEvent,
+    imgSrc,
+    capture,
+    text,
+    isTitle = false,
+  } = props
 
   const navigate = useNavigate()
 
   const propsOut: AvatarPlusInfoPropsOutType = {
     imageProps: {
       classAdded: '_avatarPlusInfo',
+      handleEvents,
+      action: {
+        typeEvent: null,
+        data: {},
+      },
       src: imgSrc,
+      alt: capture,
     },
     navLinkProps: {
       className: getClasses('_link', classProps),
-      to: pathname || '/',
-      onClick: () =>
-        handleEvents(
-          {},
-          {
-            typeEvent: 'GO_LINK_PATH',
-            data: { navigate, pathname: '/' },
-          }
-        ),
+      to: { pathname: pathname || '/' },
     },
   }
 
   return (
     <div className={getClasses('AvatarPlusInfo', classProps)}>
-      <NavLink {...propsOut.navLinkProps}>
+      <NavLinkWithQuery {...propsOut.navLinkProps}>
         <ImageYrl {...propsOut.imageProps} />
         <div className='_captureText'>
-          <div className='_capture'>{capture}</div>
-          <div className='_text'>{text}</div>
+          {isTitle ? (
+            <>
+              <h1 className='_capture'>{capture}</h1>
+              <h2 className='_text'>{text}</h2>
+            </>
+          ) : (
+            <>
+              <div className='_capture'>{capture}</div>
+              <div className='_text'>{text}</div>
+            </>
+          )}
         </div>
-      </NavLink>
+      </NavLinkWithQuery>
     </div>
   )
 }

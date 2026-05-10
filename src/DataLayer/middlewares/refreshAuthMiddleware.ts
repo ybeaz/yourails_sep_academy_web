@@ -1,7 +1,7 @@
 import { Middleware } from '@reduxjs/toolkit'
 
-import { AWS_COGNITO_REFRESH_AUTH_TOKEN_DELAY } from '../../Constants/aws.const'
-import { getDebouncedFunc } from '../..//Shared/getDebouncedFunc'
+import { AWS_COGNITO_REFRESH_AUTH_TOKEN_DELAY } from 'yourails_common'
+import { getDebouncedFunc } from 'yourails_common'
 import { actionAsync } from '../../DataLayer/index.action'
 
 /**
@@ -39,6 +39,7 @@ export const refreshAuthMiddleware: Middleware = store => next => action => {
     'SET_IS_LOADED_LOCAL_STORAGE_STORE_STATE',
     'GET_AUTH_DATA_REQUEST',
     'GET_MATRIX_DATA_REQUEST',
+    'GET_MODULE_REQUEST',
     'GET_AUTH_AWS_COGNITO_USER_DATA_REQUEST',
     'GET_AUTH_AWS_COGNITO_USER_REFRESHED_REQUEST',
     'GET_AUTH_AWS_COGNITO_USER_REVOKED_REQUEST',

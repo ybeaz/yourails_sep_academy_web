@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-import { getPrependedExternalScript } from '../../Shared/getPrependedExternalScript'
+import { getPrependedExternalScript } from 'yourails_common'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 
 /**
@@ -25,5 +25,12 @@ export const useLoadedInitialTeachContent: Function = (
     }
 
     if (!document.getElementById(scriptProps.id)) makeDispatchAsyncWrappered()
+
+    return () => {
+      const scriptTag = document.querySelector('script[src="https://www.youtube.com/iframe_api"]')
+      if (scriptTag) {
+        scriptTag.remove()
+      }
+    }
   }, [])
 }

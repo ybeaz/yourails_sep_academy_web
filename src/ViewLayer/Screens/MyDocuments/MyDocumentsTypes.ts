@@ -1,6 +1,7 @@
 import React from 'react'
 
-import { RootStoreType, HandleEventType } from '../../../Interfaces/'
+import { RootStoreType } from '../../../Interfaces/'
+import { HandleEventType } from 'yourails_common'
 import { MainFramePropsType, HeaderFramePropsType } from '../../Frames/'
 import { MyDocumentsBodyPropsType } from '../../Components/'
 
@@ -10,6 +11,9 @@ export type MyDocumentsComponentPropsType = {
     language: RootStoreType['language']
     sub: RootStoreType['authAwsCognitoUserData']['sub']
     documents: RootStoreType['documents']
+    tagsCloud: RootStoreType['tagsCloud']
+    pageDocuments: RootStoreType['componentsState']['pagination']['pageDocuments']
+    pageTags: RootStoreType['componentsState']['pagination']['pageTags']
   }
   handleEvents: HandleEventType
 }
@@ -21,7 +25,7 @@ export type MyDocumentsPropsType = Omit<
 
 export type MyDocumentsPropsOutType = {
   headerFrameProps: HeaderFramePropsType
-  mainFrameProps: Omit<MainFramePropsType, 'children'>
+  mainFrameProps: MainFramePropsType
   myMyDocumentsBodyProps: MyDocumentsBodyPropsType
 }
 

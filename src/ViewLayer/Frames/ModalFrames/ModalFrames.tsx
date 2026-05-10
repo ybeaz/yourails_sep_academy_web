@@ -2,15 +2,19 @@ import React, { ReactElement, FunctionComponent } from 'react'
 import useWindowSize from 'react-use/lib/useWindowSize'
 import Confetti from 'react-confetti'
 
-// import { SkillExchangeIntro2 } from '../../Components/SkillExchangeIntro2'
-// import { SkillExchangeIntro } from '../../Components/SkillExchangeIntro'
-import { withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
-import { ButtonYrl } from '../../ComponentsLibrary/ButtonYrl/ButtonYrl'
-import { ConfirmationYesNoBodyYrl } from '../../ComponentsLibrary/ConfirmationYesNoBodyYrl/ConfirmationYesNoBodyYrl'
+import {
+  withPropsYrl,
+  ButtonYrl,
+  withStoreStateSelectedYrl,
+  ConfirmationYesNoBodyYrl,
+} from 'yourails_common'
+import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
+
 import { EmalInputs } from '../../Components/EmalInputs/EmalInputs'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { QuestionScores } from '../../Components/QuestionScores/QuestionScores'
 import { AcademyAboutBody } from '../../Components/AcademyAboutBody/AcademyAboutBody'
+import { QrCodeModalBody } from '../../Components/QrCodeModalBody/QrCodeModalBody'
 
 import {
   ModalFramesComponentPropsType,
@@ -25,6 +29,7 @@ const CHILDREN: Record<string, FunctionComponent<any>> = {
   EmalInputs,
   QuestionScores,
   AcademyAboutBody,
+  QrCodeModalBody,
   //AuthUser, Not used in favor of Cognito authetication
   // SkillExchangeIntro2,
   // SkillExchangeIntro,
@@ -38,6 +43,7 @@ const CHILDREN: Record<string, FunctionComponent<any>> = {
 const ModalFramesComponent: ModalFramesComponentType = (props: ModalFramesComponentPropsType) => {
   const {
     storeStateSlice: { modalFrames, isConfetti },
+    handleEvents,
   } = props
 
   const { width, height } = useWindowSize()
@@ -61,6 +67,7 @@ const ModalFramesComponent: ModalFramesComponentType = (props: ModalFramesCompon
         buttonCloseProps: {
           icon: 'MdClose',
           classAdded: 'Button_MdClose',
+          handleEvents,
           action: closeAction,
         },
         childProps,
@@ -102,9 +109,9 @@ const ModalFramesComponent: ModalFramesComponentType = (props: ModalFramesCompon
 }
 
 const storeStateSliceProps: string[] = ['modalFrames', 'isConfetti']
-export const ModalFrames: ModalFramesType = withStoreStateSelectedYrl(
-  storeStateSliceProps,
-  React.memo(ModalFramesComponent)
+
+export const ModalFrames: ModalFramesType = withPropsYrl({ handleEvents: handleEventsIn })(
+  withStoreStateSelectedYrl(storeStateSliceProps, React.memo(ModalFramesComponent))
 )
 
 export type {

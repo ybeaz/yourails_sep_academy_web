@@ -1,16 +1,16 @@
 import React, { ReactElement, useEffect } from 'react'
 
-import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
-import { ModuleType } from '../../../@types/GraphqlTypes'
-import { IconYrl, withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
-import { getDurationFromYoutubeSnippet } from '../../../Shared/getDurationFromYoutubeSnippet'
+import { NavLinkWithQuery } from '../../Components/NavLinkWithQuery/NavLinkWithQuery'
+import { ModuleType } from 'yourails_common'
+import { IconYrl, withPropsYrl, withStoreStateSelectedYrl } from 'yourails_common'
+import { getDurationFromYoutubeSnippet } from 'yourails_common'
 import { ContentPlate, ContentPlatePropsType } from '../../Components/ContentPlate/ContentPlate'
-import { getContentComponentName } from '../../../Shared/getContentComponentName'
-import { getMultipliedTimeStr } from '../../../Shared/getMultipliedTimeStr'
-import { DurationObjType, PaginationNameEnumType } from '../../../Interfaces/'
+import { getContentComponentName } from 'yourails_common'
+import { getMultipliedTimeStr } from 'yourails_common'
+import { DurationObjType, PaginationNameEnumType } from 'yourails_common'
 import { PaginationNavigation } from '../../Components/PaginationNavigation/PaginationNavigation'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
-import { getClasses } from '../../../Shared/getClasses'
+import { getClasses } from 'yourails_common'
 import { IconLabelWithClose } from '../IconLabelWithClose/IconLabelWithClose'
 import {
   ModulesBodyComponentPropsType,
@@ -35,7 +35,7 @@ const ModulesBodyComponent: ModulesBodyComponentType = (props: ModulesBodyCompon
       durationMultiplier,
       modules,
       isLoadedGlobalVars,
-      tagsSearchForModules,
+      tagsPick,
       modulesSearchApplied,
       pageModules,
     },
@@ -60,7 +60,9 @@ const ModulesBodyComponent: ModulesBodyComponentType = (props: ModulesBodyCompon
 
       const contentComponentName = getContentComponentName(contentType)
 
-      const durationObj = getDurationFromYoutubeSnippet(duration2)
+      const durationObj = getDurationFromYoutubeSnippet(duration2, {
+        funcParent: 'ModulesBody',
+      })
       const { timeReadable: duration } = durationObj
       const durationObj2: DurationObjType = getMultipliedTimeStr(duration, durationMultiplier)
 
@@ -83,13 +85,20 @@ const ModulesBodyComponent: ModulesBodyComponentType = (props: ModulesBodyCompon
   }
 
   const propsOut: ModulesBodyPropsOutType = {
+    h2Props: {
+      className: '_h2',
+    },
+    navLinkProps: {
+      className: getClasses('_link'),
+      to: { pathname: '/' },
+    },
     iconLabelWithCloseTagProps: {
       classAdded: '_iconLabelWithCloseTag',
       icon: 'MdOutlineTag',
-      capture: tagsSearchForModules || '',
+      capture: tagsPick[0] || '',
       action: {
         type: 'CLICK_ON_TAG',
-        data: { tagCloud: { value: null } },
+        data: { tagCloud: { value: undefined } },
       },
     },
     iconLabelWithCloseSearchProps: {
@@ -97,7 +106,7 @@ const ModulesBodyComponent: ModulesBodyComponentType = (props: ModulesBodyCompon
       icon: 'MdSearch',
       capture: modulesSearchApplied || '',
       action: {
-        type: 'ONCHANGE_INPUT_SEARCH',
+        type: 'CLICK_ON_CANCEL_APPLIED_SEARCH',
         data: { storeFormProp: 'modulesSearch', value: '' },
       },
     },
@@ -114,10 +123,10 @@ const ModulesBodyComponent: ModulesBodyComponentType = (props: ModulesBodyCompon
   return (
     <div className={getClasses('ModulesBody', classAdded)}>
       <div className='_h2Wrapper'>
-        <h2 className='_h2' onClick={() => handleEvents({}, { type: 'CLICK_ON_ALL_MODULES' })}>
-          {headline}
-        </h2>
-        {tagsSearchForModules && (
+        <NavLinkWithQuery {...propsOut.navLinkProps}>
+          <h2 {...propsOut.h2Props}>{headline}</h2>
+        </NavLinkWithQuery>
+        {!!tagsPick.length && (
           <div className='_iconLabelWithCloseWrapper'>
             <IconYrl {...propsOut.iconArrowForwardProps} />
             <IconLabelWithClose {...propsOut.iconLabelWithCloseTagProps} />
@@ -133,7 +142,7 @@ const ModulesBodyComponent: ModulesBodyComponentType = (props: ModulesBodyCompon
       {modules.length && isLoadedGlobalVars ? (
         <div className='_plateMatrixPagination'>
           <div className='_plateMatrixWrapper'>{getPlateMatix(modules)}</div>
-          {pageModules.offset <= modules.length && (
+          {!(pageModules.first === 0 && pageModules.offset > modules.length) && (
             <div className='_paginationNavigationWrapper'>
               <PaginationNavigation {...propsOut.paginationNavigationProps} />
             </div>
@@ -149,7 +158,7 @@ const storeStateSliceProps: string[] = [
   'durationMultiplier',
   'modules',
   'isLoadedGlobalVars',
-  'tagsSearchForModules',
+  'tagsPick',
   'modulesSearchApplied',
   'pageModules',
 ]

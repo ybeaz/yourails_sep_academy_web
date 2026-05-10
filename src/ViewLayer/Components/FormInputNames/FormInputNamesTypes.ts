@@ -1,16 +1,18 @@
-import { InputYrlPropsType, ButtonYrlPropsType } from '../../ComponentsLibrary/'
+import { InputYrlPropsType, ButtonYrlPropsType } from 'yourails_common'
+import { HandleEventType } from 'yourails_common'
 
 export type FormInputNamesPropsType = {
-  classAdded?: string | string[] | Record<string, string | string[]>
+  classAdded?: string | number | symbol | any
   language: string
-  buttonForwardProps: ButtonYrlPropsType
+  handleEvents: HandleEventType
+  isDisplaying?: boolean // is element present on the page and visible/ displaying?
+  isVisible?: boolean // element is present on the page, but if it is visible/ displaying?
 }
 
 export type FormInputNamesPropsOutType = {
   inputFirstNameProps: InputYrlPropsType
   inputMiddleNameProps: InputYrlPropsType
   inputLastNameProps: InputYrlPropsType
-  buttonForwardProps: ButtonYrlPropsType
 }
 
 /**
@@ -21,5 +23,4 @@ export interface FormInputNamesComponentType
   (props: FormInputNamesPropsType): React.ReactElement
 }
 
-export type FormInputNamesType =
-  React.FunctionComponent<FormInputNamesPropsType>
+export type FormInputNamesType = React.FunctionComponent<FormInputNamesPropsType>

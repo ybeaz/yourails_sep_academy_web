@@ -1,10 +1,10 @@
 import { join } from 'path'
 
-import { consoler } from './consoler'
-import { consolerError } from './consolerError'
-import { getWriteFile } from './getWriteFile'
+import { consoler } from 'yourails_node'
+import { consolerError } from 'yourails_node'
+import { getWritrenFileAsync } from 'yourails_node'
 import { execSync } from 'child_process'
-import { getDateString } from '../src/Shared/getDateString'
+import { getDateString } from 'yourails_node'
 
 interface GetBuildGitDataType {
   (pathFull: string, options?: { printRes: boolean }): Promise<any>
@@ -21,7 +21,7 @@ export const getBuildGitData: GetBuildGitDataType = async (pathFull, options) =>
     const branchCurrent = await execSync(`git branch --show-current`).toString().trim()
 
     let getBuildGitDataRes = await execSync(
-      `git log -1 --pretty=format:'{%n  "commit": "%H",%n  "author": {%n    "name": "%aN",%n    "email": "%aE"%n  },%n  "date": "%ad",%n  "message": "%f"%n}'`
+      `git log -1 --pretty=format:'{%n  "commit": "%H",%n  "author": {%n    "name": "%aN",%n    "email": "%aE"%n  },%n  "dateCommit": "%ad",%n  "message": "%f"%n}'`
     )
       .toString()
       .trim()
@@ -29,13 +29,13 @@ export const getBuildGitData: GetBuildGitDataType = async (pathFull, options) =>
     const getBuildGitDataResObjM1: any = JSON.parse(getBuildGitDataRes) as Object
 
     const dateCommit = getDateString({
-      timestamp: new Date(getBuildGitDataResObjM1.date),
+      timestamp: new Date(getBuildGitDataResObjM1.dateCommit),
     })
     const dateBuild = getDateString({
       timestamp: new Date(),
     })
 
-    const year = new Date(getBuildGitDataResObjM1.date).getFullYear()
+    const year = new Date(getBuildGitDataResObjM1.dateCommit).getFullYear()
 
     const copyright = `© 2021-${year} Userto Inc.`
 
@@ -49,9 +49,9 @@ export const getBuildGitData: GetBuildGitDataType = async (pathFull, options) =>
 
     getBuildGitDataRes = JSON.stringify(getBuildGitDataResObj)
 
-    getBuildGitDataRes = `import { BuildDataType } from '../@types/BuildDataType'; export const buildData: BuildDataType = ${getBuildGitDataRes}`
+    getBuildGitDataRes = `import { BuildDataType } from 'yourails_common'; export const buildData: BuildDataType = ${getBuildGitDataRes}`
 
-    await getWriteFile(pathFull, getBuildGitDataRes)
+    await getWritrenFileAsync(pathFull, getBuildGitDataRes)
 
     if (options?.printRes) {
       consoler('getBuildGitData', {
@@ -69,6 +69,7 @@ export const getBuildGitData: GetBuildGitDataType = async (pathFull, options) =>
 
 /**
  * @description Here the file is being run directly
+ * @run ts-node tools/getBuildGitData.ts
  */
 if (require.main === module) {
   ;(async () => {

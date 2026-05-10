@@ -1,37 +1,55 @@
-import React, { useState, useEffect } from 'react'
-import { Helmet } from 'react-helmet'
+import React, { useState, useEffect, useRef } from 'react'
+import { Helmet } from 'react-helmet-async'
 import { useParams } from 'react-router-dom'
-
-import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
+import { ModuleType } from 'yourails_common'
+import {
+  withPropsYrl,
+  withStoreStateSelectedYrl,
+  ButtonYrl,
+  ArticleStructuredYrl,
+} from 'yourails_common'
+import { getSizeWindow } from 'yourails_common'
+import { ScreensEnumType } from 'yourails_common'
 import { useflagsDebug } from '../../Hooks/useflagsDebug'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 import { CarouselQuestions } from '../../Components/CarouselQuestions/CarouselQuestions'
-import { DICTIONARY } from '../../../Constants/dictionary.const'
-import { getContentComponentName } from '../../../Shared/getContentComponentName'
+import { DICTIONARY } from 'yourails_common'
+import { getContentComponentName } from 'yourails_common'
 import { useLoadedInitialTeachContent } from '../../Hooks/useLoadedInitialTeachContent'
-import { getMultipliedTimeStr } from '../../../Shared/getMultipliedTimeStr'
-import { useYouTubePlayerWork } from '../../Hooks/useYouTubePlayerWork'
-import { DurationObjType } from '../../../Interfaces/DurationObjType'
+import { getMultipliedTimeStr } from 'yourails_common'
+import { DurationObjType } from 'yourails_common'
 import { LoaderBlurhash } from '../../Components/LoaderBlurhash'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
-import { PlayerIframe } from '../../Frames/PlayerIframe/PlayerIframe'
-import { PlayerPanel } from '../../Components/PlayerPanel/PlayerPanel'
+import { PlayerYoutubeIframe } from '../../Frames/PlayerYoutubeIframe/PlayerYoutubeIframe'
 import { ReaderIframe } from '../../Frames/ReaderIframe/ReaderIframe'
-import { VIDEO_RESOLUTION } from '../../../Constants/videoResolution.const'
-import { SERVERS_MAIN } from '../../../Constants/servers.const'
-import { getModuleByModuleID } from '../../../Shared/getModuleByModuleID'
-import { withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
-import { TextStructuredColumns } from '../../Components/TextStructuredColumns/TextStructuredColumns'
-import { getParsedUrlQuery } from '../../../Shared/getParsedUrlQuery'
-import { getDurationFromYoutubeSnippet } from '../../../Shared/getDurationFromYoutubeSnippet'
+import { SERVERS_MAIN } from 'yourails_common'
+import { getModuleByModuleID } from 'yourails_common'
+import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
+import { getDurationFromYoutubeSnippet } from 'yourails_common'
+import { isOnLandScape } from 'yourails_common'
+import { isMobile } from 'yourails_common'
+import { GenreEnumType } from 'yourails_common'
+import { getRearrangedArrayByIndex } from 'yourails_common'
+import {
+  ContentSection,
+  ContentArrayItemType,
+} from '../../Components/ContentSection/ContentSection'
+import { ReaderIframeType } from '../../Frames/ReaderIframe/ReaderIframe'
+import { PlayerYoutubeIframeType } from '../../Frames/PlayerYoutubeIframe/PlayerYoutubeIframe'
+import { getTagLine } from 'yourails_common'
+import { TextToSpeechYrl, TextToSpeechYrlPropsType } from 'yourails_common'
+import { getLocalStorageReadKeyObj } from 'yourails_common'
+import { getLocalStorageDeletedObjFrom } from 'yourails_common'
 
 const COMPONENT: Record<string, React.FunctionComponent<any>> = {
   ReaderIframe,
-  PlayerIframe,
+  PlayerYoutubeIframe,
 }
 
 import {
+  ContentComponentPropsType,
+  AcademyPresentPropsM1OutType,
   AcademyPresentComponentPropsType,
   AcademyPresentPropsType,
   AcademyPresentPropsOutType,
@@ -48,51 +66,73 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   props: AcademyPresentComponentPropsType
 ) => {
   const {
+    handleEvents,
     storeStateSlice: {
       language: languageSite,
       durationMultiplier,
       moduleIDActive,
       modules,
       mediaLoaded,
-      isSummary: isSummaryStore,
-      isObjections,
+      // @ts-expect-error
+      componentsState,
+      // @ts-expect-error
+      urlParamsQuery,
     },
   } = props
 
   const params = useParams()
+  const counterRef = useRef(0)
+  const { width: widthSizeWindow } = getSizeWindow()
+
   const moduleID = params.moduleID || ''
+  const moduleActive = getModuleByModuleID(
+    { modules, moduleID: moduleIDActive || moduleID },
+    { parentFunction: 'AcademyPresentComponent' }
+  )
+
   const canonicalUrl = `${SERVERS_MAIN.remote}${decodeURIComponent(location.pathname)}`
 
   const screenType = ScreensEnumType['AcademyPresent']
 
-  const mediaLoadedModulesString = JSON.stringify([mediaLoaded, modules])
+  const mediaLoadedModulesString = JSON.stringify([mediaLoaded, moduleActive])
 
-  useEffectedInitialRequests([{ type: 'GET_MODULE', data: { moduleID } }])
+  const [windowWidth, setWindowWidth] = useState(widthSizeWindow)
+  const [isHeaderFrame, setIsHeaderFrame] = useState(!(isMobile() && isOnLandScape()))
+
+  useEffectedInitialRequests(
+    [
+      { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } },
+      { type: 'SET_PARAMS_FROM_QUERY_URL_TO_STATE' },
+      { type: 'GET_MODULE', data: { moduleID } },
+    ],
+    [moduleID]
+  )
+
+  useEffect(() => {
+    const redirectAuthFrom = getLocalStorageReadKeyObj('redirectAuthFrom')
+    if (redirectAuthFrom && moduleID && modules.length) {
+      getLocalStorageDeletedObjFrom({ redirectAuthFrom: null })
+      handleEvents({}, { typeEvent: 'GO_TO_QUESTIONS_SCORES' })
+    }
+  }, [modules.length])
 
   useLoadedInitialTeachContent()
   useflagsDebug(mediaLoadedModulesString)
 
-  /* Hide summary by url settings */
-  let isSummaryButton = true
-  let isSummary = isSummaryStore
-  const { isSummary: isSummaryUrlQuery } = getParsedUrlQuery()
-  if (isSummaryUrlQuery === 'false') {
-    isSummaryButton = false
-    isSummary = false
-  }
-
   const [moduleState, setModuleState] = useState({
-    CONTENT_ASSIGNED_COMPONENT: PlayerIframe,
+    CONTENT_ASSIGNED_COMPONENT: PlayerYoutubeIframe as PlayerYoutubeIframeType | ReaderIframeType,
     contentComponentName: '',
     capture: '',
     language: '',
     description: '',
     contentID: '',
     durationObj: { duration: '', units: '' },
+    tags: [],
     index: 0,
     questionsTotal: 0,
     summary: [],
     objections: [],
+    article: [],
   })
 
   const {
@@ -103,9 +143,11 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     description,
     contentID,
     durationObj,
+    tags,
     questionsTotal,
     summary,
     objections,
+    article,
   } = moduleState
 
   useEffect(() => {
@@ -117,16 +159,17 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
         contentType,
         contentID: contentID2,
         duration: duration2,
+        tags: tags2,
         index: index2,
         questionsTotal: questionsTotal2,
         summary: summary2,
         objections: objections2,
-      } = getModuleByModuleID(
-        { modules, moduleID: moduleIDActive || moduleID },
-        { parentFunction: 'AcademyPresentComponent' }
-      )
+        article: article2,
+      } = moduleActive
 
-      const durationObj = getDurationFromYoutubeSnippet(duration2)
+      const durationObj = getDurationFromYoutubeSnippet(duration2, {
+        funcParent: 'AcademyPresent',
+      })
       const { timeReadable: duration } = durationObj
       const durationObj2: DurationObjType = getMultipliedTimeStr(duration, durationMultiplier)
 
@@ -142,51 +185,146 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
         index: index2,
         questionsTotal: questionsTotal2,
         durationObj: durationObj2,
+        tags: tags2,
         summary: summary2,
         objections: objections2,
+        article: article2,
       })
     }
   }, [mediaLoadedModulesString])
 
   const isVisible = mediaLoaded[moduleIDActive || moduleID] || false
 
-  const { width, height } = VIDEO_RESOLUTION
-  const { playVideoHandler, pauseVideoHandler, stopVideoHandler, isShowingPlay } =
-    useYouTubePlayerWork({
+  useEffect(() => {
+    const reportWindowSize = () => {
+      setWindowWidth(window.innerWidth)
+
+      if (isMobile())
+        if (isOnLandScape()) setIsHeaderFrame(false)
+        else setIsHeaderFrame(true)
+    }
+    /* Trigger this function on resize */
+    window.addEventListener('resize', reportWindowSize)
+
+    /* Cleanup for componentWillUnmount */
+    return () => window.removeEventListener('resize', reportWindowSize)
+  }, [])
+
+  const textTooltip = DICTIONARY['pleaseRefreshWindow'][languageSite]
+  const contentComponentProps: ContentComponentPropsType = {
+    ReaderIframe: {
+      moduleID,
+      contentID,
+      isVisible,
+      isIframe: true,
+      screenType,
+      tags,
+    },
+    PlayerYoutubeIframe: {
       contentComponentName,
       moduleID,
       contentID,
-      width,
-      height,
-    })
-
-  const buttonPlayProps = {
-    icon: 'MdPlayArrow',
-    classAdded: 'Button_MdPlayArrow',
-    handleEvents: playVideoHandler,
-    action: {},
-  }
-  const buttonPauseProps = {
-    icon: 'MdPause',
-    classAdded: 'Button_MdPause',
-    handleEvents: pauseVideoHandler,
-    action: {},
-  }
-  const buttonStopProps = {
-    icon: 'MdRemoveCircle',
-    classAdded: 'Button_MdRemoveCircle',
-    handleEvents: stopVideoHandler,
-    action: {},
+      isVisible,
+      isIframe: true,
+      capture,
+      durationObj,
+      screenType,
+      questionsTotal,
+      tags,
+    },
   }
 
-  const textTooltip = DICTIONARY['pleaseRefreshWindow'][languageSite]
+  const propsM1Out: AcademyPresentPropsM1OutType = {
+    CONTENT_ASSIGNED_COMPONENT,
+    contentAssignedComponentProps: contentComponentProps[contentComponentName],
+    loaderBlurhashProps: {
+      isVisibleBlurHash: !isVisible,
+      textTooltip,
+      isTextTooltip: true,
+      delay: 500,
+      contentComponentName,
+    },
+    textToSpeechYrlProps: {
+      classAdded: 'TextToSpeechYrl_AcademyPresent',
+    },
+    articleProps: {
+      classAdded: undefined,
+      scriptID: undefined,
+      genre: GenreEnumType['article'],
+      // @ts-expect-error
+      module: moduleState,
+      organization: undefined,
+      creator: undefined,
+      isSeo: false,
+      isNoSeoIndexing: false,
+    },
+    summaryProps: {
+      classAdded: undefined,
+      scriptID: undefined,
+      genre: GenreEnumType['summary'],
+      // @ts-expect-error
+      module: { ...moduleState, capture: 'Summary' },
+      organization: undefined,
+      creator: undefined,
+      isSeo: false,
+      isNoSeoIndexing: true,
+    },
+    objectionsProps: {
+      classAdded: undefined,
+      scriptID: undefined,
+      genre: GenreEnumType['objections'],
+      // @ts-expect-error
+      module: { ...moduleState, capture: 'Objections' },
+      organization: undefined,
+      creator: undefined,
+      isSeo: false,
+      isNoSeoIndexing: true,
+    },
+  }
+
+  const contentArrayIn: ContentArrayItemType[] = [
+    {
+      typeIn: 'player',
+      component: (
+        <CONTENT_ASSIGNED_COMPONENT {...propsM1Out.contentAssignedComponentProps}>
+          <LoaderBlurhash {...propsM1Out.loaderBlurhashProps} />
+          <></>
+        </CONTENT_ASSIGNED_COMPONENT>
+      ),
+    },
+    {
+      typeIn: 'summary',
+      component:
+        summary && summary.length ? (
+          <TextToSpeechYrl {...propsM1Out.textToSpeechYrlProps}>
+            <ArticleStructuredYrl {...propsM1Out.summaryProps} />
+          </TextToSpeechYrl>
+        ) : null,
+    },
+    {
+      typeIn: 'article',
+      component:
+        article && article.length ? (
+          <TextToSpeechYrl {...propsM1Out.textToSpeechYrlProps}>
+            <ArticleStructuredYrl {...propsM1Out.articleProps} />
+          </TextToSpeechYrl>
+        ) : null,
+    },
+    {
+      typeIn: 'objections',
+      component:
+        objections && objections.length ? (
+          <TextToSpeechYrl {...propsM1Out.textToSpeechYrlProps}>
+            <ArticleStructuredYrl {...propsM1Out.objectionsProps} />
+          </TextToSpeechYrl>
+        ) : null,
+    },
+  ]
+
+  const [contentArray, setContentArray] = useState<any[]>([])
 
   const propsOut: AcademyPresentPropsOutType = {
     headerFrameProps: {
-      brandName: 'YouRails Academy',
-      moto: DICTIONARY['Watch_Videos_With_a_Purpose'][languageSite],
-      logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
-      contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,
       isLogoGroup: true,
       isButtonAddCourse: true,
@@ -201,48 +339,77 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     mainFrameProps: {
       screenType,
     },
-    contentComponentProps: {
-      ReaderIframe: {
-        moduleID,
-        contentID,
-        isVisible,
-        isIframe: true,
-        screenType,
+    contentSectionProps: {
+      contentArray: (counterRef.current === 0 ? contentArrayIn : contentArray).map(
+        (item: ContentArrayItemType, index: number) =>
+          index === 0 && isMobile()
+            ? {
+                ...item,
+                component: (
+                  <div>
+                    {item.component as React.ReactElement<any>}
+                    <CarouselQuestions />
+                  </div>
+                ),
+              }
+            : item
+      ),
+    },
+    buttonPlayerUpProps: {
+      icon: '',
+      classAdded: 'Button_playerUp',
+      captureLeft: DICTIONARY.media[languageSite],
+      handleEvents: () => {
+        const contentArrayNext = getRearrangedArrayByIndex({
+          arrayIn: contentArrayIn,
+          typeIn: 'player',
+        })
+        counterRef.current = 1
+        setContentArray(contentArrayNext)
       },
-      PlayerIframe: {
-        contentID,
-        isVisible,
-        isIframe: true,
+      isDisplaying: true,
+    },
+    buttonSummaryUpProps: {
+      icon: '',
+      classAdded: 'Button_summaryUp',
+      captureLeft: DICTIONARY.summary[languageSite],
+      handleEvents: () => {
+        const contentArrayNext = getRearrangedArrayByIndex({
+          arrayIn: contentArrayIn,
+          typeIn: 'summary',
+        })
+        counterRef.current = 1
+        setContentArray(contentArrayNext)
       },
+      isDisplaying: summary && summary.length ? true : false,
     },
-    loaderBlurhashProps: {
-      isVisibleBlurHash: !isVisible,
-      textTooltip,
-      isTextTooltip: true,
-      delay: 500,
-      contentComponentName,
+    buttonArticleUpProps: {
+      icon: '',
+      classAdded: 'Button_articleUp',
+      captureLeft: DICTIONARY.article[languageSite],
+      handleEvents: () => {
+        const contentArrayNext = getRearrangedArrayByIndex({
+          arrayIn: contentArrayIn,
+          typeIn: 'article',
+        })
+        counterRef.current = 1
+        setContentArray(contentArrayNext)
+      },
+      isDisplaying: article && article.length ? true : false,
     },
-    playerPanelProps: {
-      capture,
-      durationObj,
-      screenType,
-      isShowingPlay,
-      buttonPlayProps,
-      buttonPauseProps,
-      buttonStopProps,
-      isActionButtonDisplaying: false,
-      questionsTotal,
-    },
-    textStructuredColumnsProps: {
-      summary,
-      objections,
-      isSummaryButton,
-      isSummary,
-      isObjectionsButton: true,
-      isObjections,
-      language: languageSite,
-      titleSummary: 'Summary',
-      titleObjections: 'Objections',
+    buttonObjectionsUpProps: {
+      icon: '',
+      captureLeft: DICTIONARY.objections[languageSite],
+      classAdded: 'Button_objectionsUp',
+      handleEvents: () => {
+        const contentArrayNext = getRearrangedArrayByIndex({
+          arrayIn: contentArrayIn,
+          typeIn: 'objections',
+        })
+        counterRef.current = 1
+        setContentArray(contentArrayNext)
+      },
+      isDisplaying: objections && objections.length ? true : false,
     },
   }
 
@@ -261,21 +428,23 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
           </Helmet>
           <MainFrame {...propsOut.mainFrameProps}>
             {/* header */}
-            <HeaderFrame {...propsOut.headerFrameProps} />
+            {isHeaderFrame ? <HeaderFrame {...propsOut.headerFrameProps} /> : null}
             {/* middle-left */}
             {null}
             {/* middle-main */}
-            <div className='AcademyPresent__middle-main'>
-              <CONTENT_ASSIGNED_COMPONENT {...propsOut.contentComponentProps[contentComponentName]}>
-                {null}
-                <LoaderBlurhash {...propsOut.loaderBlurhashProps} />
-                <PlayerPanel {...propsOut.playerPanelProps} />
-              </CONTENT_ASSIGNED_COMPONENT>
+            <div className='_middleWrapper'>
+              <div className='_buttonsWrapper'>
+                <ButtonYrl {...propsOut.buttonPlayerUpProps} />
+                <ButtonYrl {...propsOut.buttonSummaryUpProps} />
+                <ButtonYrl {...propsOut.buttonArticleUpProps} />
+                <ButtonYrl {...propsOut.buttonObjectionsUpProps} />
+              </div>
+              {contentComponentName && <ContentSection {...propsOut.contentSectionProps} />}
             </div>
             {/* middle-right */}
-            <CarouselQuestions />
+            {!isMobile() && <CarouselQuestions />}
             {/* footer */}
-            <TextStructuredColumns {...propsOut.textStructuredColumnsProps} />
+            {null}
           </MainFrame>
         </>
       ) : null}
@@ -289,13 +458,15 @@ const storeStateSliceProps: string[] = [
   'moduleIDActive',
   'modules',
   'mediaLoaded',
-  'isSummary',
-  'isObjections',
+  'componentsState',
+  'urlParamsQuery',
 ]
-export const AcademyPresent: AcademyPresentType = withStoreStateSelectedYrl(
-  storeStateSliceProps,
-  React.memo(AcademyPresentComponent)
+
+const AcademyPresent: AcademyPresentType = withPropsYrl({ handleEvents: handleEventsIn })(
+  withStoreStateSelectedYrl(storeStateSliceProps, React.memo(AcademyPresentComponent))
 )
+
+export { AcademyPresent as default }
 
 export type {
   AcademyPresentPropsType,

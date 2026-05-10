@@ -1,36 +1,33 @@
 import React, { useEffect, ReactElement } from 'react'
 
-import { ImageYrl } from '../ComponentsLibrary/ImageYrl/ImageYrl'
+import { withPropsYrl, ImageYrl } from 'yourails_common'
+import { handleEvents as handleEventsIn } from '../../DataLayer/index.handleEvents'
+import { HandleEventType } from 'yourails_common'
 import { FooterFrame } from '../Frames/FooterFrame/FooterFrame'
-import { HeaderFrame } from '../Frames/HeaderFrame/HeaderFrame'
+import { HeaderFrame, HeaderFramePropsType } from '../Frames/HeaderFrame/HeaderFrame'
 import { StubUserGoodbye } from '../Components/StubUserGoodbye'
 import { MainFrame } from '../Frames/MainFrame/MainFrame'
-import { handleEvents } from '../../DataLayer/index.handleEvents'
-import { SERVERS_MAIN } from '../../Constants/servers.const'
-import { DICTIONARY } from '../../Constants/dictionary.const'
+import { SERVERS_MAIN } from 'yourails_common'
+import { MainFramePropsType } from '../Frames/MainFrame/MainFrame'
 
-interface StubForUserResearchArgs {
+interface StubForUserResearchPropsType {
   routeProps: {
     location: {
       pathname: string
     }
   }
   themeDafault: string
+  handleEvents: HandleEventType
 }
 
-export const StubForUserResearch: React.FunctionComponent<StubForUserResearchArgs> = (
-  props: StubForUserResearchArgs
-): ReactElement => {
-  const { themeDafault } = props
+export const StubForUserResearchComponent: React.FunctionComponent<
+  StubForUserResearchPropsType
+> = ({ handleEvents, themeDafault }: StubForUserResearchPropsType): ReactElement => {
   useEffect(() => {
     handleEvents({}, { typeEvent: 'SET_THEME', data: themeDafault })
   }, [])
 
-  const headerFrameProps = {
-    brandName: 'YouRails',
-    moto: DICTIONARY['Watch_Videos_With_a_Purpose']['en'], // TODO: make it dynamic from store
-    logoPath: `${SERVERS_MAIN.remote}/images/logoYouRailsV21.png`,
-    contentComponentName: 'StubForUserResearch',
+  const headerFrameProps: HeaderFramePropsType = {
     isButtonSideMenuLeft: true,
     isLogoGroup: true,
     isButtonAddCourse: false,
@@ -43,15 +40,15 @@ export const StubForUserResearch: React.FunctionComponent<StubForUserResearchArg
     isButtonsShare: false,
   }
 
-  const mainFrameProps = {
+  const mainFrameProps: MainFramePropsType = {
     screenType: 'StubForUserResearch',
-    contentComponentName: 'none',
-    brandName: 'YouRails',
   }
 
   const imageBottomProps = {
     classAdded: 'Image_bottom',
     src: `${SERVERS_MAIN.remote}/images/city.svg`,
+    alt: 'research and development',
+    handleEvents,
   }
 
   return (
@@ -73,3 +70,9 @@ export const StubForUserResearch: React.FunctionComponent<StubForUserResearchArg
     </div>
   )
 }
+
+const StubForUserResearch: React.FunctionComponent<StubForUserResearchPropsType> = withPropsYrl({
+  handleEvents: handleEventsIn,
+})(React.memo(StubForUserResearchComponent))
+
+export { StubForUserResearch as default }

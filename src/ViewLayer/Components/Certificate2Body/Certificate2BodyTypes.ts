@@ -1,13 +1,16 @@
 import React from 'react'
-import { DocumentType } from '../../../@types/index'
-
+import { TagType, ProfileType } from 'yourails_common'
+import { RootStoreType } from '../../../Interfaces/RootStoreType'
+import { GetExpertiseInfoResType } from 'yourails_common'
 export type Certificate2BodyComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
-  document: DocumentType
-  storeStateSlice: any
+  language: RootStoreType['language']
+  profile: ProfileType
+  tagCloud: TagType
+  expertiseInfo: GetExpertiseInfoResType
 }
 
-export type Certificate2BodyPropsType = Omit<Certificate2BodyComponentPropsType, 'storeStateSlice'>
+export type Certificate2BodyPropsType = Certificate2BodyComponentPropsType
 
 export type Certificate2BodyPropsOutType = Record<string, any>
 

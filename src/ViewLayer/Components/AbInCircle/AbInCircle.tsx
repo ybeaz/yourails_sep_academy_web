@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { withPropsYrl } from '../../ComponentsLibrary/'
-import { getClasses } from '../../../Shared/getClasses'
+import { withPropsYrl } from 'yourails_common'
+import { getClasses } from 'yourails_common'
 
 import {
   AbInCirclePropsType,
@@ -44,9 +44,7 @@ const COLORS_2 = {
  * @import import { AbInCircle, AbInCirclePropsType, AbInCirclePropsOutType, AbInCircleType } 
              from '../Components/AbInCircle/AbInCircle'
  */
-const AbInCircleComponent: AbInCircleComponentType = (
-  props: AbInCirclePropsType
-) => {
+const AbInCircleComponent: AbInCircleComponentType = (props: AbInCirclePropsType) => {
   const { classAdded, text, colors2 } = props
 
   if (!text || !text.length) return null
@@ -77,13 +75,6 @@ const AbInCircleComponent: AbInCircleComponentType = (
   )
 }
 
-export const AbInCircle = withPropsYrl({ colors2: COLORS_2 })(
-  React.memo(AbInCircleComponent)
-)
+export const AbInCircle = withPropsYrl({ colors2: COLORS_2 })(React.memo(AbInCircleComponent))
 
-export type {
-  AbInCirclePropsType,
-  AbInCirclePropsOutType,
-  AbInCircleComponentType,
-  AbInCircleType,
-}
+export type { AbInCirclePropsType, AbInCirclePropsOutType, AbInCircleComponentType, AbInCircleType }

@@ -1,16 +1,18 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 
-import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
-import { getDateString } from '../../../Shared/getDateString'
-import { DICTIONARY } from '../../../Constants/dictionary.const'
-import { DocumentType } from '../../../@types/index'
-import { getSlug } from '../../../Shared/getSlug'
+import { ScreensEnumType } from 'yourails_common'
+import { getDateString } from 'yourails_common'
+import { getExpertiseInfo } from 'yourails_common'
+import { getArrayItemByProp } from 'yourails_common'
+import { DICTIONARY } from 'yourails_common'
+import { TagType, ProfileType, DocumentType } from 'yourails_common'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
-import { SERVERS_MAIN } from '../../../Constants/servers.const'
-import { LoaderOverlayYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
+import { SERVERS_MAIN } from 'yourails_common'
+import { LoaderOverlayYrl, withStoreStateSelectedYrl } from 'yourails_common'
+import { getTagLine } from 'yourails_common'
 import {
   CertificateFrameA,
   CertificateFrameAPropsType,
@@ -18,14 +20,8 @@ import {
   CertificateFrameAType,
 } from '../../Frames/CertificateFrames/CertificateFrameA/CertificateFrameA'
 
-import { withPropsYrl } from '../../ComponentsLibrary/'
-import { getClasses } from '../../../Shared/getClasses'
-import {
-  Certificate2Body,
-  Certificate2BodyPropsType,
-  Certificate2BodyPropsOutType,
-  Certificate2BodyType,
-} from '../../Components/Certificate2Body/Certificate2Body'
+import { getClasses } from 'yourails_common'
+import { Certificate2Body } from '../../Components/Certificate2Body/Certificate2Body'
 import {
   Certificate2ComponentPropsType,
   Certificate2PropsType,
@@ -34,10 +30,21 @@ import {
   Certificate2Type,
 } from './Certificate2Types'
 
-const documentFoundDefault = {
+const CERTIFICATE_FRAMES_DICT: Record<string, CertificateFrameAType> = {
+  CertificateFrameA,
+}
+
+const tagCloudFoundDefault = {
+  tagID: '',
   dateCreated: 0,
-  module: { moduleID: '', capture: '', language: '' },
-} as DocumentType
+  dateUpdated: 0,
+  dateDeactivated: null,
+  isActive: true,
+  value: '',
+  count: 0,
+  completed: 0,
+  moduleIDs: [],
+} as TagType
 
 /**
  * @description Component to render Certificate2
@@ -50,52 +57,60 @@ const Certificate2Component: Certificate2ComponentType = (
 ) => {
   const {
     classAdded,
-    storeStateSlice: { documents, language },
+    storeStateSlice: { language, sub, tagsCloud, profiles },
   } = props
 
   const params = useParams()
-  const documentID = params?.documentID
+  const tagID = params?.tagID
 
-  const documentFound: DocumentType =
-    documents.find((document: DocumentType) => document.documentID === documentID) || documents[0]
+  const tagCloudFound: TagType =
+    tagsCloud.find((tagCloud: TagType) => tagCloud.tagID === tagID) ||
+    tagsCloud[0] ||
+    tagCloudFoundDefault
 
-  const {
-    dateCreated,
-    module: { moduleID, capture: moduleCapture, language: languageDoc },
-  } = documentFound || documentFoundDefault
+  const profileFound: ProfileType = getArrayItemByProp({
+    arr: profiles,
+    propName: 'userID',
+    propValue: sub,
+  })
 
   const screenType = ScreensEnumType['Certificate2']
 
   useEffect(() => {
-    handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'Certificate' } })
-    // handleEvents({}, { typeEvent: 'CLOSE_MODAL_GET_SCORES' })
-    if (Array.isArray(documents) && !documentFound?.documentID) {
-      handleEvents({}, { typeEvent: 'FIND_DOCUMENT', data: documentID })
-    }
-  }, [])
+    handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } })
+    if (sub)
+      handleEvents(
+        {},
+        {
+          typeEvent: 'GET_TAGS',
+          data: {
+            isLoaderOverlay: true,
+            tagID,
+          },
+        }
+      )
+    // }
+  }, [sub])
 
   const dateMilitaty = getDateString({
-    timestamp: dateCreated,
+    timestamp: Date.now(),
     style: 'military',
     hours: false,
     minutes: false,
     seconds: false,
   })
 
-  const moduleSlug = getSlug(moduleCapture)
-  const modulePathName = `/m/${moduleID}/${moduleSlug}`
-  const titlePage = `${dateMilitaty}-certificate-${moduleID}-${moduleSlug}`
+  const tagCloudValue = tagCloudFound.value
+  const completed = tagCloudFound.completed
+  const titlePage = `${dateMilitaty}-qualification-${tagCloudFound.tagID}-${tagCloudFound.value}`
+  const expertiseInfo = getExpertiseInfo({ completed })
+  const borderImageSourceUrl = expertiseInfo.borderImageSourceUrl
 
-  const propsOut: any = {
-    // Certificate2PropsOutType
+  const CertificateFrame = CERTIFICATE_FRAMES_DICT['CertificateFrameA']
+
+  const propsOut: Certificate2PropsOutType = {
     headerFrameProps: {
-      brandName: 'YouRails',
-      moto: DICTIONARY['Watch_Videos_With_a_Purpose'][language],
-      logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
-      contentComponentName: 'SearchFormSep',
-      moduleCapture: moduleCapture,
-      documentID,
-      moduleID,
+      tagID,
       isButtonSideMenuLeft: true,
       isLogoGroup: true,
       isButtonAddCourse: false,
@@ -107,30 +122,36 @@ const Certificate2Component: Certificate2ComponentType = (
       isPageActionsGroup: true,
       isButtonsShare: true,
     },
+    certificateFrameProps: {
+      borderImageSourceUrl,
+    },
     certificate2BodyProps: {
-      document: documentFound,
+      language,
+      profile: profileFound,
+      tagCloud: tagCloudFound,
+      expertiseInfo,
     },
   }
 
   return (
     <div className={getClasses('Certificate2', classAdded)}>
-      {documentFound?.documentID && (
+      {tagCloudFound?.tagID && (
         <>
           <Helmet>
-            <html lang={languageDoc} />
+            <html lang={language} />
             <meta charSet='utf-8' />
             <meta name='viewport' content='width=device-width,initial-scale=1' />
             <meta name='google' content='notranslate' />
             <title>{titlePage}</title>
             <link rel='canonical' href={location.href} />
-            <meta name='description' content={moduleCapture} />
+            <meta name='description' content={tagCloudValue} />
           </Helmet>
           <div className='_headerFrameWrapper _noPrint'>
             <HeaderFrame {...propsOut.headerFrameProps} />
           </div>
-          <CertificateFrameA>
+          <CertificateFrame {...propsOut.certificateFrameProps}>
             <Certificate2Body {...propsOut.certificate2BodyProps} />
-          </CertificateFrameA>
+          </CertificateFrame>
         </>
       )}
       <LoaderOverlayYrl />
@@ -138,11 +159,13 @@ const Certificate2Component: Certificate2ComponentType = (
   )
 }
 
-const storeStateSliceProps: string[] = ['language', 'documents']
-export const Certificate2: Certificate2Type = withStoreStateSelectedYrl(
+const storeStateSliceProps: string[] = ['language', 'sub', 'profiles', 'tagsCloud']
+const Certificate2: Certificate2Type = withStoreStateSelectedYrl(
   storeStateSliceProps,
   React.memo(Certificate2Component)
 )
+
+export { Certificate2 as default }
 
 export type {
   Certificate2PropsType,

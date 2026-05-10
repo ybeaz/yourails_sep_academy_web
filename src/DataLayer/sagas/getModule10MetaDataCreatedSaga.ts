@@ -1,22 +1,17 @@
 import { takeEvery, put, select } from 'redux-saga/effects'
 
-import { MutationCreateContentMetaDataArgs } from '../../@types/GraphqlTypes'
-import { ActionReduxType } from '../../Interfaces'
+import { MutationCreateContentMetaDataArgs } from 'yourails_common'
+import { ActionReduxType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
-import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
+import { getHeadersAuthDict } from 'yourails_common'
+import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_common'
 
-import {
-  RootStoreType,
-  CreateModuleStagesEnumType,
-  CreateModuleStatusEnumType,
-} from '../../Interfaces/RootStoreType'
-import { withDebounce } from '../../Shared/withDebounce'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
+import { CreateModuleStatusEnumType, CreateModuleStagesEnumType } from 'yourails_common'
+import { withDebounce } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
-import {
-  connectionsTimeouts,
-  ConnectionsTimeoutNameEnumType,
-} from '../../Constants/connectionsTimeouts.const'
+import { CONNECTIONS_TIMEOUTS, ConnectionsTimeoutNameEnumType } from 'yourails_common'
+import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
 
 export function* getModule10MetaDataCreatedGenerator(params: ActionReduxType | any): Iterable<any> {
   try {
@@ -37,26 +32,26 @@ export function* getModule10MetaDataCreatedGenerator(params: ActionReduxType | a
 
     let variables: MutationCreateContentMetaDataArgs = {
       createContentMetaDataInput: {
-        originID: inputCourseCreate,
+        contentID: inputCourseCreate,
       },
     }
 
     if (inputCourseCreate.includes('youtube.com'))
       variables = {
         createContentMetaDataInput: {
-          originUrl: inputCourseCreate,
+          contentUrl: inputCourseCreate,
         },
       }
 
     const createContentMetaData: any = yield getResponseGraphqlAsync(
       {
         variables,
-        resolveGraphqlName: 'createContentMetaData',
+        resolveGraphqlName: ResolveGraphqlEnumType['createContentMetaData'],
       },
       {
         ...getHeadersAuthDict(),
         clientHttpType: selectGraphqlHttpClientFlag(),
-        timeout: connectionsTimeouts[ConnectionsTimeoutNameEnumType.metaData],
+        timeout: CONNECTIONS_TIMEOUTS[ConnectionsTimeoutNameEnumType.metaData],
       }
     )
 
@@ -84,7 +79,13 @@ export function* getModule10MetaDataCreatedGenerator(params: ActionReduxType | a
   }
 }
 
-export const getModule10MetaDataCreated = withDebounce(getModule10MetaDataCreatedGenerator, 500)
+export const getModule10MetaDataCreated = withDebounce(
+  withTryCatchFinallySaga(getModule10MetaDataCreatedGenerator, {
+    optionsDefault: { funcParent: 'getModule10MetaDataCreatedSaga' },
+    resDefault: [],
+  }),
+  500
+)
 
 export default function* getModule10MetaDataCreatedSaga() {
   yield takeEvery(

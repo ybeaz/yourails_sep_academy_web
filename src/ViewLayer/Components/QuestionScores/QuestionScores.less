@@ -2,28 +2,30 @@
   display: flex;
   flex-direction: column;
   z-index: 20;
+  gap: 0.5rem;
 
-  ._text {
+  ._buttons {
     display: flex;
-    padding: 1rem 0 1rem 0;
     flex-direction: column;
-    text-align: initial;
-
-    ._greet {
-      display: flex;
-      font-size: @fontSizeH1;
-      font-family: cursive;
-      padding: 0rem 0rem 0.3rem 0rem;
-    }
-    p {
-      padding: 0.5rem 0 0.5rem 0;
-    }
+    gap: 1rem;
   }
 
-  ._qwa {
-    ._capture {
-      ._ul {
-        ._li {
+  .ant-tooltip-content {
+    .ant-tooltip-inner {
+      min-width: max-content;
+      border-radius: 1rem;
+      background-color: hsla(0, 0%, 9.5%, 1);
+      border-color: hsla(0, 0%, 9.5%, 1);
+      padding: 0;
+
+      ._tagsCloudBodyTooltipContentTagButton2 {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+
+        ._tooltipRow {
+          white-space: nowrap;
+          color: inherit;
         }
       }
     }
@@ -37,22 +39,11 @@
   }
   @media @phone, @phone-strict {
     ._text {
-      ._greet {
+      ._greeting {
         font-size: @fontSizeH2;
       }
       p {
         font-size: @fontSizeS;
-      }
-    }
-
-    ._qwa {
-      ._capture {
-        font-size: @fontSize;
-      }
-      ._ul {
-        ._li {
-          font-size: @fontSizeS;
-        }
       }
     }
   }

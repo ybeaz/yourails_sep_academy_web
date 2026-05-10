@@ -1,21 +1,21 @@
 import { takeEvery, put, select } from 'redux-saga/effects'
 
-import { QueryGetAuthAwsCognitoUserRefreshedArgs } from '../../@types/GraphqlTypes'
+import { QueryGetAuthAwsCognitoUserRefreshedArgs } from 'yourails_common'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { CLIENTS_URI } from '../../Constants/clientsUri.const'
-import { getDetectedEnv } from '../../Shared/getDetectedEnv'
-import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
-import { ClientAppType } from '../../@types/ClientAppType'
-import { withDebounce } from '../../Shared/withDebounce'
-import { getLocalStorageReadKeyObj } from '../../Shared/getLocalStorageReadKeyObj'
-import { getLocalStorageSetObjTo } from '../../Shared/getLocalStorageSetObjTo'
+import { getDetectedEnv } from 'yourails_common'
+import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_common'
+import { ClientAppEnumType } from 'yourails_common'
+import { withDebounce } from 'yourails_common'
+import { getLocalStorageReadKeyObj } from 'yourails_common'
+import { getLocalStorageSetObjTo } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
+import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
 
 export function* getAuthAwsCognitoUserRefreshedGenerator(): Iterable<any> {
   try {
     const envType = getDetectedEnv()
-    const redirect_uri = CLIENTS_URI[envType]
+    const redirect_uri = location.origin
 
     let refresh_token = null
 
@@ -35,14 +35,14 @@ export function* getAuthAwsCognitoUserRefreshedGenerator(): Iterable<any> {
       userIdDataAwsCognitoInput: {
         refresh_token,
         redirect_uri,
-        client_app: ClientAppType['ACADEMY'],
+        client_app: ClientAppEnumType['ACADEMY'],
       },
     }
 
     const authAwsCognitoUserData: any = yield getResponseGraphqlAsync(
       {
         variables,
-        resolveGraphqlName: 'getAuthAwsCognitoUserRefreshed',
+        resolveGraphqlName: ResolveGraphqlEnumType['getAuthAwsCognitoUserRefreshed'],
       },
       {
         clientHttpType: selectGraphqlHttpClientFlag(),
@@ -66,7 +66,10 @@ export function* getAuthAwsCognitoUserRefreshedGenerator(): Iterable<any> {
 }
 
 export const getAuthAwsCognitoUserRefreshed = withDebounce(
-  getAuthAwsCognitoUserRefreshedGenerator,
+  withTryCatchFinallySaga(getAuthAwsCognitoUserRefreshedGenerator, {
+    optionsDefault: { funcParent: 'getAuthAwsCognitoUserRefreshedSaga' },
+    resDefault: [],
+  }),
   10
 )
 

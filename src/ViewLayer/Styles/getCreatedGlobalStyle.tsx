@@ -1,7 +1,7 @@
 import React from 'react'
 import { createGlobalStyle } from 'styled-components'
 
-import { ILightness, IAlphas } from '../../Constants/globalTheme.const'
+import { ILightness, IAlphas } from 'yourails_common'
 import { getBuiltColor } from './getBuiltColor'
 
 interface IGetCreatedGlobalStyle {
@@ -30,7 +30,10 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
 
   const output = createGlobalStyle`
 
+    .AcademyMatrixBody > div._tagsCloudBodyWrapper div.ant-collapse-header.ant-collapse-collapsible-icon > div > span,
+    .AcademyMatrixBody > div._tagsCloudBodyWrapper div.ant-collapse-header.ant-collapse-collapsible-icon > span > h2,
     .Icon_TagsTooltip ._icon,
+    .ModulesBody.ModulesBody_AcademyMatrixBody > ._h2Wrapper > ._link >._h2,
     .PlayerPanel ._capture,
     .AvatarPlusInfo,
     .AvatarPlusInfo > ._link > ._captureText,
@@ -38,14 +41,6 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
     .AbInCircle,
     .Button_MdClose ._in {
       color: ${props2 => getColor(props2, 'colorFirst', medial, middle)};
-    }
-
-    .ContentPlate ._isCompleted ._cycle {
-      background-color: ${props2 => getColor(props2, 'colorFirst', medial, middle)};
-    }
-
-    .Icon_isCompleted ._icon {
-      color: ${props2 => getColor(props2, 'colorFirst', medial, middle, 'Green')};
     }
 
     .LogoGroup_StubForUserResearch .__div,
@@ -86,6 +81,7 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
       background: ${props2 => getColor(props2, 'colorSecond', medial, middle)};
     }
 
+    .AcademyMatrixBody > div._tagsCloudBodyWrapper > div > div > div.ant-collapse-content.ant-collapse-content-active,
     .SearchFormSep .__searchForm ._row ._selectElement._submitGroup {
       background-color: unset;
     }
@@ -225,21 +221,38 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
     .ButtonYrl ._in {
       color: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
     }
+
     .ButtonYrl .__tooltipText {
       background: ${props2 => getColor(props2, 'colorSecondLighter2', medial, lighter2)};
       color: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
     }
 
+
+    .Button_MdForward .__button,
+    .Button_playerUp .__button,
+    .Button_summaryUp .__button,
+    .Button_articleUp .__button,
+    .Button_objectionsUp .__button,
     .Button_NoCancel,
     .Button_create_stage_repeat .__button,
     .Button_summaryIsSummary .__button,
     .Button_summaryIsObjections .__button,
     .Button_PaginationNavigationBackward .__button,
     .Button_PaginationNavigationForward .__button,
+    .Button_MdBackward2 .__button,
     .Button_MdBackward3 .__button,
     .Button_MdForward2 .__button,
     .Button_CallForActionMatrix .__button,
-    .Button_UseCertificate .__button,
+    .Button_SignInUp .__button,
+    .Button_NextTask .__button,
+    .Button_Credit .__button,
+    .Button_IsEditName .__button,
+    .Button_CancelEditName .__button,
+    .Button_ConfirmForward .__button,
+    .Button_Achievements .__button,
+    .Button_BackToTopic .__button,
+    .Button_BackToModule .__button,
+    .Button_Certificate .__button,
     .Button_AuthSignInUpBack .__button,
     .Button_AuthSignInUp .__button,
     .Button_сontinueIntroSep .__button,
@@ -253,15 +266,47 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
       background-color: ${props2 => getColor(props2, 'colorGrey', medial, middle)};
     }
 
+    .TextToSpeechYrl ._textToSpeechYrlbuttonsWrapper .__button ._in,
+    .Icon_TagsTooltip ._icon,
+    .AuthUser .vl-innertext,
     div.ant-tooltip-content  > div > div._contentPlateTooltipContentIsCompleted,
     div.ant-tooltip-content  > div > div._contentPlateTooltipContentTags,
     div.ant-tooltip-content  > div > div._tagsCloudBodyTooltipContentTagButton,
-    .ModulesBody_AcademyMatrixBody ._headlineNavLink,
     .TagsCloudBody ._headlineNavLink,
+    .Button_downLeft ._in,
+    .Button_MdForward ._in,
+    .Button_playerUp ._in,
+    .Button_summaryUp ._in,
+    .Button_articleUp ._in,
+    .Button_objectionsUp ._in,
+    .Button_NoCancel ._in,
+    .Button_create_stage_repeat  ._in,
+    .Button_summaryIsSummary  ._in,
+    .Button_summaryIsObjections  ._in,
+    .Button_PaginationNavigationBackward ._in,
+    .Button_PaginationNavigationForward ._in,
+    .Button_MdBackward2 ._in,
+    .Button_MdBackward3 ._in,
+    .Button_MdForward2 ._in,
+    .Button_CallForActionMatrix ._in,
+    .Button_SignInUp ._in,
+    .Button_NextTask ._in,
+    .Button_Credit ._in,
+    .Button_IsEditName ._in,
+    .Button_CancelEditName ._in,
+    .Button_ConfirmForward ._in,
+    .Button_Achievements ._in,
+    .Button_BackToModule ._in,
+    .Button_BackToTopic ._in,
+    .Button_Certificate ._in,
+    .Button_AuthSignInUpBack ._in,
+    .Button_AuthSignInUp ._in,
+    .Button_сontinueIntroSep ._in,
+    .Button_startModule ._in,
+    .Button_BackToTop ._in,
+    .Button_searchSepActive ._in,
     .Button_ForgetPassword ._in,
     .Button_SignUp ._in,
-    .Button_AuthSignInUp ._in,
-    .Button_AuthSignInUpBack ._in,
     .Button_AuthGoogle ._in,
     .Button_AuthVkontakte ._in,
     .Button_AuthFacebook ._in {
@@ -280,17 +325,9 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
       background-color: #3b5998;
     }
 
-    .Button_UseCertificate ._in {
-      color: ${props2 => getColor(props2, 'colorFirst', medial, darker, 'Dark')};
-    }
-
     .Button_YesConfirm,
     .Button_downLeft .__button {
-      background-color: ${props2 => getColor(props2, 'colorSecondLighter3', medial, lighter3)};
-    }
-
-    .Button_downLeft ._in {
-      color: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
+      background-color: ${props2 => getColor(props2, 'colorSecondLighter3', medial, lighter3, 'Dark')};
     }
 
     .Button_MdBlock .__button {
@@ -314,16 +351,7 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
       background-color: ${props2 => getColor(props2, 'colorSecond', medial, middle)};
     }
 
-    .Button_MdBackward3 ._in {
-      color: ${props2 => getColor(props2, 'colorFirst', medial, darker, 'Dark')};
-    }
-
-    .Button_MdBackward2 .__button {
-      background-color: ${props2 => getColor(props2, 'colorActiveDarker', medial, darker)};
-    }
-
-    .IconLabelWithClose,
-    .Button_MdForward .__button {
+    .IconLabelWithClose {
       color:  ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
       background-color: ${props2 => getColor(props2, 'colorActive', medial, middle)};
     }
@@ -342,6 +370,9 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
         return DICTIONARY_STYLES[theme]
       }};}
 
+    .FormInputNames > ._form .ant-collapse-expand-icon,
+    .FormInputNames > ._form ._label,
+    .FormInputNames > ._form .ant-collapse-header-text > ._label,
     .Button_SiGoogleplay ._in,
     .Button_SiAppstore ._in,
     .Button_MdMenu ._in,
@@ -425,7 +456,6 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
 
     .AuthUser .vl-innertext {
       background: ${props2 => getColor(props2, 'colorGrey', medial, middle)};
-      color: ${props2 => getColor(props2, 'colorFirst', medial, darker, 'Dark')};
     }
 
     .CheckRadioGroup ._capture {
@@ -436,10 +466,24 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
       background-color: ${props2 => getColor(props2, 'colorSecond', medial, middle)};
       border: solid 1.5px ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
     }
-    
-    .ContentPlate ._tagsTooltip ._cycle,
+
+    .TextToSpeechYrl ._textToSpeechYrlbuttonsWrapper .__button,
+    .TooltipImageContent._playerPanel_tooltipIsCompleted div._cycle,
+    .TooltipImageContent._playerPanel_tooltipTags div._cycle,
+    .TooltipImageContent._contentPlate_tooltipIsCompleted div._cycle,
+    .TooltipImageContent._contentPlate_tooltipTags div._cycle,
     .CheckRadioGroup input:checked ~ .checkmark {
-      background: ${props2 => getColor(props2, 'colorActive', medial, middle)};
+      background-color: ${props2 => getColor(props2, 'colorActive', medial, middle)};
+    }
+      
+    .Icon_isCompleted ._icon {
+      color: ${props2 => getColor(props2, 'colorFirst', medial, middle, 'Green')};
+    }
+
+
+    .TooltipImageContent._playerPanel_tooltipIsCompleted div._cycle,
+    .TooltipImageContent._contentPlate_tooltipIsCompleted div._cycle {
+      background-color: ${props2 => getColor(props2, 'colorFirst', medial, middle)};
     }
 
     .RadioButton .checkmark:after {

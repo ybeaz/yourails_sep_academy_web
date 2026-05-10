@@ -1,6 +1,7 @@
 import React from 'react'
 
-import { RootStoreType, HandleEventType } from '../../../Interfaces/'
+import { RootStoreType } from '../../../Interfaces/'
+import { HandleEventType } from 'yourails_common'
 import { HeaderFramePropsType } from '../../Frames/HeaderFrame/HeaderFrame'
 import { MyModulesBodyPropsType } from '../../Components/'
 import { MainFramePropsType } from '../../Frames/'
@@ -21,7 +22,7 @@ export type MyModulesPropsType = Omit<MyModulesComponentPropsType, 'storeStateSl
 
 export type MyModulesPropsOutType = {
   headerFrameProps: HeaderFramePropsType
-  mainFrameProps: Omit<MainFramePropsType, 'children'>
+  mainFrameProps: MainFramePropsType
   myModulesBodyProps: MyModulesBodyPropsType
 }
 

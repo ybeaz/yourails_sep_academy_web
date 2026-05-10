@@ -1,18 +1,18 @@
 import React, { useEffect } from 'react'
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 
-import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
-import { DICTIONARY } from '../../../Constants/dictionary.const'
+import { ScreensEnumType } from 'yourails_common'
+import { DICTIONARY } from 'yourails_common'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { FooterFrame } from '../../Frames/FooterFrame/FooterFrame'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
-import { SERVERS_MAIN } from '../../../Constants/servers.const'
-import { SITE_META_DATA } from '../../../Constants/siteMetaData.const'
+import { SERVERS_MAIN } from 'yourails_common'
+import { SITE_META_DATA } from 'yourails_common'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
-
-import { withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
-import { getClasses } from '../../../Shared/getClasses'
+import { getTagLine } from 'yourails_common'
+import { withPropsYrl, withStoreStateSelectedYrl } from 'yourails_common'
+import { getClasses } from 'yourails_common'
 import {
   ProfilesComponentPropsType,
   ProfilesPropsType,
@@ -40,10 +40,6 @@ const ProfilesComponent: ProfilesComponentType = (props: ProfilesComponentPropsT
 
   const propsOut: ProfilesPropsOutType = {
     headerFrameProps: {
-      brandName: 'YouRails Academy',
-      moto: DICTIONARY['Watch_Videos_With_a_Purpose'][language],
-      logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
-      contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,
       isLogoGroup: true,
       isButtonAddCourse: true,
@@ -89,9 +85,8 @@ const ProfilesComponent: ProfilesComponentType = (props: ProfilesComponentPropsT
 }
 
 const storeStateSliceProps: string[] = ['language']
-export const Profiles = withStoreStateSelectedYrl(
-  storeStateSliceProps,
-  React.memo(ProfilesComponent)
-)
+const Profiles = withStoreStateSelectedYrl(storeStateSliceProps, React.memo(ProfilesComponent))
+
+export { Profiles as default }
 
 export type { ProfilesPropsType, ProfilesPropsOutType, ProfilesComponentType, ProfilesType }

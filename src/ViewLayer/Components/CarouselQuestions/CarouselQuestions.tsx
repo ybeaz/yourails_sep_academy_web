@@ -1,16 +1,17 @@
-import React, { ReactElement, useMemo } from 'react'
-import { DICTIONARY } from '../../../Constants/dictionary.const'
+import React, { ReactElement } from 'react'
+import { DICTIONARY } from 'yourails_common'
 import {
   getModuleByModuleID,
   getQuesionString,
   getButtonsClassString,
   getChunkedArray,
-} from '../../../Shared/'
-import { CheckRadioGroup } from '../CheckRadioGroup'
-import { ButtonYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
-import { handleEvents } from '../../../DataLayer/index.handleEvents'
-
-import { getClasses } from '../../../Shared/getClasses'
+} from 'yourails_common'
+import { TextToSpeechYrl, TextToSpeechYrlPropsType } from 'yourails_common'
+import { CheckRadioGroup, CheckRadioGroupPropsType } from '../CheckRadioGroup'
+import { withPropsYrl, ButtonYrl, withStoreStateSelectedYrl } from 'yourails_common'
+import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
+import { isMobile } from 'yourails_common'
+import { getClasses } from 'yourails_common'
 
 import {
   CarouselQuestionsComponentPropsType,
@@ -37,13 +38,14 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
       modules,
       language,
     },
+    handleEvents,
   } = props
 
   const {
     capture,
     moduleID,
     contentID,
-    questions: questionsActive,
+    questions: questionsActive = [],
   } = getModuleByModuleID(
     {
       moduleID: moduleIDActive || '',
@@ -57,18 +59,10 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
   const getDots: Function = (questions: any[]): ReactElement => {
     const dotsJSX = questions.map((question, index) => {
       const { questionID } = question
-      const classNameToggleHighlight = index === questionsSlideNumber ? 'active' : ''
+      const classNameToggleHighlight =
+        !isButtonSlideStart && index === questionsSlideNumber ? 'active' : ''
       return (
-        <span
-          key={`${questionID}-${index}`}
-          className={`_dot ${classNameToggleHighlight}`}
-          onClick={event =>
-            handleEvents(event, {
-              typeEvent: 'SET_QUESTION_SLIDE',
-              data: index,
-            })
-          }
-        ></span>
+        <span key={`${questionID}-${index}`} className={`_dot ${classNameToggleHighlight}`}></span>
       )
     })
 
@@ -78,10 +72,22 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
   const getSlidesChunk: Function = (questions: any[]): ReactElement[] => {
     return questions.map(question => {
       const { questionID } = question
-      const checkRadioGroupProps = { ...question }
+
+      const propsOut: {
+        textToSpeechYrlProps?: TextToSpeechYrlPropsType
+        checkRadioGroupProps: CheckRadioGroupPropsType
+      } = {
+        textToSpeechYrlProps: {
+          classAdded: 'TextToSpeechYrl_CarouselQuestions',
+        },
+        checkRadioGroupProps: { ...question },
+      }
+
       return (
         <div key={questionID}>
-          <CheckRadioGroup {...checkRadioGroupProps} />
+          <TextToSpeechYrl {...propsOut.textToSpeechYrlProps}>
+            <CheckRadioGroup {...propsOut.checkRadioGroupProps} />
+          </TextToSpeechYrl>
         </div>
       )
     })
@@ -119,8 +125,6 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
   const CertificateDash = DICTIONARY['Certificate'][language]
   const questionStr = getQuesionString(language, questionsActive.length)
 
-  const youCanCheckYourUnderstanding = DICTIONARY.youCanCheckYourUnderstanding[language]
-
   const propsOut: CarouselQuestionsPropsOutType = {
     buttonStartProps: {
       captureLeft: (
@@ -132,6 +136,7 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
       ),
       icon: 'MdForward',
       classAdded: 'Button_startModule',
+      handleEvents,
       action: {
         typeEvent: 'TOGGLE_START_MODULE',
         data: {
@@ -142,13 +147,14 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
         },
       },
       isDisplaying: isButtonSlideStart,
-      tooltipText: youCanCheckYourUnderstanding,
+      tooltipText: '', // youCanCheckYourUnderstanding,
       tooltipPosition: 'bottom',
-      isTooltipVisibleForced: true,
+      isTooltipVisibleForced: false,
     },
     buttonSlideBackwardProps: {
       icon: 'MdForward',
       classAdded: 'Button_MdBackward2',
+      handleEvents,
       action: {
         typeEvent: 'PLUS_QUESTION_SLIDE',
         data: { step: -1 },
@@ -158,6 +164,7 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
     buttonSlideForwardProps: {
       icon: 'MdForward',
       classAdded: 'Button_MdForward2',
+      handleEvents,
       action: {
         typeEvent: 'PLUS_QUESTION_SLIDE',
         data: { step: 1 },
@@ -168,21 +175,17 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
       icon: 'MdForward',
       icon2: 'HiOutlineAcademicCap',
       classAdded: 'Button_MdForward',
+      handleEvents,
       action: {
-        typeEvent: 'SET_MODAL_FRAMES',
-        data: [
-          {
-            childName: 'QuestionScores',
-            isActive: true,
-            childProps: {},
-          },
-        ],
+        typeEvent: 'GO_TO_QUESTIONS_SCORES',
+        data: {},
       },
       isDisplaying: isButtonToCertificate,
     },
     buttonBlockProps: {
       icon: 'MdForward',
       classAdded: 'Button_downLeft',
+      handleEvents,
       action: {
         typeEvent: 'TOGGLE_START_MODULE',
         data: {
@@ -204,7 +207,7 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
     >
       <meta itemProp='identifier' content={moduleID} />
       <meta itemProp='headline' content={`QA: ${capture}`} />
-      {questionsActive.length ? getDots(questionsChunked) : null}
+      {questionsActive.length && !isMobile() ? getDots(questionsChunked) : null}
       {isModuleStarted && getSlides(questionsChunked)}
       <div className={`__buttons`}>
         <div className='_backward'>
@@ -235,10 +238,10 @@ const storeStateSliceProps: string[] = [
   'modules',
   'language',
 ]
-export const CarouselQuestions = withStoreStateSelectedYrl(
-  storeStateSliceProps,
-  React.memo(CarouselQuestionsComponent)
-)
+
+export const CarouselQuestions: CarouselQuestionsType = withPropsYrl({
+  handleEvents: handleEventsIn,
+})(withStoreStateSelectedYrl(storeStateSliceProps, React.memo(CarouselQuestionsComponent)))
 
 export type {
   CarouselQuestionsPropsType,

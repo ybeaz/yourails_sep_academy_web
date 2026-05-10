@@ -1,25 +1,17 @@
 import { takeEvery, put, select } from 'redux-saga/effects'
 
-import { MutationCreateBotResponseArgs } from '../../@types/GraphqlTypes'
-import { ActionReduxType } from '../../Interfaces'
+import { MutationCreateBotResponseArgs } from 'yourails_common'
+import { ActionReduxType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
-import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
-import {
-  RootStoreType,
-  CreateModuleStagesEnumType,
-  CreateModuleStatusEnumType,
-} from '../../Interfaces/RootStoreType'
-import { withDebounce } from '../../Shared/withDebounce'
+import { getHeadersAuthDict } from 'yourails_common'
+import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_common'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
+import { CreateModuleStatusEnumType, CreateModuleStagesEnumType } from 'yourails_common'
+import { withDebounce } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
-import {
-  connectionsTimeouts,
-  ConnectionsTimeoutNameEnumType,
-} from '../../Constants/connectionsTimeouts.const'
-import {
-  getPreparedResponseFromBot,
-  GetPreparedResponseFromBotParamsType,
-} from '../../Shared/getPreparedResponseFromBot/getPreparedResponseFromBot'
+import { CONNECTIONS_TIMEOUTS, ConnectionsTimeoutNameEnumType } from 'yourails_common'
+import { getPreparedResponseFromBot, GetPreparedResponseFromBotParamsType } from 'yourails_common'
+import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
 
 export type GetBotResponseParamsType = {
   botID: string
@@ -30,17 +22,8 @@ export type GetBotResponseParamsType = {
   userText: string
 }
 
-export function* getBotResponseGenerator(
-  params: GetBotResponseParamsType
-): Iterable<any> {
-  const {
-    botID,
-    profileID,
-    profileName,
-    userText,
-    stage,
-    connectionsTimeoutName,
-  } = params
+export function* getBotResponseGenerator(params: GetBotResponseParamsType): Iterable<any> {
+  const { botID, profileID, profileName, userText, stage, connectionsTimeoutName } = params
 
   try {
     const variables: MutationCreateBotResponseArgs = {
@@ -55,12 +38,12 @@ export function* getBotResponseGenerator(
     const createBotResponse: any = yield getResponseGraphqlAsync(
       {
         variables,
-        resolveGraphqlName: 'createBotResponse',
+        resolveGraphqlName: ResolveGraphqlEnumType['createBotResponse'],
       },
       {
         ...getHeadersAuthDict(),
         clientHttpType: selectGraphqlHttpClientFlag(),
-        timeout: connectionsTimeouts[connectionsTimeoutName],
+        timeout: CONNECTIONS_TIMEOUTS[connectionsTimeoutName],
       }
     )
 
@@ -78,14 +61,17 @@ export function* getBotResponseGenerator(
       })
     )
 
-    console.info(
-      'getBotResponseSaga  [110] ERROR',
-      `${error.name}: ${error.message}`
-    )
+    console.info('getBotResponseSaga  [110] ERROR', `${error.name}: ${error.message}`)
   }
 }
 
-export const getBotResponse = withDebounce(getBotResponseGenerator, 500)
+export const getBotResponse = withDebounce(
+  withTryCatchFinallySaga(getBotResponseGenerator, {
+    optionsDefault: { funcParent: 'getBotResponseSaga' },
+    resDefault: [],
+  }),
+  500
+)
 
 export default function* getBotResponseSaga() {
   yield takeEvery([actionAsync.GET_BOT_RESPONSE.REQUEST().type], getBotResponse)

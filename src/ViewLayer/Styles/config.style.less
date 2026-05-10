@@ -50,6 +50,8 @@
 
 body {
   display: none;
+  margin: 0;
+  overflow-x: hidden;
 }
 
 h1,
@@ -65,10 +67,17 @@ h6 {
 #root {
   width: inherit;
   flex: 1;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
 }
 
 @media print {
+  html,
+  body {
+    width: 297mm;
+    height: 210mm;
+  }
+
   @page {
     size: A4 auto;
     margin-top: 0;
@@ -77,7 +86,14 @@ h6 {
   }
 
   #root {
-    height: inherit;
+    height: unset;
+    max-height: unset;
+    min-height: unset;
+    .Certificate2 {
+      height: unset;
+      max-height: unset;
+      min-height: unset;
+    }
     div {
       ._noPrint {
         display: none;

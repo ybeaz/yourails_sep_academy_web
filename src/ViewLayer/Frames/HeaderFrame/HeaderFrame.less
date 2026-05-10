@@ -13,14 +13,14 @@
     flex: 1;
     flex-direction: row;
     justify-content: space-between;
-    padding: 0.7rem 1rem;
+    padding: 0.7rem 0;
 
     .__left {
       display: flex;
       flex: 3;
       align-items: center;
 
-      ._itemButtonMobileSearchToggle {
+      ._itemButtonMobileToggle {
         display: none;
       }
     }
@@ -49,6 +49,11 @@
         display: none;
       }
 
+      ._itemButtonQrCodeModalToggle {
+        ._itemButton;
+        padding: 0 0.5rem;
+      }
+
       ._itemButtonAddCourse {
         ._itemButton;
         padding: 0 0.5rem 0 0;
@@ -69,7 +74,7 @@
 
       ._itemButtonThemeToggle {
         ._itemButton;
-        padding: 0 0.5rem 0.25rem 0.5rem;
+        padding: 0 0 0.25rem 0.5rem;
       }
     }
   }
@@ -85,15 +90,18 @@
       overflow: hidden;
       flex-direction: column;
       justify-content: space-between;
+      padding: 0.7rem 1rem;
 
       .__left {
       }
 
       .__left {
-        ._itemButtonMobileSearchToggle {
+        ._itemButtonMobileToggle {
           display: flex;
-          margin-left: auto;
-          margin-top: auto;
+          justify-content: right;
+          align-items: center;
+          width: 100%;
+          gap: 0.5rem;
         }
       }
 
@@ -110,6 +118,9 @@
 
         ._itemInstallMobileAppGroup {
           ._itemButton;
+        }
+        ._itemButtonQrCodeModalToggle {
+          display: none;
         }
         ._itemButtonAddCourse {
           display: none;

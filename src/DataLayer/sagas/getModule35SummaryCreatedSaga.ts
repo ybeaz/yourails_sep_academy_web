@@ -1,20 +1,15 @@
 import { takeEvery, put, select, delay } from 'redux-saga/effects'
 
-import { ActionReduxType } from '../../Interfaces'
+import { ActionReduxType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import {
-  RootStoreType,
-  CreateModuleStagesEnumType,
-  CreateModuleStatusEnumType,
-} from '../../Interfaces/RootStoreType'
-import {
-  connectionsTimeouts,
-  ConnectionsTimeoutNameEnumType,
-} from '../../Constants/connectionsTimeouts.const'
-import { withDebounce } from '../../Shared/withDebounce'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
+import { CreateModuleStatusEnumType, CreateModuleStagesEnumType } from 'yourails_common'
+import { CONNECTIONS_TIMEOUTS, ConnectionsTimeoutNameEnumType } from 'yourails_common'
+import { withDebounce } from 'yourails_common'
 import { getBotResponse, GetBotResponseParamsType } from './getBotResponseSaga'
-import { getChunkedArray } from '../../Shared/getChunkedArray'
-import { CHUNKS_FROM_SUMMARY_ARRAY } from '../../Constants/chunkParamsLlm.const'
+import { getChunkedArray } from 'yourails_common'
+import { CHUNKS_FROM_SUMMARY_ARRAY_FOR_QUESTIONS } from 'yourails_common'
+import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
 
 export function* getModule35SummaryCreatedGenerator(params: ActionReduxType | any): Iterable<any> {
   try {
@@ -26,7 +21,7 @@ export function* getModule35SummaryCreatedGenerator(params: ActionReduxType | an
       actionSync.SET_MODULE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['summary'],
         timeCalculated: Array.isArray(transcriptChunks)
-          ? transcriptChunks.length * connectionsTimeouts.transcriptChunkToSummary
+          ? transcriptChunks.length * CONNECTIONS_TIMEOUTS.transcriptChunkToSummary
           : null,
       })
     )
@@ -49,7 +44,7 @@ export function* getModule35SummaryCreatedGenerator(params: ActionReduxType | an
             `getModule35SummaryCreatedSaga [57] connection ${CreateModuleStagesEnumType['summary']} is timed out`
           )
         }
-      }, connectionsTimeouts[ConnectionsTimeoutNameEnumType['transcriptChunkToSummary']] + 1500)
+      }, CONNECTIONS_TIMEOUTS[ConnectionsTimeoutNameEnumType['transcriptChunkToSummary']] + 1500)
 
       const getBotResponseParams: GetBotResponseParamsType = {
         botID: 'yg2vQJbWulaU',
@@ -75,7 +70,10 @@ export function* getModule35SummaryCreatedGenerator(params: ActionReduxType | an
       })
     )
 
-    const summaryChunks: string[][] = getChunkedArray(summary, CHUNKS_FROM_SUMMARY_ARRAY)
+    const summaryChunks: string[][] = getChunkedArray(
+      summary,
+      CHUNKS_FROM_SUMMARY_ARRAY_FOR_QUESTIONS
+    )
 
     yield put(
       actionSync.ADD_MODULE_CREATE_DATA({
@@ -101,7 +99,13 @@ export function* getModule35SummaryCreatedGenerator(params: ActionReduxType | an
   }
 }
 
-export const getModule35SummaryCreated = withDebounce(getModule35SummaryCreatedGenerator, 500)
+export const getModule35SummaryCreated = withDebounce(
+  withTryCatchFinallySaga(getModule35SummaryCreatedGenerator, {
+    optionsDefault: { funcParent: 'getModule35SummaryCreatedSaga' },
+    resDefault: [],
+  }),
+  500
+)
 
 export default function* getModule35SummaryCreatedSaga() {
   yield takeEvery(

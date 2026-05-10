@@ -2,20 +2,18 @@ import React from 'react'
 
 import { TimerPropsType } from '../Timer/Timer'
 import {
+  HandleEventPropsType,
   ImageYrlPropsType,
   IconYrlPropsType,
   ButtonYrlPropsType,
   InputGroupYrlPropsType,
-} from '../../ComponentsLibrary/'
+} from 'yourails_common'
 import { PaginationNavigationPropsType } from '../../Components/'
 import { MyModulesTablePropsType } from '../MyModulesTable/MyModulesTable'
 
-import {
-  CreateModuleStatusEnumType,
-  CreateModuleStagesEnumType,
-  RootStoreType,
-  HandleEventPropsType,
-} from '../../../Interfaces/'
+import { RootStoreType } from '../../../Interfaces/'
+import { CreateModuleStatusEnumType, CreateModuleStagesEnumType } from 'yourails_common'
+import { HandleEventType } from 'yourails_common'
 
 export type StagesType = {
   name: string
@@ -52,6 +50,7 @@ export type MyModulesBodyComponentPropsType = {
   storeStateSlice: {
     pageModules: RootStoreType['componentsState']['pagination']['pageModules']
   }
+  handleEvents: HandleEventType
 }
 
 export type MyModulesBodyPropsType = Omit<

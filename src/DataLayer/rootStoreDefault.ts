@@ -1,24 +1,24 @@
-import { UserType } from '../Interfaces/UserType'
+import { UserType } from 'yourails_common'
 import {
   CourseCreateProgressType,
-  CreateModuleStatusEnumType,
   ComponentsStateType,
-  SearchFormSepType,
   FormsType,
   RootStoreType,
-  PaginationNameEnumType,
 } from '../Interfaces/RootStoreType'
-import { ScreensEnumType } from '../Interfaces/ScreensEnumType'
+import { PaginationNameEnumType } from 'yourails_common'
+import { isMobile } from 'yourails_common'
 
-import { PAGINATION_OFFSET } from '../Constants/pagination.const'
+import { ScreensEnumType, CreateModuleStatusEnumType } from 'yourails_common'
+
+import { PAGINATION_OFFSET } from 'yourails_common'
 
 import { isObjectionsStageForCourseCreateFlag } from '../FeatureFlags'
 
-export const userStoreDefault: UserType = {
+export const userStoreDefault: UserType | any = {
   userAvatar: '',
   userBirthYear: null,
   userDateCreated: '',
-  userDateDeleted: '',
+  userDateDeactivated: '',
   userDateUpdated: '',
   userEmail: '',
   userGender: '',
@@ -56,10 +56,12 @@ export const userStoreDefault: UserType = {
 
 export const componentsStateDefault: ComponentsStateType = {
   screenActive: ScreensEnumType['AcademyMatrix'],
-  tagsSearchForModules: null,
+  isSendBccInputVisible: false,
   modulesSearchApplied: null,
-  isObjections: false,
-  isSummary: true,
+  tagsSearchApplied: null,
+  documentsSearchApplied: null,
+  tagsPick: [],
+  tagsOmit: [],
   isConfetti: false,
   isSepAdvancedSearch: false,
   isShownPalette: false,
@@ -71,7 +73,8 @@ export const componentsStateDefault: ComponentsStateType = {
   isOAuthFacebookScriptLoaded: false,
   isOAuthVKontakteScriptLoaded: false,
   isOAuthGoogleScriptLoaded: false,
-  isMobileSearchInput: false,
+  isMobileSearchInput: isMobile() ? true : false,
+  isEditNameVisible: false,
   oAuthStage: null,
   modalFrames: [
     {
@@ -142,12 +145,12 @@ export const formsDefault: FormsType = {
   tagsSearch: '',
   coursesSearch: '',
   documentsSearch: '',
+  searchFormSep: {},
   sendTo: '',
   sendCc: '',
+  sendBcc: '',
   userPrev: userStoreDefault,
   user: userStoreDefault,
-  tagsPick: [],
-  tagsOmit: [],
   profileActive: {
     nameFirst: '',
     nameLast: '',
@@ -180,9 +183,11 @@ export const rootStoreDefault: RootStoreType = {
   scorm: {
     courseIDActive: null,
     moduleIDActive: null,
+    documentIDActive: null,
     numberQuestionsInSlide: 2,
     durationMultiplier: 1,
   },
+  urlParamsQuery: { sendCc: '', sendBcc: '' },
   forms: formsDefault,
   isLoaded: {
     isLoadedGlobalVars: true,

@@ -1,7 +1,8 @@
 import React from 'react'
 
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
-import { ButtonYrlPropsType } from '../../ComponentsLibrary/'
+import { ButtonYrlPropsType } from 'yourails_common'
+import { HandleEventType } from 'yourails_common'
 
 export type PageActionsGroupComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
@@ -9,14 +10,16 @@ export type PageActionsGroupComponentPropsType = {
   documentID?: string
   moduleID?: string
   contentID?: string
+  tagID?: string
   storeStateSlice: {
     language: RootStoreType['language']
   }
+  handleEvents: HandleEventType
 }
 
 export type PageActionsGroupPropsType = Omit<
   PageActionsGroupComponentPropsType,
-  'storeStateSlice'
+  'storeStateSlice' | 'handleEvents'
 >
 
 export type PageActionsGroupPropsOutType = {
@@ -33,5 +36,4 @@ export interface PageActionsGroupComponentType
   (props: PageActionsGroupComponentPropsType): React.ReactElement
 }
 
-export type PageActionsGroupType =
-  React.FunctionComponent<PageActionsGroupPropsType>
+export type PageActionsGroupType = React.FunctionComponent<PageActionsGroupPropsType>

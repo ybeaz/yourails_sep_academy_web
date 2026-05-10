@@ -1,5 +1,6 @@
 import { all, fork } from 'redux-saga/effects'
 
+import readTagsSaga from './sagas/readTagsSaga'
 import readTagsConnectionSaga from './sagas/readTagsConnectionSaga'
 import readTagsModulesSaga from './sagas/readTagsModulesSaga'
 import reateSiteMapSaga from './sagas/createSiteMapSaga'
@@ -8,7 +9,7 @@ import createDocumentScenarioSaga from './sagas/createDocumentScenarioSaga'
 import updateProfileSaga from './sagas/updateProfileSaga'
 import deactivateModulesSaga from './sagas/deactivateModulesSaga'
 import readProfileSaga from './sagas/readProfileSaga'
-import getModulesSaga from './sagas/getModulesSaga'
+import readModulesConnectionSaga from './sagas/readModulesConnectionSaga'
 import getModule60ModuleCreatedSaga from './sagas/getModule60ModuleCreatedSaga'
 import getModule55ObjectionsCreatedSaga from './sagas/getModule55ObjectionsCreatedSaga'
 import getModule45QuestionsCreatedSaga from './sagas/getModule45QuestionsCreatedSaga'
@@ -20,7 +21,7 @@ import getModuleScenarioSaga from './sagas/getModuleScenarioSaga'
 import readArticleSaga from './sagas/readArticleSaga'
 import deactivateCoursesSaga from './sagas/deactivateCoursesSaga'
 import deactivateDocumentsSaga from './sagas/deactivateDocumentsSaga'
-import getDocumentsSaga from './sagas/getDocumentsSaga'
+import readDocumentsSaga from './sagas/readDocumentsSaga'
 import getAuthDataSaga from './sagas/getAuthDataSaga'
 import getAuthAwsCognitoUserRevokedSaga from './sagas/getAuthAwsCognitoUserRevokedSaga'
 import getAuthAwsCognitoUserRefreshedSaga from './sagas/getAuthAwsCognitoUserRefreshedSaga'
@@ -30,10 +31,10 @@ import sendEmailDocumentSaga from './sagas/sendEmailDocumentSaga'
 import readDocumentSaga from './sagas/readDocumentSaga'
 import createDocumentSaga from './sagas/createDocumentSaga'
 import getCoursesSaga from './sagas/getCoursesSaga'
-import getMatrixDataSaga from './sagas/getMatrixDataSaga'
 
 export default function* indexSaga() {
   yield all([
+    fork(readTagsSaga),
     fork(readTagsConnectionSaga),
     fork(readTagsModulesSaga),
     fork(reateSiteMapSaga),
@@ -50,11 +51,11 @@ export default function* indexSaga() {
     fork(getModule10MetaDataCreatedSaga),
     fork(getModuleScenarioSaga),
     fork(deactivateModulesSaga),
-    fork(getModulesSaga),
+    fork(readModulesConnectionSaga),
     fork(readArticleSaga),
     fork(deactivateCoursesSaga),
     fork(deactivateDocumentsSaga),
-    fork(getDocumentsSaga),
+    fork(readDocumentsSaga),
     fork(getAuthDataSaga),
     fork(getAuthAwsCognitoUserRevokedSaga),
     fork(getAuthAwsCognitoUserRefreshedSaga),
@@ -64,6 +65,5 @@ export default function* indexSaga() {
     fork(readDocumentSaga),
     fork(createDocumentSaga),
     fork(getCoursesSaga),
-    fork(getMatrixDataSaga),
   ])
 }

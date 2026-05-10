@@ -1,22 +1,19 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 
-import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
-import { DICTIONARY } from '../../../Constants/dictionary.const'
-import { ImageYrl } from '../../ComponentsLibrary/ImageYrl/ImageYrl'
-import { SideNavigation } from '../../Components/SideNavigation/SideNavigation'
+import { ScreensEnumType } from 'yourails_common'
+import { DICTIONARY } from 'yourails_common'
+import { withStoreStateSelectedYrl } from 'yourails_common'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
-import { FooterFrame } from '../../Frames/FooterFrame/FooterFrame'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
-import { SERVERS_MAIN } from '../../../Constants/servers.const'
+import { SERVERS_MAIN } from 'yourails_common'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 import { ArticlePresentBody } from '../../Components/ArticlePresentBody/ArticlePresentBody'
-import { SITE_META_DATA } from '../../../Constants/siteMetaData.const'
-
-import { withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
-import { getClasses } from '../../../Shared/getClasses'
+import { SITE_META_DATA } from 'yourails_common'
+import { getTagLine } from 'yourails_common'
+import { getClasses } from 'yourails_common'
 import {
   ArticlePresentComponentPropsType,
   ArticlePresentPropsType,
@@ -58,10 +55,6 @@ const ArticlePresentComponent: ArticlePresentComponentType = (
 
   const propsOut: ArticlePresentPropsOutType = {
     headerFrameProps: {
-      brandName: 'YouRails Academy',
-      moto: DICTIONARY['Watch_Videos_With_a_Purpose'][language],
-      logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
-      contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,
       isLogoGroup: true,
       isButtonAddCourse: true,
@@ -99,7 +92,7 @@ const ArticlePresentComponent: ArticlePresentComponentType = (
         {null}
         {/* middle-main */}
         <div>
-          {articleFound && articleFound.articleID ? (
+          {articleFound && articleFound.articleItemID ? (
             <ArticlePresentBody {...propsOut.articlePresentBodyProps} />
           ) : null}
         </div>
@@ -114,10 +107,12 @@ const ArticlePresentComponent: ArticlePresentComponentType = (
 }
 
 const storeStateSliceProps: string[] = ['articles', 'language']
-export const ArticlePresent = withStoreStateSelectedYrl(
+const ArticlePresent = withStoreStateSelectedYrl(
   storeStateSliceProps,
   React.memo(ArticlePresentComponent)
 )
+
+export { ArticlePresent as default }
 
 export type {
   ArticlePresentPropsType,

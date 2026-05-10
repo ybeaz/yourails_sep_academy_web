@@ -1,21 +1,27 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { ImageYrl } from '../ComponentsLibrary/ImageYrl/ImageYrl'
+import { withPropsYrl, ImageYrl } from 'yourails_common'
+import { handleEvents as handleEventsIn } from '../../DataLayer/index.handleEvents'
+import { HandleEventType } from 'yourails_common'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
-import { SERVERS_MAIN } from '../../Constants/servers.const'
+import { SERVERS_MAIN } from 'yourails_common'
 
-interface SuccessfulCasesSepArgs {}
+interface SuccessfulCasesSepPropsType {
+  handleEvents: HandleEventType
+}
 
-export const SuccessfulCasesSep: React.FunctionComponent<
-  SuccessfulCasesSepArgs
-> = (props: SuccessfulCasesSepArgs): ReactElement => {
+export const SuccessfulCasesSepComponent: React.FunctionComponent<SuccessfulCasesSepPropsType> = ({
+  handleEvents,
+}: SuccessfulCasesSepPropsType): ReactElement => {
   const { language } = useSelector((store2: RootStoreType) => store2)
 
   const propsOut = {
     collageImageFaceProps: {
       classAdded: 'Image_collageImageFace',
       src: `${SERVERS_MAIN.remote}/images/collage-happy-multicultural-people-faces-211122-3x3-41.jpg`,
+      alt: 'collage image face',
+      handleEvents,
       action: {
         typeEvent: 'SET_MODAL_FRAMES',
         data: [
@@ -39,8 +45,8 @@ export const SuccessfulCasesSep: React.FunctionComponent<
             </div>
             <div className='_text'>
               {' '}
-              Bla bla bla Bla bla bla Bla bla bla Bla bla bla Bla bla bla Bla
-              bla bla Bla bla bla Bla bla bla Bla bla bla Bla bla bla
+              Bla bla bla Bla bla bla Bla bla bla Bla bla bla Bla bla bla Bla bla bla Bla bla bla
+              Bla bla bla Bla bla bla Bla bla bla
             </div>
           </div>
         </div>
@@ -48,3 +54,6 @@ export const SuccessfulCasesSep: React.FunctionComponent<
     </div>
   )
 }
+
+export const SuccessfulCasesSep: React.FunctionComponent<SuccessfulCasesSepPropsType> =
+  withPropsYrl({ handleEvents: handleEventsIn })(React.memo(SuccessfulCasesSepComponent))

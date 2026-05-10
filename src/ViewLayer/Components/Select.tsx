@@ -1,16 +1,13 @@
+// @ts-nocheck
+
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { nanoid } from 'nanoid'
 
-import { getUniqArrBy } from '../../Shared/getUniqArrBy'
-import { getCreatedStyleElement } from '../../Shared/getCreatedStyleElement'
+import { getUniqArrBy } from 'yourails_common'
+import { getCreatedStyleElement } from 'yourails_common'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
-import { HandleEventPropsType } from '../../Interfaces/HandleEventPropsType'
-export interface SelectOptionType {
-  defaultSelected?: boolean
-  selected: boolean
-  text?: string
-  value?: string
-}
+import { HandleEventPropsType, SelectOptionType } from 'yourails_common'
+
 interface ISelectArgs {
   classAdded: string
   multiple?: boolean
@@ -26,9 +23,7 @@ interface IGetOptionsNext {
   (options: SelectOptionType[], arrSelected: string[]): SelectOptionType[]
 }
 
-export const Select: React.FunctionComponent<ISelectArgs> = (
-  props: ISelectArgs
-): ReactElement => {
+export const Select: React.FunctionComponent<ISelectArgs> = (props: ISelectArgs): ReactElement => {
   const {
     classAdded,
     size: sizeIn,
@@ -52,10 +47,7 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
   const [onBlurState, setOnBlurState] = useState(true)
   const [sizeState, setSizeState] = useState(sizeOnBlur)
 
-  const getInjectedAnimationToSelect = (props2: {
-    size2: number
-    delay2: number
-  }): void => {
+  const getInjectedAnimationToSelect = (props2: { size2: number; delay2: number }): void => {
     const { size2, delay2 } = props2
     const iterator = Array(12).fill(true)
 
@@ -84,10 +76,7 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
       if (i < size2) {
         const f = i > 1 ? i : 1
         const hOut = String(hBase2 * f)
-        let hIn =
-          hBase2 * f <= hBase2 * size2
-            ? String(hBase2 * size2)
-            : String(hBase2 * f)
+        let hIn = hBase2 * f <= hBase2 * size2 ? String(hBase2 * size2) : String(hBase2 * f)
 
         keyframesStyleArr.push(
           ...[
@@ -105,9 +94,8 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
       }
     })
 
-    keyframesStyleArr.forEach((item, i) =>
-      getCreatedStyleElement.sheet.insertRule(item, i)
-    )
+    const styleElement = getCreatedStyleElement()
+    keyframesStyleArr.forEach((item, i) => styleElement?.sheet?.insertRule(item, i))
   }
 
   useEffect(() => {
@@ -120,13 +108,10 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
     setSizeState(sizeOnBlur)
   }, [language])
 
-  const getOptionsSelected = (
-    options2: SelectOptionType[]
-  ): SelectOptionType[] => options2.filter(item => item.selected === true)
+  const getOptionsSelected = (options2: SelectOptionType[]): SelectOptionType[] =>
+    options2.filter(item => item.selected === true)
 
-  const getOptionsJsx = (
-    options2: SelectOptionType[]
-  ): React.ReactElement[] => {
+  const getOptionsJsx = (options2: SelectOptionType[]): React.ReactElement[] => {
     return options2.map((option: SelectOptionType) => {
       const { text, value, defaultSelected, selected } = option
       const nanoID = nanoid()
@@ -167,9 +152,7 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
     const optionsSelected = output.filter(item => item.selected === true)
 
     if (multiple && optionsSelected.length > 1) {
-      output = output.map((item, i) =>
-        i === 0 ? { ...item, selected: false } : item
-      )
+      output = output.map((item, i) => (i === 0 ? { ...item, selected: false } : item))
     }
 
     return output
@@ -190,9 +173,7 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
       optionsSelected.length === 1 &&
       optionsSelected[0].value === event.target.value
     ) {
-      const optionsStateNext = getOptionsNext(optionsState, [
-        event.target.value,
-      ])
+      const optionsStateNext = getOptionsNext(optionsState, [event.target.value])
       setOptionsState(optionsStateNext)
     }
   }
@@ -228,7 +209,9 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
     if (onBlurRef.current === false) return
 
     let optionsNext = optionsState.filter(item => item.selected === true)
+    // @ts-expect-error
     if (optionsState.filter(item => item.selected === true).length === 0) {
+      // @ts-expect-error
       optionsNext = options.filter((item, i) => i === 0)
     }
 
@@ -241,10 +224,7 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
     setOptionsState(optionsNext)
   }
 
-  const handleComponentEvents = (
-    event: any,
-    propsEvent: HandleEventPropsType
-  ): void => {
+  const handleComponentEvents = (event: any, propsEvent: HandleEventPropsType): void => {
     const { typeEvent: typeEvent2, data } = propsEvent
 
     const output = {
@@ -255,8 +235,10 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
     }
 
     // console.info('Select [225]', { typeEvent2, componentId })
+    // @ts-expect-error
     output[typeEvent2]
-      ? output[typeEvent2](event)
+      ? // @ts-expect-error
+        output[typeEvent2](event)
       : console.log('Select handleComponentEvents [error]', 'strange type', {
           typeEvent2,
           data,
@@ -265,10 +247,7 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
 
   const optionsSelectedLen = getOptionsSelected(optionsState).length
 
-  const getAddAnimationClass = (
-    onBlur: boolean,
-    optionsLen: number
-  ): string => {
+  const getAddAnimationClass = (onBlur: boolean, optionsLen: number): string => {
     let output = `_animationOut_${uniqClassStr}_${0}`
 
     if (!onBlur && animationRef.current === '_animationOut') {
@@ -288,10 +267,7 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
     return output
   }
 
-  const selectAddAmimation = getAddAnimationClass(
-    onBlurState,
-    optionsSelectedLen
-  )
+  const selectAddAmimation = getAddAnimationClass(onBlurState, optionsSelectedLen)
   let size = optionsSelectedLen < sizeIn ? sizeState : optionsSelectedLen
   size = !multiple && sizeState === 1 ? sizeIn : size
   // Interesting effect size = !multiple && sizeState === 1 ? size : sizeState
@@ -314,9 +290,7 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
         onMouseDown={(event: any) =>
           handleComponentEvents(event, { typeEvent: 'SELECT_ON_MOUSE_DOWN' })
         }
-        onChange={(event: any) =>
-          handleComponentEvents(event, { typeEvent: 'SELECT_ON_CHANGE' })
-        }
+        onChange={(event: any) => handleComponentEvents(event, { typeEvent: 'SELECT_ON_CHANGE' })}
         // onMouseEnter={(event: any) =>
         //   handleComponentEvents(event, { typeEvent: 'SELECT_ON_MOUSE_ENTER' })
         // }
@@ -329,11 +303,7 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
         {getOptionsJsx(optionsState)}
       </select>
       {multiple && !onBlurState && (
-        <div
-          className={`__Ok ${classScrollbar} ${classHeightFixed} ${classBackground}`}
-        >
-          Ok
-        </div>
+        <div className={`__Ok ${classScrollbar} ${classHeightFixed} ${classBackground}`}>Ok</div>
       )}
     </div>
   )

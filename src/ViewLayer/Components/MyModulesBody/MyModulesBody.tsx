@@ -1,22 +1,18 @@
 import React, { useMemo } from 'react'
 
+import { PaginationNameEnumType } from 'yourails_common'
+import { CreateModuleStatusEnumType, CreateModuleStagesEnumType } from 'yourails_common'
 import {
-  PaginationNameEnumType,
-  CreateModuleStagesEnumType,
-  CreateModuleStatusEnumType,
-  CreateModuleStageType,
-} from '../../../Interfaces/'
-import {
+  withPropsYrl,
   InputGroupYrl,
   IconYrl,
   ImageYrl,
   ButtonYrl,
-  withPropsYrl,
   withStoreStateSelectedYrl,
-} from '../../ComponentsLibrary/'
+} from 'yourails_common'
 import { Timer } from '../Timer/Timer'
-import { DICTIONARY } from '../../../Constants/dictionary.const'
-import { getClasses } from '../../../Shared/getClasses'
+import { DICTIONARY } from 'yourails_common'
+import { getClasses } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { MyModulesTable } from '../MyModulesTable/MyModulesTable'
 import { PaginationNavigation } from '../../Components/PaginationNavigation/PaginationNavigation'
@@ -47,6 +43,7 @@ const MyModulesBodyComponent: MyModulesBodyComponentType = (
     createModuleStages,
     isShowModuleCreateProgress,
     storeStateSlice: { pageModules },
+    handleEvents,
   } = props
 
   const stagesNo = Object.values(CreateModuleStagesEnumType).filter(
@@ -76,7 +73,9 @@ const MyModulesBodyComponent: MyModulesBodyComponentType = (
           },
           imagePendingProps: {
             classAdded: 'Image_pending',
+            handleEvents,
             src: 'https://yourails.com/images/loading/loading01.gif',
+            alt: 'loading, please wait',
             isDisplaying: status === CreateModuleStatusEnumType['pending'],
           },
           timerProps: {
@@ -98,6 +97,7 @@ const MyModulesBodyComponent: MyModulesBodyComponentType = (
           buttonRepeatProps: {
             classAdded: 'Button_create_stage_repeat',
             icon: 'MdOutlineReplay',
+            handleEvents,
             action,
             isDisplaying: status === CreateModuleStatusEnumType['failure'],
           },
@@ -139,6 +139,7 @@ const MyModulesBodyComponent: MyModulesBodyComponentType = (
         classAdded: '',
         type: 'text',
         placeholder: 'Add resource url...',
+        handleEvents,
         typeEvent: 'ONCHANGE_INPUT_SEARCH',
         typeEventOnEnter: 'CLICK_ON_MODULE_CREATE_SUBMIT',
         storeFormProp: 'inputCourseCreate',
@@ -146,6 +147,7 @@ const MyModulesBodyComponent: MyModulesBodyComponentType = (
       buttonSubmitProps: {
         classAdded: 'Button_CourseCreateSubmit',
         icon: 'MdOutlineSend',
+        handleEvents,
         action: { typeEvent: 'CLICK_ON_MODULE_CREATE_SUBMIT' },
       },
     },
@@ -168,7 +170,7 @@ const MyModulesBodyComponent: MyModulesBodyComponentType = (
       <div className='_messageWrapper'></div>
       <div className='_modulesBodyWrapper'>
         {modules.length ? <MyModulesTable {...propsOut.myModulesTableProps} /> : null}
-        {pageModules.offset <= modules.length && (
+        {!(pageModules.first === 0 && pageModules.offset > modules.length) && (
           <div className='_paginationNavigationWrapper'>
             {modules.length ? (
               <PaginationNavigation {...propsOut.paginationNavigationProps} />
@@ -181,9 +183,9 @@ const MyModulesBodyComponent: MyModulesBodyComponentType = (
 }
 
 const storeStateSliceProps: string[] = ['pageModules']
-export const MyModulesBody: MyModulesBodyType = withStoreStateSelectedYrl(
-  storeStateSliceProps,
-  React.memo(MyModulesBodyComponent)
+
+export const MyModulesBody: MyModulesBodyType = withPropsYrl({ handleEvents: handleEventsIn })(
+  withStoreStateSelectedYrl(storeStateSliceProps, React.memo(MyModulesBodyComponent))
 )
 
 export type {

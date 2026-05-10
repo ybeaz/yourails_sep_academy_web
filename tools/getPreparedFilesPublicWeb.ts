@@ -1,9 +1,8 @@
 import { join } from 'path'
 
-import { consoler } from './consoler'
-import { getFilesListInDir } from './getFilesListInDir'
-import { getCopiedFileDir } from './getCopiedFileDir'
-import { givePermission } from './givePermission'
+import { consoler } from 'yourails_node'
+import { getFilesListInDir } from 'yourails_node'
+import { getGivenPermission } from 'yourails_node'
 import { getIteratedAndMinifiedFiles } from './getIteratedAndMinifiedFiles'
 
 /**
@@ -20,32 +19,20 @@ const getPreparedFilesPublicWeb = async (buildDir: string): Promise<void> => {
   const minifiedFilesList = await getIteratedAndMinifiedFiles(buildDir, jsFiles)
   console.log('\n')
   minifiedFilesList.forEach((file: string) =>
-    consoler('getPreparedFilesPublicWeb ', `Minified and compressed code written to ${file}.`)
+    consoler('getPreparedFilesPublicWeb:', `Minified and compressed code written to ${file} yes`)
   )
 
   /** @description Give permission to the build directories */
-  await givePermission(buildDir)
-
-  /** @description Copy files from deployment directory */
-  // const filesList = ['index.html', '.htaccess']
-  // filesList.forEach(async (file: string, index: number) => {
-  //   const source = join(__dirname, '..', `/deployment/${file}`)
-  //   const destination = `${buildDir}/${file}`
-  //   const overwrite = true
-  //   const copiedFileName = await getCopiedFileDir(
-  //     source,
-  //     destination,
-  //     overwrite
-  //   )
-
-  //   console.log(
-  //     '* getPreparedFilesPublicWeb [37] ',
-  //     `File "${source}" copied to "${copiedFileName}".`
-  //   )
-
-  //   if (index === filesList.length - 1) console.log('\n')
-  // })
+  await getGivenPermission(buildDir)
 }
 
-const buildDir = join(__dirname, '..', '/web-build') // `${__dirname}/web-build` // '/Users/admin/Dev/yourails-sep-web-native/web-build'
-getPreparedFilesPublicWeb(buildDir)
+/**
+ * @description Here the file is being run directly
+ * @run ts-node tools/getPreparedFilesPublicWeb.ts
+ */
+if (require.main === module) {
+  ;(async () => {
+    const buildDir = join(__dirname, '..', '/web-build/dist') // `${__dirname}/web-build` // '/Users/admin/Dev/yourails-sep-web-native/web-build'
+    getPreparedFilesPublicWeb(buildDir)
+  })()
+}

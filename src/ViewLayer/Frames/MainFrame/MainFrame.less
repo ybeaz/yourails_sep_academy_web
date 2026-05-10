@@ -2,11 +2,10 @@
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding: 0;
+  padding: 0 1rem;
 
   .__middle {
     display: flex;
-    padding: 0.7rem 1rem 0 1rem;
     flex-direction: row;
 
     ._left {
@@ -33,19 +32,18 @@
   @media @desktop, @desktop-strict {
   }
   @media @tablet, @tablet-strict {
-    padding: 0rem 0rem 0rem 0rem;
+    padding: 0;
 
     .__middle {
       flex-direction: column;
-      padding: 0 1rem;
     }
   }
   @media @phone, @phone-strict {
-    padding: 0rem 0rem 0rem 0rem;
+    padding: 0;
 
     .__middle {
       flex-direction: column;
-      padding: 0 0 0 0;
+      padding: 0;
     }
   }
 }
@@ -146,12 +144,11 @@
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding: 0;
 
   .__middle {
     display: flex;
-    padding: 0.7rem 1rem 0 1rem;
     flex-direction: row;
+    gap: 1rem;
 
     ._left {
       display: none;
@@ -184,7 +181,6 @@
 
     .__middle {
       flex-direction: column;
-      padding: 0 1rem;
     }
   }
   @media @phone, @phone-strict {
@@ -192,7 +188,53 @@
 
     .__middle {
       flex-direction: column;
-      padding: 0 0 0 0;
+    }
+  }
+}
+
+.MainFrame_AcademyMatrix {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  .__middle {
+    display: flex;
+    padding: 1rem 0;
+    flex-direction: row;
+
+    ._left {
+      display: none;
+      flex: 1;
+    }
+    ._main {
+      display: flex;
+      flex: 7;
+      ._wrapper {
+        flex: 1;
+      }
+    }
+    ._right {
+      display: flex;
+      flex: 3;
+      flex-direction: column;
+    }
+  }
+
+  .__footer {
+    padding: 0 1rem;
+  }
+
+  @media @large {
+  }
+  @media @desktop, @desktop-strict {
+  }
+  @media @tablet, @tablet-strict {
+  }
+  @media @phone, @phone-strict {
+    padding: 0;
+
+    .__middle {
+      padding: 0;
     }
   }
 }

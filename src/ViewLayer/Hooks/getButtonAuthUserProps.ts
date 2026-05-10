@@ -1,9 +1,14 @@
-import { DICTIONARY } from '../../Constants/dictionary.const'
-import { UserType } from '../../Interfaces/UserType'
-import { ButtonYrlPropsType } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
+import { DICTIONARY } from 'yourails_common'
+import { UserType } from 'yourails_common'
+import { ButtonYrlPropsType } from 'yourails_common'
 
 interface IGetButtonAuthUser {
-  (user2: UserType, language: string, componentFrom: string, history?: any): ButtonYrlPropsType
+  (
+    user2: UserType,
+    language: string,
+    componentFrom: string,
+    history?: any
+  ): Omit<ButtonYrlPropsType, 'handleEvents'>
 }
 
 /**
@@ -16,6 +21,7 @@ export const getButtonAuthUserProps: IGetButtonAuthUser = (
   componentFrom,
   navigate = {}
 ) => {
+  // @ts-expect-error
   const { userAvatar, userStatus, userName } = user
 
   enum ButtonDictKeyType {
@@ -51,6 +57,7 @@ export const getButtonAuthUserProps: IGetButtonAuthUser = (
     },
     'sideMenu+success': {
       imageSrc: userAvatar,
+      imageAlt: 'user avatar',
       icon: userAvatar ? null : 'FaUserCircle',
       classAdded: userAvatar ? 'Button_authSideMenu' : 'Button_authSideMenu_authorized',
       tooltipText: userName,
@@ -77,6 +84,7 @@ export const getButtonAuthUserProps: IGetButtonAuthUser = (
     },
     'header+success': {
       imageSrc: userAvatar,
+      imageAlt: 'user avatar',
       icon: userAvatar ? null : 'FaUserCircle',
       classAdded: userAvatar ? 'Button_authHeader' : 'Button_authHeader_authorized',
       tooltipText: userName,
@@ -88,6 +96,7 @@ export const getButtonAuthUserProps: IGetButtonAuthUser = (
 
   const {
     imageSrc = null,
+    imageAlt = null,
     icon = null,
     classAdded,
     tooltipText,
@@ -117,6 +126,7 @@ export const getButtonAuthUserProps: IGetButtonAuthUser = (
 
   return {
     imageSrc,
+    imageAlt,
     icon,
     captureRight,
     classAdded,

@@ -3,14 +3,13 @@
 .CarouselQuestions {
   display: flex;
   flex-direction: column;
-  padding: 0 0 0 2rem;
   position: relative;
 
   .__buttons {
     display: flex;
     flex-direction: row;
     flex: 1;
-    padding: 1rem 0 0 0;
+    padding: 1.5rem 0 1.5rem 0;
 
     ._backward {
       display: none;
@@ -162,6 +161,11 @@
   }
   @media @phone, @phone-strict {
     padding: 0 1rem 0 1rem;
+
+    .__slideshow {
+      padding: 0;
+    }
+
     .__dots {
       padding: 0 0 0rem 0;
     }

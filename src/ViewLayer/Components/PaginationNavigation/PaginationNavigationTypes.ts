@@ -1,5 +1,7 @@
-import { ButtonYrlPropsType } from '../../ComponentsLibrary/'
-import { RootStoreType, PaginationNameEnumType } from '../../../Interfaces'
+import { ButtonYrlPropsType } from 'yourails_common'
+import { RootStoreType } from '../../../Interfaces'
+import { PaginationNameEnumType } from 'yourails_common'
+import { HandleEventType } from 'yourails_common'
 
 export type PaginationNavigationComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
@@ -7,6 +9,7 @@ export type PaginationNavigationComponentPropsType = {
     pagination: RootStoreType['componentsState']['pagination']
   }
   paginationName: PaginationNameEnumType
+  handleEvents: HandleEventType
 }
 
 export type PaginationNavigationPropsOutType = {
@@ -16,7 +19,7 @@ export type PaginationNavigationPropsOutType = {
 
 export type PaginationNavigationPropsType = Omit<
   PaginationNavigationComponentPropsType,
-  'storeStateSlice'
+  'storeStateSlice' | 'handleEvents'
 >
 
 /**
@@ -27,5 +30,4 @@ export interface PaginationNavigationComponentType
   (props: PaginationNavigationComponentPropsType): React.ReactElement
 }
 
-export type PaginationNavigationType =
-  React.FunctionComponent<PaginationNavigationPropsType>
+export type PaginationNavigationType = React.FunctionComponent<PaginationNavigationPropsType>

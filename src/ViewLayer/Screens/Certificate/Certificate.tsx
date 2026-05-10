@@ -1,19 +1,19 @@
 import { useParams } from 'react-router-dom'
 import React, { useEffect, ReactElement } from 'react'
 import styled from 'styled-components'
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 
-import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
-import { getDateString } from '../../../Shared/getDateString'
-import { DICTIONARY } from '../../../Constants/dictionary.const'
-import { DocumentType } from '../../../@types/index'
-import { getSlug } from '../../../Shared/getSlug'
+import { ScreensEnumType } from 'yourails_common'
+import { getDateString } from 'yourails_common'
+import { DICTIONARY } from 'yourails_common'
+import { DocumentType } from 'yourails_common'
+import { getSlug } from 'yourails_common'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
-import { SERVERS_MAIN } from '../../../Constants/servers.const'
-import { LoaderOverlayYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
+import { SERVERS_MAIN } from 'yourails_common'
+import { LoaderOverlayYrl, withStoreStateSelectedYrl } from 'yourails_common'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
-
+import { getTagLine } from 'yourails_common'
 import {
   CertificateBodyComponentProps,
   CertificateComponentPropsType,
@@ -82,10 +82,6 @@ const CertificateBodyComponent: React.FC<CertificateBodyComponentProps> = ({
 
   const propsOut: CertificatePropsOutType = {
     headerFrameProps: {
-      brandName: 'YouRails',
-      moto: DICTIONARY['Watch_Videos_With_a_Purpose'][language],
-      logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
-      contentComponentName: 'SearchFormSep',
       moduleCapture: moduleCapture,
       documentID,
       moduleID,
@@ -125,7 +121,7 @@ const CertificateBodyComponent: React.FC<CertificateBodyComponentProps> = ({
           <div className='pm-certificate-header'>
             <div className='pm-certificate-title cursive'>
               <h4>{affiliation}</h4>
-              <h2>Certificate of Completion</h2>
+              <h2>Credit Confirmation</h2>
             </div>
           </div>
 
@@ -265,10 +261,12 @@ export const CertificateComponent: CertificateComponentType = (
 }
 
 const storeStateSliceProps: string[] = ['language', 'documents']
-export const Certificate: CertificateType = withStoreStateSelectedYrl(
+const Certificate: CertificateType = withStoreStateSelectedYrl(
   storeStateSliceProps,
   React.memo(CertificateComponent)
 )
+
+export { Certificate as default }
 
 // export const Certificate: React.ComponentClass<any> = withRouter(
 //   CertificateOrigin

@@ -1,9 +1,10 @@
 import React from 'react'
 import { PaginationNavigationPropsType } from '../../Components/'
 import { RootStoreType } from '../../../Interfaces/'
-import { HandleEventType } from '../../../Interfaces/HandleEventType'
+import { HandleEventType } from 'yourails_common'
 import { IconLabelWithClosePropsType } from '../IconLabelWithClose/IconLabelWithClose'
-import { IconYrlPropsType } from '../../ComponentsLibrary/'
+import { IconYrlPropsType } from 'yourails_common'
+import { NavLinkWithQueryPropsType } from '../../Components/NavLinkWithQuery/NavLinkWithQuery'
 
 export type ModulesBodyComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
@@ -13,7 +14,7 @@ export type ModulesBodyComponentPropsType = {
     modules: RootStoreType['modules']
     isLoadedGlobalVars: RootStoreType['isLoaded']['isLoadedGlobalVars']
     screenActive: RootStoreType['componentsState']['screenActive']
-    tagsSearchForModules: RootStoreType['componentsState']['tagsSearchForModules']
+    tagsPick: RootStoreType['componentsState']['tagsPick']
     modulesSearchApplied: RootStoreType['componentsState']['modulesSearchApplied']
     pageModules: RootStoreType['componentsState']['pagination']['pageModules']
   }
@@ -26,6 +27,8 @@ export type ModulesBodyPropsType = Omit<
 >
 
 export type ModulesBodyPropsOutType = {
+  h2Props: React.HTMLAttributes<HTMLHeadingElement>
+  navLinkProps: NavLinkWithQueryPropsType
   iconArrowForwardProps: IconYrlPropsType
   iconLabelWithCloseTagProps: IconLabelWithClosePropsType
   iconLabelWithCloseSearchProps: IconLabelWithClosePropsType

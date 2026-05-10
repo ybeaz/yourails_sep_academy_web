@@ -1,21 +1,20 @@
-import React, { useEffect, ReactElement } from 'react'
-import { Helmet } from 'react-helmet'
+import React from 'react'
+import { useParams } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 
-import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
-import { DICTIONARY } from '../../../Constants/dictionary.const'
+import { ScreensEnumType } from 'yourails_common'
+import { DICTIONARY } from 'yourails_common'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 import { useLoadedInitialTeachContent } from '../../Hooks/useLoadedInitialTeachContent'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
-import { SITE_META_DATA } from '../../../Constants/siteMetaData.const'
-import { SERVERS_MAIN } from '../../../Constants/servers.const'
-import { PAGINATION_OFFSET } from '../../../Constants/pagination.const'
-import { withStoreStateSelectedYrl, withPropsYrl } from '../../ComponentsLibrary/'
+import { SITE_META_DATA } from 'yourails_common'
+import { SERVERS_MAIN } from 'yourails_common'
+import { withStoreStateSelectedYrl, withPropsYrl } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { AcademyMatrixBody } from '../../Components/AcademyMatrixBody/AcademyMatrixBody'
-import { PaginationNameEnumType } from '../../../Interfaces/RootStoreType'
-import { getSizeWindow } from '../../../Shared/getSizeWindow'
-
+import { getParsedUrlQueryBrowserApi } from 'yourails_common'
+import { getNestedProp } from 'yourails_common'
 import {
   AcademyMatrixPropsType,
   AcademyMatrixPropsOutType,
@@ -30,43 +29,33 @@ import {
  */
 const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrixPropsType) => {
   const {
-    storeStateSlice: { language },
-    handleEvents,
+    storeStateSlice: {},
   } = props
 
   const screenType = ScreensEnumType['AcademyMatrix']
+  const params = useParams()
   const { titleSite, descriptionSite, canonicalUrlSite, langSite } = SITE_META_DATA
   const canonicalUrl = `${SERVERS_MAIN.remote}${decodeURIComponent(location.pathname)}`
 
-  const { width } = getSizeWindow()
-  let pageModulesOffset = PAGINATION_OFFSET['pageModules']
-  let pageTagsOffset = PAGINATION_OFFSET['pageTags']
-  if (width <= 480) {
-    pageModulesOffset = 9
-    pageTagsOffset = 24
-  }
+  const query = getParsedUrlQueryBrowserApi()
+  const tagsPickQuery = getNestedProp({ entity: query, path: 'tagsPick', resDefault: '' })
+  const modulesSearchQuery = getNestedProp({ entity: query, path: 'modulesSearch', resDefault: '' })
+  const tagsSearchQuery = getNestedProp({ entity: query, path: 'tagsSearch', resDefault: '' })
 
-  useEffectedInitialRequests([
-    { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } },
-    {
-      type: 'SET_PAGINATION_OFFSET',
-      data: { paginationName: PaginationNameEnumType['pageModules'], offset: pageModulesOffset },
-    },
-    {
-      type: 'SET_PAGINATION_OFFSET',
-      data: { paginationName: PaginationNameEnumType['pageTags'], offset: pageTagsOffset },
-    },
-    { type: 'GET_MATRIX_DATA' },
-  ])
+  useEffectedInitialRequests(
+    [
+      { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } },
+      { type: 'SET_PARAMS_FROM_QUERY_URL_TO_STATE' },
+      { type: 'GET_TAGS_CONNECTION' },
+      { type: 'GET_MODULES_CONNECTION' },
+    ],
+    [JSON.stringify({ params, tagsPickQuery, modulesSearchQuery, tagsSearchQuery })]
+  )
 
   useLoadedInitialTeachContent({ isSkipping: false })
 
   const propsOut: AcademyMatrixPropsOutType = {
     headerFrameProps: {
-      brandName: 'YouRails Academy',
-      moto: DICTIONARY['Watch_Videos_With_a_Purpose'][language],
-      logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
-      contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,
       isLogoGroup: true,
       isButtonAddCourse: true,
@@ -100,7 +89,6 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
         {/* middle-left */}
         {null}
         {/* middle-main */}
-
         <AcademyMatrixBody />
         {/* middle-right */}
         {null}
@@ -111,10 +99,18 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
   )
 }
 
-const storeStateSliceProps: string[] = ['language']
-export const AcademyMatrix: AcademyMatrixType = withPropsYrl({
+const storeStateSliceProps: string[] = [
+  'language',
+  'queryUrl',
+  'tagsPick',
+  'componentsState',
+  'urlParamsQuery',
+]
+const AcademyMatrix: AcademyMatrixType = withPropsYrl({
   handleEvents: handleEventsIn,
 })(withStoreStateSelectedYrl(storeStateSliceProps, React.memo(AcademyMatrixComponent)))
+
+export { AcademyMatrix as default }
 
 export type {
   AcademyMatrixPropsType,
