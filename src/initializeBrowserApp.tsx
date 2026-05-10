@@ -10,6 +10,7 @@ import { RouterScreensConfig } from './Navigation/NavigationWeb'
 export const initializeBrowserApp = () => {
   const rootElement = document.getElementById('root')
 
+  // @ts-expect-error
   ReactDOM.createRoot(rootElement).render(
     <StrictMode>
       <HelmetProvider>
@@ -19,6 +20,6 @@ export const initializeBrowserApp = () => {
           </GlobalTheme>
         </Provider>
       </HelmetProvider>
-    </StrictMode>
+    </StrictMode>,
   )
 }
