@@ -58,10 +58,10 @@
       "editor.formatOnSave": true,
     },
     "[javascript]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.defaultFormatter": "biomejs.biome",
     },
     "[json]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.defaultFormatter": "biomejs.biome",
 
       "editor.quickSuggestions": {
         "strings": true,
@@ -69,10 +69,10 @@
       "editor.suggest.insertMode": "replace",
     },
     "[typescriptreact]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.defaultFormatter": "biomejs.biome",
     },
     "[typescript]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.defaultFormatter": "biomejs.biome",
     },
     "[python]": {
       "editor.defaultFormatter": "ms-python.python",
@@ -90,7 +90,7 @@
     "files.associations": {},
     "typescript.locale": "en",
     "javascript.updateImportsOnFileMove.enabled": "never",
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "biomejs.biome",
     "editor.formatOnSave": true,
     "editor.formatOnType": true,
     "editor.largeFileOptimizations": false,
