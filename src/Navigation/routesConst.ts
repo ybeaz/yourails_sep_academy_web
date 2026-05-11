@@ -74,6 +74,12 @@ export const ROUTES: RouteType[] = [
   },
   {
     screen: 'AcademyMatrix',
+    path: `/w`,
+    children: [],
+    errorElement: 'Error404',
+  },
+  {
+    screen: 'YouRailsHome',
     path: `/`,
     children: [],
     errorElement: 'Error404',
