@@ -74,3 +74,4 @@ src/@types/GraphqlTypes.tsx
 src/@types/graphqlTypes.gql
 
 coverage
+stats.json

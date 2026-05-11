@@ -1,4 +1,3 @@
-import { consoler } from 'yourails_common'
 import {
   withTryCatchFinallyWrapper,
   FuncModeEnumType,
@@ -43,7 +42,7 @@ type GetQuestionScoresPropsOutResType = GetNavLinksButtonsItemParamType
 interface GetQuestionScoresPropsOutType {
   (
     params: GetQuestionScoresPropsOutParamsType,
-    options?: GetQuestionScoresPropsOutOptionsType
+    options?: GetQuestionScoresPropsOutOptionsType,
   ): GetQuestionScoresPropsOutResType[]
 }
 

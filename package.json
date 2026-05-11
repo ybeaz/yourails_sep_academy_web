@@ -73,8 +73,8 @@
     "util": "^0.12.5",
     "xml-js": "^1.6.11",
     "yargs": "17.7.2",
-    "yourails_common": "^0.16.8",
-    "yourails_node": "^0.16.7",
+    "yourails_common": "^0.20.9",
+    "yourails_node": "^0.20.3",
     "zod": "^4.1.12"
   },
   "devDependencies": {
@@ -93,8 +93,10 @@
     "@types/uuid": "^9.0.7",
     "assert": "^2.1.0",
     "autoprefixer": "^10.4.14",
+    "baseline-browser-mapping": "^2.10.29",
     "browserify-zlib": "^0.2.0",
     "browserslist": "^4.21.5",
+    "class-validator": "^0.15.1",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.7.3",
     "css-minimizer-webpack-plugin": "^5.0.0",
@@ -135,8 +137,5 @@
     "webpackbar": "^5.0.2",
     "yalc": "^1.0.0-pre.53"
   },
-  "engines": {
-    "node": "v20.18.0",
-    "npm": "10.8.2"
-  }
+  "engines": {}
 }

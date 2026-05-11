@@ -60,7 +60,7 @@ module.exports = () => {
       },
     },
     snapshot: {
-      managedPaths: [/^(.+?[\\/]node_modules[\\/](?!(@yourails_common))(@.+?[\\/])?.+?)[\\/]/],
+      managedPaths: [],
     },
     externals: [
       'stream',
