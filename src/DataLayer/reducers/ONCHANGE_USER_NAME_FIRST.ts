@@ -3,7 +3,7 @@ import { ReducerType } from '../../Interfaces/ReducerType'
 
 export const ONCHANGE_USER_NAME_FIRST: ReducerType = (
   store: RootStoreType,
-  data: any
+  data: any,
 ): RootStoreType => {
   const { forms } = store
   const { user } = forms

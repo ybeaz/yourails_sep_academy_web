@@ -33,7 +33,7 @@ import {
              from '../Components/QuestionScores/QuestionScores'
  */
 const QuestionScoresComponent: QuestionScoresComponentType = (
-  props: QuestionScoresComponentPropsType
+  props: QuestionScoresComponentPropsType,
 ) => {
   const {
     stopVideoHandler,
@@ -59,7 +59,7 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
       moduleID: moduleIDActive || '',
       modules,
     },
-    { parentFunction: 'QuestionScoresComponent' }
+    { parentFunction: 'QuestionScoresComponent' },
   )
 
   const { passRate, questions: questionsActive } = moduleActive
@@ -92,12 +92,12 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
       if (scenarioCase === QuestionsScoresCaseEnumType.successTrue_AuthTrue_NamesFalse) {
         handleEvents(
           {},
-          { typeEvent: 'SET_EDIT_NAME_VISIBILITY', data: { isEditNameVisible: true } }
+          { typeEvent: 'SET_EDIT_NAME_VISIBILITY', data: { isEditNameVisible: true } },
         )
       } else {
         handleEvents(
           {},
-          { typeEvent: 'SET_EDIT_NAME_VISIBILITY', data: { isEditNameVisible: false } }
+          { typeEvent: 'SET_EDIT_NAME_VISIBILITY', data: { isEditNameVisible: false } },
         )
       }
 
@@ -138,17 +138,17 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
   }
 
   const componentsListProps: GetQuestionScoresPropsOutResType[] = getQuestionScoresPropsOut(
-    getQuestionScoresPropsOutProps
+    getQuestionScoresPropsOutProps,
   )
 
   const getRendedQuestionsWrongAnswered: Function = (questions: any[]): ReactElement => {
     return (
-      <ul className='_ul'>
-        {questions.map(question => {
+      <ul className="_ul">
+        {questions.map((question) => {
           const { questionID, capture: questionCapture } = question
 
           return (
-            <li key={questionID} className='_li'>
+            <li key={questionID} className="_li">
               {questionCapture}
             </li>
           )
@@ -157,7 +157,7 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     )
   }
 
-  return <div className='QuestionScores'>{getComponentsList(componentsListProps)}</div>
+  return <div className="QuestionScores">{getComponentsList(componentsListProps)}</div>
 }
 
 const storeStateSliceProps: string[] = [
@@ -175,8 +175,8 @@ const storeStateSliceProps: string[] = [
 
 export const QuestionScores = React.memo(
   withPropsYrl({ handleEvents: handleEventsIn, comp: 'QuestionScores' })(
-    withStoreStateSelectedYrl(storeStateSliceProps, QuestionScoresComponent)
-  )
+    withStoreStateSelectedYrl(storeStateSliceProps, QuestionScoresComponent),
+  ),
 )
 
 export type { QuestionScoresPropsType, QuestionScoresComponentType, QuestionScoresType }

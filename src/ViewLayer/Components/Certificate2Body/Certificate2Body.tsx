@@ -17,7 +17,7 @@ import {
              from '../Components/Certificate2Body/Certificate2Body'
  */
 const Certificate2BodyComponent: Certificate2BodyComponentType = (
-  props: Certificate2BodyComponentPropsType
+  props: Certificate2BodyComponentPropsType,
 ) => {
   const { classAdded, language, profile, tagCloud, expertiseInfo } = props
 
@@ -52,51 +52,51 @@ const Certificate2BodyComponent: Certificate2BodyComponentType = (
 
   return (
     <div className={getClasses('Certificate2Body', classAdded)}>
-      <div className='_sectionWrapper'>
-        <h2 className='_title'>{documentName}</h2>
+      <div className="_sectionWrapper">
+        <h2 className="_title">{documentName}</h2>
       </div>
 
-      <div className='_sectionWrapperUnderlined'>
-        <div className='_awardedTo'>Awarded to</div>
-        <div className='_nameLearner'>{nameLearner}</div>
+      <div className="_sectionWrapperUnderlined">
+        <div className="_awardedTo">Awarded to</div>
+        <div className="_nameLearner">{nameLearner}</div>
       </div>
 
-      <div className='_sectionWrapper'>
-        <div className='_labelAchievement'>
+      <div className="_sectionWrapper">
+        <div className="_labelAchievement">
           in recognition of achievements at the level of&nbsp;<b>{levelName}</b>&nbsp;in the
           following subject
         </div>
       </div>
 
-      <div className='_sectionWrapperUnderlined'>
-        <div className='_courseCapture'>{tagValue}</div>
+      <div className="_sectionWrapperUnderlined">
+        <div className="_courseCapture">{tagValue}</div>
       </div>
 
-      <div className='_sectionWrapper'>
-        <div className='_labelAchievement'>
+      <div className="_sectionWrapper">
+        <div className="_labelAchievement">
           for successfully completing&nbsp;<b>{completed}&nbsp;modules</b>&nbsp;in the comprehensive
           training program at
         </div>
       </div>
 
-      <div className='_sectionWrapperUnderlined'>
-        <div className='_institution'>{institution}</div>
+      <div className="_sectionWrapperUnderlined">
+        <div className="_institution">{institution}</div>
       </div>
 
-      <div className='_sectionWrapper'>
-        <div className='_dateCompleted'>
+      <div className="_sectionWrapper">
+        <div className="_dateCompleted">
           Awarded this {date.getDate()} day of {date.toLocaleString('default', { month: 'long' })},{' '}
           {date.getFullYear()} year.{' '}
         </div>
-        <div className='_labelDocument'>
+        <div className="_labelDocument">
           Certificate No&nbsp;
-          <a className='_documentLink' href={documentPathName} target='_blank'>
+          <a className="_documentLink" href={documentPathName} target="_blank">
             {tagID}
           </a>
         </div>
       </div>
 
-      <div className='_stamp'></div>
+      <div className="_stamp"></div>
     </div>
   )
 }

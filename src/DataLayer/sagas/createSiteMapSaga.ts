@@ -18,7 +18,7 @@ export function* createSiteMapGenerator(params: ActionReduxType | any): Iterable
       ...getHeadersAuthDict(),
       clientHttpType: selectGraphqlHttpClientFlag(),
       timeout: 5000,
-    }
+    },
   )
 }
 
@@ -27,7 +27,7 @@ export const createSiteMap = withDebounce(
     optionsDefault: { funcParent: 'createSiteMapSaga' },
     resDefault: [],
   }),
-  500
+  500,
 )
 
 export default function* createSiteMapSaga() {

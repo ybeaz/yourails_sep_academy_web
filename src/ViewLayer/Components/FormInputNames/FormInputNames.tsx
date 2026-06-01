@@ -63,29 +63,29 @@ const FormInputNamesComponent: FormInputNamesComponentType = (props: FormInputNa
         FormInputNames_visible_none: isVisible === false,
       })}
     >
-      <form className='_form'>
+      <form className="_form">
         <Collapse
-          className='_collapse'
-          collapsible='icon'
+          className="_collapse"
+          collapsible="icon"
           defaultActiveKey={['0', '1']}
           ghost={true}
-          expandIconPosition='left'
+          expandIconPosition="left"
           items={[
             {
               key: '0',
-              label: <label className='_label'>{nameFirstLabel} *</label>,
+              label: <label className="_label">{nameFirstLabel} *</label>,
               children: <InputYrl {...propsOut.inputFirstNameProps} />,
               showArrow: false,
             },
             {
               key: '1',
-              label: <label className='_label'>{nameLastLabel} *</label>,
+              label: <label className="_label">{nameLastLabel} *</label>,
               children: <InputYrl {...propsOut.inputLastNameProps} />,
               showArrow: false,
             },
             {
               key: '2',
-              label: <label className='_label'>{nameMiddleLabel}</label>,
+              label: <label className="_label">{nameMiddleLabel}</label>,
               children: <InputYrl {...propsOut.inputMiddleNameProps} />,
             },
           ]}
@@ -96,7 +96,7 @@ const FormInputNamesComponent: FormInputNamesComponentType = (props: FormInputNa
 }
 
 export const FormInputNames: FormInputNamesType = withPropsYrl({ handleEvents: handleEventsIn })(
-  React.memo(FormInputNamesComponent)
+  React.memo(FormInputNamesComponent),
 )
 
 export type {

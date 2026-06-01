@@ -25,7 +25,7 @@ export const CheckRadioGroup: React.FunctionComponent<CheckRadioGroupPropsType> 
   const acceptedAnswerState = useRef<boolean>(false)
 
   const getCheckLines: Function = (options2: any[]): ReactElement[] => {
-    return options2.map(item => {
+    return options2.map((item) => {
       const { optionID, label, status } = item
       let voteMin = 0
       let voteMax = 10
@@ -47,25 +47,25 @@ export const CheckRadioGroup: React.FunctionComponent<CheckRadioGroupPropsType> 
           className={`__label`}
           itemScope
           itemProp={statusAnswer}
-          itemType='https://schema.org/Answer'
+          itemType="https://schema.org/Answer"
         >
-          <meta itemProp='upvoteCount' content={String(upvoteCount)} />
-          <div className='_capture' itemProp='text'>
+          <meta itemProp="upvoteCount" content={String(upvoteCount)} />
+          <div className="_capture" itemProp="text">
             {label}
           </div>
           <div className={`_checkdiv`}>
             <input
-              onChange={event =>
+              onChange={(event) =>
                 handleEvents(event, {
                   typeEvent: 'CLICK_CHECK',
                   data: { optionID, multi },
                 })
               }
-              type='checkbox'
+              type="checkbox"
               name={'radio'}
               checked={answer}
             />
-            <span className='checkmark'></span>
+            <span className="checkmark"></span>
           </div>
         </label>
       )
@@ -73,18 +73,18 @@ export const CheckRadioGroup: React.FunctionComponent<CheckRadioGroupPropsType> 
   }
 
   return (
-    <div itemProp='mainEntity'>
-      <div itemScope itemType='https://schema.org/QAPage'>
+    <div itemProp="mainEntity">
+      <div itemScope itemType="https://schema.org/QAPage">
         <div
           className={`CheckRadioGroup ${designType}`}
-          itemProp='mainEntity'
+          itemProp="mainEntity"
           itemScope
-          itemType='https://schema.org/Question'
+          itemType="https://schema.org/Question"
         >
-          <meta itemProp='indetifier' content={questionID} />
-          <meta itemProp='answerCount' content={String(options.length)} />
-          {topic ? <meta itemProp='abstract' content={topic} /> : null}
-          <div className='__capture' itemProp='name'>
+          <meta itemProp="indetifier" content={questionID} />
+          <meta itemProp="answerCount" content={String(options.length)} />
+          {topic ? <meta itemProp="abstract" content={topic} /> : null}
+          <div className="__capture" itemProp="name">
             {capture}
           </div>
           {getCheckLines(options)}

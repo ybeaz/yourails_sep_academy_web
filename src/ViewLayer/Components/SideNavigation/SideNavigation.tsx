@@ -25,7 +25,7 @@ import {
              from '../Components/SideNavigation/SideNavigation'
  */
 const SideNavigationComponent: SideNavigationComponentType = (
-  props: SideNavigationComponentPropsType
+  props: SideNavigationComponentPropsType,
 ) => {
   const {
     classAdded,
@@ -56,14 +56,14 @@ const SideNavigationComponent: SideNavigationComponentType = (
   return (
     <div
       className={`SideNavigation ${classNameAdd}`}
-      onClick={event => handleEvents(event, { typeEvent: 'SET_SIDE_NAVIGATION_LEFT' })}
+      onClick={(event) => handleEvents(event, { typeEvent: 'SET_SIDE_NAVIGATION_LEFT' })}
     >
       <div
-        className='__content'
+        className="__content"
         // onClick={event => handleEvents(event, { typeEvent: 'STOP_PROPAGATION' })}
       >
-        <div className='__menuGroup'>
-          <div className='_groupItem _languageSelect'>
+        <div className="__menuGroup">
+          <div className="_groupItem _languageSelect">
             <SelectLanguage {...languageSelectProps} />
           </div>
           {getComponentsList(sideNavigationItemsPropsArr)}

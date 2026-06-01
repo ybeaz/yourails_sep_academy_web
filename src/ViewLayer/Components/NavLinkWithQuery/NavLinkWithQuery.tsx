@@ -19,7 +19,7 @@ import {
              from '../Components/NavLinkWithQuery/NavLinkWithQuery'
  */
 const NavLinkWithQueryComponent: NavLinkWithQueryComponentType = (
-  props: NavLinkWithQueryComponentPropsType
+  props: NavLinkWithQueryComponentPropsType,
 ) => {
   const {
     storeStateSlice: {
@@ -83,7 +83,7 @@ const NavLinkWithQueryComponent: NavLinkWithQueryComponentType = (
 const storeStateSliceProps: string[] = ['urlParamsQuery']
 const NavLinkWithQuery: NavLinkWithQueryType = withStoreStateSelectedYrl(
   storeStateSliceProps,
-  React.memo(NavLinkWithQueryComponent)
+  React.memo(NavLinkWithQueryComponent),
 )
 
 export type { NavLinkWithQueryPropsType, NavLinkWithQueryType }

@@ -25,7 +25,7 @@ export function* getModuleScenarioGenerator(params: ActionReduxType | any): Iter
       summaryChunks: [],
       transcript: [],
       transcriptChunks: [],
-    })
+    }),
   )
 
   /* Add originUri to moduleCreateProgress */
@@ -115,7 +115,7 @@ export const getModuleScenario = withDebounce(
     optionsDefault: { funcParent: 'getModuleScenarioSaga' },
     resDefault: [],
   }),
-  500
+  500,
 )
 
 export default function* getModuleScenarioSaga() {

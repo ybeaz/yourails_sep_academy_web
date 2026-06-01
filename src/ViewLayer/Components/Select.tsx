@@ -89,7 +89,7 @@ export const Select: React.FunctionComponent<ISelectArgs> = (props: ISelectArgs)
             `@-webkit-keyframes out_${componentId}_${i} {
               0% { min-height: ${hIn}rem; height: ${hIn}rem; } 100% { min-height: ${hOut}rem; height: ${hOut}rem; }
             }`,
-          ]
+          ],
         )
       }
     })
@@ -109,7 +109,7 @@ export const Select: React.FunctionComponent<ISelectArgs> = (props: ISelectArgs)
   }, [language])
 
   const getOptionsSelected = (options2: SelectOptionType[]): SelectOptionType[] =>
-    options2.filter(item => item.selected === true)
+    options2.filter((item) => item.selected === true)
 
   const getOptionsJsx = (options2: SelectOptionType[]): React.ReactElement[] => {
     return options2.map((option: SelectOptionType) => {
@@ -135,12 +135,12 @@ export const Select: React.FunctionComponent<ISelectArgs> = (props: ISelectArgs)
       let selectedNext = false
       if (multiple) {
         if (selected) {
-          selectedNext = !arrSelected.find(item => item === value)
+          selectedNext = !arrSelected.find((item) => item === value)
         } else {
-          selectedNext = !!arrSelected.find(item => item === value)
+          selectedNext = !!arrSelected.find((item) => item === value)
         }
       } else {
-        selectedNext = !!arrSelected.find(item => item === value)
+        selectedNext = !!arrSelected.find((item) => item === value)
       }
 
       return {
@@ -149,7 +149,7 @@ export const Select: React.FunctionComponent<ISelectArgs> = (props: ISelectArgs)
       }
     })
 
-    const optionsSelected = output.filter(item => item.selected === true)
+    const optionsSelected = output.filter((item) => item.selected === true)
 
     if (multiple && optionsSelected.length > 1) {
       output = output.map((item, i) => (i === 0 ? { ...item, selected: false } : item))
@@ -193,7 +193,7 @@ export const Select: React.FunctionComponent<ISelectArgs> = (props: ISelectArgs)
 
     const dataSelected = optionsStateNext
       .filter((item, i) => i !== 0 && item.selected === true)
-      .map(item => item.value)
+      .map((item) => item.value)
 
     handleEvents(event, {
       typeEvent: typeEventIn,
@@ -208,9 +208,9 @@ export const Select: React.FunctionComponent<ISelectArgs> = (props: ISelectArgs)
   const SELECT_ON_MOUSE_LEAVE = (): void => {
     if (onBlurRef.current === false) return
 
-    let optionsNext = optionsState.filter(item => item.selected === true)
+    let optionsNext = optionsState.filter((item) => item.selected === true)
     // @ts-expect-error
-    if (optionsState.filter(item => item.selected === true).length === 0) {
+    if (optionsState.filter((item) => item.selected === true).length === 0) {
       // @ts-expect-error
       optionsNext = options.filter((item, i) => i === 0)
     }
@@ -282,9 +282,9 @@ export const Select: React.FunctionComponent<ISelectArgs> = (props: ISelectArgs)
       id={componentId}
     >
       <select
-        id='select'
+        id="select"
         className={`__selectTag ${classScrollbar} ${classHeightFixed} ${classBackground}`}
-        name='select_component'
+        name="select_component"
         size={size}
         multiple={multiple}
         onMouseDown={(event: any) =>

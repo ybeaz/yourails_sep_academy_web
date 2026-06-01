@@ -85,20 +85,20 @@ function* readTagsConnectionGenerator(params: ActionReduxType | any): Iterable<a
       ...getHeadersAuthDict(),
       clientHttpType: selectGraphqlHttpClientFlag(),
       timeout: 10000,
-    }
+    },
   )
 
   let tags: any = getChainedResponsibility(readTagsConnection)
     .exec(getMappedConnectionToItems, {})
     .exec((tags: any) =>
-      tags.filter((_: any, index: number) => index < PAGINATION_OFFSET['pageTags'])
+      tags.filter((_: any, index: number) => index < PAGINATION_OFFSET['pageTags']),
     ).result
 
   yield put(actionSync.SET_TAGS_CLOUD({ tagsCloud: tags }))
 
   const pageInfo = readTagsConnection?.pageInfo
   yield put(
-    actionSync.SET_PAGE_INFO({ paginationName: PaginationNameEnumType['pageTags'], ...pageInfo })
+    actionSync.SET_PAGE_INFO({ paginationName: PaginationNameEnumType['pageTags'], ...pageInfo }),
   )
 }
 
@@ -107,7 +107,7 @@ export const readTagsConnection = withDebounce(
     optionsDefault: { funcParent: 'readTagsConnectionSaga' },
     resDefault: [],
   }),
-  500
+  500,
 )
 
 export default function* readTagsConnectionSaga() {

@@ -54,7 +54,7 @@ const MyModulesComponent: MyModulesComponentType = (props: MyModulesComponentPro
           output = true
         return output || accum
       },
-      false
+      false,
     )
 
     const isStateFailureAny = Object.values(CreateModuleStagesEnumType).reduce(
@@ -67,7 +67,7 @@ const MyModulesComponent: MyModulesComponentType = (props: MyModulesComponentPro
           output = true
         return output || accum
       },
-      false
+      false,
     )
 
     setIsShowModuleCreateProgress(!!isStatePendingAny || !!isStateFailureAny)
@@ -83,7 +83,7 @@ const MyModulesComponent: MyModulesComponentType = (props: MyModulesComponentPro
         }
         return accum && output
       },
-      true
+      true,
     )
 
     const isStateSuccessAll = Object.values(CreateModuleStagesEnumType).reduce(
@@ -97,7 +97,7 @@ const MyModulesComponent: MyModulesComponentType = (props: MyModulesComponentPro
         }
         return accum && output
       },
-      true
+      true,
     )
 
     if (sub && (isStateTodoAll || isStateSuccessAll)) {
@@ -135,12 +135,12 @@ const MyModulesComponent: MyModulesComponentType = (props: MyModulesComponentPro
     <div className={getClasses('MyModules', classAdded)}>
       <Helmet>
         <html lang={langSite} />
-        <meta charSet='utf-8' />
-        <meta name='viewport' content='width=device-width,initial-scale=1' />
-        <meta name='google' content='notranslate' />
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta name="google" content="notranslate" />
         <title>{titleSite}</title>
-        <link rel='canonical' href={canonicalUrl} />
-        <meta name='description' content={descriptionSite} />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta name="description" content={descriptionSite} />
       </Helmet>
       <MainFrame {...propsOut.mainFrameProps}>
         {/* header */}
@@ -167,7 +167,7 @@ const storeStateSliceProps: string[] = [
   'modules',
 ]
 const MyModules = withPropsYrl({ handleEvents: handleEventsIn })(
-  withStoreStateSelectedYrl(storeStateSliceProps, React.memo(MyModulesComponent))
+  withStoreStateSelectedYrl(storeStateSliceProps, React.memo(MyModulesComponent)),
 )
 
 export { MyModules as default }

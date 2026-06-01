@@ -18,7 +18,7 @@ import {
              from '../Components/PaginationNavigation/PaginationNavigation'
  */
 const PaginationNavigationComponent: PaginationNavigationComponentType = (
-  props: PaginationNavigationComponentPropsType
+  props: PaginationNavigationComponentPropsType,
 ) => {
   const {
     classAdded,
@@ -59,7 +59,7 @@ const PaginationNavigationComponent: PaginationNavigationComponentType = (
   return (
     <div className={getClasses('PaginationNavigation', classAdded)}>
       <ButtonYrl {...propsOut.buttonCoursesBackwardProps} />
-      <div className='_pages'>{`${first} ... ${last}`}</div>
+      <div className="_pages">{`${first} ... ${last}`}</div>
       <ButtonYrl {...propsOut.buttonCoursesForwardProps} />
     </div>
   )

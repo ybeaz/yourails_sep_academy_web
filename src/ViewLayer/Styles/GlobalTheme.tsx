@@ -15,7 +15,7 @@ type GlobalThemePropsType = {
 }
 
 export const GlobalTheme: React.FunctionComponent<GlobalThemePropsType> = (
-  props: GlobalThemePropsType
+  props: GlobalThemePropsType,
 ): ReactElement => {
   const getThemeRemotely: Function = () => {
     try {

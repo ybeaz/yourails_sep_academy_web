@@ -5,7 +5,7 @@ import { getProdidedAnswerDefaultDepreciated } from 'yourails_common'
 
 export const GET_ANSWERS_DEFAULT_DEPRECIATED: ReducerType = (
   store: RootStoreType,
-  data: any
+  data: any,
 ): RootStoreType => {
   const { courses } = store
   let coursesNext = getProdidedAnswerDefaultDepreciated(courses)

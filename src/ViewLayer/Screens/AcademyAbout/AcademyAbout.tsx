@@ -24,7 +24,7 @@ import {
              from '../Components/AcademyAbout/AcademyAbout'
  */
 const AcademyAboutComponent: AcademyAboutComponentType = (
-  props: AcademyAboutComponentPropsType
+  props: AcademyAboutComponentPropsType,
 ) => {
   const {
     classAdded,
@@ -77,7 +77,7 @@ const AcademyAboutComponent: AcademyAboutComponentType = (
 const storeStateSliceProps: string[] = ['language']
 const AcademyAbout = withStoreStateSelectedYrl(
   storeStateSliceProps,
-  React.memo(AcademyAboutComponent)
+  React.memo(AcademyAboutComponent),
 )
 
 export { AcademyAbout as default }

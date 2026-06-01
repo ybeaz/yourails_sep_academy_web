@@ -19,7 +19,7 @@ import { CHUNKS_FROM_TRANSCRIPT_STRING } from 'yourails_common'
 import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
 
 export function* getModule20TranscriptCreatedGenerator(
-  params: ActionReduxType | any
+  params: ActionReduxType | any,
 ): Iterable<any> {
   try {
     /* Add transcript to moduleCreateProgress */
@@ -31,7 +31,7 @@ export function* getModule20TranscriptCreatedGenerator(
       actionSync.SET_MODULE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['transcript'],
         status: CreateModuleStatusEnumType['pending'],
-      })
+      }),
     )
 
     let variables: MutationCreateYoutubeTranscriptArgs = {
@@ -56,14 +56,14 @@ export function* getModule20TranscriptCreatedGenerator(
         ...getHeadersAuthDict(),
         clientHttpType: selectGraphqlHttpClientFlag(),
         timeout: CONNECTIONS_TIMEOUTS[ConnectionsTimeoutNameEnumType.transcript],
-      }
+      },
     )
 
     yield put(
       actionSync.ADD_MODULE_CREATE_DATA({
         transcript: createYoutubeTranscript.transcript,
         transcriptList: createYoutubeTranscript.transcriptList,
-      })
+      }),
     )
 
     const params = {
@@ -77,21 +77,21 @@ export function* getModule20TranscriptCreatedGenerator(
     yield put(
       actionSync.ADD_MODULE_CREATE_DATA({
         transcriptChunks,
-      })
+      }),
     )
 
     yield put(
       actionSync.SET_MODULE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['transcript'],
         status: CreateModuleStatusEnumType['success'],
-      })
+      }),
     )
   } catch (error: any) {
     yield put(
       actionSync.SET_MODULE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['transcript'],
         status: CreateModuleStatusEnumType['failure'],
-      })
+      }),
     )
 
     console.info('getModule20TranscriptCreatedSaga [69] ERROR', `${error.name}: ${error.message}`)
@@ -103,12 +103,12 @@ export const getModule20TranscriptCreated = withDebounce(
     optionsDefault: { funcParent: 'getModule20TranscriptCreatedSaga' },
     resDefault: [],
   }),
-  500
+  500,
 )
 
 export default function* getModule20TranscriptCreatedSaga() {
   yield takeEvery(
     [actionAsync.GET_MODULE_TRANSCRIPT_CREATED.REQUEST().type],
-    getModule20TranscriptCreated
+    getModule20TranscriptCreated,
   )
 }

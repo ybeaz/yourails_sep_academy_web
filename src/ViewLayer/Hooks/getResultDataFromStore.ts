@@ -11,7 +11,7 @@ interface IGetResultDataFromStore {
  */
 export const getResultDataFromStore: Function = (
   courses: any[],
-  moduleIDActive: string
+  moduleIDActive: string,
 ): IGetResultDataFromStore => {
   const {
     courseActive: { capture: moduleCapture },

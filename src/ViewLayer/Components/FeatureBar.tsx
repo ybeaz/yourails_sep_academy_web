@@ -21,7 +21,7 @@ export type FeatureBarPropsType = {
 }
 
 export const FeatureBar: React.FunctionComponent<FeatureBarPropsType> = (
-  props: FeatureBarPropsType
+  props: FeatureBarPropsType,
 ): ReactElement => {
   const {
     number = 2.5,
@@ -49,7 +49,7 @@ export const FeatureBar: React.FunctionComponent<FeatureBarPropsType> = (
     total: number,
     IconMain: ReactElement,
     IconHalf: ReactElement,
-    IconRest: ReactElement
+    IconRest: ReactElement,
   ): ReactElement => {
     const icons = new Array(total).fill('true').map((item, index) => {
       let Icon: ReactElement = IconRest
@@ -73,11 +73,11 @@ export const FeatureBar: React.FunctionComponent<FeatureBarPropsType> = (
         </div>
       )
     })
-    return <div className='__group'>{icons}</div>
+    return <div className="__group">{icons}</div>
   }
 
   return (
-    <div className='FeatureBar'>
+    <div className="FeatureBar">
       <span className={`__tooltipText ${classTooltipAdd}`}>{tooltipText}</span>
       {getIcons(number, total, IconMain, IconHalf, IconRest)}
     </div>

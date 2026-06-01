@@ -41,7 +41,7 @@ function* sendEmailDocumentGenerator(params: ActionReduxType | any): Iterable<an
         ...getHeadersAuthDict(),
         clientHttpType: selectGraphqlHttpClientFlag(),
         timeout: 5000,
-      }
+      },
     )
   } catch (error: any) {
     console.info('readDocument [47] ERROR', `${error.name}: ${error.message}`)
@@ -52,7 +52,7 @@ function* sendEmailDocumentGenerator(params: ActionReduxType | any): Iterable<an
           isActive: false,
           childProps: {},
         },
-      ])
+      ]),
     )
   }
 }
@@ -62,7 +62,7 @@ export const sendEmailDocument = withDebounce(
     optionsDefault: { funcParent: 'sendEmailDocumentSaga' },
     resDefault: [],
   }),
-  500
+  500,
 )
 
 export default function* sendEmailDocumentSaga() {

@@ -3,7 +3,7 @@ import { ReducerType } from '../../Interfaces/ReducerType'
 
 export const SELECT_USER_COUNTRY: ReducerType = (
   store: RootStoreType,
-  data: any
+  data: any,
 ): RootStoreType => {
   const { forms } = store
   const { user } = forms

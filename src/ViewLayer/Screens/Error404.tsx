@@ -6,22 +6,22 @@ const Error404: React.FunctionComponent = (): ReactElement => {
   const screenType = ScreensEnumType['Error404']
 
   return (
-    <div className='Error404'>
-      <div className=''>
-        <div className=''>
-          <div className='error-template'>
+    <div className="Error404">
+      <div className="">
+        <div className="">
+          <div className="error-template">
             <h1>Oops!</h1>
             <h2>404 Not Found</h2>
-            <div className='error-details'>
+            <div className="error-details">
               Sorry, an error has occured, Requested page not found!
             </div>
-            <div className='error-actions'>
-              <a href='/' className='btn btn-primary btn-lg'>
-                <span className='glyphicon glyphicon-home' />
+            <div className="error-actions">
+              <a href="/" className="btn btn-primary btn-lg">
+                <span className="glyphicon glyphicon-home" />
                 Take Me Home
               </a>
-              <a href='/' className='btn btn-default btn-lg'>
-                <span className='glyphicon glyphicon-envelope' />
+              <a href="/" className="btn btn-default btn-lg">
+                <span className="glyphicon glyphicon-envelope" />
                 Contact Support
               </a>
             </div>

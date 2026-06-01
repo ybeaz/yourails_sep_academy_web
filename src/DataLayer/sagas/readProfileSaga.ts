@@ -36,7 +36,7 @@ export function* readProfileGenerator(params: GetBotResponseParamsType): Iterabl
       ...getHeadersAuthDict(),
       clientHttpType: selectGraphqlHttpClientFlag(),
       timeout: CONNECTIONS_TIMEOUTS['standard'],
-    }
+    },
   )
 
   yield put(actionSync.SET_PROFILES(readProfiles))
@@ -49,7 +49,7 @@ export const readProfile = withDebounce(
     optionsDefault: { funcParent: 'readProfileSaga' },
     resDefault: { nameFirst: null, nameMiddle: null, nameLast: null },
   }),
-  500
+  500,
 )
 
 export default function* readProfileSaga() {

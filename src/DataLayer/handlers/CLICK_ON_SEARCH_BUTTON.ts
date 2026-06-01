@@ -13,14 +13,14 @@ const getSetModules = (searchValue: string) => {
     actionSync.SET_PAGE_CURSOR({
       paginationName: PaginationNameEnumType['pageModules'],
       first: 1,
-    })
+    }),
   )
 
   dispatch(
     actionSync.SET_COMPONENTS_STATE({
       componentsStateProp: 'modulesSearchApplied',
       value: searchValue,
-    })
+    }),
   )
 
   const getSetUrlQueryBrowserApiParams: GetSetUrlQueryBrowserApiParamsType = {
@@ -35,14 +35,14 @@ const getSetModules = (searchValue: string) => {
 
 const getSetTags = (searchValue: string) => {
   dispatch(
-    actionSync.SET_PAGE_CURSOR({ paginationName: PaginationNameEnumType['pageTags'], first: 1 })
+    actionSync.SET_PAGE_CURSOR({ paginationName: PaginationNameEnumType['pageTags'], first: 1 }),
   )
 
   dispatch(
     actionSync.SET_COMPONENTS_STATE({
       componentsStateProp: 'tagsSearchApplied',
       value: searchValue,
-    })
+    }),
   )
 
   const getSetUrlQueryBrowserApiParams = {
@@ -60,14 +60,14 @@ const getSetDocuments = (searchValue: string) => {
     actionSync.SET_PAGE_CURSOR({
       paginationName: PaginationNameEnumType['pageDocuments'],
       first: 1,
-    })
+    }),
   )
 
   dispatch(
     actionSync.SET_COMPONENTS_STATE({
       componentsStateProp: 'documentsSearchApplied',
       value: searchValue,
-    })
+    }),
   )
 
   const getSetUrlQueryBrowserApiParams = {

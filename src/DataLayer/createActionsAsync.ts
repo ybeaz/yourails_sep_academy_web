@@ -24,9 +24,7 @@ export interface CreateAsyncAction {
 const createRequestTypes: Function = (base: string): CreateRequestTypes =>
   [REQUEST, SUCCESS, FAILURE].reduce((acc: any, type: string): any => {
     acc[type] = (data: any = undefined) => {
-      return data
-        ? { type: `${base}_${type}`, data }
-        : { type: `${base}_${type}` }
+      return data ? { type: `${base}_${type}`, data } : { type: `${base}_${type}` }
     }
     return acc
   }, {})
@@ -36,9 +34,7 @@ const createRequestTypes: Function = (base: string): CreateRequestTypes =>
  * @param actions
  * @returns
  */
-export const createAsyncAction: Function = (
-  actions: string[]
-): CreateAsyncAction => {
+export const createAsyncAction: Function = (actions: string[]): CreateAsyncAction => {
   return actions.reduce((actionsAsync, currentAction) => {
     const currentActionNext = {
       [currentAction]: createRequestTypes(currentAction),
@@ -53,10 +49,7 @@ export const createAsyncAction: Function = (
  * @returns object of the kind {REQUEST: "ADD_DOCUMENT_REQUEST", SUCCESS: "ADD_DOCUMENT_SUCCESS", FAILURE: "ADD_DOCUMENT_FAILURE"}
  */
 export const createRequestTypesLegacy = (base: string) =>
-  [REQUEST, SUCCESS, FAILURE].reduce(
-    (acc: Record<string, any>, type: string) => {
-      acc[type] = `${base}_${type}`
-      return acc
-    },
-    {}
-  )
+  [REQUEST, SUCCESS, FAILURE].reduce((acc: Record<string, any>, type: string) => {
+    acc[type] = `${base}_${type}`
+    return acc
+  }, {})

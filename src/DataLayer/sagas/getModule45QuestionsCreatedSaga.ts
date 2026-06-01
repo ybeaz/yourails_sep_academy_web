@@ -10,7 +10,7 @@ import { getBotResponse, GetBotResponseParamsType } from './getBotResponseSaga'
 import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
 
 export function* getModule45QuestionsCreatedGenerator(
-  params: ActionReduxType | any
+  params: ActionReduxType | any,
 ): Iterable<any> {
   try {
     const { summary, summaryChunks }: any = yield select((state: RootStoreType) => {
@@ -26,14 +26,14 @@ export function* getModule45QuestionsCreatedGenerator(
         timeCalculated: Array.isArray(summary)
           ? summaryChunks.length * CONNECTIONS_TIMEOUTS.summaryChunkToQuestions
           : null,
-      })
+      }),
     )
 
     yield put(
       actionSync.SET_MODULE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['questions'],
         status: CreateModuleStatusEnumType['pending'],
-      })
+      }),
     )
 
     let questions: any[] = []
@@ -45,7 +45,7 @@ export function* getModule45QuestionsCreatedGenerator(
         const paramString = JSON.stringify(summaryChunk)
         if (paramPrev !== '' && paramPrev === paramString) {
           throw new Error(
-            `getCourse35SummaryCreatedSaga [57] connection ${CreateModuleStagesEnumType['questions']} is timed out`
+            `getCourse35SummaryCreatedSaga [57] connection ${CreateModuleStagesEnumType['questions']} is timed out`,
           )
         }
       }, CONNECTIONS_TIMEOUTS[ConnectionsTimeoutNameEnumType['summaryChunkToQuestions']] + 1500)
@@ -66,8 +66,8 @@ export function* getModule45QuestionsCreatedGenerator(
       if (!Array.isArray(questionsChunk) || questionsChunk.length === 0)
         throw new Error(
           `getModule45QuestionsCreatedSaga [73] questionsChunk is not an array or array empty, ${JSON.stringify(
-            questionsChunk
-          )}`
+            questionsChunk,
+          )}`,
         )
 
       questions = [...questions, ...questionsChunk.flat(12)]
@@ -82,27 +82,27 @@ export function* getModule45QuestionsCreatedGenerator(
     yield put(
       actionSync.ADD_MODULE_CREATE_DATA({
         questions,
-      })
+      }),
     )
 
     yield put(
       actionSync.ADD_MODULE_CREATE_DATA({
         questionsChunks,
-      })
+      }),
     )
 
     yield put(
       actionSync.SET_MODULE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['questions'],
         status: CreateModuleStatusEnumType['success'],
-      })
+      }),
     )
   } catch (error: any) {
     yield put(
       actionSync.SET_MODULE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['questions'],
         status: CreateModuleStatusEnumType['failure'],
-      })
+      }),
     )
 
     console.info('getModule45QuestionsCreatedSaga  [110] ERROR', `${error.name}: ${error.message}`)
@@ -114,12 +114,12 @@ export const getModule45QuestionsCreated = withDebounce(
     optionsDefault: { funcParent: 'getModule45QuestionsCreatedSaga' },
     resDefault: [],
   }),
-  500
+  500,
 )
 
 export default function* getModule45QuestionsCreatedSaga() {
   yield takeEvery(
     [actionAsync.GET_MODULE_QUESTIONS_CREATED.REQUEST().type],
-    getModule45QuestionsCreated
+    getModule45QuestionsCreated,
   )
 }

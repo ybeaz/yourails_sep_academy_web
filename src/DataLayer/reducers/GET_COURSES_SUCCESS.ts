@@ -3,7 +3,7 @@ import { ReducerType } from '../../Interfaces/ReducerType'
 
 export const GET_COURSES_SUCCESS: ReducerType = (
   store: RootStoreType,
-  data: any
+  data: any,
 ): RootStoreType => {
   const { isLoaded } = store
   const isLoadedNext = { ...isLoaded, isLoadedCourses: true }

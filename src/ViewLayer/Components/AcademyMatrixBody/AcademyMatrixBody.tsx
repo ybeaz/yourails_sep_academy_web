@@ -23,7 +23,7 @@ import {
              from '../Components/AcademyMatrixBody/AcademyMatrixBody'
  */
 const AcademyMatrixBodyComponent: AcademyMatrixBodyComponentType = (
-  props: AcademyMatrixBodyComponentPropsType
+  props: AcademyMatrixBodyComponentPropsType,
 ) => {
   const {
     classAdded,
@@ -44,21 +44,21 @@ const AcademyMatrixBodyComponent: AcademyMatrixBodyComponentType = (
 
   return (
     <div className={getClasses('AcademyMatrixBody', classAdded)}>
-      <div className='_tagsCloudBodyWrapper'>
+      <div className="_tagsCloudBodyWrapper">
         <Collapse
-          className='_collapse'
-          collapsible='icon'
+          className="_collapse"
+          collapsible="icon"
           defaultActiveKey={[isMobile() ? '0' : '1']}
           items={[
             {
               key: '1',
-              label: <h2 className='_h2'>{DICTIONARY.Tags[language]}</h2>,
+              label: <h2 className="_h2">{DICTIONARY.Tags[language]}</h2>,
               children: <TagsCloudBody {...propsOut.tagsCloudBodyProps} />,
             },
           ]}
         />
       </div>
-      <div className='_modulesBodyWrapper'>
+      <div className="_modulesBodyWrapper">
         <ModulesBody {...propsOut.modulesBodyProps} />
       </div>
     </div>

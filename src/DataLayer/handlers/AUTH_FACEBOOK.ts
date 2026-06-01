@@ -27,6 +27,6 @@ export const AUTH_FACEBOOK: ActionEventType = (event, data) => {
       picture,
       userIdExternal,
       userName,
-    })
+    }),
   )
 }

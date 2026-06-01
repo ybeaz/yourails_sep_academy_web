@@ -41,41 +41,41 @@ export const HowItWorksSepComponent: React.FunctionComponent<HowItWorksSepPropsT
   }
 
   return (
-    <div className='HowItWorksSep'>
-      <div className='__textBlock'>
-        <div className='_row'>
-          <div className='_col _flex_1'>
-            <div className='_capturesImage'>
-              <div className='_text'>
+    <div className="HowItWorksSep">
+      <div className="__textBlock">
+        <div className="_row">
+          <div className="_col _flex_1">
+            <div className="_capturesImage">
+              <div className="_text">
                 {DICTIONARY['Select'][language]} {DICTIONARY['topic'][language]}
                 {', '}
                 {DICTIONARY['clarify_the_question'][language]}
               </div>
-              <div className='_text'>{DICTIONARY['Receive_users_by_topic'][language]}</div>
+              <div className="_text">{DICTIONARY['Receive_users_by_topic'][language]}</div>
             </div>
 
-            <div className='_images'>
-              <div className='_image'>
+            <div className="_images">
+              <div className="_image">
                 <ImageYrl {...propsOut.illustration_5_1_1} />
               </div>
-              <div className='_image'>
+              <div className="_image">
                 <ImageYrl {...propsOut.illustration_5_2_1} />
               </div>
             </div>
           </div>
 
-          <div className='_col _flex_1'>
-            <div className='_capturesImage'>
-              <div className='_text'>
+          <div className="_col _flex_1">
+            <div className="_capturesImage">
+              <div className="_text">
                 {DICTIONARY['Choose'][language]} {DICTIONARY['person'][language]}
               </div>
-              <div className='_text'>{DICTIONARY['Say_hello_and_hear_new_things'][language]}</div>
+              <div className="_text">{DICTIONARY['Say_hello_and_hear_new_things'][language]}</div>
             </div>
-            <div className='_images'>
-              <div className='_image'>
+            <div className="_images">
+              <div className="_image">
                 <ImageYrl {...propsOut.illustration_5_3_1} />
               </div>
-              <div className='_image'>
+              <div className="_image">
                 <ImageYrl {...propsOut.illustration_5_4_1} />
               </div>
             </div>

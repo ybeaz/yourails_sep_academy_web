@@ -40,22 +40,22 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
     .LogoGroup,
     .AbInCircle,
     .Button_MdClose ._in {
-      color: ${props2 => getColor(props2, 'colorFirst', medial, middle)};
+      color: ${(props2) => getColor(props2, 'colorFirst', medial, middle)};
     }
 
     .LogoGroup_StubForUserResearch .__div,
     .LogoGroup_StubForUserResearch .__div ._img,
     .LogoGroup_SkillsExchangeMatrix .__div,
     .LogoGroup_SkillsExchangeMatrix .__div ._img {
-      background-color: ${props2 => getColor(props2, 'colorFirst', medial, middle)};
+      background-color: ${(props2) => getColor(props2, 'colorFirst', medial, middle)};
     }
 
     .SearchFormSep .__searchForm ._row ._linkAdvacedSearch {
-      color: ${props2 => getColor(props2, 'colorActive', opaciter2, middle, 'Light')};
+      color: ${(props2) => getColor(props2, 'colorActive', opaciter2, middle, 'Light')};
     }
 
     .SelectLanguage__AppLanguage {
-      background: ${props2 => getColor(props2, 'colorSecond', medial, middle, 'Light')};
+      background: ${(props2) => getColor(props2, 'colorSecond', medial, middle, 'Light')};
     }
 
     .SelectLanguage .ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
@@ -68,17 +68,17 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
       }};}
 
     .SearchFormSep .__titleScreen {
-      color: ${props2 => getColor(props2, 'colorFirst', medial, middle)};
-      background: ${props2 => getColor(props2, 'colorSecond', medial, middle)};
+      color: ${(props2) => getColor(props2, 'colorFirst', medial, middle)};
+      background: ${(props2) => getColor(props2, 'colorSecond', medial, middle)};
     }
 
     .SearchFormSep .__searchForm ._row ._selectElement {
-      background-color: ${props2 => getColor(props2, 'colorSecond', 1, middle, 'Light')};
+      background-color: ${(props2) => getColor(props2, 'colorSecond', 1, middle, 'Light')};
     }
 
     .SearchFormSep .__searchForm ._row ._selectElement ._range {
-      color: ${props2 => getColor(props2, 'colorFirst', medial, middle)};
-      background: ${props2 => getColor(props2, 'colorSecond', medial, middle)};
+      color: ${(props2) => getColor(props2, 'colorFirst', medial, middle)};
+      background: ${(props2) => getColor(props2, 'colorSecond', medial, middle)};
     }
 
     .AcademyMatrixBody > div._tagsCloudBodyWrapper > div > div > div.ant-collapse-content.ant-collapse-content-active,
@@ -87,62 +87,62 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
     }
 
     .SkillExchangeIntro ._statistics {
-      color: ${props2 => getColor(props2, 'colorActive', medial, middle)};
+      color: ${(props2) => getColor(props2, 'colorActive', medial, middle)};
     }
 
     .Select .__selectTag {
-      border: solid 1px ${props2 => getColor(props2, 'colorSecond', medial, middle, 'Dark')};
+      border: solid 1px ${(props2) => getColor(props2, 'colorSecond', medial, middle, 'Dark')};
     }
 
     .Select .__Ok {
-      background: ${props2 => getColor(props2, 'colorActive', medial, middle)};
+      background: ${(props2) => getColor(props2, 'colorActive', medial, middle)};
     }
 
     .LoaderBlurhash .__text {
-      color: ${props2 => getColor(props2, 'colorActive', medial, middle)};
+      color: ${(props2) => getColor(props2, 'colorActive', medial, middle)};
     }
 
     .FeatureBar .__tooltipText {
-      background: ${props2 => getColor(props2, 'colorSecondLighter2', lighter2)};
-      color: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
+      background: ${(props2) => getColor(props2, 'colorSecondLighter2', lighter2)};
+      color: ${(props2) => getColor(props2, 'colorFirstDarker', medial, darker)};
     }
 
     .SuccessTried .__tooltipText {
-      background: ${props2 => getColor(props2, 'colorSecondLighter2', lighter2)};
-      color: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
+      background: ${(props2) => getColor(props2, 'colorSecondLighter2', lighter2)};
+      color: ${(props2) => getColor(props2, 'colorFirstDarker', medial, darker)};
     }
 
     .LoaderOverlayYrl .LoaderOverlay__spinner {
-      border: 16px solid ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
-      border-top: 16px solid ${props2 => getColor(props2, 'colorActive', medial, middle)};
+      border: 16px solid ${(props2) => getColor(props2, 'colorFirstDarker', medial, darker)};
+      border-top: 16px solid ${(props2) => getColor(props2, 'colorActive', medial, middle)};
     }
 
     .InputYrl .__input {
-      color: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
-      background-color: ${props2 => getColor(props2, 'colorSecondDarker', medial, darker)};
+      color: ${(props2) => getColor(props2, 'colorFirstDarker', medial, darker)};
+      background-color: ${(props2) => getColor(props2, 'colorSecondDarker', medial, darker)};
     }
 
     .InputYrl .__input:active,
     .InputYrl .__input:focus {
-      color: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
-      border-color: ${props2 => getColor(props2, 'colorActive', medial, middle)};
+      color: ${(props2) => getColor(props2, 'colorFirstDarker', medial, darker)};
+      border-color: ${(props2) => getColor(props2, 'colorActive', medial, middle)};
     }
 
     .Input_ProfileBody_avatar .__input,
     .Input_ProfileBody_avatar .__input:active,
     .Input_ProfileBody_avatar .__input:focus {
-      color: ${props2 => 'transparent'};
-      border: ${props2 => 'none'};
-      border-color: ${props2 => 'none'};
+      color: ${(props2) => 'transparent'};
+      border: ${(props2) => 'none'};
+      border-color: ${(props2) => 'none'};
     }
 
     .Input_userInfoAbout .__input,
     .Input_nameFirst .__input,
     .Input_ageFromToRequired .__input, 
     .Input_descriptionRequired .__input  {
-      color: ${props2 => getColor(props2, 'colorFirst', medial, lighter)};
-      background-color: ${props2 => getColor(props2, 'colorSecond', lighter, medial, 'Light')};
-      border-color: ${props2 => {
+      color: ${(props2) => getColor(props2, 'colorFirst', medial, lighter)};
+      background-color: ${(props2) => getColor(props2, 'colorSecond', lighter, medial, 'Light')};
+      border-color: ${(props2) => {
         const DICTIONARY_STYLES: Record<string, any> = {
           Dark: getColor(props2, 'colorFirst', medial, lighter4, 'Dark'),
           Light: getColor(props2, 'colorGrey', opaciter4, middle, 'Light'),
@@ -153,22 +153,22 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
 
     .Input_ageFromToRequired .__input:active,
     .Input_ageFromToRequired .__input:focus {
-      color: ${props2 => getColor(props2, 'colorFirst', medial, lighter4)};
-      background: ${props2 => getColor(props2, 'colorSecond', lighter, medial, 'Light')};
-      border-color: ${props2 => getColor(props2, 'colorActive', medial, middle, 'Dark')};
+      color: ${(props2) => getColor(props2, 'colorFirst', medial, lighter4)};
+      background: ${(props2) => getColor(props2, 'colorSecond', lighter, medial, 'Light')};
+      border-color: ${(props2) => getColor(props2, 'colorActive', medial, middle, 'Dark')};
     }
 
     .Input_ageFromToRequired .__input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-      color: ${props2 => getColor(props2, 'colorFirst', medial, darker4, 'Dark')};
+      color: ${(props2) => getColor(props2, 'colorFirst', medial, darker4, 'Dark')};
       opacity: 1; /* Firefox */
     }
     
     .Input_ageFromToRequired .__input:-ms-input-placeholder { /* Internet Explorer 10-11 */
-      color: ${props2 => getColor(props2, 'colorFirst', medial, darker4, 'Dark')};
+      color: ${(props2) => getColor(props2, 'colorFirst', medial, darker4, 'Dark')};
     }
     
     .Input_ageFromToRequired .__input::-ms-input-placeholder { /* Microsoft Edge */
-      color: ${props2 => getColor(props2, 'colorFirst', medial, darker4, 'Dark')};
+      color: ${(props2) => getColor(props2, 'colorFirst', medial, darker4, 'Dark')};
     }
 
     .Input_userInfoAbout .__input:active,
@@ -176,55 +176,55 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
     .Input_nameFirst .__input:focus,
     .Input_descriptionRequired .__input:active,
     .Input_descriptionRequired .__input:focus {
-      color: ${props2 => getColor(props2, 'colorFirst', medial, lighter4)};
-      background: ${props2 => getColor(props2, 'colorSecond', medial, lighter, 'Light')};
-      border-color: ${props2 => getColor(props2, 'colorActive', medial, middle, 'Dark')};
+      color: ${(props2) => getColor(props2, 'colorFirst', medial, lighter4)};
+      background: ${(props2) => getColor(props2, 'colorSecond', medial, lighter, 'Light')};
+      border-color: ${(props2) => getColor(props2, 'colorActive', medial, middle, 'Dark')};
     }
 
     .Input_userInfoAbout .__input::placeholder,
     .Input_nameFirst .__input::placeholder,
     .Input_descriptionRequired .__input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-      color: ${props2 => getColor(props2, 'colorFirst', medial, darker4, 'Dark')};
+      color: ${(props2) => getColor(props2, 'colorFirst', medial, darker4, 'Dark')};
       opacity: 1; /* Firefox */
     }
     
     .Input_userInfoAbout .__input:-ms-input-placeholder,
     .Input_nameFirst .__input:-ms-input-placeholder,
     .Input_descriptionRequired .__input:-ms-input-placeholder { /* Internet Explorer 10-11 */
-      color: ${props2 => getColor(props2, 'colorFirst', medial, darker4, 'Dark')};
+      color: ${(props2) => getColor(props2, 'colorFirst', medial, darker4, 'Dark')};
     }
     
     .Input_userInfoAbout .__input::-ms-input-placeholder,
     .Input_nameFirst .__input::-ms-input-placeholder,
     .Input_descriptionRequired .__input::-ms-input-placeholder { /* Microsoft Edge */
-      color: ${props2 => getColor(props2, 'colorFirst', medial, darker4, 'Dark')};
+      color: ${(props2) => getColor(props2, 'colorFirst', medial, darker4, 'Dark')};
     }
 
     .Input_passwordAuth .__input,
     .Input_usernameAuth .__input {
-      background: ${props2 => getColor(props2, 'colorFirst', medial, middle, 'Dark')};
+      background: ${(props2) => getColor(props2, 'colorFirst', medial, middle, 'Dark')};
     }
 
     .Input_search .__input {
-      border-color: ${props2 => getColor(props2, 'colorSecond', medial, middle, 'Dark')};
+      border-color: ${(props2) => getColor(props2, 'colorSecond', medial, middle, 'Dark')};
     }
 
     .SideNavigation .__content {
-      background-color: ${props2 => getColor(props2, 'colorSecond', medial, middle)};
+      background-color: ${(props2) => getColor(props2, 'colorSecond', medial, middle)};
     }
 
     .ButtonYrl .__button:active,
     .ButtonYrl .__button:focus {
-      color: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
-      border-color: ${props2 => getColor(props2, 'colorActive', medial, middle)};
+      color: ${(props2) => getColor(props2, 'colorFirstDarker', medial, darker)};
+      border-color: ${(props2) => getColor(props2, 'colorActive', medial, middle)};
     }
     .ButtonYrl ._in {
-      color: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
+      color: ${(props2) => getColor(props2, 'colorFirstDarker', medial, darker)};
     }
 
     .ButtonYrl .__tooltipText {
-      background: ${props2 => getColor(props2, 'colorSecondLighter2', medial, lighter2)};
-      color: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
+      background: ${(props2) => getColor(props2, 'colorSecondLighter2', medial, lighter2)};
+      color: ${(props2) => getColor(props2, 'colorFirstDarker', medial, darker)};
     }
 
 
@@ -259,11 +259,11 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
     .Button_startModule .__button,
     .Button_BackToTop .__button,
     .Button_searchSepActive .__button {
-      background-color: ${props2 => getColor(props2, 'colorActive', medial, middle)};
+      background-color: ${(props2) => getColor(props2, 'colorActive', medial, middle)};
     }
 
     .Button_SignUp .__button {
-      background-color: ${props2 => getColor(props2, 'colorGrey', medial, middle)};
+      background-color: ${(props2) => getColor(props2, 'colorGrey', medial, middle)};
     }
 
     .TextToSpeechYrl ._textToSpeechYrlbuttonsWrapper .__button ._in,
@@ -310,7 +310,7 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
     .Button_AuthGoogle ._in,
     .Button_AuthVkontakte ._in,
     .Button_AuthFacebook ._in {
-      color: ${props2 => getColor(props2, 'colorFirst', medial, middle, 'Dark')};
+      color: ${(props2) => getColor(props2, 'colorFirst', medial, middle, 'Dark')};
     }
 
     .Button_AuthGoogle .__button {
@@ -327,33 +327,33 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
 
     .Button_YesConfirm,
     .Button_downLeft .__button {
-      background-color: ${props2 => getColor(props2, 'colorSecondLighter3', medial, lighter3, 'Dark')};
+      background-color: ${(props2) => getColor(props2, 'colorSecondLighter3', medial, lighter3, 'Dark')};
     }
 
     .Button_MdBlock .__button {
-      background-color: ${props2 => getColor(props2, 'colorSecondLighter2', medial, lighter2)};
+      background-color: ${(props2) => getColor(props2, 'colorSecondLighter2', medial, lighter2)};
     }
 
     .Button_MdBlock ._in {
-      color: ${props2 => getColor(props2, 'colorSecondLighter4', medial, lighter4)};
+      color: ${(props2) => getColor(props2, 'colorSecondLighter4', medial, lighter4)};
     }
 
     .Button_MdClose .__button {
-      background-color: ${props2 => getColor(props2, 'colorSecond', medial, lighter4)};
+      background-color: ${(props2) => getColor(props2, 'colorSecond', medial, lighter4)};
     }
 
     .Button_sideMenuItems .__button {
-      background-color: ${props2 => getColor(props2, 'colorSecond', medial, middle)};
+      background-color: ${(props2) => getColor(props2, 'colorSecond', medial, middle)};
     }
 
     .Button_sideMenuItems ._in {
-      color: ${props2 => getColor(props2, 'colorFirst', medial, darker)};
-      background-color: ${props2 => getColor(props2, 'colorSecond', medial, middle)};
+      color: ${(props2) => getColor(props2, 'colorFirst', medial, darker)};
+      background-color: ${(props2) => getColor(props2, 'colorSecond', medial, middle)};
     }
 
     .IconLabelWithClose {
-      color:  ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
-      background-color: ${props2 => getColor(props2, 'colorActive', medial, middle)};
+      color:  ${(props2) => getColor(props2, 'colorFirstDarker', medial, darker)};
+      background-color: ${(props2) => getColor(props2, 'colorActive', medial, middle)};
     }
 
     .Button_SiGoogleplay .__button,
@@ -361,7 +361,7 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
     .Button_MdMenu .__button,
     .Button_AddCourse .__button,
     .Button_ThemeToggle .__button {
-      background-color: ${props2 => {
+      background-color: ${(props2) => {
         const DICTIONARY_STYLES: Record<string, any> = {
           Dark: getColor(props2, 'colorSecond', medial, middle),
           Light: 'rgb(245, 246, 250)',
@@ -379,60 +379,60 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
     .Button_AddCourse ._in,
     .Button_authHeader ._in,
     .Button_ThemeToggle ._in {
-      color: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
+      color: ${(props2) => getColor(props2, 'colorFirstDarker', medial, darker)};
     }
 
     .Button_authSideMenu_authorized .__button ._in ._icon,
     .Button_authHeader_authorized .__button ._in ._icon {
-      color: ${props2 => getColor(props2, 'colorActive', medial, middle)};
+      color: ${(props2) => getColor(props2, 'colorActive', medial, middle)};
     }
 
     .Button_MdPerson .__button {
-      background-color: ${props2 => getColor(props2, 'colorSecond', medial, middle)};
+      background-color: ${(props2) => getColor(props2, 'colorSecond', medial, middle)};
     }
 
     .Button_MdPerson ._in {
-      color: ${props2 => getColor(props2, 'colorSecondLighter4', medial, lighter4)};
+      color: ${(props2) => getColor(props2, 'colorSecondLighter4', medial, lighter4)};
     }
 
     .Button_DeactivateDocument ._in,
     .Button_CourseCreateSubmit ._in,
     .Button_MdSearch ._in {
-      color: ${props2 => getColor(props2, 'colorFirstLighter', medial, lighter)};
+      color: ${(props2) => getColor(props2, 'colorFirstLighter', medial, lighter)};
     }
 
     .Button_authSideMenu ._in,
     .Button_authHeader ._in,
     .Button_Avatar ._in {
-      color: ${props2 => getColor(props2, 'colorGrey', opaciter2, lighter4)};
+      color: ${(props2) => getColor(props2, 'colorGrey', opaciter2, lighter4)};
     }
 
     .ButtonYrl.Button_authSideMenu .__button ._in ._capture_right {
-      color: ${props2 => getColor(props2, 'colorSecond', medial, middle, 'Dark')};
+      color: ${(props2) => getColor(props2, 'colorSecond', medial, middle, 'Dark')};
     }
 
     .Button_searchSepPassive .__button {
-      background-color: ${props2 => getColor(props2, 'colorGrey', opaciter2, middle)};
+      background-color: ${(props2) => getColor(props2, 'colorGrey', opaciter2, middle)};
     }
 
     .Button_ForgetPassword .__button {
-      background-color: ${props2 => getColor(props2, 'colorGrey', medial, middle)};
+      background-color: ${(props2) => getColor(props2, 'colorGrey', medial, middle)};
     }
 
     .IconYrl_authUserHeader ._icon {
-      color: ${props2 => getColor(props2, 'colorGrey', opaciter2, lighter4)};
+      color: ${(props2) => getColor(props2, 'colorGrey', opaciter2, lighter4)};
     }
 
     .IconYrl_authUserHeaderActive ._icon {
-      color: ${props2 => getColor(props2, 'colorActive', medial, middle)};
+      color: ${(props2) => getColor(props2, 'colorActive', medial, middle)};
     }
 
     .ModalFrames {
-      background-color: ${props2 => getColor(props2, 'colorGrey', medial, middle)};
+      background-color: ${(props2) => getColor(props2, 'colorGrey', medial, middle)};
     }
 
     .ModalFrames .__content {
-      background-color: ${props2 => {
+      background-color: ${(props2) => {
         const DICTIONARY_STYLES: Record<string, any> = {
           Dark: getColor(props2, 'colorSecond', middle, lighter4),
           Light: getColor(props2, 'colorSecond', medial, middle),
@@ -442,7 +442,7 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
       }};}
 
     .AuthUser .form, .AuthUser .bottomContainer {
-      background: ${props2 => {
+      background: ${(props2) => {
         const DICTIONARY_STYLES: Record<string, any> = {
           Dark: getColor(props2, 'colorGrey', medial, middle),
           Light: getColor(props2, 'colorSecond', medial, middle),
@@ -451,20 +451,20 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
       }};}
     
     .AuthUser .header2 {
-      color: ${props2 => getColor(props2, 'colorFirst', medial, darker)};
+      color: ${(props2) => getColor(props2, 'colorFirst', medial, darker)};
     }
 
     .AuthUser .vl-innertext {
-      background: ${props2 => getColor(props2, 'colorGrey', medial, middle)};
+      background: ${(props2) => getColor(props2, 'colorGrey', medial, middle)};
     }
 
     .CheckRadioGroup ._capture {
-      color: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
+      color: ${(props2) => getColor(props2, 'colorFirstDarker', medial, darker)};
     }
 
     .CheckRadioGroup .checkmark {
-      background-color: ${props2 => getColor(props2, 'colorSecond', medial, middle)};
-      border: solid 1.5px ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
+      background-color: ${(props2) => getColor(props2, 'colorSecond', medial, middle)};
+      border: solid 1.5px ${(props2) => getColor(props2, 'colorFirstDarker', medial, darker)};
     }
 
     .TextToSpeechYrl ._textToSpeechYrlbuttonsWrapper .__button,
@@ -473,25 +473,25 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
     .TooltipImageContent._contentPlate_tooltipIsCompleted div._cycle,
     .TooltipImageContent._contentPlate_tooltipTags div._cycle,
     .CheckRadioGroup input:checked ~ .checkmark {
-      background-color: ${props2 => getColor(props2, 'colorActive', medial, middle)};
+      background-color: ${(props2) => getColor(props2, 'colorActive', medial, middle)};
     }
       
     .Icon_isCompleted ._icon {
-      color: ${props2 => getColor(props2, 'colorFirst', medial, middle, 'Green')};
+      color: ${(props2) => getColor(props2, 'colorFirst', medial, middle, 'Green')};
     }
 
 
     .TooltipImageContent._playerPanel_tooltipIsCompleted div._cycle,
     .TooltipImageContent._contentPlate_tooltipIsCompleted div._cycle {
-      background-color: ${props2 => getColor(props2, 'colorFirst', medial, middle)};
+      background-color: ${(props2) => getColor(props2, 'colorFirst', medial, middle)};
     }
 
     .RadioButton .checkmark:after {
-      background: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker, 'Dark')};
+      background: ${(props2) => getColor(props2, 'colorFirstDarker', medial, darker, 'Dark')};
     }
 
     .HeaderFrame {
-      background-color: ${props2 => {
+      background-color: ${(props2) => {
         const DICTIONARY_STYLES: Record<string, any> = {
           Dark: getColor(props2, 'colorSecond', medial, middle),
           Light: 'rgb(245, 246, 250)',
@@ -501,24 +501,24 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
       }};}
 
     .CertificateFrameA {
-      color: ${props2 => getColor(props2, 'colorSecond', medial, middle)};
-      background: ${props2 => getColor(props2, 'colorFirst', medial, lighter4)};
+      color: ${(props2) => getColor(props2, 'colorSecond', medial, middle)};
+      background: ${(props2) => getColor(props2, 'colorFirst', medial, lighter4)};
     }
 
     .Certificate2,
     .Certificate,
     .MainFrame {
-      color: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
-      background: ${props2 => getColor(props2, 'colorSecond', medial, middle)};
+      color: ${(props2) => getColor(props2, 'colorFirstDarker', medial, darker)};
+      background: ${(props2) => getColor(props2, 'colorSecond', medial, middle)};
     }
 
 
     @media print {
       #root {
-        background-color: ${props2 => getColor(props2, 'colorFirst', medial, lighter4)};
+        background-color: ${(props2) => getColor(props2, 'colorFirst', medial, lighter4)};
         .Certificate2,
         .Certificate {
-          background-color: ${props2 => getColor(props2, 'colorFirst', medial, lighter4)};
+          background-color: ${(props2) => getColor(props2, 'colorFirst', medial, lighter4)};
         }
       }
     }

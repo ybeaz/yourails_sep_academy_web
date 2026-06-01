@@ -27,7 +27,7 @@ import {
              from '../Components/CarouselQuestions/CarouselQuestions'
  */
 const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
-  props: CarouselQuestionsComponentPropsType
+  props: CarouselQuestionsComponentPropsType,
 ) => {
   const {
     storeStateSlice: {
@@ -51,7 +51,7 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
       moduleID: moduleIDActive || '',
       modules,
     },
-    { parentFunction: 'CarouselQuestionsComponent' }
+    { parentFunction: 'CarouselQuestionsComponent' },
   )
 
   const questionsChunked = getChunkedArray(questionsActive, numberQuestionsInSlide)
@@ -66,11 +66,11 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
       )
     })
 
-    return <div className='__dots'>{dotsJSX}</div>
+    return <div className="__dots">{dotsJSX}</div>
   }
 
   const getSlidesChunk: Function = (questions: any[]): ReactElement[] => {
-    return questions.map(question => {
+    return questions.map((question) => {
       const { questionID } = question
 
       const propsOut: {
@@ -104,7 +104,7 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
       )
     })
 
-    return <div className='__slideshow'>{questionsJSX}</div>
+    return <div className="__slideshow">{questionsJSX}</div>
   }
 
   const {
@@ -119,7 +119,7 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
     questionsChunked.length,
     questionsActive,
     questionsChunked,
-    isModuleStarted
+    isModuleStarted,
   )
 
   const CertificateDash = DICTIONARY['Certificate'][language]
@@ -203,26 +203,26 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
     <div
       className={getClasses('CarouselQuestions', [buttonsClassString])}
       itemScope
-      itemType='https://schema.org/Collection'
+      itemType="https://schema.org/Collection"
     >
-      <meta itemProp='identifier' content={moduleID} />
-      <meta itemProp='headline' content={`QA: ${capture}`} />
+      <meta itemProp="identifier" content={moduleID} />
+      <meta itemProp="headline" content={`QA: ${capture}`} />
       {questionsActive.length && !isMobile() ? getDots(questionsChunked) : null}
       {isModuleStarted && getSlides(questionsChunked)}
       <div className={`__buttons`}>
-        <div className='_backward'>
+        <div className="_backward">
           <ButtonYrl {...propsOut.buttonSlideBackwardProps} />
         </div>
-        <div className='_forward'>
+        <div className="_forward">
           <ButtonYrl {...propsOut.buttonSlideForwardProps} />
         </div>
-        <div className='_toCertificate'>
+        <div className="_toCertificate">
           <ButtonYrl {...propsOut.buttonToCertificateProps} />
         </div>
-        <div className='_downLeft'>
+        <div className="_downLeft">
           <ButtonYrl {...propsOut.buttonBlockProps} />
         </div>
-        <div className='_startModule'>
+        <div className="_startModule">
           <ButtonYrl {...propsOut.buttonStartProps} />
         </div>
       </div>

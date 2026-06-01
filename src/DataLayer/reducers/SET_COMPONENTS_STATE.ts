@@ -4,7 +4,7 @@ import { getSetUrlQueryBrowserApi, GetSetUrlQueryBrowserApiParamsType } from 'yo
 
 export const SET_COMPONENTS_STATE: ReducerType = (
   store: RootStoreType,
-  data: any
+  data: any,
 ): RootStoreType => {
   const { componentsStateProp, value } = data
   const { componentsState } = store

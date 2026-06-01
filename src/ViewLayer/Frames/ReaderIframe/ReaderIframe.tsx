@@ -30,13 +30,13 @@ const ReaderIframeComponent: ReaderIframeComponentType = (props: ReaderIframePro
         {isIframe && (
           <iframe
             ref={iFrameRef}
-            className='_reader'
+            className="_reader"
             src={`${contentID}`}
-            loading='lazy'
-            width='640'
-            height='340'
-            frameBorder='0'
-            onLoad={event => {
+            loading="lazy"
+            width="640"
+            height="340"
+            frameBorder="0"
+            onLoad={(event) => {
               handleEvents(event, {
                 typeEvent: 'TOGGLE_MEDIA_LOADED',
                 data: { mediaKey: moduleID, isMediaLoaded: true },
@@ -46,14 +46,14 @@ const ReaderIframeComponent: ReaderIframeComponentType = (props: ReaderIframePro
         )}
         {children[1]}
       </div>
-      <div className='_panel'>{children[2]}</div>
+      <div className="_panel">{children[2]}</div>
     </div>
   )
 }
 
 export const ReaderIframe: ReaderIframeType = withConditionalWrapperYrl(
   (props: any) => (props?.isNoSeoIndexing === undefined ? true : !!props.isNoSeoIndexing),
-  NoSeoIndexingYrl
+  NoSeoIndexingYrl,
 )(React.memo(ReaderIframeComponent))
 
 export type {

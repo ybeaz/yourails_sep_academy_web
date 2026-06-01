@@ -112,7 +112,7 @@ export function* readModulesConnectionGenerator(params: ActionReduxType | any): 
       ...getHeadersAuthDict(),
       clientHttpType: selectGraphqlHttpClientFlag(),
       timeout: 10000,
-    }
+    },
   )
 
   let modulesNext: any = getChainedResponsibility(readModulesConnection)
@@ -138,7 +138,7 @@ export function* readModulesConnectionGenerator(params: ActionReduxType | any): 
     actionSync.SET_PAGE_INFO({
       paginationName: PaginationNameEnumType['pageModules'],
       ...pageInfo,
-    })
+    }),
   )
 }
 
@@ -147,7 +147,7 @@ export const readModulesConnection = withDebounce(
     optionsDefault: { funcParent: 'readModulesConnectionSaga' },
     resDefault: [],
   }),
-  500
+  500,
 )
 
 export default function* readModulesConnectionSaga() {

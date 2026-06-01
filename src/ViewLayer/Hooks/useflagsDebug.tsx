@@ -69,7 +69,7 @@ export function useflagsDebug(mediaLoadedCoursesString: string) {
             navigate,
             pathname: '/d/QbPOPMImLHB/2023-11-20-certificate',
           },
-        }
+        },
       )
     }
   }, [mediaLoadedCoursesString])

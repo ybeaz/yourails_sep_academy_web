@@ -35,14 +35,14 @@ export function* getModule60ModuleCreatedGenerator(params: ActionReduxType | any
     const descriptionNext = summary.reduce(
       (accum: string, summaryItem: any) =>
         `${accum}${summaryItem?.capture ? ` ${summaryItem?.capture}.` : ''}`,
-      ''
+      '',
     )
 
     yield put(
       actionSync.SET_MODULE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['courseModule'],
         status: CreateModuleStatusEnumType['pending'],
-      })
+      }),
     )
 
     const variables: MutationCreateModulesArgs = {
@@ -79,27 +79,27 @@ export function* getModule60ModuleCreatedGenerator(params: ActionReduxType | any
         ...getHeadersAuthDict(),
         clientHttpType: selectGraphqlHttpClientFlag(),
         timeout: CONNECTIONS_TIMEOUTS[ConnectionsTimeoutNameEnumType.standard],
-      }
+      },
     )
 
     yield put(
       actionSync.ADD_MODULE_CREATE_DATA({
         course: createCourses[0],
-      })
+      }),
     )
 
     yield put(
       actionSync.SET_MODULE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['courseModule'],
         status: CreateModuleStatusEnumType['success'],
-      })
+      }),
     )
   } catch (error: any) {
     yield put(
       actionSync.SET_MODULE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['courseModule'],
         status: CreateModuleStatusEnumType['failure'],
-      })
+      }),
     )
 
     console.info('getModule60ModuleCreatedSaga [76] ERROR', `${error.name}: ${error.message}`)
@@ -111,7 +111,7 @@ export const getModule60ModuleCreated = withDebounce(
     optionsDefault: { funcParent: 'getModule60ModuleCreatedSaga' },
     resDefault: [],
   }),
-  500
+  500,
 )
 
 export default function* getModule60ModuleCreatedSaga() {

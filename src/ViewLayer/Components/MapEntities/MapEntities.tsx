@@ -65,9 +65,9 @@ const MapEntitiesComponent: MapEntitiesComponentType = (props: MapEntitiesCompon
         {/* @ts-ignore */}
         <Geographies geography={geoUrl}>
           {({ geographies }) =>
-            geographies.map(geo => (
+            geographies.map((geo) => (
               // @ts-ignore
-              <Geography key={geo.rsmKey} geography={geo} fill='#EAEAEC' stroke='#D6D6DA' />
+              <Geography key={geo.rsmKey} geography={geo} fill="#EAEAEC" stroke="#D6D6DA" />
             ))
           }
         </Geographies>
@@ -75,18 +75,18 @@ const MapEntitiesComponent: MapEntitiesComponentType = (props: MapEntitiesCompon
           // @ts-ignore
           <Marker key={name} coordinates={coordinates}>
             <g
-              fill='none'
-              stroke='#FF5533'
-              strokeWidth='3'
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              transform='translate(-12, -24)'
+              fill="none"
+              stroke="#FF5533"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              transform="translate(-12, -24)"
             >
-              <circle cx='12' cy='10' r='3' />
-              <path d='M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z' />
+              <circle cx="12" cy="10" r="3" />
+              <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z" />
             </g>
             <text
-              textAnchor='middle'
+              textAnchor="middle"
               y={48}
               style={{
                 fontFamily: 'system-ui',
@@ -94,7 +94,7 @@ const MapEntitiesComponent: MapEntitiesComponentType = (props: MapEntitiesCompon
                 fontSize: '32px',
                 fontWeight: 'bold',
               }}
-              fontSize='48px'
+              fontSize="48px"
             >
               {name}
             </text>

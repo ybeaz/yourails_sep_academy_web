@@ -21,6 +21,6 @@ export const AUTH_SIGN_OUT: ActionEventType = (event, data) => {
   dispatch(
     actionSync.SET_USER_PROFILE({
       calledFrom: 'AUTH_SIGN_OUT',
-    })
+    }),
   )
 }

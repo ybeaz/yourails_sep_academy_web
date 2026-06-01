@@ -34,8 +34,7 @@ const netShareData: INetShareData[] = [
     netTitle: 'Telegram',
     IconComponent: TelegramIcon,
     iconSize: 41,
-    linkRef:
-      'https://stackoverflow.com/questions/31356360/share-a-link-via-url-scheme-to-telegram',
+    linkRef: 'https://stackoverflow.com/questions/31356360/share-a-link-via-url-scheme-to-telegram',
   },
   {
     ButtonComponent: WhatsappShareButton,
@@ -44,8 +43,7 @@ const netShareData: INetShareData[] = [
     netTitle: 'Whatsapp',
     IconComponent: WhatsappIcon,
     iconSize: 41,
-    linkRef:
-      'https://stackoverflow.com/questions/33426752/linkedin-share-post-url',
+    linkRef: 'https://stackoverflow.com/questions/33426752/linkedin-share-post-url',
   },
   {
     ButtonComponent: FacebookShareButton,
@@ -70,8 +68,7 @@ const netShareData: INetShareData[] = [
     netTitle: 'Linkedin',
     IconComponent: LinkedinIcon,
     iconSize: 41,
-    linkRef:
-      'https://stackoverflow.com/questions/33426752/linkedin-share-post-url',
+    linkRef: 'https://stackoverflow.com/questions/33426752/linkedin-share-post-url',
   },
   {
     ButtonComponent: TwitterShareButton,
@@ -84,25 +81,14 @@ const netShareData: INetShareData[] = [
   },
 ]
 
-export const ShareButtons: React.FunctionComponent<any> = (
-  props
-): ReactElement => {
+export const ShareButtons: React.FunctionComponent<any> = (props): ReactElement => {
   // I stopped here
   // https://gist.github.com/saippuakauppias/247af51c6ed50503afe4
   // https://habr.com/ru/post/156185/
 
-  const getNetShareButtons: Function = (
-    netShareData: INetShareData[]
-  ): ReactElement[] => {
-    return netShareData.map(item => {
-      const {
-        ButtonComponent,
-        url,
-        netTitleField,
-        netTitle,
-        IconComponent,
-        iconSize,
-      } = item
+  const getNetShareButtons: Function = (netShareData: INetShareData[]): ReactElement[] => {
+    return netShareData.map((item) => {
+      const { ButtonComponent, url, netTitleField, netTitle, IconComponent, iconSize } = item
 
       const buttonProps = { key: url, url, [netTitleField]: netTitle }
       const iconProps = { size: iconSize }
@@ -122,5 +108,5 @@ export const ShareButtons: React.FunctionComponent<any> = (
     })
   }
 
-  return <div className='ShareButtons'>{getNetShareButtons(netShareData)}</div>
+  return <div className="ShareButtons">{getNetShareButtons(netShareData)}</div>
 }

@@ -10,7 +10,7 @@ import { getBotResponse, GetBotResponseParamsType } from './getBotResponseSaga'
 import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
 
 export function* getModule55ObjectionsCreatedGenerator(
-  params: ActionReduxType | any
+  params: ActionReduxType | any,
 ): Iterable<any> {
   try {
     const { summary, summaryChunks }: any = yield select((state: RootStoreType) => {
@@ -26,14 +26,14 @@ export function* getModule55ObjectionsCreatedGenerator(
         timeCalculated: Array.isArray(summary)
           ? summaryChunks.length * CONNECTIONS_TIMEOUTS.summaryChunkToObjections
           : null,
-      })
+      }),
     )
 
     yield put(
       actionSync.SET_MODULE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['objections'],
         status: CreateModuleStatusEnumType['pending'],
-      })
+      }),
     )
 
     let objections: any[] = []
@@ -45,7 +45,7 @@ export function* getModule55ObjectionsCreatedGenerator(
         const paramString = JSON.stringify(summaryChunk)
         if (paramPrev !== '' && paramPrev === paramString) {
           throw new Error(
-            `getCourse35SummaryCreatedSaga [57] connection ${CreateModuleStagesEnumType['objections']} is timed out`
+            `getCourse35SummaryCreatedSaga [57] connection ${CreateModuleStagesEnumType['objections']} is timed out`,
           )
         }
       }, CONNECTIONS_TIMEOUTS[ConnectionsTimeoutNameEnumType['summaryChunkToObjections']] + 1500)
@@ -66,8 +66,8 @@ export function* getModule55ObjectionsCreatedGenerator(
       if (!Array.isArray(objectionsChunk) || objectionsChunk.length === 0)
         throw new Error(
           `getModule55ObjectionsCreatedSaga [73] objectionsChunk is not an array or array empty, ${JSON.stringify(
-            objectionsChunk
-          )}`
+            objectionsChunk,
+          )}`,
         )
 
       objections = [...objections, ...objectionsChunk.flat(12)]
@@ -82,27 +82,27 @@ export function* getModule55ObjectionsCreatedGenerator(
     yield put(
       actionSync.ADD_MODULE_CREATE_DATA({
         objections,
-      })
+      }),
     )
 
     yield put(
       actionSync.ADD_MODULE_CREATE_DATA({
         objectionsChunks,
-      })
+      }),
     )
 
     yield put(
       actionSync.SET_MODULE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['objections'],
         status: CreateModuleStatusEnumType['success'],
-      })
+      }),
     )
   } catch (error: any) {
     yield put(
       actionSync.SET_MODULE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['objections'],
         status: CreateModuleStatusEnumType['failure'],
-      })
+      }),
     )
 
     console.info('getModule55ObjectionsCreatedSaga  [110] ERROR', `${error.name}: ${error.message}`)
@@ -114,12 +114,12 @@ export const getModule55ObjectionsCreated = withDebounce(
     optionsDefault: { funcParent: 'getModule55ObjectionsCreatedSaga' },
     resDefault: [],
   }),
-  500
+  500,
 )
 
 export default function* getModule55ObjectionsCreatedSaga() {
   yield takeEvery(
     [actionAsync.GET_MODULE_OBJECTIONS_CREATED.REQUEST().type],
-    getModule55ObjectionsCreated
+    getModule55ObjectionsCreated,
   )
 }

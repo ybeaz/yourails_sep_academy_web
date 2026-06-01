@@ -23,7 +23,7 @@ import {
              from '../Components/TagsDocsTable/TagsDocsTable'
  */
 const TagsDocsTableComponent: TagsDocsTableComponentType = (
-  props: TagsDocsTableComponentPropsType
+  props: TagsDocsTableComponentPropsType,
 ) => {
   const { classAdded, handleEvents, tagsCloud, pageTags, language } = props
 
@@ -85,28 +85,28 @@ const TagsDocsTableComponent: TagsDocsTableComponentType = (
       }
 
       return (
-        <div key={tagID} className='_row _row_tagsCloud'>
-          <div className='_cell _name'>
+        <div key={tagID} className="_row _row_tagsCloud">
+          <div className="_cell _name">
             <NavLinkWithQuery {...propsOutItem.linkToAcademyMatrixTaggedProps} />
           </div>
-          <div className='_cell _completedTotal'>
-            <span className='_span'>{completed}</span>/<span className='_span'>{count}</span>
+          <div className="_cell _completedTotal">
+            <span className="_span">{completed}</span>/<span className="_span">{count}</span>
           </div>
-          <div className='_cell _level'>
+          <div className="_cell _level">
             <>
-              <span className='_span'>
+              <span className="_span">
                 <IconYrl {...propsOutItem.iconTagExpertiseProps} />
               </span>
-              <span className='_span'>{level}</span>
-              <span className='_span'>{levelName}</span>
+              <span className="_span">{level}</span>
+              <span className="_span">{levelName}</span>
               {completed >= count && (
-                <span className='_span'>
+                <span className="_span">
                   <IconYrl {...propsOutItem.iconTagMdCheckProps} />
                 </span>
               )}
             </>
           </div>
-          <div className='_cell _document_link'>
+          <div className="_cell _document_link">
             <NavLinkWithQuery {...propsOutItem.linkToDocumentProps} />
           </div>
         </div>
@@ -115,11 +115,11 @@ const TagsDocsTableComponent: TagsDocsTableComponentType = (
 
     return (
       <section className={getClasses('_tagsCloudTable', classAdded)}>
-        <header className='_row _row_header'>
-          <div className='_cell _header_name'>Name</div>
-          <div className='_cell _header_completedTotal'>Completed / Total</div>
-          <div className='_cell _header_level'>Level</div>
-          <div className='_cell _header_document_link'>Document</div>
+        <header className="_row _row_header">
+          <div className="_cell _header_name">Name</div>
+          <div className="_cell _header_completedTotal">Completed / Total</div>
+          <div className="_cell _header_level">Level</div>
+          <div className="_cell _header_document_link">Document</div>
         </header>
 
         {documentsRows}
@@ -137,7 +137,7 @@ const TagsDocsTableComponent: TagsDocsTableComponentType = (
     <div className={getClasses('TagsDocsTable', classAdded)}>
       {getTagsDocsTable(tagsCloud)}
       {!(pageTags.first === 0 && pageTags.offset > tagsCloud.length) && (
-        <div className='_paginationNavigationWrapper'>
+        <div className="_paginationNavigationWrapper">
           <PaginationNavigation {...propsOut.paginationNavigationProps} />
         </div>
       )}
@@ -146,7 +146,7 @@ const TagsDocsTableComponent: TagsDocsTableComponentType = (
 }
 
 export const TagsDocsTable: TagsDocsTableType = withPropsYrl({ handleEvents: handleEventsIn })(
-  React.memo(TagsDocsTableComponent)
+  React.memo(TagsDocsTableComponent),
 )
 
 export type {

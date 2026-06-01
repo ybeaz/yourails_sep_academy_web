@@ -9,7 +9,7 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const { StatsWriterPlugin } = require('webpack-stats-plugin')
 
-module.exports = env => {
+module.exports = (env) => {
   return merge(common(env), {
     mode: 'production',
     output: {

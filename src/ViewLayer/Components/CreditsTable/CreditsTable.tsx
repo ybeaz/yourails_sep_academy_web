@@ -24,7 +24,7 @@ import {
              from '../Components/CreditsTable/CreditsTable'
  */
 const CreditsTableComponent: CreditsTableComponentType = (
-  props: CreditsTableComponentPropsType
+  props: CreditsTableComponentPropsType,
 ) => {
   const { classAdded, handleEvents, documents, pageDocuments, language } = props
 
@@ -98,15 +98,15 @@ const CreditsTableComponent: CreditsTableComponentType = (
       }
 
       return (
-        <div key={documentID} className='_row _row_credits'>
-          <div className='_cell _date'>{dateString}</div>
-          <div className='_cell _module_name'>
+        <div key={documentID} className="_row _row_credits">
+          <div className="_cell _date">{dateString}</div>
+          <div className="_cell _module_name">
             <NavLinkWithQuery {...propsOutItem.linkToModuleProps} />
           </div>
-          <div className='_cell _document_link'>
+          <div className="_cell _document_link">
             <NavLinkWithQuery {...propsOutItem.linkToDocumentProps} />
           </div>
-          <div className='_cell _remove'>
+          <div className="_cell _remove">
             <ButtonYrl {...propsOutItem.buttonDeactivateDocumentProps} />
           </div>
         </div>
@@ -115,11 +115,11 @@ const CreditsTableComponent: CreditsTableComponentType = (
 
     return (
       <section className={getClasses('_creditsTable', classAdded)}>
-        <header className='_row _row_header'>
-          <div className='_cell _header_date'>Date</div>
-          <div className='_cell _header_module_name'>Module name</div>
-          <div className='_cell _header_document_link'>Document</div>
-          <div className='_cell _header_remove'>Remove</div>
+        <header className="_row _row_header">
+          <div className="_cell _header_date">Date</div>
+          <div className="_cell _header_module_name">Module name</div>
+          <div className="_cell _header_document_link">Document</div>
+          <div className="_cell _header_remove">Remove</div>
         </header>
 
         {documentsRows}
@@ -137,7 +137,7 @@ const CreditsTableComponent: CreditsTableComponentType = (
     <div className={getClasses('CreditsTable', classAdded)}>
       {getCreditsTable(documents)}
       {!(pageDocuments.first === 0 && pageDocuments.offset > documents.length) && (
-        <div className='_paginationNavigationWrapper'>
+        <div className="_paginationNavigationWrapper">
           <PaginationNavigation {...propsOut.paginationNavigationProps} />
         </div>
       )}
@@ -146,7 +146,7 @@ const CreditsTableComponent: CreditsTableComponentType = (
 }
 
 export const CreditsTable: CreditsTableType = withPropsYrl({ handleEvents: handleEventsIn })(
-  React.memo(CreditsTableComponent)
+  React.memo(CreditsTableComponent),
 )
 
 export type {

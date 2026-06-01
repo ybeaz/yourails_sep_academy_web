@@ -57,7 +57,7 @@ function* createProfileGenerator(params: ActionReduxType | any): Iterable<any> {
       ...getHeadersAuthDict(),
       clientHttpType: selectGraphqlHttpClientFlag(),
       timeout: 5000,
-    }
+    },
   )
 
   yield put(actionSync.SET_PROFILES(createProfiles))
@@ -70,7 +70,7 @@ export const createProfile = withDebounce(
     optionsDefault: { funcParent: 'createProfileSaga' },
     resDefault: [],
   }),
-  500
+  500,
 )
 
 export default function* createProfileSaga() {

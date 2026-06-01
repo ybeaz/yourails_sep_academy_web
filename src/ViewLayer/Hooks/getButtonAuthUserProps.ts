@@ -7,7 +7,7 @@ interface IGetButtonAuthUser {
     user2: UserType,
     language: string,
     componentFrom: string,
-    history?: any
+    history?: any,
   ): Omit<ButtonYrlPropsType, 'handleEvents'>
 }
 
@@ -19,7 +19,7 @@ export const getButtonAuthUserProps: IGetButtonAuthUser = (
   user,
   language,
   componentFrom,
-  navigate = {}
+  navigate = {},
 ) => {
   // @ts-expect-error
   const { userAvatar, userStatus, userName } = user

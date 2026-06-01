@@ -29,7 +29,7 @@ interface ProfilePlatePropsType {
 }
 
 export const ProfilePlateComponent: React.FunctionComponent<ProfilePlatePropsType> = (
-  props: ProfilePlatePropsType
+  props: ProfilePlatePropsType,
 ): ReactElement => {
   const { language, profile, handleEvents } = props
 
@@ -132,54 +132,54 @@ export const ProfilePlateComponent: React.FunctionComponent<ProfilePlatePropsTyp
   }
 
   return (
-    <div className='ProfilePlate'>
-      <div className='_col'>
-        <div className='_button'>
+    <div className="ProfilePlate">
+      <div className="_col">
+        <div className="_button">
           <ButtonYrl {...propsOut.buttonAvatarProps} />
         </div>
-        <div className='_userNameNick'>{userNameNick}</div>
+        <div className="_userNameNick">{userNameNick}</div>
       </div>
 
-      <div className='_col'>
-        <label className='_label'>{DICTIONARY['Competencies'][language]}</label>
-        <div className='_userSkillsExpertise'>
+      <div className="_col">
+        <label className="_label">{DICTIONARY['Competencies'][language]}</label>
+        <div className="_userSkillsExpertise">
           <SelectAntd {...propsOut.userSkillsExpertiseProps()} />
         </div>
       </div>
 
-      <div className='_col'>
-        <div className='_colLanguages'>
-          <label className='_label'>{DICTIONARY['Languages'][language]}</label>
-          <div className='_userLanguages'>
+      <div className="_col">
+        <div className="_colLanguages">
+          <label className="_label">{DICTIONARY['Languages'][language]}</label>
+          <div className="_userLanguages">
             <SelectAntd {...propsOut.userLanguagesProps()} />
           </div>
         </div>
 
-        <div className='_colMedia'>
-          <label className='_label'>{DICTIONARY['Media'][language]}</label>
-          <div className='_userMedia'>
+        <div className="_colMedia">
+          <label className="_label">{DICTIONARY['Media'][language]}</label>
+          <div className="_userMedia">
             <SelectAntd {...propsOut.userMediaProps()} />
           </div>
         </div>
 
-        <div className='_colGender'>
-          <label className='_label'>{DICTIONARY['Gender'][language]}</label>
-          <div className='_userMedia'>
+        <div className="_colGender">
+          <label className="_label">{DICTIONARY['Gender'][language]}</label>
+          <div className="_userMedia">
             <SelectAntd {...propsOut.userGenderProps()} />
           </div>
         </div>
 
-        <div className='_colCountry'>
-          <label className='_label'>{DICTIONARY['Country'][language]}</label>
-          <div className='_userLocaleCountry'>
+        <div className="_colCountry">
+          <label className="_label">{DICTIONARY['Country'][language]}</label>
+          <div className="_userLocaleCountry">
             <SelectAntd {...propsOut.userLocaleCountryProps()} />
           </div>
         </div>
       </div>
 
-      <div className='_col'>
-        <label className='_label'>{DICTIONARY['AboutUser'][language]}</label>
-        <div className='_userInfoAbout'>{userInfoAbout}</div>
+      <div className="_col">
+        <label className="_label">{DICTIONARY['AboutUser'][language]}</label>
+        <div className="_userInfoAbout">{userInfoAbout}</div>
       </div>
     </div>
   )

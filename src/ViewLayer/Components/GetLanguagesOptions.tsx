@@ -14,7 +14,7 @@ interface IGetLanguagesOptionsJsx {
     LANGUAGES: LanguagesType,
     language: string,
     svgFileDir: string,
-    classAdded: string
+    classAdded: string,
   ): ReactElement[]
 }
 
@@ -25,7 +25,7 @@ export const GetLanguagesOptionsJsx: IGetLanguagesOptionsJsx = (
   LANGUAGES,
   language,
   svgFileDir,
-  classAdded
+  classAdded,
 ) => {
   return Object.keys(LANGUAGES).map((ln: string) => {
     const value = LANGUAGES[ln]['639-1']
@@ -65,7 +65,7 @@ interface IGetLanguagesOptions {
   (
     LANGUAGES: LanguagesType,
     languages: string[],
-    defaultOption2: DictionaryType
+    defaultOption2: DictionaryType,
   ): SelectOptionAntDType[]
 }
 
@@ -73,7 +73,7 @@ interface IGetLanguagesOptions2 {
   (
     languages2: LanguagesType,
     language2: string,
-    defaultOption2: DictionaryType
+    defaultOption2: DictionaryType,
   ): SelectOptionAntDType[]
 }
 
@@ -83,7 +83,7 @@ interface IGetLanguagesOptions2 {
 export const getLanguagesOptions2: IGetLanguagesOptions2 = (
   languages2,
   language2,
-  defaultOption2
+  defaultOption2,
 ) => {
   const lagnguagesMapped = Object.keys(languages2).map((ln: string) => {
     const [label] = languages2[ln][language2]

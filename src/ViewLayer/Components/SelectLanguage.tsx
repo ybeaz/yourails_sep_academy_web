@@ -22,7 +22,7 @@ export type SelectLanguagePropsOutType = {
 }
 
 export const SelectLanguage: React.FunctionComponent<SelectLanguagePropsType> = (
-  props: SelectLanguagePropsType
+  props: SelectLanguagePropsType,
 ): ReactElement => {
   const { languagesSelected, classAdded, LANGUAGES, language: languageIn, mode, typeEvent } = props
 

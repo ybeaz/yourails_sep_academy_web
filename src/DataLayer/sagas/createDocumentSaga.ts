@@ -60,7 +60,7 @@ function* createDocumentGenerator(params: ActionReduxType | any): Iterable<any> 
       ...getHeadersAuthDict(),
       clientHttpType: selectGraphqlHttpClientFlag(),
       timeout: 5000,
-    }
+    },
   )
 
   yield put(actionSync.SET_DOCUMENTS(createDocuments))
@@ -73,7 +73,7 @@ export const createDocument = withDebounce(
     optionsDefault: { funcParent: 'createDocumentSaga' },
     resDefault: [],
   }),
-  500
+  500,
 )
 
 export default function* createDocumentSaga() {

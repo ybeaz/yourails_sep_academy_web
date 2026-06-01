@@ -41,7 +41,7 @@ function* getModuleGenerator(params: ActionReduxType | any): Iterable<any> {
         moduleID,
         modules: modulesInProgress,
       },
-      { parentFunction: 'getModuleGenerator' }
+      { parentFunction: 'getModuleGenerator' },
     )
 
   const moduleIDInProgres = moduleInProgres && moduleInProgres.moduleID
@@ -70,7 +70,7 @@ function* getModuleGenerator(params: ActionReduxType | any): Iterable<any> {
       {
         clientHttpType: selectGraphqlHttpClientFlag(),
         timeout: 5000,
-      }
+      },
     )
 
     modulesNext = getPreparedModules(readModules)
@@ -108,7 +108,7 @@ export const getModule = withDebounce(
     optionsDefault: { funcParent: 'getModuleSaga' },
     resDefault: [],
   }),
-  500
+  500,
 )
 
 export default function* getModuleSaga() {

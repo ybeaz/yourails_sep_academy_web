@@ -31,11 +31,11 @@ export const Palette: React.FunctionComponent<PaletteArgs> = (props: PaletteArgs
     theme3: string,
     color3: string,
     alphasObj: any,
-    lightnessObj: any
+    lightnessObj: any,
   ) => {
     const paramObj = paramState3 === 'alpha' ? alphasObj : lightnessObj
 
-    return Object.keys(paramObj).map(paramKey => {
+    return Object.keys(paramObj).map((paramKey) => {
       const props2 = {
         theme: GLOBAL_THEME,
       }
@@ -50,7 +50,7 @@ export const Palette: React.FunctionComponent<PaletteArgs> = (props: PaletteArgs
       }
 
       return (
-        <div className='_colorPlate' style={{ background }}>
+        <div className="_colorPlate" style={{ background }}>
           {paramKey}
         </div>
       )
@@ -60,9 +60,9 @@ export const Palette: React.FunctionComponent<PaletteArgs> = (props: PaletteArgs
   const getColorsRow = (colorFormatState2: string, theme2: string, colorsKeys2: string[]) => {
     return colorsKeys2.map((color2: string) => {
       return (
-        <div className='_colorColumnWrapper'>
-          <div className='_colorTitle'>{color2}</div>
-          <div className='_colorColumn'>
+        <div className="_colorColumnWrapper">
+          <div className="_colorTitle">{color2}</div>
+          <div className="_colorColumn">
             {getColorPlates(colorFormatState2, theme2, color2, ALPHAS, LIGHTNESS)}
           </div>
         </div>
@@ -71,20 +71,20 @@ export const Palette: React.FunctionComponent<PaletteArgs> = (props: PaletteArgs
   }
 
   return (
-    <div className='Palette'>
-      <div className='__themeTitleBlock'>
+    <div className="Palette">
+      <div className="__themeTitleBlock">
         <div>Dark</div>
         <button
-          className='_changeThemeButton'
-          onClick={event => handleLocalEvents(event, { typeLocalEvent: 'CHANGE_COLOR_FORMAT' })}
+          className="_changeThemeButton"
+          onClick={(event) => handleLocalEvents(event, { typeLocalEvent: 'CHANGE_COLOR_FORMAT' })}
         >
           {paramState.toUpperCase()}
         </button>
       </div>
-      <div className='__theme'>{getColorsRow(paramState, 'Dark', colorsKeys)}</div>
+      <div className="__theme">{getColorsRow(paramState, 'Dark', colorsKeys)}</div>
 
-      <div className='__themeTitleBlock'>Light</div>
-      <div className='__theme'>{getColorsRow(paramState, 'Light', colorsKeys)}</div>
+      <div className="__themeTitleBlock">Light</div>
+      <div className="__theme">{getColorsRow(paramState, 'Light', colorsKeys)}</div>
     </div>
   )
 }

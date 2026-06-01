@@ -3,7 +3,7 @@ import { ReducerType } from '../../Interfaces/ReducerType'
 
 export const SET_EDIT_NAME_VISIBILITY_STATE: ReducerType = (
   store: RootStoreType,
-  data: any
+  data: any,
 ): RootStoreType => {
   const isEditNameVisibleIn = data?.isEditNameVisible
 

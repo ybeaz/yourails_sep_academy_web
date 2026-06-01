@@ -44,12 +44,12 @@ export function* getBotResponseGenerator(params: GetBotResponseParamsType): Iter
         ...getHeadersAuthDict(),
         clientHttpType: selectGraphqlHttpClientFlag(),
         timeout: CONNECTIONS_TIMEOUTS[connectionsTimeoutName],
-      }
+      },
     )
 
     const output: any[] = createBotResponse.textObj.contentArray.map(
       (contentPiece: GetPreparedResponseFromBotParamsType) =>
-        getPreparedResponseFromBot(contentPiece)
+        getPreparedResponseFromBot(contentPiece),
     )
 
     return output
@@ -58,7 +58,7 @@ export function* getBotResponseGenerator(params: GetBotResponseParamsType): Iter
       actionSync.SET_MODULE_CREATE_STATUS({
         stage,
         status: CreateModuleStatusEnumType['failure'],
-      })
+      }),
     )
 
     console.info('getBotResponseSaga  [110] ERROR', `${error.name}: ${error.message}`)
@@ -70,7 +70,7 @@ export const getBotResponse = withDebounce(
     optionsDefault: { funcParent: 'getBotResponseSaga' },
     resDefault: [],
   }),
-  500
+  500,
 )
 
 export default function* getBotResponseSaga() {

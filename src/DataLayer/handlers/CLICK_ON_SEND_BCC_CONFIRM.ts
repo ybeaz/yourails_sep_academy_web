@@ -26,6 +26,6 @@ export const CLICK_ON_SEND_BCC_CONFIRM: ActionEventType = (event, data) => {
     actionSync.SET_COMPONENTS_STATE({
       componentsStateProp: 'isSendBccInputVisible',
       value: false,
-    })
+    }),
   )
 }

@@ -19,7 +19,7 @@ import { TagsDocsTable } from '../TagsDocsTable/TagsDocsTable'
              from '../Components/MyDocumentsBody/MyDocumentsBody'
  */
 const MyDocumentsBodyComponent: MyDocumentsBodyComponentType = (
-  props: MyDocumentsBodyComponentPropsType
+  props: MyDocumentsBodyComponentPropsType,
 ) => {
   const { classAdded, documents, tagsCloud, pageDocuments, pageTags, language } = props
 
@@ -40,13 +40,13 @@ const MyDocumentsBodyComponent: MyDocumentsBodyComponentType = (
     <div className={getClasses('MyDocumentsBody', classAdded)}>
       {!!tagsCloud.length && (
         <Collapse
-          className='_collapse'
-          collapsible='icon'
+          className="_collapse"
+          collapsible="icon"
           defaultActiveKey={['1']}
           items={[
             {
               key: '1',
-              label: <h2 className='_h2'>{DICTIONARY.Certificates_and_diplomas[language]}</h2>,
+              label: <h2 className="_h2">{DICTIONARY.Certificates_and_diplomas[language]}</h2>,
               children: <TagsDocsTable {...propsOut.tagsDocsTableProps} />,
             },
           ]}
@@ -54,13 +54,13 @@ const MyDocumentsBodyComponent: MyDocumentsBodyComponentType = (
       )}
       {!!documents.length && (
         <Collapse
-          className='_collapse'
-          collapsible='icon'
+          className="_collapse"
+          collapsible="icon"
           defaultActiveKey={['1']}
           items={[
             {
               key: '1',
-              label: <h2 className='_h2'>{DICTIONARY.Credits[language]}</h2>,
+              label: <h2 className="_h2">{DICTIONARY.Credits[language]}</h2>,
               children: <CreditsTable {...propsOut.creditsTableProps} />,
             },
           ]}

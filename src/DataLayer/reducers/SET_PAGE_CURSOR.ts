@@ -11,7 +11,7 @@ export const SET_PAGE_CURSOR: ReducerType = (
     first: string | number
     paginationName: PaginationNameEnumType
     direction: 'init' | 'set' | 'next' | 'prev'
-  }
+  },
 ): RootStoreType => {
   const { first: firstIn, direction = 'set', paginationName } = data
 

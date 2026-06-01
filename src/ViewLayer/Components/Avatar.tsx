@@ -58,12 +58,12 @@ export const AvatarComponent: React.FunctionComponent<AvatarPropsType> = ({
   }
 
   return (
-    <div className='Avatar'>
+    <div className="Avatar">
       <div className={`_row`}>
-        <div className='_button'>
+        <div className="_button">
           <ButtonYrl {...propsOut.buttonAvatarProps} />
         </div>
-        <div className='_input'>
+        <div className="_input">
           <InputYrl {...propsOut.inputAvatarFileProps} />
         </div>
       </div>

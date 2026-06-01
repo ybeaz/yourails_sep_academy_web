@@ -12,6 +12,6 @@ export const TOGGLE_IS_SEND_BCC_INPUT_VISIBLE: ActionEventType = () => {
     actionSync.SET_COMPONENTS_STATE({
       componentsStateProp: 'isSendBccInputVisible',
       value: !isSendBccInputVisible,
-    })
+    }),
   )
 }

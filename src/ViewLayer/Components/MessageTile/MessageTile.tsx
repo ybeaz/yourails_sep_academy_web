@@ -27,7 +27,7 @@ const MessageTileComponent: MessageTileComponentType = (props: MessageTileCompon
         MessageTile_visible_none: isVisible === false,
       })}
     >
-      <div className='_capture'>{title}</div>
+      <div className="_capture">{title}</div>
       <p>{line1}</p>
       <p>{line2}</p>
       <p>{line3}</p>

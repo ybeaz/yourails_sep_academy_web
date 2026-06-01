@@ -15,6 +15,9 @@ const ArticlePresent = lazy(
 const AcademyAbout = lazy(
   () => import(/* webpackPrefetch: true */ '../ViewLayer/Screens/AcademyAbout/AcademyAbout'),
 )
+const YouRailsAbout = lazy(
+  () => import(/* webpackPrefetch: true */ '../ViewLayer/Screens/YouRailsAbout/YouRailsAbout'),
+)
 const AcademyMatrix = lazy(
   () => import(/* webpackPrefetch: true */ '../ViewLayer/Screens/AcademyMatrix/AcademyMatrix'),
 )
@@ -41,6 +44,7 @@ const Error404 = lazy(() => import(/* webpackPrefetch: true */ '../ViewLayer/Scr
 export const SCREENS: Record<string, FunctionComponent<any>> = {
   YouRailsHome,
   AcademyAbout,
+  YouRailsAbout,
   AcademyMatrix,
   AcademyPresent,
   ArticlePresent,

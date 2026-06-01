@@ -1,0 +1,27 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "composite": true,
+    "noEmit": true,
+    "rootDir": ".",
+    "lib": ["es2022", "dom"],
+    "types": ["node"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "jsx": "preserve",
+    "outDir": "./.tsbuild-node-ignore",
+    "declaration": false,
+    "declarationMap": false
+  },
+  "include": [
+    "*.ts",
+    "tools/**/*",
+    "mcp-server-playwright-fork/**/*",
+    "cdKYourailsAcademy/**/*",
+    "cdkJobVsResume/**/*",
+    "cdkFinanceIbkrAutomation/**/*",
+    "cdkMediaCrud/**/*",
+    "cdkPlayWright/**/*"
+  ],
+  "exclude": ["src/**/*", "node_modules", "dist"]
+}

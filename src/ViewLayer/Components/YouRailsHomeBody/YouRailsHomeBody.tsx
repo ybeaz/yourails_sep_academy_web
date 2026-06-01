@@ -1,12 +1,12 @@
-import React from 'react'
 import classNames from 'classnames'
+import React from 'react'
 
 import { withPropsYrl, withStoreStateSelectedYrl } from 'yourails_common'
-import {
+import type {
   YouRailsHomeBodyComponentPropsType,
-  YouRailsHomeBodyPropsType,
-  YouRailsHomeBodyPropsOutType,
   YouRailsHomeBodyComponentType,
+  YouRailsHomeBodyPropsOutType,
+  YouRailsHomeBodyPropsType,
   YouRailsHomeBodyType,
 } from './YouRailsHomeBodyTypes'
 
@@ -33,22 +33,20 @@ const YouRailsHomeBodyComponent: YouRailsHomeBodyComponentType = (
       <header>
         <div className="container topbar">
           <div className="brand">
-            <div className="brand-mark"></div>
-            <div>Kapwing</div>
+            <img
+              className="brand-logo"
+              src="https://yourails.com/images/youRailsLogos/2026-05-22_logos/yourails_05_cycle.svg"
+              alt="YouRails logo"
+            />
+            <div>YouRails</div>
           </div>
           <nav className="nav">
-            <a href="#storytellers">Storytellers</a>
-            <a href="#tools">Tools</a>
-            <a href="#teams">Teams</a>
-            <a href="#reviews">Reviews</a>
-            <a href="#story">Story</a>
+            <a href="#tools">Explore</a>
+            <a href="/about">About YouRails</a>
           </nav>
           <div className="actions">
-            <a className="btn btn-secondary" href="#teams">
-              Request a Demo
-            </a>
             <a className="btn btn-primary" href="#hero">
-              Try Kapwing Free
+              Create a video
             </a>
           </div>
         </div>
@@ -59,28 +57,28 @@ const YouRailsHomeBodyComponent: YouRailsHomeBodyComponentType = (
           <div className="container hero-grid">
             <div>
               <div className="eyebrow">
-                <span className="pill"></span>From idea to first draft
+                <span className="pill"></span>Future of video learning
               </div>
-              <h1>Make a video about anything</h1>
+              <h1>AI educational content, made simple</h1>
               <p>
-                Create multimedia-rich videos from simple prompts with Kapwing, a platform built for
-                creative teams. AI helps bring your vision to life with layers, timing, sound, and
-                collaboration built in.
+                YouRails is an AI-powered platform for structured short-form educational videos. It
+                helps users turn practical needs into clear, fast, and editable learning content in
+                minutes.
               </p>
               <div className="hero-actions">
-                <a className="btn btn-primary" href="#storytellers">
-                  Try Kapwing Free
+                <a className="btn btn-primary" href="#tools">
+                  Create a video
                 </a>
-                <a className="btn btn-secondary" href="#tools">
-                  Explore Core Tools
+                <a className="btn btn-secondary" href="#teams">
+                  Explore YouRails
                 </a>
               </div>
               <div className="hero-note">
-                No downloads. No installations. Built for fast, collaborative video creation.
+                Short, structured, browser-based learning videos designed for instant use.
               </div>
             </div>
 
-            <div className="preview" role="img" aria-label="Kapwing product preview">
+            <div className="preview" id="YouRails product preview">
               <div className="preview-frame">
                 <div className="video-bars">
                   <div className="sidebar">
@@ -101,55 +99,11 @@ const YouRailsHomeBodyComponent: YouRailsHomeBodyComponentType = (
                     <div className="line w92"></div>
                     <div className="line w80"></div>
                     <div className="line w60"></div>
-                    <div className="line w92" style={{ marginTop: '18px' }}></div>
+                    {/* <div className="line w92" style="margin-top:18px;"></div> */}
                     <div className="line w80"></div>
                     <div className="line w60"></div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="section" id="storytellers">
-          <div className="container">
-            <div className="eyebrow">
-              <span className="pill"></span>Made for any type of storyteller
-            </div>
-            <h2 className="section-title">Adapted for teams across every workflow.</h2>
-            <p className="section-lead">
-              Whether you're running a marketing team, publishing internal comms, teaching a class,
-              or creating content, Kapwing is designed to help you move faster and stay on brand.
-            </p>
-
-            <div className="panel-grid">
-              <div className="panel">
-                <h3>Marketers</h3>
-                <p>
-                  Create more content in less time, keep campaigns consistent, and hand off assets
-                  without breaking brand standards.
-                </p>
-              </div>
-              <div className="panel">
-                <h3>Internal Comms</h3>
-                <p>
-                  Publish video updates that are easy to watch, share, and localize across every
-                  office.
-                </p>
-              </div>
-              <div className="panel">
-                <h3>Content Creators</h3>
-                <p>
-                  Turn rough ideas into polished videos with templates, quick exports, and
-                  collaboration built in.
-                </p>
-              </div>
-              <div className="panel">
-                <h3>Educators</h3>
-                <p>
-                  Use video to connect with more of your class and help strengthen storytelling
-                  skills in students.
-                </p>
               </div>
             </div>
           </div>
@@ -161,28 +115,33 @@ const YouRailsHomeBodyComponent: YouRailsHomeBodyComponentType = (
               <span className="pill"></span>Produce like a pro
             </div>
             <h2 className="section-title">
-              A suite of tools that makes content production more intuitive.
+              A platform that connects search, generation, and learning.
             </h2>
             <p className="section-lead">
-              From core editing to AI-powered workflows, Kapwing combines the essentials of a modern
-              production stack into one browser-based experience.
+              From searching an existing video to generating a new one instantly, YouRails combines
+              content discovery and AI creation in a single workflow.
             </p>
 
             <div className="tools">
               <div className="tool-card">
-                <h3>Core editing</h3>
-                <span>Trim, split, layer, and refine with familiar tools built for speed.</span>
-              </div>
-              <div className="tool-card">
-                <h3>AI editing</h3>
+                <h3>Search</h3>
                 <span>
-                  Use AI to generate drafts, remove busywork, and accelerate the creative process.
+                  Find existing videos from the library by entering a text query and exploring
+                  themed collections.
                 </span>
               </div>
               <div className="tool-card">
-                <h3>Collaboration</h3>
+                <h3>Generate</h3>
                 <span>
-                  Work together in shared projects with comments, approvals, and fast iteration.
+                  Create a new short educational video instantly when the library does not yet
+                  contain a relevant answer.
+                </span>
+              </div>
+              <div className="tool-card">
+                <h3>Edit</h3>
+                <span>
+                  All generated content remains editable, so users can refine the result and reuse
+                  it as needed.
                 </span>
               </div>
             </div>
@@ -192,71 +151,86 @@ const YouRailsHomeBodyComponent: YouRailsHomeBodyComponentType = (
         <section className="section" id="teams">
           <div className="container">
             <div className="eyebrow">
-              <span className="pill"></span>Real teams creating on Kapwing
+              <span className="pill"></span>Real teams creating on YouRails
             </div>
-            <h2 className="section-title">
-              Already transforming video creation across industries.
-            </h2>
+            <h2 className="section-title">A business built for learning, access, and scale.</h2>
             <p className="section-lead">
-              Teams use Kapwing to create faster, localize effortlessly, and simplify the
-              collaborative feedback process.
+              YouRails serves the growing need for AI-driven education and microlearning, where
+              users expect immediate, task-based content delivery.
             </p>
 
             <div className="rating-row">
-              <div>Google</div>
-              <div>4.9 rating, 5024+ reviews</div>
-              <div>Capterra</div>
-              <div>4.4 rating, 207+ reviews</div>
+              <div>EdTech</div>
+              <div>Microlearning</div>
+              <div>AI learning</div>
+              <div>Short-form video knowledge</div>
             </div>
 
             <div className="testimonials" id="reviews">
               <div className="quote">
                 <p>
-                  It just works! Kapwing is incredibly intuitive. Many of our marketers were able to
-                  get on the platform and use it right away with little to no instruction.
+                  YouRails brings practical knowledge into a short video format that is easy to
+                  search, watch, and reuse.
                 </p>
-                <div className="author">Eunice Park, Studio Production Manager at Formlabs</div>
+                <div className="author">Structured learning experience</div>
               </div>
               <div className="quote">
                 <p>
-                  The workflow is fast, collaborative, and easy to share with teams across
-                  departments. We can move from draft to finished asset much faster.
+                  The platform is built for instant answers, with AI helping turn text requests into
+                  useful visual explanations.
                 </p>
-                <div className="author">Creative Operations Lead</div>
+                <div className="author">On-demand content workflow</div>
               </div>
               <div className="quote">
                 <p>
-                  Kapwing keeps our teams aligned. We can build, review, and publish without needing
-                  a complicated setup or extra software.
+                  Users keep full authorship of the content they create and can save it, organize
+                  it, and share it freely.
                 </p>
-                <div className="author">Marketing Team Manager</div>
+                <div className="author">Editable and user-owned output</div>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="cta-band">
+        <section className="section" id="storytellers">
           <div className="container">
-            <div className="cta-box">
-              <div>
-                <div className="eyebrow">
-                  <span className="pill"></span>Now it's your turn
-                </div>
-                <h2 className="section-title" style={{ marginBottom: '10px' }}>
-                  Redefine how your teams make video.
-                </h2>
-                <p className="section-lead" style={{ marginBottom: 0 }}>
-                  Kapwing powers professional-quality video pipelines across marketing, education,
-                  and communications. Get started in minutes.
+            <div className="eyebrow">
+              <span className="pill"></span>Made for any type of storyteller
+            </div>
+            <h2 className="section-title">Built for users who want answers in video form.</h2>
+            <p className="section-lead">
+              YouRails is designed for people who need practical knowledge quickly, with learning
+              content organized into short, focused videos and thematic collections.
+            </p>
+
+            <div className="panel-grid">
+              <div className="panel">
+                <h3>Quick learners</h3>
+                <p>
+                  Get fast access to short video explanations that solve a specific task without
+                  wasting time.
                 </p>
               </div>
-              <div className="actions" style={{ alignSelf: 'center', justifyContent: 'flex-end' }}>
-                <a className="btn btn-primary" href="#hero">
-                  Try Kapwing Free
-                </a>
-                <a className="btn btn-secondary" href="#story">
-                  Request a Demo
-                </a>
+              <div className="panel">
+                <h3>Students</h3>
+                <p>
+                  Learn through structured micro-content that is easy to follow and easier to
+                  revisit later.
+                </p>
+              </div>
+              <div className="panel">
+                <h3>Professionals</h3>
+                <p>
+                  Use AI-generated learning modules to understand practical topics and workflows on
+                  demand.
+                </p>
+              </div>
+              <div className="panel">
+                <h3>Creators</h3>
+                <p>
+                  Build, edit, and organize content in a format designed for reuse, sharing, and
+                  playlist curation.
+                </p>
               </div>
             </div>
           </div>
@@ -265,20 +239,49 @@ const YouRailsHomeBodyComponent: YouRailsHomeBodyComponentType = (
         <section className="section" id="story">
           <div className="container">
             <div className="eyebrow">
-              <span className="pill"></span>Meet the Kapwing Team
+              <span className="pill"></span>Meet the YouRails Team
             </div>
-            <h2 className="section-title">Built by creators for the creator in everyone.</h2>
+            <h2 className="section-title">Built by a small team with one clear goal.</h2>
             <p className="section-lead">
-              The team behind Kapwing builds the product from a creator-first point of view:
-              collaborative, accessible, and easy to use.
+              We are a team of three people—programmers, designers, and marketers—working through
+              UserTo Inc. to build an AI-powered platform for practical educational content.
             </p>
           </div>
         </section>
       </main>
 
-      <footer className="footer">
-        <div className="container">
-          <div>Kapwing-inspired single-file landing page.</div>
+      <footer className="site-footer">
+        <div className="container footer-inner">
+          <div className="footer-grid">
+            <div className="footer-brand-wrap">
+              <div className="footer-brand">Made by UserTo</div>
+              <p className="footer-desc">
+                <a href="https://userto.com/" target="_blank" rel="noopener noreferrer">
+                  AI solutions for learning, media, and growth.
+                </a>
+              </p>
+            </div>
+
+            <div className="footer-contact">
+              <h3>Contact us</h3>
+              <div className="contact-item">
+                <span className="contact-label">Email:</span>
+                <a href="mailto:contact@yourails.com">contact@yourails.com</a>
+              </div>
+              <div className="contact-item">
+                <span className="contact-label">Linkedin:</span>
+                <a
+                  href="https://www.linkedin.com/in/romanches/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  https://www.linkedin.com/in/romanches/
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="footer-bottom">©2026 YouRails</div>
         </div>
       </footer>
     </div>
@@ -292,5 +295,4 @@ const YouRailsHomeBody: YouRailsHomeBodyType = withStoreStateSelectedYrl(
 )
 
 export type { YouRailsHomeBodyPropsType, YouRailsHomeBodyType }
-export { YouRailsHomeBody }
-export { YouRailsHomeBody as default }
+export { YouRailsHomeBody, YouRailsHomeBody as default }

@@ -3,7 +3,7 @@ import { ReducerType } from '../../Interfaces/ReducerType'
 
 export const TOGGLE_MEDIA_LOADED: ReducerType = (
   store: RootStoreType,
-  data: any
+  data: any,
 ): RootStoreType => {
   const { mediaKey, isMediaLoaded } = data
 

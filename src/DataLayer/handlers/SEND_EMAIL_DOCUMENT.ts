@@ -13,6 +13,6 @@ export const SEND_EMAIL_DOCUMENT: ActionEventType = (event, data) => {
         isActive: false,
         childProps: {},
       },
-    ])
+    ]),
   )
 }

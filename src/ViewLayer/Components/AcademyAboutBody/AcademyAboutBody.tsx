@@ -19,7 +19,7 @@ import {
              from '../Components/AcademyAboutBody/AcademyAboutBody'
  */
 const AcademyAboutBodyComponent: AcademyAboutBodyComponentType = (
-  props: AcademyAboutBodyComponentPropsType
+  props: AcademyAboutBodyComponentPropsType,
 ) => {
   const { classAdded, buildData, storeStateSlice } = props
   const {
@@ -38,41 +38,41 @@ const AcademyAboutBodyComponent: AcademyAboutBodyComponentType = (
 
   return (
     <div className={getClasses('AcademyAboutBody', classAdded)}>
-      <h1 className='_titleBodyAbout'>About {brand}</h1>
-      <div className='_aboutAcademyContent'>
-        <div className='_paragraph'>{getTagLine()}</div>
-        <div className='_paragraph'>{description}</div>
+      <h1 className="_titleBodyAbout">About {brand}</h1>
+      <div className="_aboutAcademyContent">
+        <div className="_paragraph">{getTagLine()}</div>
+        <div className="_paragraph">{description}</div>
       </div>
-      <div className='_sectionBuildData'>
-        <h3 className='_titleTableBuild'>Current build</h3>
-        <section className='_tableBuild'>
-          <div className='_row'>
-            <div className='_cell _cell_capture'>Date build</div>
-            <div className='_cell _cell_text'>{dateBuild}</div>
+      <div className="_sectionBuildData">
+        <h3 className="_titleTableBuild">Current build</h3>
+        <section className="_tableBuild">
+          <div className="_row">
+            <div className="_cell _cell_capture">Date build</div>
+            <div className="_cell _cell_text">{dateBuild}</div>
           </div>
-          <div className='_row'>
-            <div className='_cell _cell_capture'>Date commit</div>
-            <div className='_cell _cell_text'>{dateCommit}</div>
+          <div className="_row">
+            <div className="_cell _cell_capture">Date commit</div>
+            <div className="_cell _cell_text">{dateCommit}</div>
           </div>
-          <div className='_row'>
-            <div className='_cell _cell_capture'>Current branch</div>
-            <div className='_cell _cell_text'>{branchCurrent}</div>
+          <div className="_row">
+            <div className="_cell _cell_capture">Current branch</div>
+            <div className="_cell _cell_text">{branchCurrent}</div>
           </div>
-          <div className='_row'>
-            <div className='_cell _cell_capture'>Authors</div>
-            <div className='_cell _cell_text'>{`${name}, ${email}`}</div>
+          <div className="_row">
+            <div className="_cell _cell_capture">Authors</div>
+            <div className="_cell _cell_text">{`${name}, ${email}`}</div>
           </div>
-          <div className='_row'>
-            <div className='_cell _cell_capture'>Message</div>
-            <div className='_cell _cell_text'>{message}</div>
+          <div className="_row">
+            <div className="_cell _cell_capture">Message</div>
+            <div className="_cell _cell_text">{message}</div>
           </div>
-          <div className='_row'>
-            <div className='_cell _cell_capture'>Commit</div>
-            <div className='_cell _cell_text'>{commit}</div>
+          <div className="_row">
+            <div className="_cell _cell_capture">Commit</div>
+            <div className="_cell _cell_text">{commit}</div>
           </div>
-          <div className='_row'>
-            <div className='_cell _cell_capture'>Copyright</div>
-            <div className='_cell _cell_text'>{copyright}</div>
+          <div className="_row">
+            <div className="_cell _cell_capture">Copyright</div>
+            <div className="_cell _cell_text">{copyright}</div>
           </div>
         </section>
       </div>
@@ -90,7 +90,7 @@ const AcademyAboutBodyComponent: AcademyAboutBodyComponentType = (
 
 const storeStateSliceProps: string[] = []
 export const AcademyAboutBody = withPropsYrl({ buildData })(
-  withStoreStateSelectedYrl(storeStateSliceProps, React.memo(AcademyAboutBodyComponent))
+  withStoreStateSelectedYrl(storeStateSliceProps, React.memo(AcademyAboutBodyComponent)),
 )
 
 export type {

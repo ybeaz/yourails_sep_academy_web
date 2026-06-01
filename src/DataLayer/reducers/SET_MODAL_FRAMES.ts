@@ -8,7 +8,7 @@ export const SET_MODAL_FRAMES: ReducerType = (store: RootStoreType, data: any): 
   const { componentsState } = store
   const { modalFrames } = componentsState
 
-  let modaleFramesNext = modalFrames.map(item => ({ ...item, isActive: false }))
+  let modaleFramesNext = modalFrames.map((item) => ({ ...item, isActive: false }))
 
   if (data.length > 0) {
     modaleFramesNext = getUniqArrDeep(modalFrames)

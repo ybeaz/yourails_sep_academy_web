@@ -6,7 +6,7 @@ import { getSetUrlQueryBrowserApi, GetSetUrlQueryBrowserApiParamsType } from 'yo
 
 const { dispatch } = store
 
-export const CLICK_ON_ALL_TAGS: ActionEventType = event => {
+export const CLICK_ON_ALL_TAGS: ActionEventType = (event) => {
   dispatch(actionSync.SET_INPUT_TO_STORE({ storeFormProp: 'tagsSearch', value: '' }))
 
   dispatch(actionAsync.READ_TAGS_CONNECTION.REQUEST({ isLoaderOverlay: true }))
@@ -22,6 +22,6 @@ export const CLICK_ON_ALL_TAGS: ActionEventType = event => {
     actionSync.SET_PAGE_CURSOR({
       paginationName: PaginationNameEnumType['pageModules'],
       first: 1,
-    })
+    }),
   )
 }

@@ -13,7 +13,7 @@ interface GetIteratedAndMinifiedFilesType {
  */
 export const getIteratedAndMinifiedFiles: GetIteratedAndMinifiedFilesType = async (
   inputDir,
-  jsFiles
+  jsFiles,
 ) => {
   let output: string[] = []
   jsFiles.forEach((file: string) => {

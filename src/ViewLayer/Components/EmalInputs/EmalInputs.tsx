@@ -60,17 +60,17 @@ const EmalInputsComponent: EmalInputsComponentType = (props: EmalInputsComponent
   }
 
   return (
-    <div className='EmalInputs'>
-      <form className='_form'>
-        <div className='_group'>
-          <label className='_label'>Email to send document*</label>
+    <div className="EmalInputs">
+      <form className="_form">
+        <div className="_group">
+          <label className="_label">Email to send document*</label>
           <InputYrl {...propsOut.inputEmailToProps} />
         </div>
-        <div className='_group'>
-          <label className='_label'>Email CC</label>
+        <div className="_group">
+          <label className="_label">Email CC</label>
           <InputYrl {...propsOut.inputEmailCcProps} />
         </div>
-        <div className='_buttons'>
+        <div className="_buttons">
           {/* <ButtonYrl {...buttonCancelProps} /> */}
           <ButtonYrl {...propsOut.buttonForwardProps} />
         </div>
@@ -82,7 +82,7 @@ const EmalInputsComponent: EmalInputsComponentType = (props: EmalInputsComponent
 const storeStateSliceProps: string[] = ['documents', 'sendTo', 'sendCc']
 
 export const EmalInputs: EmalInputsType = withPropsYrl({ handleEvents: handleEventsIn })(
-  withStoreStateSelectedYrl(storeStateSliceProps, React.memo(EmalInputsComponent))
+  withStoreStateSelectedYrl(storeStateSliceProps, React.memo(EmalInputsComponent)),
 )
 
 export type { EmalInputsPropsType, EmalInputsPropsOutType, EmalInputsComponentType, EmalInputsType }

@@ -67,11 +67,11 @@ export function* readDocumentsGenerator(params: ActionReduxType | any): Iterable
       ...getHeadersAuthDict(),
       clientHttpType: selectGraphqlHttpClientFlag(),
       timeout: 10000,
-    }
+    },
   )
 
   let documentsNext: any = getChainedResponsibility(readDocumentsConnection).exec(
-    getMappedConnectionToItems
+    getMappedConnectionToItems,
   ).result
 
   yield put(actionSync.SET_DOCUMENTS(documentsNext))
@@ -81,7 +81,7 @@ export function* readDocumentsGenerator(params: ActionReduxType | any): Iterable
     actionSync.SET_PAGE_INFO({
       paginationName: PaginationNameEnumType['pageDocuments'],
       ...pageInfo,
-    })
+    }),
   )
 }
 
@@ -90,7 +90,7 @@ export const readDocuments = withDebounce(
     optionsDefault: { funcParent: 'readDocumentsSaga' },
     resDefault: [],
   }),
-  500
+  500,
 )
 
 export default function* readDocumentsSaga() {

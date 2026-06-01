@@ -27,7 +27,7 @@ export function* getModule10MetaDataCreatedGenerator(params: ActionReduxType | a
       actionSync.SET_MODULE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['metaData'],
         status: CreateModuleStatusEnumType['pending'],
-      })
+      }),
     )
 
     let variables: MutationCreateContentMetaDataArgs = {
@@ -52,27 +52,27 @@ export function* getModule10MetaDataCreatedGenerator(params: ActionReduxType | a
         ...getHeadersAuthDict(),
         clientHttpType: selectGraphqlHttpClientFlag(),
         timeout: CONNECTIONS_TIMEOUTS[ConnectionsTimeoutNameEnumType.metaData],
-      }
+      },
     )
 
     yield put(
       actionSync.ADD_MODULE_CREATE_DATA({
         metaData: createContentMetaData,
-      })
+      }),
     )
 
     yield put(
       actionSync.SET_MODULE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['metaData'],
         status: CreateModuleStatusEnumType['success'],
-      })
+      }),
     )
   } catch (error: any) {
     yield put(
       actionSync.SET_MODULE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['metaData'],
         status: CreateModuleStatusEnumType['failure'],
-      })
+      }),
     )
 
     console.info('getModule10MetaDataCreatedSaga [76] ERROR', `${error.name}: ${error.message}`)
@@ -84,12 +84,12 @@ export const getModule10MetaDataCreated = withDebounce(
     optionsDefault: { funcParent: 'getModule10MetaDataCreatedSaga' },
     resDefault: [],
   }),
-  500
+  500,
 )
 
 export default function* getModule10MetaDataCreatedSaga() {
   yield takeEvery(
     [actionAsync.GET_MODULE_META_DATA_CREATED.REQUEST().type],
-    getModule10MetaDataCreated
+    getModule10MetaDataCreated,
   )
 }

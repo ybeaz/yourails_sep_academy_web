@@ -15,7 +15,7 @@ import * as handleEventsAll from '../../DataLayer/handlers'
  */
 export const useEffectedInitialRequests: Function = (
   requestList: string[] | any[],
-  triggers: any[] = []
+  triggers: any[] = [],
 ): void => {
   const dispatch = useDispatch()
 

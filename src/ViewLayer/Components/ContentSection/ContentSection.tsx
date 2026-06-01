@@ -18,13 +18,13 @@ import {
              from '../Components/ContentSection/ContentSection'
  */
 const ContentSectionComponent: ContentSectionComponentType = (
-  props: ContentSectionComponentPropsType
+  props: ContentSectionComponentPropsType,
 ) => {
   const { classAdded, contentArray } = props
 
   return (
     <div className={getClasses('ContentSection', classAdded)}>
-      <div className='_contentWrapper'>
+      <div className="_contentWrapper">
         {contentArray.map((ContentItem: any, index: number) => (
           <Fragment key={`contentArray-${index}`}>{ContentItem.component}</Fragment>
         ))}
@@ -36,7 +36,7 @@ const ContentSectionComponent: ContentSectionComponentType = (
 const storeStateSliceProps: string[] = []
 export const ContentSection: ContentSectionType = withStoreStateSelectedYrl(
   storeStateSliceProps,
-  React.memo(ContentSectionComponent)
+  React.memo(ContentSectionComponent),
 )
 
 export type {

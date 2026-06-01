@@ -52,7 +52,7 @@ export const StubForUserResearchComponent: React.FunctionComponent<
   }
 
   return (
-    <div className='StubForUserResearch'>
+    <div className="StubForUserResearch">
       <MainFrame {...mainFrameProps}>
         {/* header */}
         <HeaderFrame {...headerFrameProps} />

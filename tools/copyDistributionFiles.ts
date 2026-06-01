@@ -13,7 +13,7 @@ if (require.main === module) {
   }
 
   copyArr.length &&
-    copyArr.forEach(item => {
+    copyArr.forEach((item) => {
       if ('src' in item && 'dest' in item)
         getCopiedFileSync({ src: item['src'], dest: item['dest'] })
     })

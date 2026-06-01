@@ -4,7 +4,7 @@ import { actionSync } from '../../DataLayer/index.action'
 
 const { dispatch, getState } = store
 
-export const TOGGLE_THEME: ActionEventType = event => {
+export const TOGGLE_THEME: ActionEventType = (event) => {
   const {
     globalVars: { theme },
   } = getState()

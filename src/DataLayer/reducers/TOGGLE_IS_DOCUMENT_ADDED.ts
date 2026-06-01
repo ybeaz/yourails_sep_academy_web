@@ -9,7 +9,7 @@ import { ReducerType } from '../../Interfaces/ReducerType'
  */
 export const TOGGLE_IS_DOCUMENT_ADDED: ReducerType = (
   store: RootStoreType,
-  data: any
+  data: any,
 ): RootStoreType => {
   const { componentsState } = store
   const componentsStateNext = {

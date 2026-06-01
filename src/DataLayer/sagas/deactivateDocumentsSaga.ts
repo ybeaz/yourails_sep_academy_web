@@ -29,7 +29,7 @@ function* deactivateDocumentsGenerator(params: ActionReduxType | any): Iterable<
       ...getHeadersAuthDict(),
       clientHttpType: selectGraphqlHttpClientFlag(),
       timeout: 5000,
-    }
+    },
   )
 
   yield call(readDocuments)
@@ -38,7 +38,7 @@ function* deactivateDocumentsGenerator(params: ActionReduxType | any): Iterable<
     actionSync.SET_MODAL_FRAMES({
       childName: 'ConfirmationYesNoBodyYrl',
       isActive: false,
-    })
+    }),
   )
 }
 
@@ -47,7 +47,7 @@ export const deactivateDocuments = withDebounce(
     optionsDefault: { funcParent: 'deactivateDocumentsSaga' },
     resDefault: [],
   }),
-  500
+  500,
 )
 
 export default function* deactivateDocumentsSaga() {

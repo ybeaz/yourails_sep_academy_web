@@ -47,14 +47,14 @@ export function* getAuthAwsCognitoUserRefreshedGenerator(): Iterable<any> {
       {
         clientHttpType: selectGraphqlHttpClientFlag(),
         timeout: 5000,
-      }
+      },
     )
 
     yield put(
       actionSync.SET_AUTH_AWS_COGNITO_USER_DATA({
         authAwsCognitoUserData,
         source: 'getAuthAwsCognitoUserRefreshedSaga',
-      })
+      }),
     )
   } catch (error: any) {
     yield getLocalStorageSetObjTo({
@@ -70,7 +70,7 @@ export const getAuthAwsCognitoUserRefreshed = withDebounce(
     optionsDefault: { funcParent: 'getAuthAwsCognitoUserRefreshedSaga' },
     resDefault: [],
   }),
-  10
+  10,
 )
 
 /**
@@ -80,6 +80,6 @@ export const getAuthAwsCognitoUserRefreshed = withDebounce(
 export default function* getAuthAwsCognitoUserRefreshedSaga() {
   yield takeEvery(
     [actionAsync.GET_AUTH_AWS_COGNITO_USER_REFRESHED.REQUEST().type],
-    getAuthAwsCognitoUserRefreshed
+    getAuthAwsCognitoUserRefreshed,
   )
 }

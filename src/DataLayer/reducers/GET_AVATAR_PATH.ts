@@ -1,10 +1,7 @@
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { ReducerType } from '../../Interfaces/ReducerType'
 
-export const GET_AVATAR_PATH: ReducerType = (
-  store: RootStoreType,
-  data: any
-): RootStoreType => {
+export const GET_AVATAR_PATH: ReducerType = (store: RootStoreType, data: any): RootStoreType => {
   const { forms } = store
   const { user } = forms
 

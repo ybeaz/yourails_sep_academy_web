@@ -1,13 +1,12 @@
-import React from 'react'
 import classNames from 'classnames'
-import { YouRailsHomeBody } from '../../Components/YouRailsHomeBody/YouRailsHomeBody'
-
+import React from 'react'
 import { withPropsYrl, withStoreStateSelectedYrl } from 'yourails_common'
-import {
+import { YouRailsHomeBody } from '../../Components/YouRailsHomeBody/YouRailsHomeBody'
+import type {
   YouRailsHomeComponentPropsType,
-  YouRailsHomePropsType,
-  YouRailsHomePropsOutType,
   YouRailsHomeComponentType,
+  YouRailsHomePropsOutType,
+  YouRailsHomePropsType,
   YouRailsHomeType,
 } from './YouRailsHomeTypes'
 
@@ -43,5 +42,4 @@ const YouRailsHome: YouRailsHomeType = withStoreStateSelectedYrl(
 )
 
 export type { YouRailsHomePropsType, YouRailsHomeType }
-export { YouRailsHome }
-export { YouRailsHome as default }
+export { YouRailsHome, YouRailsHome as default }

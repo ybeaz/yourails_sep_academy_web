@@ -18,7 +18,7 @@ export const SET_COURSES: ReducerType = (store: RootStoreType, data: any): RootS
         if (contentID.includes('yourails.com')) booleanValue = true
         return { ...accum, [moduleID]: booleanValue }
       },
-      {}
+      {},
     )
 
     return { ...accum, ...output }

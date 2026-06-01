@@ -25,7 +25,7 @@ function* readDocumentGenerator(params: ActionReduxType | any): Iterable<any> {
       ...getHeadersAuthDict(),
       clientHttpType: selectGraphqlHttpClientFlag(),
       timeout: 5000,
-    }
+    },
   )
 
   yield put(actionSync.SET_DOCUMENTS(readDocuments))
@@ -35,7 +35,7 @@ const readDocument = withLoaderWrapperSaga(
   withTryCatchFinallySaga(readDocumentGenerator, {
     optionsDefault: { funcParent: 'readDocumentSaga' },
     resDefault: [],
-  })
+  }),
 )
 
 export default function* readDocumentSaga() {

@@ -56,6 +56,6 @@ export const GET_COURSE_QUERY_PR_QN_DEPRECIATED: ActionEventType = (event, data)
     actionSync.UPDATE_COURSE_BY_COURSEID({
       courseID,
       course: courseNext,
-    })
+    }),
   )
 }

@@ -17,7 +17,7 @@ import {
              from '../Components/QuestionsCaptures/QuestionsCaptures'
  */
 const QuestionsCapturesComponent: QuestionsCapturesComponentType = (
-  props: QuestionsCapturesComponentPropsType
+  props: QuestionsCapturesComponentPropsType,
 ) => {
   const { classAdded, isDisplaying, isVisible, language, questions } = props
 
@@ -31,13 +31,13 @@ const QuestionsCapturesComponent: QuestionsCapturesComponentType = (
         QuestionsCaptures_visible_none: isVisible === false,
       })}
     >
-      <div className='_capture'>{DICTIONARY.QuestionsWithIncorrectAnswers[language]}</div>
-      <ul className='_ul'>
-        {questions.map(question => {
+      <div className="_capture">{DICTIONARY.QuestionsWithIncorrectAnswers[language]}</div>
+      <ul className="_ul">
+        {questions.map((question) => {
           const { questionID, capture: questionCapture } = question
 
           return (
-            <li key={questionID} className='_li'>
+            <li key={questionID} className="_li">
               {questionCapture}
             </li>
           )

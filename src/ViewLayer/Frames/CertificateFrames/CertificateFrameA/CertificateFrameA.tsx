@@ -16,7 +16,7 @@ import {
              from '../../Frames/CertificateFrames/CertificateFrameA/CertificateFrameA'
  */
 const CertificateFrameAComponent: CertificateFrameAComponentType = (
-  props: CertificateFrameAComponentPropsType
+  props: CertificateFrameAComponentPropsType,
 ) => {
   const { classAdded, children, borderImageSourceUrl } = props
 

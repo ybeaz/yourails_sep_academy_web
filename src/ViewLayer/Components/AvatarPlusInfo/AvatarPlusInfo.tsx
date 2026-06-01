@@ -20,7 +20,7 @@ import {
              from '../Components/AvatarPlusInfo/AvatarPlusInfo'
  */
 const AvatarPlusInfoComponent: AvatarPlusInfoComponentType = (
-  props: AvatarPlusInfoComponentPropsType
+  props: AvatarPlusInfoComponentPropsType,
 ) => {
   const {
     classProps,
@@ -56,16 +56,16 @@ const AvatarPlusInfoComponent: AvatarPlusInfoComponentType = (
     <div className={getClasses('AvatarPlusInfo', classProps)}>
       <NavLinkWithQuery {...propsOut.navLinkProps}>
         <ImageYrl {...propsOut.imageProps} />
-        <div className='_captureText'>
+        <div className="_captureText">
           {isTitle ? (
             <>
-              <h1 className='_capture'>{capture}</h1>
-              <h2 className='_text'>{text}</h2>
+              <h1 className="_capture">{capture}</h1>
+              <h2 className="_text">{text}</h2>
             </>
           ) : (
             <>
-              <div className='_capture'>{capture}</div>
-              <div className='_text'>{text}</div>
+              <div className="_capture">{capture}</div>
+              <div className="_text">{text}</div>
             </>
           )}
         </div>
@@ -75,7 +75,7 @@ const AvatarPlusInfoComponent: AvatarPlusInfoComponentType = (
 }
 
 export const AvatarPlusInfo: AvatarPlusInfoType = React.memo(
-  withPropsYrl({ handleEvents: handleEventsIn })(AvatarPlusInfoComponent)
+  withPropsYrl({ handleEvents: handleEventsIn })(AvatarPlusInfoComponent),
 )
 
 export type {

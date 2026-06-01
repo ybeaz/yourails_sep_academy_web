@@ -52,7 +52,7 @@ const TimerComponent: TimerComponentType = (props: TimerComponentPropsType) => {
 
   return (
     <div className={getClasses('Timer', [classAdded, classDisplay, classVisible])}>
-      <div className='_number'>{timerState}</div>
+      <div className="_number">{timerState}</div>
     </div>
   )
 }

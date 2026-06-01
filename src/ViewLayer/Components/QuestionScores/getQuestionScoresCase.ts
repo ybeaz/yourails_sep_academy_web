@@ -23,7 +23,7 @@ type GetQuestionScoresCaseResType = QuestionsScoresCaseEnumType
 interface GetQuestionScoresCaseType {
   (
     params: GetQuestionScoresCaseParamsType,
-    options?: GetQuestionScoresCaseOptionsType
+    options?: GetQuestionScoresCaseOptionsType,
   ): GetQuestionScoresCaseResType
 }
 
@@ -41,7 +41,7 @@ const resDefault: GetQuestionScoresCaseResType =
 
 const getQuestionScoresCaseUnsafe: GetQuestionScoresCaseType = (
   params: GetQuestionScoresCaseParamsType,
-  options?: GetQuestionScoresCaseOptionsType
+  options?: GetQuestionScoresCaseOptionsType,
 ) => {
   const { result, sub, nameFirst, nameLast } = params
 

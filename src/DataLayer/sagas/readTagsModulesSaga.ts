@@ -45,7 +45,7 @@ function* readTagsModulesGenerator(params: ActionReduxType | any): Iterable<any>
       ...getHeadersAuthDict(),
       clientHttpType: selectGraphqlHttpClientFlag(),
       timeout: 10000,
-    }
+    },
   )
 
   yield put(actionSync.SET_TAGS_CLOUD({ tagsCloud: readTagsModules }))
@@ -56,7 +56,7 @@ export const readTagsModules = withDebounce(
     optionsDefault: { funcParent: 'readTagsModulesSaga' },
     resDefault: [],
   }),
-  500
+  500,
 )
 
 export default function* readTagsModulesSaga() {

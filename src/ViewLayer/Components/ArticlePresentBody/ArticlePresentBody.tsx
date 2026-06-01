@@ -17,7 +17,7 @@ import {
              from '../Components/ArticlePresentBody/ArticlePresentBody'
  */
 const ArticlePresentBodyComponent: ArticlePresentBodyComponentType = (
-  props: ArticlePresentBodyComponentPropsType
+  props: ArticlePresentBodyComponentPropsType,
 ) => {
   const { classAdded, article } = props
   const { sections } = article

@@ -35,7 +35,7 @@ export function* getAuthAwsCognitoUserDataGenerator(params: ActionReduxType | an
     {
       clientHttpType: selectGraphqlHttpClientFlag(),
       timeout: 5000,
-    }
+    },
   )
 
   yield getLocalStorageSetObjTo({
@@ -47,7 +47,7 @@ export function* getAuthAwsCognitoUserDataGenerator(params: ActionReduxType | an
     actionSync.SET_AUTH_AWS_COGNITO_USER_DATA({
       authAwsCognitoUserData,
       source: 'getAuthAwsCognitoUserDataSaga',
-    })
+    }),
   )
 
   yield readModulesConnection()
@@ -58,7 +58,7 @@ export const getAuthAwsCognitoUserData = withTryCatchFinallySaga(
   {
     optionsDefault: { funcParent: 'getAuthAwsCognitoUserDataSaga' },
     resDefault: [],
-  }
+  },
 )
 
 /**
@@ -68,6 +68,6 @@ export const getAuthAwsCognitoUserData = withTryCatchFinallySaga(
 export default function* getAuthAwsCognitoUserDataSaga() {
   yield takeEvery(
     [actionAsync.GET_AUTH_AWS_COGNITO_USER_DATA.REQUEST().type],
-    getAuthAwsCognitoUserData
+    getAuthAwsCognitoUserData,
   )
 }

@@ -54,7 +54,7 @@ export const createDocumentScenario = withDebounce(
     optionsDefault: { funcParent: 'createDocumentScenarioSagaa' },
     resDefault: [],
   }),
-  500
+  500,
 )
 
 export default function* createDocumentScenarioSaga() {

@@ -9,7 +9,7 @@ import { getUniqArrBy } from 'yourails_common'
 export const SET_ARTICLES: ReducerType = (store: RootStoreType, data: any): RootStoreType => {
   const { articles } = store
   const articlesNext = getUniqArrBy(['articleID'], [...data, ...articles]).filter(
-    (article: ArticleItemType) => article
+    (article: ArticleItemType) => article,
   )
 
   return {

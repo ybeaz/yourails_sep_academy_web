@@ -4,7 +4,7 @@ import { UserType } from 'yourails_common'
 
 export const ONCHANGE_USER_NAME_NICK: ReducerType = (
   store: RootStoreType,
-  data: any
+  data: any,
 ): RootStoreType => {
   const { forms } = store
   const { user } = forms

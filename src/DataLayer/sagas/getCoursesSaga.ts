@@ -63,7 +63,7 @@ export function* getCoursesGenerator(params: ActionReduxType | any): Iterable<an
       ...getHeadersAuthDict(),
       clientHttpType: selectGraphqlHttpClientFlag(),
       timeout: 10000,
-    }
+    },
   )
 
   let coursesNext: any = getChainedResponsibility(readCoursesConnection)
@@ -77,7 +77,7 @@ export function* getCoursesGenerator(params: ActionReduxType | any): Iterable<an
     actionSync.SET_PAGE_INFO({
       paginationName: PaginationNameEnumType['pageModules'],
       ...pageInfo,
-    })
+    }),
   )
 }
 
@@ -86,7 +86,7 @@ export const getCourses = withDebounce(
     optionsDefault: { funcParent: 'getCoursesSaga' },
     resDefault: [],
   }),
-  500
+  500,
 )
 
 export default function* getCoursesSaga() {

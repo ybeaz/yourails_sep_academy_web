@@ -18,7 +18,7 @@ import {
              from '../Components/IconLabelWithClose/IconLabelWithClose'
  */
 const IconLabelWithCloseComponent: IconLabelWithCloseComponentType = (
-  props: IconLabelWithCloseComponentPropsType
+  props: IconLabelWithCloseComponentPropsType,
 ) => {
   const { classAdded, icon, capture, action, handleEvents } = props
 
@@ -44,7 +44,7 @@ const IconLabelWithCloseComponent: IconLabelWithCloseComponentType = (
   return (
     <div className={getClasses('IconLabelWithClose', classAdded)}>
       <IconYrl {...propsOut.iconLabelProps} />
-      <div className='_capture'>{capture}</div>
+      <div className="_capture">{capture}</div>
       <ButtonYrl {...propsOut.buttonCloseProps} />
     </div>
   )

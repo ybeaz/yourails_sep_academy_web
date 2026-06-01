@@ -104,8 +104,8 @@ export const UsersOnlineComponent: React.FunctionComponent<UsersOnlinePropsType>
   }
 
   return (
-    <div className='UsersOnline'>
-      <div className='_images'>
+    <div className="UsersOnline">
+      <div className="_images">
         {getUsersJsx(USERS_MAMBA_FACES, language)}
         <ButtonYrl {...propsOut.buttonMdArrowForwardIosProps} />
       </div>

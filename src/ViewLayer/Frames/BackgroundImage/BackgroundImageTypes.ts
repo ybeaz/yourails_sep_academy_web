@@ -10,5 +10,4 @@ export interface BackgroundImageComponentType
   (props: BackgroundImagePropsType): React.ReactElement
 }
 
-export type BackgroundImageType =
-  React.FunctionComponent<BackgroundImagePropsType>
+export type BackgroundImageType = React.FunctionComponent<BackgroundImagePropsType>

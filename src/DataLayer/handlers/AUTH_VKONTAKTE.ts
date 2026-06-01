@@ -37,6 +37,6 @@ export const AUTH_VKONTAKTE: ActionEventType = (event, data) => {
       picture,
       userIdExternal: userIdExternal.toString(),
       userName: `${nameFirst} ${nameLast}`,
-    })
+    }),
   )
 }

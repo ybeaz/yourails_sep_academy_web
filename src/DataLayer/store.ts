@@ -11,7 +11,7 @@ interface CreateStoreType {
   (indexReducer: IndexReducerType): Store
 }
 
-const createStore: CreateStoreType = indexReducer2 => {
+const createStore: CreateStoreType = (indexReducer2) => {
   const sagaMiddleware = createSagaMiddleware()
   const store2 = configureStore({
     reducer: indexReducer2,

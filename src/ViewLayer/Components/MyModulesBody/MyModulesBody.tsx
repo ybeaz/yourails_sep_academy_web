@@ -33,7 +33,7 @@ import { getModuleCreateStages } from './getModuleCreateStages'
              from '../Components/MyModulesBody/MyModulesBody'
  */
 const MyModulesBodyComponent: MyModulesBodyComponentType = (
-  props: MyModulesBodyComponentPropsType
+  props: MyModulesBodyComponentPropsType,
 ) => {
   const {
     classAdded,
@@ -47,7 +47,7 @@ const MyModulesBodyComponent: MyModulesBodyComponentType = (
   } = props
 
   const stagesNo = Object.values(CreateModuleStagesEnumType).filter(
-    (key: CreateModuleStagesEnumType) => createModuleStages[key].isActive === true
+    (key: CreateModuleStagesEnumType) => createModuleStages[key].isActive === true,
   ).length
   const width: string = `${String(Math.round((100 * stagesNo) / 6))}%`
 
@@ -56,7 +56,7 @@ const MyModulesBodyComponent: MyModulesBodyComponentType = (
       getModuleCreateStages({
         createModuleStages,
       }),
-    [JSON.stringify(createModuleStages)]
+    [JSON.stringify(createModuleStages)],
   )
 
   const getStages = (stagesIn: StagesType[]) => {
@@ -104,12 +104,12 @@ const MyModulesBodyComponent: MyModulesBodyComponentType = (
         }
 
         return (
-          <div key={stageName} className='_stage'>
-            <div className='_stageDesription'>
-              <div className='_capture'>{DICTIONARY[`stage_${stageName}`][language]}</div>
-              <div className='_status'>{DICTIONARY[`${status}`][language]}</div>
+          <div key={stageName} className="_stage">
+            <div className="_stageDesription">
+              <div className="_capture">{DICTIONARY[`stage_${stageName}`][language]}</div>
+              <div className="_status">{DICTIONARY[`${status}`][language]}</div>
             </div>
-            <div className='_stageVisualisation'>
+            <div className="_stageVisualisation">
               <IconYrl {...propsOut.iconToDoProps} />
               {timeCalculated ? (
                 <Timer {...propsOut.timerProps} />
@@ -162,16 +162,16 @@ const MyModulesBodyComponent: MyModulesBodyComponentType = (
 
   return (
     <div className={getClasses('MyModulesBody', classAdded)}>
-      <div className='_inputGroupWrapper' style={{ width }}>
-        <h2 className='_h2'>{DICTIONARY.Create_module[language]}</h2>
+      <div className="_inputGroupWrapper" style={{ width }}>
+        <h2 className="_h2">{DICTIONARY.Create_module[language]}</h2>
         <InputGroupYrl {...propsOut.inputGroupProps} />
       </div>
-      <div className='_stagesWrapper'>{isShowModuleCreateProgress ? getStages(stages) : null}</div>
-      <div className='_messageWrapper'></div>
-      <div className='_modulesBodyWrapper'>
+      <div className="_stagesWrapper">{isShowModuleCreateProgress ? getStages(stages) : null}</div>
+      <div className="_messageWrapper"></div>
+      <div className="_modulesBodyWrapper">
         {modules.length ? <MyModulesTable {...propsOut.myModulesTableProps} /> : null}
         {!(pageModules.first === 0 && pageModules.offset > modules.length) && (
-          <div className='_paginationNavigationWrapper'>
+          <div className="_paginationNavigationWrapper">
             {modules.length ? (
               <PaginationNavigation {...propsOut.paginationNavigationProps} />
             ) : null}
@@ -185,7 +185,7 @@ const MyModulesBodyComponent: MyModulesBodyComponentType = (
 const storeStateSliceProps: string[] = ['pageModules']
 
 export const MyModulesBody: MyModulesBodyType = withPropsYrl({ handleEvents: handleEventsIn })(
-  withStoreStateSelectedYrl(storeStateSliceProps, React.memo(MyModulesBodyComponent))
+  withStoreStateSelectedYrl(storeStateSliceProps, React.memo(MyModulesBodyComponent)),
 )
 
 export type {

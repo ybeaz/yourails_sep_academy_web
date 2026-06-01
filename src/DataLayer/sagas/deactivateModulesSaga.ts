@@ -29,7 +29,7 @@ function* deactivateModulesGenerator(params: ActionReduxType | any): Iterable<an
       ...getHeadersAuthDict(),
       clientHttpType: selectGraphqlHttpClientFlag(),
       timeout: 5000,
-    }
+    },
   )
 
   yield call(readModulesConnection)
@@ -38,7 +38,7 @@ function* deactivateModulesGenerator(params: ActionReduxType | any): Iterable<an
     actionSync.SET_MODAL_FRAMES({
       childName: 'ConfirmationYesNoBodyYrl',
       isActive: false,
-    })
+    }),
   )
 }
 
@@ -47,7 +47,7 @@ export const deactivateModules = withDebounce(
     optionsDefault: { funcParent: 'deactivateModulesSaga' },
     resDefault: [],
   }),
-  500
+  500,
 )
 
 export default function* deactivateModulesSaga() {

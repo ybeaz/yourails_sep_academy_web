@@ -15,7 +15,7 @@ type DataType = {
 
 export const SET_MODULE_CREATE_STATUS: ReducerType = (
   store: RootStoreType,
-  data: DataType
+  data: DataType,
 ): RootStoreType => {
   const { stage, isActive, status, timeCalculated } = data
   const dataKeys = Object.keys(data)

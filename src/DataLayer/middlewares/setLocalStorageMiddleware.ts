@@ -20,7 +20,7 @@ const getLocalStorageStoreStateSetCallback = (...args: any) => {
 
 const debouncedFunc = getDebouncedFunc(
   getLocalStorageStoreStateSetCallback,
-  AWS_COGNITO_REFRESH_AUTH_TOKEN_DELAY
+  AWS_COGNITO_REFRESH_AUTH_TOKEN_DELAY,
 )
 
 /**
@@ -28,7 +28,7 @@ const debouncedFunc = getDebouncedFunc(
  * @description Middleware to setLocalStorageMiddleware
  * @import import { setLocalStorageMiddleware } from './middlewares/setLocalStorageMiddleware'
  */
-export const setLocalStorageMiddleware: Middleware = store => next => action => {
+export const setLocalStorageMiddleware: Middleware = (store) => (next) => (action) => {
   const result = next(action)
 
   const { type: actionType } = action

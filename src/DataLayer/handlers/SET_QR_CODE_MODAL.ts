@@ -14,6 +14,6 @@ export const SET_QR_CODE_MODAL: ActionEventType = (event, data) => {
         isActive,
         childProps: {},
       },
-    ])
+    ]),
   )
 }

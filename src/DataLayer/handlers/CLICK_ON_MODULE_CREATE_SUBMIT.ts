@@ -16,7 +16,7 @@ export const CLICK_ON_MODULE_CREATE_SUBMIT: ActionEventType = (event, data) => {
       actionSync.SET_MODULE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType[key],
         status: CreateModuleStatusEnumType['todo'],
-      })
+      }),
     )
   })
 

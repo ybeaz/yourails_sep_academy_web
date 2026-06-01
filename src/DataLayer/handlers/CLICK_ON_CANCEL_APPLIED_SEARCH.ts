@@ -11,7 +11,7 @@ export const CLICK_ON_CANCEL_APPLIED_SEARCH: ActionEventType = (event, dataIn) =
       paginationName: 'pageModules',
       first: 1,
       direction: 'set',
-    })
+    }),
   )
 
   dispatch(
@@ -19,7 +19,7 @@ export const CLICK_ON_CANCEL_APPLIED_SEARCH: ActionEventType = (event, dataIn) =
       paginationName: 'pageTags',
       first: 1,
       direction: 'set',
-    })
+    }),
   )
 
   ONCHANGE_INPUT_SEARCH({}, { storeFormProp: 'modulesSearch', value: '' })
@@ -40,6 +40,6 @@ export const CLICK_ON_CANCEL_APPLIED_SEARCH: ActionEventType = (event, dataIn) =
   dispatch(
     actionAsync.READ_MODULES_CONNECTION.REQUEST({
       isLoaderOverlay: true,
-    })
+    }),
   )
 }

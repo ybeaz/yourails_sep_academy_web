@@ -27,7 +27,7 @@ const setLocalStorageCoursesInProgress = (...args: any) => {
  * @description Middleware to coursesInProgressMiddleware
  * @import import { coursesInProgressMiddleware } from './middlewares/coursesInProgressMiddleware'
  */
-export const coursesInProgressMiddleware: Middleware = store => next => action => {
+export const coursesInProgressMiddleware: Middleware = (store) => (next) => (action) => {
   const result = next(action)
 
   const { type: actionType } = action

@@ -20,7 +20,7 @@ export const SuccessTried: React.FunctionComponent<SuccessTriedArgs> = (props): 
   const succedded = useRef(Math.round(getRandomNumBetween(10, tried.current)))
 
   return (
-    <div className='SuccessTried'>
+    <div className="SuccessTried">
       <span className={`__tooltipText ${classTooltipAdd}`}>{tooltipText}</span>
       {succedded.current} / {tried.current}
     </div>

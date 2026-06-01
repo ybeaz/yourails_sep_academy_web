@@ -70,7 +70,7 @@ const AbInCircleComponent: AbInCircleComponentType = (props: AbInCirclePropsType
       className={getClasses('AbInCircle', classAdded)}
       style={{ borderColor: color, background: color }}
     >
-      <div className='_text'>{textOut}</div>
+      <div className="_text">{textOut}</div>
     </div>
   )
 }

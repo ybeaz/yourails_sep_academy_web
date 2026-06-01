@@ -3,7 +3,7 @@ import { ReducerType } from '../../Interfaces/ReducerType'
 
 export const SET_SIDE_NAVIGATION_LEFT: ReducerType = (
   store: RootStoreType,
-  data: any
+  data: any,
 ): RootStoreType => {
   const isSideNavLeftVisibleIn = data?.isSideNavLeftVisible
 

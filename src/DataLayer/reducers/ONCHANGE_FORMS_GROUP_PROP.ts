@@ -7,7 +7,7 @@ export const ONCHANGE_FORMS_GROUP_PROP: ReducerType = (
     storeFormGroup?: keyof FormsType
     storeFormProp: string
     value: string
-  }
+  },
 ): RootStoreType => {
   const { forms } = store
 

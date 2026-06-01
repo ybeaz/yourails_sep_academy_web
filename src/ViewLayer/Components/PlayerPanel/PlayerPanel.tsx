@@ -81,7 +81,7 @@ const PlayerPanelComponent: PlayerPanelComponentType = (props: PlayerPanelCompon
     tooltipIsCompletedProps: {
       classAdded: '_playerPanel_tooltipIsCompleted',
       tooltipTitleContent: (
-        <div className='_contentPlateTooltipContentIsCompleted'>
+        <div className="_contentPlateTooltipContentIsCompleted">
           {DICTIONARY['Completed'][language]}
         </div>
       ),
@@ -95,7 +95,7 @@ const PlayerPanelComponent: PlayerPanelComponentType = (props: PlayerPanelCompon
     tooltipTagsProps: {
       classAdded: '_playerPanel_tooltipTags',
       tooltipTitleContent: (
-        <div className='_contentPlateTooltipContentTags'>
+        <div className="_contentPlateTooltipContentTags">
           {!!tags?.length && tags.map((tag: string) => <div key={`tag-${tag}`}>{tag}</div>)}
         </div>
       ),
@@ -110,23 +110,23 @@ const PlayerPanelComponent: PlayerPanelComponentType = (props: PlayerPanelCompon
 
   return (
     <div className={`PlayerPanel PlayerPanel_${screenType}`}>
-      <div className='__info'>
-        <div className='_captureWrapper'>
+      <div className="__info">
+        <div className="_captureWrapper">
           <div className={`_capture ${addStyle4Capture}`}>{`${capture}`}</div>
         </div>
-        <div className='_metaData'>
+        <div className="_metaData">
           <TooltipImageContent {...propsOut.tooltipIsCompletedProps} />
           <TooltipImageContent {...propsOut.tooltipTagsProps} />
           <div className={`_duration ${addSStyle4Duration}`}>{duration}</div>
           {/* <div className='_successTried'>
             <SuccessTried {...successTriedProps} />
           </div> */}
-          <div className='_difficulty'>
+          <div className="_difficulty">
             <FeatureBar {...featureBarProps} />
           </div>
         </div>
       </div>
-      <div className='__buttons'>
+      <div className="__buttons">
         {isShowingPlay ? <ButtonYrl {...buttonPlayProps} /> : <ButtonYrl {...buttonPauseProps} />}
         <ButtonYrl {...buttonStopProps} />
       </div>
@@ -138,7 +138,7 @@ const PlayerPanelComponent: PlayerPanelComponentType = (props: PlayerPanelCompon
 const storeStateSliceProps: string[] = ['language']
 export const PlayerPanel: PlayerPanelType = withStoreStateSelectedYrl(
   storeStateSliceProps,
-  React.memo(PlayerPanelComponent)
+  React.memo(PlayerPanelComponent),
 )
 
 export type {

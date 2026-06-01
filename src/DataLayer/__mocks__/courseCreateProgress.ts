@@ -7,17 +7,7 @@ export const courseCreateProgress01: any = {
       "Israel Needs your help: fight4israel.givecloud.co\n\nMore from Yishai Fleisher \n\nWebsite:  https://yishaifleisher.com\nPodcast: https://israelpodcast.buzzsprout.com\nFacebook:  https://www.facebook.com/YishaiFleisher\nTwitter:  https://twitter.com/YishaiFleisher\nInstagram:  https://www.instagram.com/yishaifleisher/\nYoutube: https://www.youtube.com/YishaiFleisherTV\n\nYishai Fleisher is the International Spokesperson for the Jewish community of Hebron. He is also Contributing Editor at JewishPress.com and a broadcaster on the LandofIsrael.com. Yishai is a frequent columnist for major English language news and analysis websites in Israel including Breitbart Jerusalem, Jerusalem Post, Israel HaYom, and more. \n\nYishai is the founder and director of 'Kumah', a nonprofit organization in Israel and the United States that works to enhance the world's connection to Israel and strengthen Israel’s national character. Yishai holds a JD from Cardozo Law and rabbinic ordination from Kollel Agudat Achim. Yishai served as a Paratrooper in the IDF and continues to participate in an elite battlefield reserve unit.",
     duration: '7:34',
     language: null,
-    tags: [
-      'Israel',
-      'War',
-      'Terror',
-      'Hamas',
-      'Jihadi',
-      'Chevron',
-      'Army',
-      'Idf',
-      'Jewish',
-    ],
+    tags: ['Israel', 'War', 'Terror', 'Hamas', 'Jihadi', 'Chevron', 'Army', 'Idf', 'Jewish'],
     thumbnails: {
       default: {
         url: 'https://i.ytimg.com/vi/-yY-S3rcBw8/default.jpg',
@@ -171,8 +161,7 @@ export const courseCreateProgress01: any = {
       designType: 'CheckBox',
       multi: true,
       topic: 'Population Projection of the United States',
-      capture:
-        'What is the projected population peak and urbanization rate in the United States?',
+      capture: 'What is the projected population peak and urbanization rate in the United States?',
       isActive: true,
       options: [
         {
@@ -212,13 +201,11 @@ export const courseCreateProgress01: any = {
           status: true,
         },
         {
-          label:
-            "Ohio's overall population is projected to remain fairly stagnant.",
+          label: "Ohio's overall population is projected to remain fairly stagnant.",
           status: true,
         },
         {
-          label:
-            "Pennsylvania's population is expected to decrease significantly by 2050.",
+          label: "Pennsylvania's population is expected to decrease significantly by 2050.",
           status: false,
         },
         {
@@ -232,13 +219,11 @@ export const courseCreateProgress01: any = {
       designType: 'CheckBox',
       multi: true,
       topic: 'Conclusion',
-      capture:
-        "What is the overall projection for the United States' population distribution?",
+      capture: "What is the overall projection for the United States' population distribution?",
       isActive: true,
       options: [
         {
-          label:
-            'A significant percentage of the population will live in cities and a few states.',
+          label: 'A significant percentage of the population will live in cities and a few states.',
           status: true,
         },
         {
@@ -252,8 +237,7 @@ export const courseCreateProgress01: any = {
           status: false,
         },
         {
-          label:
-            'Rural areas will experience a significant increase in population.',
+          label: 'Rural areas will experience a significant increase in population.',
           status: false,
         },
       ],
@@ -262,8 +246,7 @@ export const courseCreateProgress01: any = {
       designType: 'CheckBox',
       multi: true,
       topic: 'Population Projection of the United States',
-      capture:
-        'What is the projected population peak and urbanization rate in the United States?',
+      capture: 'What is the projected population peak and urbanization rate in the United States?',
       isActive: true,
       options: [
         {
@@ -303,13 +286,11 @@ export const courseCreateProgress01: any = {
           status: true,
         },
         {
-          label:
-            "Ohio's overall population is projected to remain fairly stagnant.",
+          label: "Ohio's overall population is projected to remain fairly stagnant.",
           status: true,
         },
         {
-          label:
-            "Pennsylvania's population is expected to decrease significantly by 2050.",
+          label: "Pennsylvania's population is expected to decrease significantly by 2050.",
           status: false,
         },
         {
@@ -323,13 +304,11 @@ export const courseCreateProgress01: any = {
       designType: 'CheckBox',
       multi: true,
       topic: 'Conclusion',
-      capture:
-        "What is the overall projection for the United States' population distribution?",
+      capture: "What is the overall projection for the United States' population distribution?",
       isActive: true,
       options: [
         {
-          label:
-            'A significant percentage of the population will live in cities and a few states.',
+          label: 'A significant percentage of the population will live in cities and a few states.',
           status: true,
         },
         {
@@ -338,13 +317,11 @@ export const courseCreateProgress01: any = {
           status: true,
         },
         {
-          label:
-            "The United States' population will be evenly distributed across all states.",
+          label: "The United States' population will be evenly distributed across all states.",
           status: false,
         },
         {
-          label:
-            'Rural areas will experience a significant increase in population.',
+          label: 'Rural areas will experience a significant increase in population.',
           status: false,
         },
       ],
@@ -397,13 +374,11 @@ export const courseCreateProgress01: any = {
             status: true,
           },
           {
-            label:
-              "Ohio's overall population is projected to remain fairly stagnant.",
+            label: "Ohio's overall population is projected to remain fairly stagnant.",
             status: true,
           },
           {
-            label:
-              "Pennsylvania's population is expected to decrease significantly by 2050.",
+            label: "Pennsylvania's population is expected to decrease significantly by 2050.",
             status: false,
           },
           {
@@ -417,8 +392,7 @@ export const courseCreateProgress01: any = {
         designType: 'CheckBox',
         multi: true,
         topic: 'Conclusion',
-        capture:
-          "What is the overall projection for the United States' population distribution?",
+        capture: "What is the overall projection for the United States' population distribution?",
         isActive: true,
         options: [
           {
@@ -437,8 +411,7 @@ export const courseCreateProgress01: any = {
             status: false,
           },
           {
-            label:
-              'Rural areas will experience a significant increase in population.',
+            label: 'Rural areas will experience a significant increase in population.',
             status: false,
           },
         ],
@@ -490,13 +463,11 @@ export const courseCreateProgress01: any = {
             status: true,
           },
           {
-            label:
-              "Ohio's overall population is projected to remain fairly stagnant.",
+            label: "Ohio's overall population is projected to remain fairly stagnant.",
             status: true,
           },
           {
-            label:
-              "Pennsylvania's population is expected to decrease significantly by 2050.",
+            label: "Pennsylvania's population is expected to decrease significantly by 2050.",
             status: false,
           },
           {
@@ -510,8 +481,7 @@ export const courseCreateProgress01: any = {
         designType: 'CheckBox',
         multi: true,
         topic: 'Conclusion',
-        capture:
-          "What is the overall projection for the United States' population distribution?",
+        capture: "What is the overall projection for the United States' population distribution?",
         isActive: true,
         options: [
           {
@@ -525,13 +495,11 @@ export const courseCreateProgress01: any = {
             status: true,
           },
           {
-            label:
-              "The United States' population will be evenly distributed across all states.",
+            label: "The United States' population will be evenly distributed across all states.",
             status: false,
           },
           {
-            label:
-              'Rural areas will experience a significant increase in population.',
+            label: 'Rural areas will experience a significant increase in population.',
             status: false,
           },
         ],

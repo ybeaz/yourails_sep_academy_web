@@ -75,7 +75,7 @@ export const useYouTubePlayerWork = ({
       actionSync.TOGGLE_MEDIA_LOADED({
         mediaKey: moduleID,
         isMediaLoaded: true,
-      })
+      }),
     )
   }
 

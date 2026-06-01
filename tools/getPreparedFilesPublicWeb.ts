@@ -19,7 +19,7 @@ const getPreparedFilesPublicWeb = async (buildDir: string): Promise<void> => {
   const minifiedFilesList = await getIteratedAndMinifiedFiles(buildDir, jsFiles)
   console.log('\n')
   minifiedFilesList.forEach((file: string) =>
-    consoler('getPreparedFilesPublicWeb:', `Minified and compressed code written to ${file} yes`)
+    consoler('getPreparedFilesPublicWeb:', `Minified and compressed code written to ${file} yes`),
   )
 
   /** @description Give permission to the build directories */

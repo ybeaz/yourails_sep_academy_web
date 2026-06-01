@@ -23,7 +23,7 @@ interface useInitializedFacebookOAuthInterface {
  * @link https://developers.facebook.com/docs/graph-api/using-graph-api
  * @link https://stackoverflow.com/a/11297507/4791116
  */
-export const useInitializedFacebookOAuth: useInitializedFacebookOAuthInterface = branch => {
+export const useInitializedFacebookOAuth: useInitializedFacebookOAuthInterface = (branch) => {
   useEffect(() => {
     const scriptProps = {
       src: 'https://connect.facebook.net/en_US/sdk.js#appId=4763706043658984&cookie=1&status=1&xfbml=1&version=v11.0&autoLogAppEvents=1',
@@ -44,7 +44,7 @@ export const useInitializedFacebookOAuth: useInitializedFacebookOAuthInterface =
           if (response && !response.error) {
             handleEvents({}, { typeEvent: 'AUTH_FACEBOOK', data: response })
           }
-        }
+        },
       )
     }
 

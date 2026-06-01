@@ -63,7 +63,7 @@ import {
              from '../Components/AcademyPresent/AcademyPresent'
  */
 const AcademyPresentComponent: AcademyPresentComponentType = (
-  props: AcademyPresentComponentPropsType
+  props: AcademyPresentComponentPropsType,
 ) => {
   const {
     handleEvents,
@@ -87,7 +87,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   const moduleID = params.moduleID || ''
   const moduleActive = getModuleByModuleID(
     { modules, moduleID: moduleIDActive || moduleID },
-    { parentFunction: 'AcademyPresentComponent' }
+    { parentFunction: 'AcademyPresentComponent' },
   )
 
   const canonicalUrl = `${SERVERS_MAIN.remote}${decodeURIComponent(location.pathname)}`
@@ -105,7 +105,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       { type: 'SET_PARAMS_FROM_QUERY_URL_TO_STATE' },
       { type: 'GET_MODULE', data: { moduleID } },
     ],
-    [moduleID]
+    [moduleID],
   )
 
   useEffect(() => {
@@ -352,7 +352,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
                   </div>
                 ),
               }
-            : item
+            : item,
       ),
     },
     buttonPlayerUpProps: {
@@ -414,17 +414,17 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   }
 
   return (
-    <div className='AcademyPresent' id={`moduleID-${moduleID}`}>
+    <div className="AcademyPresent" id={`moduleID-${moduleID}`}>
       {modules.length ? (
         <>
           <Helmet>
             <html lang={language} />
-            <meta charSet='utf-8' />
-            <meta name='viewport' content='width=device-width,initial-scale=1' />
-            <meta name='google' content='notranslate' />
+            <meta charSet="utf-8" />
+            <meta name="viewport" content="width=device-width,initial-scale=1" />
+            <meta name="google" content="notranslate" />
             <title>{capture}</title>
-            <link rel='canonical' href={canonicalUrl} />
-            <meta name='description' content={description} />
+            <link rel="canonical" href={canonicalUrl} />
+            <meta name="description" content={description} />
           </Helmet>
           <MainFrame {...propsOut.mainFrameProps}>
             {/* header */}
@@ -432,8 +432,8 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
             {/* middle-left */}
             {null}
             {/* middle-main */}
-            <div className='_middleWrapper'>
-              <div className='_buttonsWrapper'>
+            <div className="_middleWrapper">
+              <div className="_buttonsWrapper">
                 <ButtonYrl {...propsOut.buttonPlayerUpProps} />
                 <ButtonYrl {...propsOut.buttonSummaryUpProps} />
                 <ButtonYrl {...propsOut.buttonArticleUpProps} />
@@ -463,7 +463,7 @@ const storeStateSliceProps: string[] = [
 ]
 
 const AcademyPresent: AcademyPresentType = withPropsYrl({ handleEvents: handleEventsIn })(
-  withStoreStateSelectedYrl(storeStateSliceProps, React.memo(AcademyPresentComponent))
+  withStoreStateSelectedYrl(storeStateSliceProps, React.memo(AcademyPresentComponent)),
 )
 
 export { AcademyPresent as default }

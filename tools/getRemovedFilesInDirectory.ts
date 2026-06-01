@@ -26,7 +26,7 @@ const optionsDefault: Required<GetRemovedFilesInDirectoryOptionsType> = {
 
 export const getRemovedFilesInDirectory: GetRemovedFilesInDirectoryType = async (
   directory,
-  optionsIn
+  optionsIn,
 ) => {
   const options: Required<GetRemovedFilesInDirectoryOptionsType> = {
     ...optionsDefault,

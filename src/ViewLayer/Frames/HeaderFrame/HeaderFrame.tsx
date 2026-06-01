@@ -225,49 +225,49 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
 
   return (
     <div className={getClasses('HeaderFrame', classAdded)}>
-      <div className='_content'>
-        <div className='__left'>
+      <div className="_content">
+        <div className="__left">
           {isButtonSideMenuLeft && SideMenuLeft}
           {isLogoGroup && <AvatarPlusInfo {...propsOut.avatarPlusInfoProps} />}
           {isPageActionsGroup && <PageActionsGroup {...propsOut.pageActionsProps} />}
           {isButtonsShare && <ShareButtons />}
 
-          <div className='_itemButtonMobileToggle'>
+          <div className="_itemButtonMobileToggle">
             {!isMobileSearchInput && isSeachGroup && (
               <ButtonYrl {...propsOut.buttonMobileSearchToggleProps} />
             )}
             <ButtonYrl {...propsOut.buttonQrCodeModalToggleProps} />
           </div>
         </div>
-        <div className='__main'>
+        <div className="__main">
           {isSeachGroup && (
-            <div className='_itemInputGroupYrl'>
+            <div className="_itemInputGroupYrl">
               <InputGroupYrl {...propsOut.inputGroupProps} />
             </div>
           )}
         </div>
-        <div className='__right'>
+        <div className="__right">
           {isButtonAddCourse && (
-            <div className='_itemButtonAddCourse'>
+            <div className="_itemButtonAddCourse">
               <ButtonYrl {...propsOut.buttonAddCourseProps} />
             </div>
           )}
-          <div className='_itemButtonQrCodeModalToggle'>
+          <div className="_itemButtonQrCodeModalToggle">
             <ButtonYrl {...propsOut.buttonQrCodeModalToggleProps} />
           </div>
           {isSelectLanguage && (
-            <div className='_itemLanguageSelect'>
+            <div className="_itemLanguageSelect">
               <SelectLanguage {...propsOut.selectLanguageProps} />
             </div>
           )}
           {isButtonThemeToggle && (
-            <div className='_itemButtonThemeToggle'>
+            <div className="_itemButtonThemeToggle">
               <ButtonYrl {...propsOut.buttonThemeToggleProps} />
             </div>
           )}
         </div>
         {isMobile() && isMobileSearchInput && isSeachGroup ? (
-          <div className='__rightMobile'>
+          <div className="__rightMobile">
             <InputGroupYrl {...propsOut.inputGroupProps} />
           </div>
         ) : null}
@@ -296,9 +296,9 @@ export const HeaderFrame: HeaderFrameType = withPropsYrl({ handleEvents: handleE
         props?.isNoSeoIndexing === undefined
           ? true
           : !!props.isNoSeoIndexing,
-      NoSeoIndexingYrl
-    )(React.memo(HeaderFrameComponent))
-  )
+      NoSeoIndexingYrl,
+    )(React.memo(HeaderFrameComponent)),
+  ),
 )
 
 export type {

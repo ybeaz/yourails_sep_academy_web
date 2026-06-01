@@ -10,7 +10,7 @@ export const SELECT_MODULE: ActionEventType = (
     capture: '',
     moduleID: '',
     contentID: '',
-  }
+  },
 ) => {
   try {
     dispatch(actionSync.SELECT_MODULE(data))

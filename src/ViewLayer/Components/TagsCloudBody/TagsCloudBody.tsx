@@ -30,7 +30,7 @@ import {
              from '../Components/TagsCloudBody/TagsCloudBody'
  */
 const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
-  props: TagsCloudBodyComponentPropsType
+  props: TagsCloudBodyComponentPropsType,
 ) => {
   const {
     classAdded,
@@ -78,18 +78,18 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
     <div className={getClasses('TagsCloudBody', classAdded)}>
       {screenActive !== ScreensEnumType['AcademyMatrix'] && (
         <>
-          <div className='_inputGroupYrlWrapper'>
+          <div className="_inputGroupYrlWrapper">
             <InputGroupYrl {...propsOut.inputGroupProps} />
           </div>
-          <div className='_headlineWrapper'>
-            <h2 className='_h2' onClick={() => handleEvents({}, { type: 'CLICK_ON_ALL_TAGS' })}>
+          <div className="_headlineWrapper">
+            <h2 className="_h2" onClick={() => handleEvents({}, { type: 'CLICK_ON_ALL_TAGS' })}>
               {headline}
             </h2>
           </div>
         </>
       )}
       <div
-        className='_tagsCloudWrapper'
+        className="_tagsCloudWrapper"
         style={{
           gridTemplateColumns,
         }}
@@ -102,7 +102,7 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
       </div>
       {screenActive !== ScreensEnumType['AcademyMatrix'] &&
         !(pageTags.first === 0 && pageTags.offset > tagsCloud.length) && (
-          <div className='_paginationNavigationWrapper'>
+          <div className="_paginationNavigationWrapper">
             <PaginationNavigation {...propsOut.paginationNavigationProps} />
           </div>
         )}
@@ -112,7 +112,7 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
 
 const storeStateSliceProps: string[] = ['tagsCloud', 'pageTags', 'screenActive']
 export const TagsCloudBody: TagsCloudBodyType = withPropsYrl({ handleEvents: handleEventsIn })(
-  withStoreStateSelectedYrl(storeStateSliceProps, React.memo(TagsCloudBodyComponent))
+  withStoreStateSelectedYrl(storeStateSliceProps, React.memo(TagsCloudBodyComponent)),
 )
 
 export type {

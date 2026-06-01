@@ -70,12 +70,12 @@ const TagsCloudComponent: TagsCloudComponentType = (props: TagsCloudComponentPro
     <div className={getClasses('TagsCloud')}>
       <Helmet>
         <html lang={langSite} />
-        <meta charSet='utf-8' />
-        <meta name='viewport' content='width=device-width,initial-scale=1' />
-        <meta name='google' content='notranslate' />
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta name="google" content="notranslate" />
         <title>{titleSite}</title>
-        <link rel='canonical' href={canonicalUrl} />
-        <meta name='description' content={descriptionSite} />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta name="description" content={descriptionSite} />
       </Helmet>
       <MainFrame {...propsOut.mainFrameProps}>
         {/* header */}
@@ -96,8 +96,8 @@ const TagsCloudComponent: TagsCloudComponentType = (props: TagsCloudComponentPro
 const storeStateSliceProps: string[] = ['language']
 const TagsCloud: TagsCloudType = React.memo(
   withPropsYrl({ handleEvents: handleEventsIn })(
-    withStoreStateSelectedYrl(storeStateSliceProps, TagsCloudComponent)
-  )
+    withStoreStateSelectedYrl(storeStateSliceProps, TagsCloudComponent),
+  ),
 )
 
 export { TagsCloud as default }

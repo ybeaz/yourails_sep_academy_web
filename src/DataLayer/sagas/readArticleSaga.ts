@@ -20,7 +20,7 @@ export const readArticle = withDebounce(
     optionsDefault: { funcParent: 'readArticleSaga' },
     resDefault: [],
   }),
-  500
+  500,
 )
 
 export default function* readArticleSaga() {

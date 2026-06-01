@@ -38,10 +38,10 @@ interface GetComponentsListType {
  */
 
 const getComponentsList: GetComponentsListType = (
-  navLinksButtonsItemsIn: GetNavLinksButtonsItemParamType[]
+  navLinksButtonsItemsIn: GetNavLinksButtonsItemParamType[],
 ): GetComponentsListResType[] => {
   const navLinksButtonsItems = navLinksButtonsItemsIn.map(
-    (item: GetNavLinksButtonsItemParamType) => ({ id: nanoid(), ...item })
+    (item: GetNavLinksButtonsItemParamType) => ({ id: nanoid(), ...item }),
   )
 
   const COMPONENTS_DICT = {
@@ -88,7 +88,7 @@ const getComponentsList: GetComponentsListType = (
         return <FormInputNamesWithButtons {...formInputNamesWithButtonsProps} />
       else if (messageTileProps) return <MessageTile {...messageTileProps} />
       else if (questionsCapturesProps) return <QuestionsCaptures {...questionsCapturesProps} />
-    }
+    },
   )
 }
 

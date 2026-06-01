@@ -81,7 +81,7 @@ const ModulesBodyComponent: ModulesBodyComponentType = (props: ModulesBodyCompon
 
       return <ContentPlate {...contentPlateProps} />
     })
-    return <div className='AcademyMatrix__plates'>{plates}</div>
+    return <div className="AcademyMatrix__plates">{plates}</div>
   }
 
   const propsOut: ModulesBodyPropsOutType = {
@@ -122,28 +122,28 @@ const ModulesBodyComponent: ModulesBodyComponentType = (props: ModulesBodyCompon
 
   return (
     <div className={getClasses('ModulesBody', classAdded)}>
-      <div className='_h2Wrapper'>
+      <div className="_h2Wrapper">
         <NavLinkWithQuery {...propsOut.navLinkProps}>
           <h2 {...propsOut.h2Props}>{headline}</h2>
         </NavLinkWithQuery>
         {!!tagsPick.length && (
-          <div className='_iconLabelWithCloseWrapper'>
+          <div className="_iconLabelWithCloseWrapper">
             <IconYrl {...propsOut.iconArrowForwardProps} />
             <IconLabelWithClose {...propsOut.iconLabelWithCloseTagProps} />
           </div>
         )}
         {modulesSearchApplied && (
-          <div className='_iconLabelWithCloseWrapper'>
+          <div className="_iconLabelWithCloseWrapper">
             <IconYrl {...propsOut.iconArrowForwardProps} />
             <IconLabelWithClose {...propsOut.iconLabelWithCloseSearchProps} />
           </div>
         )}
       </div>
       {modules.length && isLoadedGlobalVars ? (
-        <div className='_plateMatrixPagination'>
-          <div className='_plateMatrixWrapper'>{getPlateMatix(modules)}</div>
+        <div className="_plateMatrixPagination">
+          <div className="_plateMatrixWrapper">{getPlateMatix(modules)}</div>
           {!(pageModules.first === 0 && pageModules.offset > modules.length) && (
-            <div className='_paginationNavigationWrapper'>
+            <div className="_paginationNavigationWrapper">
               <PaginationNavigation {...propsOut.paginationNavigationProps} />
             </div>
           )}
@@ -163,7 +163,7 @@ const storeStateSliceProps: string[] = [
   'pageModules',
 ]
 export const ModulesBody: ModulesBodyType = withPropsYrl({ handleEvents: handleEventsIn })(
-  withStoreStateSelectedYrl(storeStateSliceProps, React.memo(ModulesBodyComponent))
+  withStoreStateSelectedYrl(storeStateSliceProps, React.memo(ModulesBodyComponent)),
 )
 
 export type {

@@ -8,7 +8,7 @@ const { dispatch } = store
 
 export const CLICK_ON_TAG: ActionEventType = async (
   event,
-  { tagCloud }: { tagCloud: { value: string } }
+  { tagCloud }: { tagCloud: { value: string } },
 ) => {
   if (tagCloud?.value) {
     dispatch(actionSync.SET_INPUT_TO_STORE({ storeFormProp: 'modulesSearch', value: '' }))
@@ -18,14 +18,14 @@ export const CLICK_ON_TAG: ActionEventType = async (
       actionSync.SET_COMPONENTS_STATE({
         componentsStateProp: 'modulesSearchApplied',
         value: '',
-      })
+      }),
     )
 
     dispatch(
       actionSync.SET_COMPONENTS_STATE({
         componentsStateProp: 'tagsSearchApplied',
         value: '',
-      })
+      }),
     )
   }
 
@@ -45,19 +45,19 @@ export const CLICK_ON_TAG: ActionEventType = async (
     actionSync.SET_COMPONENTS_STATE({
       componentsStateProp: 'tagsPick',
       value: tagsPickValueNext,
-    })
+    }),
   )
 
   dispatch(
     actionAsync.READ_MODULES_CONNECTION.REQUEST({
       isLoaderOverlay: true,
-    })
+    }),
   )
 
   dispatch(
     actionSync.SET_PAGE_CURSOR({
       paginationName: PaginationNameEnumType['pageModules'],
       first: 1,
-    })
+    }),
   )
 }

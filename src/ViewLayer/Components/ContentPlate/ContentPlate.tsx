@@ -38,7 +38,7 @@ import {
              from '../Components/ContentPlate/ContentPlate'
  */
 const ContentPlateComponent: ContentPlateComponentType = (
-  props: ContentPlateComponentPropsType
+  props: ContentPlateComponentPropsType,
 ) => {
   const {
     classAdded,
@@ -112,7 +112,7 @@ const ContentPlateComponent: ContentPlateComponentType = (
     tooltipIsCompletedProps: {
       classAdded: '_contentPlate_tooltipIsCompleted',
       tooltipTitleContent: (
-        <div className='_contentPlateTooltipContentIsCompleted'>
+        <div className="_contentPlateTooltipContentIsCompleted">
           {DICTIONARY['Completed'][language]}
         </div>
       ),
@@ -126,7 +126,7 @@ const ContentPlateComponent: ContentPlateComponentType = (
     tooltipTagsProps: {
       classAdded: '_contentPlate_tooltipTags',
       tooltipTitleContent: (
-        <div className='_contentPlateTooltipContentTags'>
+        <div className="_contentPlateTooltipContentTags">
           {!!tags?.length && tags.map((tag: string) => <div key={`tag-${tag}`}>{tag}</div>)}
         </div>
       ),
@@ -182,8 +182,8 @@ const ContentPlateComponent: ContentPlateComponentType = (
 const storeStateSliceProps: string[] = ['language', 'mediaLoaded', 'urlParamsQuery']
 export const ContentPlate = React.memo(
   withPropsYrl({ handleEvents: handleEventsIn })(
-    withStoreStateSelectedYrl(storeStateSliceProps, ContentPlateComponent)
-  )
+    withStoreStateSelectedYrl(storeStateSliceProps, ContentPlateComponent),
+  ),
 )
 
 export type {

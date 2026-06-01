@@ -36,14 +36,14 @@ export const SuccessfulCasesSepComponent: React.FunctionComponent<SuccessfulCase
   }
 
   return (
-    <div className='SuccessfulCasesSep'>
-      <div className='__textBlock'>
-        <div className='_row'>
-          <div className='_col'>
-            <div className='_image'>
+    <div className="SuccessfulCasesSep">
+      <div className="__textBlock">
+        <div className="_row">
+          <div className="_col">
+            <div className="_image">
               <ImageYrl {...propsOut.collageImageFaceProps} />
             </div>
-            <div className='_text'>
+            <div className="_text">
               {' '}
               Bla bla bla Bla bla bla Bla bla bla Bla bla bla Bla bla bla Bla bla bla Bla bla bla
               Bla bla bla Bla bla bla Bla bla bla

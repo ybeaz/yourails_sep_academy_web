@@ -6,7 +6,7 @@ import { ReducerType } from '../../Interfaces/ReducerType'
  */
 export const TOGGLE_IS_MOBILE_SEARCH_INPUT: ReducerType = (
   store: RootStoreType,
-  { isMobileSearchInput }: any
+  { isMobileSearchInput }: any,
 ): RootStoreType => {
   const { componentsState } = store
   const componentsStateNext = {

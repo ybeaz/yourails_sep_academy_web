@@ -1,6 +1,6 @@
 export const withTryCatchFinallySaga: (
   saga: (params: any) => Iterable<any>,
-  options?: { optionsDefault?: { funcParent?: string }; resDefault?: any }
+  options?: { optionsDefault?: { funcParent?: string }; resDefault?: any },
 ) => any = (saga: any, options?: any): any => {
   const { optionsDefault: { funcParent } = { funcParent: '' }, resDefault = null } = options || {}
 
@@ -20,7 +20,7 @@ export const withTryCatchFinallySaga: (
           ...funcParentAdd,
           funcName: saga.name,
           error: { ...error, stack: error?.stack.split('\n') },
-        }
+        },
       )
     } finally {
       return result

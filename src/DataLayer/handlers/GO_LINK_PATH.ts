@@ -7,7 +7,7 @@ export const GO_LINK_PATH: ActionEventType = (
     navigate: () => {},
     pathname: '',
     isOrigin: false,
-  }
+  },
 ) => {
   try {
     if (isOrigin) {

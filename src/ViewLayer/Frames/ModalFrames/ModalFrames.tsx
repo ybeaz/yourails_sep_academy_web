@@ -49,7 +49,7 @@ const ModalFramesComponent: ModalFramesComponentType = (props: ModalFramesCompon
   const { width, height } = useWindowSize()
 
   const getChildren: Function = (children: any[]): (ReactElement | null)[] => {
-    return children.map(child => {
+    return children.map((child) => {
       const { childName, isActive, childProps } = child
       const CHILD = CHILDREN[childName]
       const key = JSON.stringify({ childName, childProps })
@@ -82,17 +82,17 @@ const ModalFramesComponent: ModalFramesComponentType = (props: ModalFramesCompon
       return (
         <div
           key={key}
-          id='modalFrames'
+          id="modalFrames"
           className={`ModalFrames ${addClass} ModalFrames_${childName}`}
-          onClick={event => handleEvents(event, closeAction)}
+          onClick={(event) => handleEvents(event, closeAction)}
         >
-          <div className='__content'>
-            <span className='_close'>
+          <div className="__content">
+            <span className="_close">
               <ButtonYrl {...propsOut.buttonCloseProps} />
             </span>
             <div
-              className='_inner'
-              onClick={event => handleEvents(event, { typeEvent: 'STOP_PROPAGATION' })}
+              className="_inner"
+              onClick={(event) => handleEvents(event, { typeEvent: 'STOP_PROPAGATION' })}
             >
               <CHILD {...propsOut.childProps} />
             </div>
@@ -111,7 +111,7 @@ const ModalFramesComponent: ModalFramesComponentType = (props: ModalFramesCompon
 const storeStateSliceProps: string[] = ['modalFrames', 'isConfetti']
 
 export const ModalFrames: ModalFramesType = withPropsYrl({ handleEvents: handleEventsIn })(
-  withStoreStateSelectedYrl(storeStateSliceProps, React.memo(ModalFramesComponent))
+  withStoreStateSelectedYrl(storeStateSliceProps, React.memo(ModalFramesComponent)),
 )
 
 export type {

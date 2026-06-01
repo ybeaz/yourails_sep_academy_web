@@ -11,7 +11,9 @@ import { UserAwsCognitoAuthType } from 'yourails_common'
 import { IconYrl, withStoreStateSelectedYrl } from 'yourails_common'
 
 interface GetLinkAuthUserPropsType {
-  (userAwsCognitoAuth: UserAwsCognitoAuthType): {
+  (
+    userAwsCognitoAuth: UserAwsCognitoAuthType,
+  ): {
     icon: string
     classAdded: string
   }
@@ -28,7 +30,7 @@ type AuthAwsCognitoLinkArgs = {
  * @description Component to implement Auth Cognito redirect onClick
  */
 export const AuthAwsCognitoLinkComponent: React.FunctionComponent<AuthAwsCognitoLinkArgs> = (
-  props: AuthAwsCognitoLinkArgs
+  props: AuthAwsCognitoLinkArgs,
 ) => {
   const {
     storeStateSlice: { userAwsCognitoAuth },
@@ -47,7 +49,7 @@ export const AuthAwsCognitoLinkComponent: React.FunctionComponent<AuthAwsCognito
     }
   }, [])
 
-  const getLinkAuthUserProps: GetLinkAuthUserPropsType = userAwsCognitoAuth2 => {
+  const getLinkAuthUserProps: GetLinkAuthUserPropsType = (userAwsCognitoAuth2) => {
     let output = {
       icon: 'FaUserCircle',
       classAdded: 'IconYrl_authUserHeader',
@@ -85,8 +87,8 @@ export const AuthAwsCognitoLinkComponent: React.FunctionComponent<AuthAwsCognito
   }
 
   return (
-    <div className='AuthAwsCognitoLink'>
-      <a className='_linkAuthUser' href={propsOut.linkAuthUserProps.to}>
+    <div className="AuthAwsCognitoLink">
+      <a className="_linkAuthUser" href={propsOut.linkAuthUserProps.to}>
         <IconYrl {...propsOut.iconReactAuthUserProps} />
       </a>
     </div>
@@ -96,5 +98,5 @@ export const AuthAwsCognitoLinkComponent: React.FunctionComponent<AuthAwsCognito
 const storeStateSliceProps: string[] = ['userAwsCognitoAuth']
 export const AuthAwsCognitoLink: React.FunctionComponent = withStoreStateSelectedYrl(
   storeStateSliceProps,
-  React.memo(AuthAwsCognitoLinkComponent)
+  React.memo(AuthAwsCognitoLinkComponent),
 )

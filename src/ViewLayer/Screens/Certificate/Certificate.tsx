@@ -99,79 +99,79 @@ const CertificateBodyComponent: React.FC<CertificateBodyComponentProps> = ({
   }
 
   return (
-    <div className='Certificate' id={documentID}>
+    <div className="Certificate" id={documentID}>
       <Helmet>
         <html lang={languageDoc} />
-        <meta charSet='utf-8' />
-        <meta name='viewport' content='width=device-width,initial-scale=1' />
-        <meta name='google' content='notranslate' />
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta name="google" content="notranslate" />
         <title>{titlePage}</title>
-        <link rel='canonical' href={location.href} />
-        <meta name='description' content={moduleCapture} />
+        <link rel="canonical" href={location.href} />
+        <meta name="description" content={moduleCapture} />
       </Helmet>
-      <div className='_buttons _noPrint'>
+      <div className="_buttons _noPrint">
         <HeaderFrame {...propsOut.headerFrameProps} />
       </div>
 
-      <div className='container pm-certificate-container'>
-        <div className='outer-border'></div>
-        <div className='inner-border'></div>
+      <div className="container pm-certificate-container">
+        <div className="outer-border"></div>
+        <div className="inner-border"></div>
 
-        <div className='pm-certificate-border'>
-          <div className='pm-certificate-header'>
-            <div className='pm-certificate-title cursive'>
+        <div className="pm-certificate-border">
+          <div className="pm-certificate-header">
+            <div className="pm-certificate-title cursive">
               <h4>{affiliation}</h4>
               <h2>Credit Confirmation</h2>
             </div>
           </div>
 
-          <div className='pm-certificate-body'>
-            <div className='pm-certificate-block'>
-              <div className=''>
-                <div className=''>
-                  <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
-                  <div className='pm-certificate-name underline margin-0'>
-                    <span className='pm-name-text bold'>{userNameLearner}</span>
+          <div className="pm-certificate-body">
+            <div className="pm-certificate-block">
+              <div className="">
+                <div className="">
+                  <div className="">{/* <!-- LEAVE EMPTY --> */}</div>
+                  <div className="pm-certificate-name underline margin-0">
+                    <span className="pm-name-text bold">{userNameLearner}</span>
                   </div>
-                  <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
+                  <div className="">{/* <!-- LEAVE EMPTY --> */}</div>
                 </div>
               </div>
 
-              <div className=''>
-                <div className=''>
-                  <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
-                  <div className='pm-earned'>
-                    <span className='pm-earned-text padding-0 block cursive'>has earned</span>
-                    <span className='pm-credits-text block bold sans'>1.0 Credit Hours</span>
+              <div className="">
+                <div className="">
+                  <div className="">{/* <!-- LEAVE EMPTY --> */}</div>
+                  <div className="pm-earned">
+                    <span className="pm-earned-text padding-0 block cursive">has earned</span>
+                    <span className="pm-credits-text block bold sans">1.0 Credit Hours</span>
                   </div>
-                  <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
-                  <div className=''></div>
+                  <div className="">{/* <!-- LEAVE EMPTY --> */}</div>
+                  <div className=""></div>
                 </div>
               </div>
 
-              <div className=''>
-                <div className=''>
-                  <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
-                  <div className='pm-course-title'>
-                    <span className='pm-earned-text block cursive'>
+              <div className="">
+                <div className="">
+                  <div className="">{/* <!-- LEAVE EMPTY --> */}</div>
+                  <div className="pm-course-title">
+                    <span className="pm-earned-text block cursive">
                       while completing the training module entitled
                     </span>
                   </div>
-                  <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
+                  <div className="">{/* <!-- LEAVE EMPTY --> */}</div>
                 </div>
               </div>
 
-              <div className=''>
-                <div className=''>
-                  <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
-                  <div className='pm-course-title underline'>
-                    <span className='pm-credits-text block bold sans'>{moduleCapture}</span>
+              <div className="">
+                <div className="">
+                  <div className="">{/* <!-- LEAVE EMPTY --> */}</div>
+                  <div className="pm-course-title underline">
+                    <span className="pm-credits-text block bold sans">{moduleCapture}</span>
                   </div>
-                  <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
-                  <div className='_code'>
-                    <span className='_module'>
+                  <div className="">{/* <!-- LEAVE EMPTY --> */}</div>
+                  <div className="_code">
+                    <span className="_module">
                       Module link/ No
-                      <a className='_moduleLink' href={modulePathName} target='_blank'>
+                      <a className="_moduleLink" href={modulePathName} target="_blank">
                         {moduleID}
                       </a>
                     </span>
@@ -180,27 +180,27 @@ const CertificateBodyComponent: React.FC<CertificateBodyComponentProps> = ({
               </div>
             </div>
 
-            <div className=''>
-              <div className=''>
-                <div className='pm-certificate-footer'>
-                  <div className='pm-certified'>
-                    <div className='pm-stamp'></div>
-                    <span className='pm-credits-text block sans'>"Open Internet Academy"</span>
-                    <span className='pm-credits-text block sans'>
+            <div className="">
+              <div className="">
+                <div className="pm-certificate-footer">
+                  <div className="pm-certified">
+                    <div className="pm-stamp"></div>
+                    <span className="pm-credits-text block sans">"Open Internet Academy"</span>
+                    <span className="pm-credits-text block sans">
                       in partnership with "YouRails.com"
                     </span>
-                    <span className='pm-empty-space block underline'></span>
-                    <span className='pm-credits-text bold block sans'>
+                    <span className="pm-empty-space block underline"></span>
+                    <span className="pm-credits-text bold block sans">
                       {userNameCreator}, {jobTitle}
                     </span>
                   </div>
-                  <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
-                  <div className='pm-certified'>
-                    <div className='_documentData'>
-                      <span className='_completed'>Completed {dateCreatedReadable}</span>
-                      <span className='_certificate'>
+                  <div className="">{/* <!-- LEAVE EMPTY --> */}</div>
+                  <div className="pm-certified">
+                    <div className="_documentData">
+                      <span className="_completed">Completed {dateCreatedReadable}</span>
+                      <span className="_certificate">
                         Certificate link/ No
-                        <a className='_documentLink' href={documentPathName} target='_blank'>
+                        <a className="_documentLink" href={documentPathName} target="_blank">
                           {documentID}
                         </a>
                       </span>
@@ -221,7 +221,7 @@ const CertificateBodyComponent: React.FC<CertificateBodyComponentProps> = ({
 }
 
 export const CertificateComponent: CertificateComponentType = (
-  props: CertificateComponentPropsType
+  props: CertificateComponentPropsType,
 ): ReactElement => {
   const {
     storeStateSlice: { documents, language },
@@ -231,7 +231,7 @@ export const CertificateComponent: CertificateComponentType = (
   const documentID = params?.documentID
 
   const documentFound = documents.find(
-    (document: DocumentType) => document.documentID === documentID
+    (document: DocumentType) => document.documentID === documentID,
   )
 
   useEffect(() => {
@@ -251,7 +251,7 @@ export const CertificateComponent: CertificateComponentType = (
 
   // TODO: to refactor using MainFrame
   return (
-    <div className='Certificate' id={documentID}>
+    <div className="Certificate" id={documentID}>
       {documentFound ? (
         <CertificateBodyComponent {...propsOut.certificateBodyComponentProps} />
       ) : null}
@@ -263,7 +263,7 @@ export const CertificateComponent: CertificateComponentType = (
 const storeStateSliceProps: string[] = ['language', 'documents']
 const Certificate: CertificateType = withStoreStateSelectedYrl(
   storeStateSliceProps,
-  React.memo(CertificateComponent)
+  React.memo(CertificateComponent),
 )
 
 export { Certificate as default }

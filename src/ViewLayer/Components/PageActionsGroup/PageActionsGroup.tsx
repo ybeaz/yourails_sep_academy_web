@@ -13,7 +13,7 @@ import {
 } from './PageActionsGroupTypes'
 
 export const PageActionsGroupComponent: PageActionsGroupComponentType = (
-  props: PageActionsGroupComponentPropsType
+  props: PageActionsGroupComponentPropsType,
 ) => {
   const {
     moduleCapture,
@@ -70,8 +70,8 @@ export const PageActionsGroupComponent: PageActionsGroupComponentType = (
   }
 
   return (
-    <div className='PageActions'>
-      <div className='_buttons'>
+    <div className="PageActions">
+      <div className="_buttons">
         <ButtonYrl {...propsOut.buttonPrintProps} />
         <ButtonYrl {...propsOut.buttonEmailProps} />
         <ButtonYrl {...propsOut.buttonCopyLinkProps} />

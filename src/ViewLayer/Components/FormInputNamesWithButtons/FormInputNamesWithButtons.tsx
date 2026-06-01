@@ -18,7 +18,7 @@ import {
              from '../Components/FormInputNamesWithButtons/FormInputNamesWithButtons'
  */
 const FormInputNamesWithButtonsComponent: FormInputNamesWithButtonsComponentType = (
-  props: FormInputNamesWithButtonsComponentPropsType
+  props: FormInputNamesWithButtonsComponentPropsType,
 ) => {
   const {
     classAdded,
@@ -44,7 +44,7 @@ const FormInputNamesWithButtonsComponent: FormInputNamesWithButtonsComponentType
       })}
     >
       <FormInputNames {...propsOut.formInputNamesProps} />
-      <div className='_buttonsWrapper'>
+      <div className="_buttonsWrapper">
         <ButtonYrl {...propsOut.buttonCancelEditNameProps} />
         <ButtonYrl {...propsOut.buttonConfirmEditNameProps} />
       </div>
@@ -53,7 +53,7 @@ const FormInputNamesWithButtonsComponent: FormInputNamesWithButtonsComponentType
 }
 
 const FormInputNamesWithButtons: FormInputNamesWithButtonsType = React.memo(
-  FormInputNamesWithButtonsComponent
+  FormInputNamesWithButtonsComponent,
 )
 
 export type { FormInputNamesWithButtonsPropsType, FormInputNamesWithButtonsType }

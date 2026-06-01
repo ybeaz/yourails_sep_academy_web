@@ -15,20 +15,20 @@ const getRefreshedAuthAwsCongito = (...args: any) => {
   dispatch(
     actionAsync.GET_AUTH_AWS_COGNITO_USER_REFRESHED.REQUEST({
       refresh_token,
-    })
+    }),
   )
 }
 
 const debouncedFunc = getDebouncedFunc(
   getRefreshedAuthAwsCongito,
-  AWS_COGNITO_REFRESH_AUTH_TOKEN_DELAY
+  AWS_COGNITO_REFRESH_AUTH_TOKEN_DELAY,
 )
 
 /**
  * @description Middleware to refreshAuthMiddleware
  * @import import { refreshAuthMiddleware } from './middlewares/refreshAuthMiddleware'
  */
-export const refreshAuthMiddleware: Middleware = store => next => action => {
+export const refreshAuthMiddleware: Middleware = (store) => (next) => (action) => {
   const result = next(action)
 
   const { type: actionType } = action

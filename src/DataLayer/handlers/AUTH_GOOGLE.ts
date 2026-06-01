@@ -41,6 +41,6 @@ export const AUTH_GOOGLE: ActionEventType = (event, data) => {
       clientId,
       credential,
       select_by,
-    })
+    }),
   )
 }

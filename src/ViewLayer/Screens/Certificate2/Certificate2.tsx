@@ -53,7 +53,7 @@ const tagCloudFoundDefault = {
              from '../ViewLayer/Screens/Certificate2/Certificate2'
  */
 const Certificate2Component: Certificate2ComponentType = (
-  props: Certificate2ComponentPropsType
+  props: Certificate2ComponentPropsType,
 ) => {
   const {
     classAdded,
@@ -87,7 +87,7 @@ const Certificate2Component: Certificate2ComponentType = (
             isLoaderOverlay: true,
             tagID,
           },
-        }
+        },
       )
     // }
   }, [sub])
@@ -139,14 +139,14 @@ const Certificate2Component: Certificate2ComponentType = (
         <>
           <Helmet>
             <html lang={language} />
-            <meta charSet='utf-8' />
-            <meta name='viewport' content='width=device-width,initial-scale=1' />
-            <meta name='google' content='notranslate' />
+            <meta charSet="utf-8" />
+            <meta name="viewport" content="width=device-width,initial-scale=1" />
+            <meta name="google" content="notranslate" />
             <title>{titlePage}</title>
-            <link rel='canonical' href={location.href} />
-            <meta name='description' content={tagCloudValue} />
+            <link rel="canonical" href={location.href} />
+            <meta name="description" content={tagCloudValue} />
           </Helmet>
-          <div className='_headerFrameWrapper _noPrint'>
+          <div className="_headerFrameWrapper _noPrint">
             <HeaderFrame {...propsOut.headerFrameProps} />
           </div>
           <CertificateFrame {...propsOut.certificateFrameProps}>
@@ -162,7 +162,7 @@ const Certificate2Component: Certificate2ComponentType = (
 const storeStateSliceProps: string[] = ['language', 'sub', 'profiles', 'tagsCloud']
 const Certificate2: Certificate2Type = withStoreStateSelectedYrl(
   storeStateSliceProps,
-  React.memo(Certificate2Component)
+  React.memo(Certificate2Component),
 )
 
 export { Certificate2 as default }

@@ -5,7 +5,7 @@ import { getProvidedAnswerDefault } from 'yourails_common'
 
 export const GET_ANSWERS_DEFAULT: ReducerType = (
   store: RootStoreType,
-  data: any
+  data: any,
 ): RootStoreType => {
   const { modules } = store
   let modulesNext = getProvidedAnswerDefault(modules)

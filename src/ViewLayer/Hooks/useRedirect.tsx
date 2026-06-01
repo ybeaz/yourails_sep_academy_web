@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom'
  */
 export const useRedirect: Function = (
   e: any,
-  { typeRedirect, pathName }: { typeRedirect: string; pathName: string }
+  { typeRedirect, pathName }: { typeRedirect: string; pathName: string },
 ): void => {
   const navigate = useNavigate()
   if (typeRedirect === 'newLocation' && pathName) navigate(pathName)

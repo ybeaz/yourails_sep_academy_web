@@ -12,7 +12,7 @@ export type IndexReducerType =
 
 export const indexReducer: IndexReducerType = (
   store = rootStoreDefault,
-  action = { type: 'DEFAULT' }
+  action = { type: 'DEFAULT' },
 ) => {
   // @ts-expect-error
   const { type, data } = action

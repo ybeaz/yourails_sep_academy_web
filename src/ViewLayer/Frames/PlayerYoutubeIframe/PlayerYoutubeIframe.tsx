@@ -16,7 +16,7 @@ import {
              from '../Components/PlayerYoutubeIframe/PlayerYoutubeIframe'
  */
 const PlayerYoutubeIframeComponent: PlayerYoutubeIframeComponentType = (
-  props: PlayerYoutubeIframePropsType
+  props: PlayerYoutubeIframePropsType,
 ) => {
   const {
     contentComponentName,
@@ -32,10 +32,10 @@ const PlayerYoutubeIframeComponent: PlayerYoutubeIframeComponentType = (
   } = props
   const { width, height } = VIDEO_RESOLUTION
 
-  const [playerTag, setPlayerTag] = useState(<div className='_player' id={contentID} />)
+  const [playerTag, setPlayerTag] = useState(<div className="_player" id={contentID} />)
 
   useEffect(() => {
-    setPlayerTag(<div className='_player' id={contentID} />)
+    setPlayerTag(<div className="_player" id={contentID} />)
   }, [contentID])
 
   const { playVideoHandler, pauseVideoHandler, stopVideoHandler, isShowingPlay } =
@@ -84,14 +84,14 @@ const PlayerYoutubeIframeComponent: PlayerYoutubeIframeComponentType = (
   const getPlayerDiv = (player: any) => <div key={contentID}>{player}</div>
 
   return (
-    <div className='PlayerYoutubeIframe'>
+    <div className="PlayerYoutubeIframe">
       {children[0]}
-      <div className='_wrapperForPlayerYoutubeIframe'>
+      <div className="_wrapperForPlayerYoutubeIframe">
         {isIframe && getPlayerDiv(playerTag)}
         {children[1]}
       </div>
 
-      <div className='_panel'>
+      <div className="_panel">
         <PlayerPanel {...propsOut.playerPanelProps} />
       </div>
     </div>
@@ -100,7 +100,7 @@ const PlayerYoutubeIframeComponent: PlayerYoutubeIframeComponentType = (
 
 export const PlayerYoutubeIframe: PlayerYoutubeIframeType = withConditionalWrapperYrl(
   (props: any) => (props?.isNoSeoIndexing === undefined ? true : !!props.isNoSeoIndexing),
-  NoSeoIndexingYrl
+  NoSeoIndexingYrl,
 )(React.memo(PlayerYoutubeIframeComponent))
 
 export type {

@@ -23,14 +23,14 @@ export function* getModule35SummaryCreatedGenerator(params: ActionReduxType | an
         timeCalculated: Array.isArray(transcriptChunks)
           ? transcriptChunks.length * CONNECTIONS_TIMEOUTS.transcriptChunkToSummary
           : null,
-      })
+      }),
     )
 
     yield put(
       actionSync.SET_MODULE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['summary'],
         status: CreateModuleStatusEnumType['pending'],
-      })
+      }),
     )
 
     let summary: any[] = []
@@ -41,7 +41,7 @@ export function* getModule35SummaryCreatedGenerator(params: ActionReduxType | an
         const paramString = JSON.stringify(transcriptChunk)
         if (paramPrev !== '' && paramPrev === paramString) {
           throw new Error(
-            `getModule35SummaryCreatedSaga [57] connection ${CreateModuleStagesEnumType['summary']} is timed out`
+            `getModule35SummaryCreatedSaga [57] connection ${CreateModuleStagesEnumType['summary']} is timed out`,
           )
         }
       }, CONNECTIONS_TIMEOUTS[ConnectionsTimeoutNameEnumType['transcriptChunkToSummary']] + 1500)
@@ -67,32 +67,32 @@ export function* getModule35SummaryCreatedGenerator(params: ActionReduxType | an
     yield put(
       actionSync.ADD_MODULE_CREATE_DATA({
         summary,
-      })
+      }),
     )
 
     const summaryChunks: string[][] = getChunkedArray(
       summary,
-      CHUNKS_FROM_SUMMARY_ARRAY_FOR_QUESTIONS
+      CHUNKS_FROM_SUMMARY_ARRAY_FOR_QUESTIONS,
     )
 
     yield put(
       actionSync.ADD_MODULE_CREATE_DATA({
         summaryChunks,
-      })
+      }),
     )
 
     yield put(
       actionSync.SET_MODULE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['summary'],
         status: CreateModuleStatusEnumType['success'],
-      })
+      }),
     )
   } catch (error: any) {
     yield put(
       actionSync.SET_MODULE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['summary'],
         status: CreateModuleStatusEnumType['failure'],
-      })
+      }),
     )
 
     console.info('getModule35SummaryCreatedSaga  [110] ERROR', `${error.name}: ${error.message}`)
@@ -104,12 +104,12 @@ export const getModule35SummaryCreated = withDebounce(
     optionsDefault: { funcParent: 'getModule35SummaryCreatedSaga' },
     resDefault: [],
   }),
-  500
+  500,
 )
 
 export default function* getModule35SummaryCreatedSaga() {
   yield takeEvery(
     [actionAsync.GET_MODULE_SUMMARY_CREATED.REQUEST().type],
-    getModule35SummaryCreated
+    getModule35SummaryCreated,
   )
 }

@@ -20,6 +20,12 @@ export const ROUTES: RouteType[] = [
   },
   {
     screen: 'AcademyAbout',
+    path: `/academyAbout`,
+    children: [],
+    errorElement: 'Error404',
+  },
+  {
+    screen: 'YouRailsAbout',
     path: `/about`,
     children: [],
     errorElement: 'Error404',

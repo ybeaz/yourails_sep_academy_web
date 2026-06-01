@@ -46,14 +46,14 @@ function* getAuthAwsCognitoUserRevokedGenerator(): Iterable<any> {
     {
       clientHttpType: selectGraphqlHttpClientFlag(),
       timeout: 5000,
-    }
+    },
   )
 
   yield put(
     actionSync.SET_AUTH_AWS_COGNITO_USER_DATA({
       authAwsCognitoUserData,
       source: 'getAuthAwsCognitoUserRevokedSaga',
-    })
+    }),
   )
 
   getLocalStorageSetObjTo({
@@ -67,7 +67,7 @@ export const getAuthAwsCognitoUserRevoked = withTryCatchFinallySaga(
   {
     optionsDefault: { funcParent: 'getAuthAwsCognitoUserRevokedSaga' },
     resDefault: [],
-  }
+  },
 )
 
 /**
@@ -77,6 +77,6 @@ export const getAuthAwsCognitoUserRevoked = withTryCatchFinallySaga(
 export default function* getAuthAwsCognitoUserRevokedSaga() {
   yield takeEvery(
     [actionAsync.GET_AUTH_AWS_COGNITO_USER_REVOKED.REQUEST().type],
-    getAuthAwsCognitoUserRevoked
+    getAuthAwsCognitoUserRevoked,
   )
 }

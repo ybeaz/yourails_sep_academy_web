@@ -5,7 +5,7 @@ import { getModuleByModuleID } from 'yourails_common'
 
 export const PLUS_QUESTION_SLIDE: ReducerType = (
   store: RootStoreType,
-  data: any
+  data: any,
 ): RootStoreType => {
   const {
     componentsState,
@@ -20,7 +20,7 @@ export const PLUS_QUESTION_SLIDE: ReducerType = (
       modules,
       moduleID: moduleIDActive || '',
     },
-    { parentFunction: 'PLUS_QUESTION_SLIDE reducer' }
+    { parentFunction: 'PLUS_QUESTION_SLIDE reducer' },
   )
   const questionsChunked = getChunkedArray(questions, numberQuestionsInSlide)
 

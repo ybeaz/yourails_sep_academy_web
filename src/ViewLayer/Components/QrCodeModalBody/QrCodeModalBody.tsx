@@ -23,7 +23,7 @@ import {
              from '../Components/QrCodeModalBody/QrCodeModalBody'
  */
 const QrCodeModalBodyComponent: QrCodeModalBodyComponentType = (
-  props: QrCodeModalBodyComponentPropsType
+  props: QrCodeModalBodyComponentPropsType,
 ) => {
   const {
     classAdded,
@@ -71,17 +71,17 @@ const QrCodeModalBodyComponent: QrCodeModalBodyComponentType = (
   return (
     <div className={getClasses('QrCodeModalBody', classAdded)}>
       <h2>{linkToUrl}</h2>
-      <div className='_qRCodeSVG'>
+      <div className="_qRCodeSVG">
         <QRCodeSVG {...propsOut.qRCodeSvgProps} />
       </div>
 
       {isSendBccInputVisible && (
-        <div className='_inputSendBcc'>
+        <div className="_inputSendBcc">
           <InputGroupYrl {...propsOut.inputSendBccProps} />
         </div>
       )}
 
-      <div className='_buttonIsSendBccVisible'>
+      <div className="_buttonIsSendBccVisible">
         <ButtonYrl {...propsOut.buttonIsSendBccVisibleProps} />
       </div>
     </div>
@@ -90,7 +90,7 @@ const QrCodeModalBodyComponent: QrCodeModalBodyComponentType = (
 
 const storeStateSliceProps: string[] = ['language', 'isSendBccInputVisible']
 const QrCodeModalBody: QrCodeModalBodyType = withPropsYrl({ handleEvents: handleEventsIn })(
-  withStoreStateSelectedYrl(storeStateSliceProps, React.memo(QrCodeModalBodyComponent))
+  withStoreStateSelectedYrl(storeStateSliceProps, React.memo(QrCodeModalBodyComponent)),
 )
 
 export type { QrCodeModalBodyPropsType, QrCodeModalBodyType }

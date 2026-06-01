@@ -7,7 +7,7 @@ import { handleEvents } from '../../DataLayer/index.handleEvents'
  * @description Make initial call for data and pupulate it to the store
  */
 export const useLoadedInitialTeachContent: Function = (
-  { isSkipping }: { isSkipping: boolean } = { isSkipping: false }
+  { isSkipping }: { isSkipping: boolean } = { isSkipping: false },
 ): void => {
   useEffect(() => {
     if (isSkipping) return

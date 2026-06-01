@@ -5,7 +5,7 @@ export const getBuiltColor =
     color2: string,
     alpha2: number = alphaIn,
     lightness2: number = lightnessIn,
-    themeFrom2: string = themeFor
+    themeFrom2: string = themeFor,
   ): string => {
     let colorNext = color2
 

@@ -1,17 +1,17 @@
 {
   "folders": [
     {
-      "path": ".",
+      "path": "."
     },
     {
-      "path": "../yourails-nestjs-server-4/.",
+      "path": "../yourails-nestjs-server-4/."
     },
     {
-      "path": "./node_modules/yourails_common",
+      "path": "./node_modules/yourails_common"
     },
     {
-      "path": "../manuals/.",
-    },
+      "path": "../manuals/."
+    }
   ],
   "settings": {
     "editor.accessibilitySupport": "off",
@@ -36,7 +36,7 @@
       "**/bin": true,
       "**/dist": true,
       "**/public": true,
-      "**/node_modules": true,
+      "**/node_modules": true
     },
     "javascript.validate.enable": true,
     "editor.find.autoFindInSelection": "never",
@@ -46,7 +46,7 @@
       "**/.factorypath": true,
       "**/.project": true,
       "**/.settings": true,
-      "**/node_modules": false,
+      "**/node_modules": false
     },
     "eslint.experimental.incrementalSync": true,
     "eslint.lintTask.enable": true,
@@ -55,28 +55,28 @@
     "eslint.packageManager": "yarn",
     "[html]": {
       "editor.defaultFormatter": "vscode.html-language-features",
-      "editor.formatOnSave": true,
+      "editor.formatOnSave": true
     },
     "[javascript]": {
-      "editor.defaultFormatter": "biomejs.biome",
+      "editor.defaultFormatter": "biomejs.biome"
     },
     "[json]": {
       "editor.defaultFormatter": "biomejs.biome",
 
       "editor.quickSuggestions": {
-        "strings": true,
+        "strings": true
       },
-      "editor.suggest.insertMode": "replace",
+      "editor.suggest.insertMode": "replace"
     },
     "[typescriptreact]": {
-      "editor.defaultFormatter": "biomejs.biome",
+      "editor.defaultFormatter": "biomejs.biome"
     },
     "[typescript]": {
-      "editor.defaultFormatter": "biomejs.biome",
+      "editor.defaultFormatter": "biomejs.biome"
     },
     "[python]": {
       "editor.defaultFormatter": "ms-python.python",
-      "editor.formatOnSave": true,
+      "editor.formatOnSave": true
     },
     "python.formatting.provider": "yapf",
     "python.formatting.yapfPath": "C:\\ProgramData\\envCondaPy379\\Scripts\\yapf.exe",
@@ -112,6 +112,6 @@
     "editor.fontLigatures": false,
     "typescript.enablePromptUseWorkspaceTsdk": true,
     "javascript.suggest.completeFunctionCalls": true,
-    "typescript.suggest.completeFunctionCalls": true,
-  },
+    "typescript.suggest.completeFunctionCalls": true
+  }
 }

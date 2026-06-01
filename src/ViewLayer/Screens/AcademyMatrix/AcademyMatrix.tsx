@@ -49,7 +49,7 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
       { type: 'GET_TAGS_CONNECTION' },
       { type: 'GET_MODULES_CONNECTION' },
     ],
-    [JSON.stringify({ params, tagsPickQuery, modulesSearchQuery, tagsSearchQuery })]
+    [JSON.stringify({ params, tagsPickQuery, modulesSearchQuery, tagsSearchQuery })],
   )
 
   useLoadedInitialTeachContent({ isSkipping: false })
@@ -73,15 +73,15 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
   }
 
   return (
-    <div className='AcademyMatrix'>
+    <div className="AcademyMatrix">
       <Helmet>
         <html lang={langSite} />
-        <meta charSet='utf-8' />
-        <meta name='viewport' content='width=device-width,initial-scale=1' />
-        <meta name='google' content='notranslate' />
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta name="google" content="notranslate" />
         <title>{titleSite}</title>
-        <link rel='canonical' href={canonicalUrl} />
-        <meta name='description' content={descriptionSite} />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta name="description" content={descriptionSite} />
       </Helmet>
       <MainFrame {...propsOut.mainFrameProps}>
         {/* header */}

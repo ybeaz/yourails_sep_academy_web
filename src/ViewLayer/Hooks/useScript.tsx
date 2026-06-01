@@ -19,9 +19,7 @@ export function useScript(src: string) {
       // Fetch existing script element by src
       // It may have been added by another intance of this hook
       // @ts-expect-error
-      let script: HTMLScriptElement = document.querySelector(
-        `script[src="${src}"]`
-      )
+      let script: HTMLScriptElement = document.querySelector(`script[src="${src}"]`)
 
       if (!script) {
         // Create script
@@ -34,10 +32,7 @@ export function useScript(src: string) {
         // Store status in attribute on script
         // This can be read by other instances of this hook
         const setAttributeFromEvent = (event: any) => {
-          script.setAttribute(
-            'data-status',
-            event.type === 'load' ? 'ready' : 'error'
-          )
+          script.setAttribute('data-status', event.type === 'load' ? 'ready' : 'error')
         }
         script.addEventListener('load', setAttributeFromEvent)
         script.addEventListener('error', setAttributeFromEvent)
@@ -63,7 +58,7 @@ export function useScript(src: string) {
         }
       }
     },
-    [src] // Only re-run effect if script src changes
+    [src], // Only re-run effect if script src changes
   )
   return status
 }

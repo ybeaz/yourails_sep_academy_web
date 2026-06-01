@@ -70,7 +70,7 @@ function* getAuthDataGenerator(params: ActionReduxType | any): Iterable<any> {
         storeFormGroup: 'profileActive',
         storeFormProp: 'nameFirst',
         value: nameFirst || '',
-      })
+      }),
     )
 
     yield put(
@@ -78,7 +78,7 @@ function* getAuthDataGenerator(params: ActionReduxType | any): Iterable<any> {
         storeFormGroup: 'profileActive',
         storeFormProp: 'nameMiddle',
         value: nameMiddle || '',
-      })
+      }),
     )
 
     yield put(
@@ -86,14 +86,14 @@ function* getAuthDataGenerator(params: ActionReduxType | any): Iterable<any> {
         storeFormGroup: 'profileActive',
         storeFormProp: 'nameLast',
         value: nameLast || '',
-      })
+      }),
     )
   }
 
   yield put(
     actionSync.SET_SIDE_NAVIGATION_LEFT({
       isSideNavLeftVisible: false,
-    })
+    }),
   )
 
   document.getElementsByTagName('body')[0].style.display = 'block'
@@ -104,7 +104,7 @@ export const getAuthData = withDebounce(
     optionsDefault: { funcParent: 'getAuthDataSaga' },
     resDefault: [],
   }),
-  500
+  500,
 )
 
 export default function* getAuthDataSaga() {

@@ -26,7 +26,7 @@ import {
              from '../Components/TagsCloudList/TagsCloudList'
  */
 const TagsCloudListComponent: TagsCloudListComponentType = (
-  props: TagsCloudListComponentPropsType
+  props: TagsCloudListComponentPropsType,
 ) => {
   const { classAdded, isDisplaying, isVisible, tagsCloud, handleEvents, screenActive } = props
 
@@ -63,7 +63,7 @@ const TagsCloudListComponent: TagsCloudListComponentType = (
       })}
     >
       <div
-        className='_tagsCloudWrapper'
+        className="_tagsCloudWrapper"
         style={{
           gridTemplateColumns,
         }}
@@ -113,27 +113,27 @@ const TagsCloudListComponent: TagsCloudListComponentType = (
           }
 
           const tagsCloudBodyTooltipContentTagButton = (
-            <div className='_tagsCloudBodyTooltipContentTagButton'>
+            <div className="_tagsCloudBodyTooltipContentTagButton">
               {name && (
-                <div className='_tooltipRow'>
+                <div className="_tooltipRow">
                   <b>{name}</b> level of proficiency.
                 </div>
               )}
-              <div className='_tooltipRow'>
+              <div className="_tooltipRow">
                 <b>{completed}</b> of <b>{count}</b> modules are completed.
               </div>
               {completed < count && (
                 <>
-                  <div className='_tooltipRow'>
+                  <div className="_tooltipRow">
                     <b>{left}</b> modules to the next level.
                   </div>
-                  <div className='_tooltipRow'>
+                  <div className="_tooltipRow">
                     <b>{nextName}</b> is the next level.
                   </div>
                 </>
               )}
               {completed >= count && (
-                <div className='_tooltipRow'>You finished. Congratulations.</div>
+                <div className="_tooltipRow">You finished. Congratulations.</div>
               )}
             </div>
           )
@@ -141,23 +141,23 @@ const TagsCloudListComponent: TagsCloudListComponentType = (
           return (
             <div
               key={tagID}
-              className='_tagCloud'
+              className="_tagCloud"
               onClick={() =>
                 handleEvents({}, { type: 'CLICK_ON_TAG', data: { tagCloud, navigate } })
               }
             >
-              <Tooltip className='_tooltip' title={tagsCloudBodyTooltipContentTagButton}>
+              <Tooltip className="_tooltip" title={tagsCloudBodyTooltipContentTagButton}>
                 <div
-                  className='_tagCloudWrapper'
+                  className="_tagCloudWrapper"
                   style={{
                     fontSize: `${range[index]}px`,
                     color: colorsRandomDarkTheme[index],
                   }}
                 >
                   {completed >= count && <ButtonYrl {...propsOut.buttonTagMdCheckProps} />}
-                  <span className='_spanTagName'>{value}</span>
-                  <span className='_spanCount'>{count}</span>
-                  <span className='_spanCompleted'>{completed}</span>
+                  <span className="_spanTagName">{value}</span>
+                  <span className="_spanCount">{count}</span>
+                  <span className="_spanCompleted">{completed}</span>
                   <ButtonYrl {...propsOut.buttonTagExpertiseProps} />
                 </div>
               </Tooltip>
@@ -171,7 +171,7 @@ const TagsCloudListComponent: TagsCloudListComponentType = (
 
 const storeStateSliceProps: string[] = []
 const TagsCloudList: TagsCloudListType = withPropsYrl({ handleEvents: handleEventsIn })(
-  withStoreStateSelectedYrl(storeStateSliceProps, React.memo(TagsCloudListComponent))
+  withStoreStateSelectedYrl(storeStateSliceProps, React.memo(TagsCloudListComponent)),
 )
 
 export type { TagsCloudListPropsType, TagsCloudListType }

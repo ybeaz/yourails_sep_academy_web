@@ -13,18 +13,16 @@ import {
              from '../Components/BackgroundImage/BackgroundImage'
  */
 const BackgroundImageComponent: BackgroundImageComponentType = (
-  props: BackgroundImagePropsType
+  props: BackgroundImagePropsType,
 ) => {
   const {} = props
 
   const propsOut: BackgroundImagePropsOutType = {}
 
-  return <div className='BackgroundImage'>BackgroundImage</div>
+  return <div className="BackgroundImage">BackgroundImage</div>
 }
 
-export const BackgroundImage: BackgroundImageType = React.memo(
-  BackgroundImageComponent
-)
+export const BackgroundImage: BackgroundImageType = React.memo(BackgroundImageComponent)
 
 export type {
   BackgroundImagePropsType,

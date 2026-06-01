@@ -16,7 +16,7 @@ export const CLICK_ON_CONFIRM_NAMES: ActionEventType = (event, data) => {
     dispatch(
       actionSync.SET_EDIT_NAME_VISIBILITY_STATE({
         isEditNameVisible: false,
-      })
+      }),
     )
     return
   }
@@ -24,6 +24,6 @@ export const CLICK_ON_CONFIRM_NAMES: ActionEventType = (event, data) => {
   dispatch(
     actionSync.SET_EDIT_NAME_VISIBILITY_STATE({
       isEditNameVisible: false,
-    })
+    }),
   )
 }
