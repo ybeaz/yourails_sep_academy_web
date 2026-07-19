@@ -1,25 +1,28 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
 import { Helmet } from 'react-helmet-async'
-
-import { ScreensEnumType } from 'yourails_common'
-import { DICTIONARY } from 'yourails_common'
+import { useDispatch } from 'react-redux'
+import {
+  CreateModuleStagesEnumType,
+  CreateModuleStatusEnumType,
+  DICTIONARY,
+  getClasses,
+  getTagLine,
+  ScreensEnumType,
+  SERVERS_MAIN,
+  SITE_META_DATA,
+  withPropsYrl,
+  withStoreStateSelectedYrl,
+} from 'yourails_common'
+import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
+import { MyModulesBody } from '../../Components/MyModulesBody/MyModulesBody'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
-import { SERVERS_MAIN } from 'yourails_common'
-import { SITE_META_DATA } from 'yourails_common'
-import { MyModulesBody } from '../../Components/MyModulesBody/MyModulesBody'
-import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
-import { getTagLine } from 'yourails_common'
-import { CreateModuleStatusEnumType, CreateModuleStagesEnumType } from 'yourails_common'
-import { withPropsYrl, withStoreStateSelectedYrl } from 'yourails_common'
-import { getClasses } from 'yourails_common'
 import {
   MyModulesComponentPropsType,
-  MyModulesPropsType,
-  MyModulesPropsOutType,
   MyModulesComponentType,
+  MyModulesPropsOutType,
+  MyModulesPropsType,
   MyModulesType,
 } from './MyModulesTypes'
 
@@ -36,7 +39,7 @@ const MyModulesComponent: MyModulesComponentType = (props: MyModulesComponentPro
   } = props
 
   const screenType = ScreensEnumType['MyModules']
-  const { titleSite, descriptionSite, canonicalUrlSite, langSite } = SITE_META_DATA
+  const { titleSite, descriptionSite, langSite } = SITE_META_DATA.ACADEMY
   const canonicalUrl = `${SERVERS_MAIN.remote}${decodeURIComponent(location.pathname)}`
   const [isShowModuleCreateProgress, setIsShowModuleCreateProgress] = useState(false)
   const dispatch = useDispatch()
@@ -170,6 +173,5 @@ const MyModules = withPropsYrl({ handleEvents: handleEventsIn })(
   withStoreStateSelectedYrl(storeStateSliceProps, React.memo(MyModulesComponent)),
 )
 
+export type { MyModulesComponentType, MyModulesPropsOutType, MyModulesPropsType, MyModulesType }
 export { MyModules as default }
-
-export type { MyModulesPropsType, MyModulesPropsOutType, MyModulesComponentType, MyModulesType }

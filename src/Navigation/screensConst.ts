@@ -1,7 +1,7 @@
 import { FunctionComponent, lazy } from 'react'
 
-const YouRailsHome = lazy(
-  () => import(/* webpackPrefetch: true */ '../ViewLayer/Screens/YouRailsHome/YouRailsHome'),
+const VideoQaHome = lazy(
+  () => import(/* webpackPrefetch: true */ '../ViewLayer/Screens/VideoQaHome/VideoQaHome'),
 )
 const TagsCloud = lazy(
   () => import(/* webpackPrefetch: true */ '../ViewLayer/Screens/TagsCloud/TagsCloud'),
@@ -15,8 +15,11 @@ const ArticlePresent = lazy(
 const AcademyAbout = lazy(
   () => import(/* webpackPrefetch: true */ '../ViewLayer/Screens/AcademyAbout/AcademyAbout'),
 )
-const YouRailsAbout = lazy(
-  () => import(/* webpackPrefetch: true */ '../ViewLayer/Screens/YouRailsAbout/YouRailsAbout'),
+const VideoQaCatalog = lazy(
+  () => import(/* webpackPrefetch: true */ '../ViewLayer/Screens/VideoQaCatalog/VideoQaCatalog'),
+)
+const VideoQaAbout = lazy(
+  () => import(/* webpackPrefetch: true */ '../ViewLayer/Screens/VideoQaAbout/VideoQaAbout'),
 )
 const AcademyMatrix = lazy(
   () => import(/* webpackPrefetch: true */ '../ViewLayer/Screens/AcademyMatrix/AcademyMatrix'),
@@ -42,9 +45,9 @@ const Certificate2 = lazy(
 const Error404 = lazy(() => import(/* webpackPrefetch: true */ '../ViewLayer/Screens/Error404'))
 
 export const SCREENS: Record<string, FunctionComponent<any>> = {
-  YouRailsHome,
+  VideoQaHome,
   AcademyAbout,
-  YouRailsAbout,
+  VideoQaAbout,
   AcademyMatrix,
   AcademyPresent,
   ArticlePresent,
@@ -56,4 +59,5 @@ export const SCREENS: Record<string, FunctionComponent<any>> = {
   MyModules,
   Profiles,
   TagsCloud,
+  VideoQaCatalog,
 }

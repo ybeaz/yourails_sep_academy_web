@@ -1,24 +1,26 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
-
-import { ScreensEnumType } from 'yourails_common'
-import { DICTIONARY } from 'yourails_common'
-import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
-import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
-import { useLoadedInitialTeachContent } from '../../Hooks/useLoadedInitialTeachContent'
-import { MainFrame } from '../../Frames/MainFrame/MainFrame'
-import { SITE_META_DATA } from 'yourails_common'
-import { SERVERS_MAIN } from 'yourails_common'
-import { withStoreStateSelectedYrl, withPropsYrl } from 'yourails_common'
+import { useParams } from 'react-router-dom'
+import {
+  DICTIONARY,
+  getNestedProp,
+  getParsedUrlQueryBrowserApi,
+  ScreensEnumType,
+  SERVERS_MAIN,
+  SITE_META_DATA,
+  withPropsYrl,
+  withStoreStateSelectedYrl,
+} from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { AcademyMatrixBody } from '../../Components/AcademyMatrixBody/AcademyMatrixBody'
-import { getParsedUrlQueryBrowserApi } from 'yourails_common'
-import { getNestedProp } from 'yourails_common'
+import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
+import { MainFrame } from '../../Frames/MainFrame/MainFrame'
+import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
+import { useLoadedInitialTeachContent } from '../../Hooks/useLoadedInitialTeachContent'
 import {
-  AcademyMatrixPropsType,
-  AcademyMatrixPropsOutType,
   AcademyMatrixComponentType,
+  AcademyMatrixPropsOutType,
+  AcademyMatrixPropsType,
   AcademyMatrixType,
 } from './AcademyMatrixTypes'
 
@@ -34,7 +36,7 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
 
   const screenType = ScreensEnumType['AcademyMatrix']
   const params = useParams()
-  const { titleSite, descriptionSite, canonicalUrlSite, langSite } = SITE_META_DATA
+  const { titleSite, descriptionSite, langSite } = SITE_META_DATA.ACADEMY
   const canonicalUrl = `${SERVERS_MAIN.remote}${decodeURIComponent(location.pathname)}`
 
   const query = getParsedUrlQueryBrowserApi()
@@ -110,11 +112,10 @@ const AcademyMatrix: AcademyMatrixType = withPropsYrl({
   handleEvents: handleEventsIn,
 })(withStoreStateSelectedYrl(storeStateSliceProps, React.memo(AcademyMatrixComponent)))
 
-export { AcademyMatrix as default }
-
 export type {
-  AcademyMatrixPropsType,
-  AcademyMatrixPropsOutType,
   AcademyMatrixComponentType,
+  AcademyMatrixPropsOutType,
+  AcademyMatrixPropsType,
   AcademyMatrixType,
 }
+export { AcademyMatrix as default }

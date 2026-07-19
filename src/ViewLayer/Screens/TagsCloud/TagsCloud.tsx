@@ -1,25 +1,27 @@
 import React, { useEffect } from 'react'
 import { Helmet } from 'react-helmet-async'
-
-import { ScreensEnumType } from 'yourails_common'
-import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
-import { FooterFrame } from '../../Frames/FooterFrame/FooterFrame'
-import { MainFrame } from '../../Frames/MainFrame/MainFrame'
-import { TagsCloudBody } from '../../Components/TagsCloudBody/TagsCloudBody'
-import { withPropsYrl, withStoreStateSelectedYrl } from 'yourails_common'
+import {
+  DICTIONARY,
+  getClasses,
+  getTagLine,
+  ScreensEnumType,
+  SERVERS_MAIN,
+  SITE_META_DATA,
+  withPropsYrl,
+  withStoreStateSelectedYrl,
+} from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
-import { getClasses } from 'yourails_common'
-import { DICTIONARY } from 'yourails_common'
-import { SERVERS_MAIN } from 'yourails_common'
-import { SITE_META_DATA } from 'yourails_common'
+import { TagsCloudBody } from '../../Components/TagsCloudBody/TagsCloudBody'
+import { FooterFrame } from '../../Frames/FooterFrame/FooterFrame'
+import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
+import { MainFrame } from '../../Frames/MainFrame/MainFrame'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
-import { getTagLine } from 'yourails_common'
 
 import {
   TagsCloudComponentPropsType,
-  TagsCloudPropsType,
-  TagsCloudPropsOutType,
   TagsCloudComponentType,
+  TagsCloudPropsOutType,
+  TagsCloudPropsType,
   TagsCloudType,
 } from './TagsCloudTypes'
 
@@ -36,7 +38,7 @@ const TagsCloudComponent: TagsCloudComponentType = (props: TagsCloudComponentPro
   } = props
 
   const screenType = ScreensEnumType['TagsCloud']
-  const { titleSite, descriptionSite, canonicalUrlSite, langSite } = SITE_META_DATA
+  const { titleSite, descriptionSite, langSite } = SITE_META_DATA.ACADEMY
   const canonicalUrl = `${SERVERS_MAIN.remote}${decodeURIComponent(location.pathname)}`
 
   useEffectedInitialRequests([
@@ -100,6 +102,5 @@ const TagsCloud: TagsCloudType = React.memo(
   ),
 )
 
+export type { TagsCloudComponentType, TagsCloudPropsOutType, TagsCloudPropsType, TagsCloudType }
 export { TagsCloud as default }
-
-export type { TagsCloudPropsType, TagsCloudPropsOutType, TagsCloudComponentType, TagsCloudType }

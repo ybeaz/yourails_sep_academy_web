@@ -3,31 +3,31 @@ import React from 'react'
 
 import { withPropsYrl, withStoreStateSelectedYrl } from 'yourails_common'
 import type {
-  YouRailsHomeBodyComponentPropsType,
-  YouRailsHomeBodyComponentType,
-  YouRailsHomeBodyPropsOutType,
-  YouRailsHomeBodyPropsType,
-  YouRailsHomeBodyType,
-} from './YouRailsHomeBodyTypes'
+  VideoQaHomeBodyComponentPropsType,
+  VideoQaHomeBodyComponentType,
+  VideoQaHomeBodyPropsOutType,
+  VideoQaHomeBodyPropsType,
+  VideoQaHomeBodyType,
+} from './VideoQaHomeBodyTypes'
 
 /**
- * @description Component to render YouRailsHomeBody
- * @import import { YouRailsHomeBody, YouRailsHomeBodyPropsType, YouRailsHomeBodyPropsOutType, YouRailsHomeBodyType } 
-             from '../Components/YouRailsHomeBody/YouRailsHomeBody'
+ * @description Component to render VideoQaHomeBody
+ * @import import { VideoQaHomeBody, VideoQaHomeBodyPropsType, VideoQaHomeBodyPropsOutType, VideoQaHomeBodyType } 
+             from '../Components/VideoQaHomeBody/VideoQaHomeBody'
  */
-const YouRailsHomeBodyComponent: YouRailsHomeBodyComponentType = (
-  props: YouRailsHomeBodyComponentPropsType,
+const VideoQaHomeBodyComponent: VideoQaHomeBodyComponentType = (
+  props: VideoQaHomeBodyComponentPropsType,
 ) => {
   const { classAdded, storeStateSlice, isDisplaying, isVisible } = props
 
-  const propsOut: YouRailsHomeBodyPropsOutType = {}
+  const propsOut: VideoQaHomeBodyPropsOutType = {}
 
   return (
     <div
-      className={classNames('YouRailsHomeBody', {
+      className={classNames('VideoQaHomeBody', {
         [classAdded]: !!classAdded,
-        YouRailsHomeBody_display_none: isDisplaying === false,
-        YouRailsHomeBody_visible_none: isVisible === false,
+        VideoQaHomeBody_display_none: isDisplaying === false,
+        VideoQaHomeBody_visible_none: isVisible === false,
       })}
     >
       <header>
@@ -43,6 +43,7 @@ const YouRailsHomeBodyComponent: YouRailsHomeBodyComponentType = (
           <nav className="nav">
             <a href="#tools">Explore</a>
             <a href="/about">About YouRails</a>
+            <a href="/catalog">Search</a>
           </nav>
           <div className="actions">
             <a className="btn btn-primary" href="#hero">
@@ -78,7 +79,7 @@ const YouRailsHomeBodyComponent: YouRailsHomeBodyComponentType = (
               </div>
             </div>
 
-            <div className="preview" id="YouRails product preview">
+            <div className="preview">
               <div className="preview-frame">
                 <div className="video-bars">
                   <div className="sidebar">
@@ -99,7 +100,7 @@ const YouRailsHomeBodyComponent: YouRailsHomeBodyComponentType = (
                     <div className="line w92"></div>
                     <div className="line w80"></div>
                     <div className="line w60"></div>
-                    {/* <div className="line w92" style="margin-top:18px;"></div> */}
+                    <div className="line w92" style={{ marginTop: '18px' }}></div>
                     <div className="line w80"></div>
                     <div className="line w60"></div>
                   </div>
@@ -143,6 +144,47 @@ const YouRailsHomeBodyComponent: YouRailsHomeBodyComponentType = (
                   All generated content remains editable, so users can refine the result and reuse
                   it as needed.
                 </span>
+              </div>
+            </div>
+
+            <div className="demo-showcase" id="demo-search">
+              <div className="demo-info">
+                <h4>See how AI transforms a text query into structured video knowledge</h4>
+                <p style={{ color: 'var(--muted)', fontSize: '0.95rem' }}>
+                  Type an educational request, and our system crafts short, engaging visual modules
+                  packed with precise information.
+                </p>
+                <div className="demo-search-box">
+                  <input
+                    id="search-input"
+                    type="text"
+                    className="demo-search-input"
+                    placeholder="Explain how webhooks work in web development"
+                  />
+                  <button className="demo-search-btn" type="button">
+                    Generate
+                  </button>
+                </div>
+              </div>
+              <div className="demo-videos">
+                <div className="demo-video-wrapper">
+                  <iframe
+                    src="https://www.youtube-nocookie.com/embed/OlDXAipdSAU"
+                    title="YouRails Demo Video 1"
+                    // referrerpolicy="strict-origin-when-cross-origin"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    // allowfullscreen
+                  ></iframe>
+                </div>
+                <div className="demo-video-wrapper">
+                  <iframe
+                    src="https://www.youtube-nocookie.com/embed/CmrYRKZ1zng"
+                    title="YouRails Demo Video 2"
+                    // referrerpolicy="strict-origin-when-cross-origin"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    // allowfullscreen
+                  ></iframe>
+                </div>
               </div>
             </div>
           </div>
@@ -289,10 +331,10 @@ const YouRailsHomeBodyComponent: YouRailsHomeBodyComponentType = (
 }
 
 const storeStateSliceProps: string[] = []
-const YouRailsHomeBody: YouRailsHomeBodyType = withStoreStateSelectedYrl(
+const VideoQaHomeBody: VideoQaHomeBodyType = withStoreStateSelectedYrl(
   storeStateSliceProps,
-  React.memo(YouRailsHomeBodyComponent),
+  React.memo(VideoQaHomeBodyComponent),
 )
 
-export type { YouRailsHomeBodyPropsType, YouRailsHomeBodyType }
-export { YouRailsHomeBody, YouRailsHomeBody as default }
+export type { VideoQaHomeBodyPropsType, VideoQaHomeBodyType }
+export { VideoQaHomeBody, VideoQaHomeBody as default }

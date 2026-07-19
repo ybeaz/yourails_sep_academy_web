@@ -1,24 +1,25 @@
 import React, { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
-
-import { ScreensEnumType } from 'yourails_common'
-import { DICTIONARY } from 'yourails_common'
-import { withStoreStateSelectedYrl } from 'yourails_common'
+import { useParams } from 'react-router-dom'
+import {
+  DICTIONARY,
+  getClasses,
+  getTagLine,
+  ScreensEnumType,
+  SERVERS_MAIN,
+  SITE_META_DATA,
+  withStoreStateSelectedYrl,
+} from 'yourails_common'
+import { handleEvents } from '../../../DataLayer/index.handleEvents'
+import { ArticlePresentBody } from '../../Components/ArticlePresentBody/ArticlePresentBody'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
-import { SERVERS_MAIN } from 'yourails_common'
-import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
-import { ArticlePresentBody } from '../../Components/ArticlePresentBody/ArticlePresentBody'
-import { SITE_META_DATA } from 'yourails_common'
-import { getTagLine } from 'yourails_common'
-import { getClasses } from 'yourails_common'
 import {
   ArticlePresentComponentPropsType,
-  ArticlePresentPropsType,
-  ArticlePresentPropsOutType,
   ArticlePresentComponentType,
+  ArticlePresentPropsOutType,
+  ArticlePresentPropsType,
   ArticlePresentType,
 } from './ArticlePresentTypes'
 
@@ -37,7 +38,7 @@ const ArticlePresentComponent: ArticlePresentComponentType = (
 
   const screenType = ScreensEnumType['ArticlePresent']
   const canonicalUrl = `${SERVERS_MAIN.remote}${decodeURIComponent(location.pathname)}`
-  const { titleSite, descriptionSite, canonicalUrlSite, langSite } = SITE_META_DATA
+  const { titleSite, descriptionSite, langSite } = SITE_META_DATA.ACADEMY
 
   const params = useParams()
   const articleID = params?.articleID
@@ -112,11 +113,10 @@ const ArticlePresent = withStoreStateSelectedYrl(
   React.memo(ArticlePresentComponent),
 )
 
-export { ArticlePresent as default }
-
 export type {
-  ArticlePresentPropsType,
-  ArticlePresentPropsOutType,
   ArticlePresentComponentType,
+  ArticlePresentPropsOutType,
+  ArticlePresentPropsType,
   ArticlePresentType,
 }
+export { ArticlePresent as default }

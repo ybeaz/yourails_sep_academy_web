@@ -25,7 +25,13 @@ export const ROUTES: RouteType[] = [
     errorElement: 'Error404',
   },
   {
-    screen: 'YouRailsAbout',
+    screen: 'VideoQaCatalog',
+    path: `/catalog`,
+    children: [],
+    errorElement: 'Error404',
+  },
+  {
+    screen: 'VideoQaAbout',
     path: `/about`,
     children: [],
     errorElement: 'Error404',
@@ -85,7 +91,7 @@ export const ROUTES: RouteType[] = [
     errorElement: 'Error404',
   },
   {
-    screen: 'YouRailsHome',
+    screen: 'VideoQaHome',
     path: `/`,
     children: [],
     errorElement: 'Error404',

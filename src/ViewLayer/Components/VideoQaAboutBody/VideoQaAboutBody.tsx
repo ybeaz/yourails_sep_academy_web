@@ -3,31 +3,31 @@ import React from 'react'
 
 import { withPropsYrl, withStoreStateSelectedYrl } from 'yourails_common'
 import type {
-  YouRailsAboutBodyComponentPropsType,
-  YouRailsAboutBodyComponentType,
-  YouRailsAboutBodyPropsOutType,
-  YouRailsAboutBodyPropsType,
-  YouRailsAboutBodyType,
-} from './YouRailsAboutBodyTypes'
+  VideoQaAboutBodyComponentPropsType,
+  VideoQaAboutBodyComponentType,
+  VideoQaAboutBodyPropsOutType,
+  VideoQaAboutBodyPropsType,
+  VideoQaAboutBodyType,
+} from './VideoQaAboutBodyTypes'
 
 /**
- * @description Component to render YouRailsAboutBody
- * @import import { YouRailsAboutBody, YouRailsAboutBodyPropsType, YouRailsAboutBodyPropsOutType, YouRailsAboutBodyType } 
-             from '../Components/YouRailsAboutBody/YouRailsAboutBody'
+ * @description Component to render VideoQaAboutBody
+ * @import import { VideoQaAboutBody, VideoQaAboutBodyPropsType, VideoQaAboutBodyPropsOutType, VideoQaAboutBodyType } 
+             from '../Components/VideoQaAboutBody/VideoQaAboutBody'
  */
-const YouRailsAboutBodyComponent: YouRailsAboutBodyComponentType = (
-  props: YouRailsAboutBodyComponentPropsType,
+const VideoQaAboutBodyComponent: VideoQaAboutBodyComponentType = (
+  props: VideoQaAboutBodyComponentPropsType,
 ) => {
   const { classAdded, storeStateSlice, isDisplaying, isVisible } = props
 
-  const propsOut: YouRailsAboutBodyPropsOutType = {}
+  const propsOut: VideoQaAboutBodyPropsOutType = {}
 
   return (
     <div
-      className={classNames('YouRailsAboutBody', {
+      className={classNames('VideoQaAboutBody', {
         [classAdded]: !!classAdded,
-        YouRailsAboutBody_display_none: isDisplaying === false,
-        YouRailsAboutBody_visible_none: isVisible === false,
+        VideoQaAboutBody_display_none: isDisplaying === false,
+        VideoQaAboutBody_visible_none: isVisible === false,
       })}
     >
       <header>
@@ -42,7 +42,7 @@ const YouRailsAboutBodyComponent: YouRailsAboutBodyComponentType = (
           </div>
           <nav className="nav">
             <a href="/">Home</a>
-            <a href="/#tools">Explore</a>
+            <a href="/catalog">Search</a>
           </nav>
           <div className="actions">
             <a className="btn btn-primary" href="#start">
@@ -261,10 +261,10 @@ const YouRailsAboutBodyComponent: YouRailsAboutBodyComponentType = (
 }
 
 const storeStateSliceProps: string[] = []
-const YouRailsAboutBody: YouRailsAboutBodyType = withStoreStateSelectedYrl(
+const VideoQaAboutBody: VideoQaAboutBodyType = withStoreStateSelectedYrl(
   storeStateSliceProps,
-  React.memo(YouRailsAboutBodyComponent),
+  React.memo(VideoQaAboutBodyComponent),
 )
 
-export type { YouRailsAboutBodyPropsType, YouRailsAboutBodyType }
-export { YouRailsAboutBody }
+export type { VideoQaAboutBodyPropsType, VideoQaAboutBodyType }
+export { VideoQaAboutBody }

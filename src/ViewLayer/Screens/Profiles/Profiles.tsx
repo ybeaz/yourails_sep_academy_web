@@ -1,23 +1,25 @@
 import React, { useEffect } from 'react'
 import { Helmet } from 'react-helmet-async'
-
-import { ScreensEnumType } from 'yourails_common'
-import { DICTIONARY } from 'yourails_common'
-import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
-import { FooterFrame } from '../../Frames/FooterFrame/FooterFrame'
-import { MainFrame } from '../../Frames/MainFrame/MainFrame'
-import { SERVERS_MAIN } from 'yourails_common'
-import { SITE_META_DATA } from 'yourails_common'
+import {
+  DICTIONARY,
+  getClasses,
+  getTagLine,
+  ScreensEnumType,
+  SERVERS_MAIN,
+  SITE_META_DATA,
+  withPropsYrl,
+  withStoreStateSelectedYrl,
+} from 'yourails_common'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
+import { FooterFrame } from '../../Frames/FooterFrame/FooterFrame'
+import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
+import { MainFrame } from '../../Frames/MainFrame/MainFrame'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
-import { getTagLine } from 'yourails_common'
-import { withPropsYrl, withStoreStateSelectedYrl } from 'yourails_common'
-import { getClasses } from 'yourails_common'
 import {
   ProfilesComponentPropsType,
-  ProfilesPropsType,
-  ProfilesPropsOutType,
   ProfilesComponentType,
+  ProfilesPropsOutType,
+  ProfilesPropsType,
   ProfilesType,
 } from './ProfilesTypes'
 
@@ -33,7 +35,7 @@ const ProfilesComponent: ProfilesComponentType = (props: ProfilesComponentPropsT
   } = props
 
   const screenType = ScreensEnumType['Profiles']
-  const { titleSite, descriptionSite, canonicalUrlSite, langSite } = SITE_META_DATA
+  const { titleSite, descriptionSite, langSite } = SITE_META_DATA.ACADEMY
   const canonicalUrl = `${SERVERS_MAIN.remote}${decodeURIComponent(location.pathname)}`
 
   useEffectedInitialRequests([{ type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } }])
@@ -87,6 +89,5 @@ const ProfilesComponent: ProfilesComponentType = (props: ProfilesComponentPropsT
 const storeStateSliceProps: string[] = ['language']
 const Profiles = withStoreStateSelectedYrl(storeStateSliceProps, React.memo(ProfilesComponent))
 
+export type { ProfilesComponentType, ProfilesPropsOutType, ProfilesPropsType, ProfilesType }
 export { Profiles as default }
-
-export type { ProfilesPropsType, ProfilesPropsOutType, ProfilesComponentType, ProfilesType }

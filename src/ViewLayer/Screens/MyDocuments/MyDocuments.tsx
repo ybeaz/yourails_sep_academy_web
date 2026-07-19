@@ -1,27 +1,29 @@
 import React, { useEffect, useRef } from 'react'
 import { Helmet } from 'react-helmet-async'
-
-import { ScreensEnumType } from 'yourails_common'
-import { DICTIONARY } from 'yourails_common'
-import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
-import { FooterFrame } from '../../Frames/FooterFrame/FooterFrame'
-import { MainFrame } from '../../Frames/MainFrame/MainFrame'
-import { SERVERS_MAIN } from 'yourails_common'
-import { SITE_META_DATA } from 'yourails_common'
+import {
+  DICTIONARY,
+  getClasses,
+  getNestedProp,
+  getParsedUrlQueryBrowserApi,
+  getTagLine,
+  PAGINATION_OFFSET,
+  ScreensEnumType,
+  SERVERS_MAIN,
+  SITE_META_DATA,
+  withPropsYrl,
+  withStoreStateSelectedYrl,
+} from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { MyDocumentsBody } from '../../Components/'
-import { PAGINATION_OFFSET } from 'yourails_common'
-import { getTagLine } from 'yourails_common'
-import { withPropsYrl, withStoreStateSelectedYrl } from 'yourails_common'
+import { FooterFrame } from '../../Frames/FooterFrame/FooterFrame'
+import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
+import { MainFrame } from '../../Frames/MainFrame/MainFrame'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
-import { getClasses } from 'yourails_common'
-import { getParsedUrlQueryBrowserApi } from 'yourails_common'
-import { getNestedProp } from 'yourails_common'
 import {
   MyDocumentsComponentPropsType,
-  MyDocumentsPropsType,
-  MyDocumentsPropsOutType,
   MyDocumentsComponentType,
+  MyDocumentsPropsOutType,
+  MyDocumentsPropsType,
   MyDocumentsType,
 } from './MyDocumentsTypes'
 
@@ -38,7 +40,7 @@ const MyDocumentsComponent: MyDocumentsComponentType = (props: MyDocumentsCompon
   } = props
 
   const screenType = ScreensEnumType['MyDocuments']
-  const { titleSite, descriptionSite, canonicalUrlSite, langSite } = SITE_META_DATA
+  const { titleSite, descriptionSite, langSite } = SITE_META_DATA.ACADEMY
   const canonicalUrl = `${SERVERS_MAIN.remote}${decodeURIComponent(location.pathname)}`
   const firstRender = useRef(true)
 
@@ -140,11 +142,10 @@ const MyDocuments = withPropsYrl({ handleEvents: handleEventsIn })(
   withStoreStateSelectedYrl(storeStateSliceProps, React.memo(MyDocumentsComponent)),
 )
 
-export { MyDocuments as default }
-
 export type {
-  MyDocumentsPropsType,
-  MyDocumentsPropsOutType,
   MyDocumentsComponentType,
+  MyDocumentsPropsOutType,
+  MyDocumentsPropsType,
   MyDocumentsType,
 }
+export { MyDocuments as default }

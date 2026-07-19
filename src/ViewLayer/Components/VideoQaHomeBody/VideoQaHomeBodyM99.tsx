@@ -3,31 +3,31 @@ import React from 'react'
 
 import { withPropsYrl, withStoreStateSelectedYrl } from 'yourails_common'
 import type {
-  YouRailsHomeBodyComponentPropsType,
-  YouRailsHomeBodyComponentType,
-  YouRailsHomeBodyPropsOutType,
-  YouRailsHomeBodyPropsType,
-  YouRailsHomeBodyType,
-} from './YouRailsHomeBodyTypes'
+  VideoQaHomeBodyComponentPropsType,
+  VideoQaHomeBodyComponentType,
+  VideoQaHomeBodyPropsOutType,
+  VideoQaHomeBodyPropsType,
+  VideoQaHomeBodyType,
+} from './VideoQaHomeBodyTypes'
 
 /**
- * @description Component to render YouRailsHomeBody
- * @import import { YouRailsHomeBody, YouRailsHomeBodyPropsType, YouRailsHomeBodyPropsOutType, YouRailsHomeBodyType } 
-             from '../Components/YouRailsHomeBody/YouRailsHomeBody'
+ * @description Component to render VideoQaHomeBody
+ * @import import { VideoQaHomeBody, VideoQaHomeBodyPropsType, VideoQaHomeBodyPropsOutType, VideoQaHomeBodyType } 
+             from '../Components/VideoQaHomeBody/VideoQaHomeBody'
  */
-const YouRailsHomeBodyComponent: YouRailsHomeBodyComponentType = (
-  props: YouRailsHomeBodyComponentPropsType,
+const VideoQaHomeBodyComponent: VideoQaHomeBodyComponentType = (
+  props: VideoQaHomeBodyComponentPropsType,
 ) => {
   const { classAdded, storeStateSlice, isDisplaying, isVisible } = props
 
-  const propsOut: YouRailsHomeBodyPropsOutType = {}
+  const propsOut: VideoQaHomeBodyPropsOutType = {}
 
   return (
     <div
-      className={classNames('YouRailsHomeBody', {
+      className={classNames('VideoQaHomeBody', {
         [classAdded]: !!classAdded,
-        YouRailsHomeBody_display_none: isDisplaying === false,
-        YouRailsHomeBody_visible_none: isVisible === false,
+        VideoQaHomeBody_display_none: isDisplaying === false,
+        VideoQaHomeBody_visible_none: isVisible === false,
       })}
     >
       <header>
@@ -286,10 +286,10 @@ const YouRailsHomeBodyComponent: YouRailsHomeBodyComponentType = (
 }
 
 const storeStateSliceProps: string[] = []
-const YouRailsHomeBody: YouRailsHomeBodyType = withStoreStateSelectedYrl(
+const VideoQaHomeBody: VideoQaHomeBodyType = withStoreStateSelectedYrl(
   storeStateSliceProps,
-  React.memo(YouRailsHomeBodyComponent),
+  React.memo(VideoQaHomeBodyComponent),
 )
 
-export type { YouRailsHomeBodyPropsType, YouRailsHomeBodyType }
-export { YouRailsHomeBody, YouRailsHomeBody as default }
+export type { VideoQaHomeBodyPropsType, VideoQaHomeBodyType }
+export { VideoQaHomeBody, VideoQaHomeBody as default }

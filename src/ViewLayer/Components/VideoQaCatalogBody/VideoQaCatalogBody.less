@@ -1,9 +1,10 @@
-.YouRailsAboutBody {
-
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
 
+:root {
   --bg: #fff8f8;
   --panel: #fff1f1;
   --panel-2: #ffe7e7;
@@ -14,22 +15,24 @@
   --accent-2: #ffd6d6;
   --accent-3: #ff7a7b;
   --white: #ffffff;
+}
 
-  html {
-    scroll-behavior: smooth;
-  }
+html {
+  scroll-behavior: smooth;
+}
 
-  body {
-    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background:
-      radial-gradient(circle at top left, rgba(230,34,35,0.14), transparent 30%),
-      radial-gradient(circle at top right, rgba(255,214,214,0.56), transparent 24%),
-      linear-gradient(180deg, #fff8f8 0%, #fff0f0 100%);
-    color: var(--text);
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
+body {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(230,34,35,0.14), transparent 30%),
+    radial-gradient(circle at top right, rgba(255,214,214,0.56), transparent 24%),
+    linear-gradient(180deg, #fff8f8 0%, #fff0f0 100%);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
 
+.VideoQaCatalogBody {
   a {
     color: inherit;
     text-decoration: none;
@@ -48,7 +51,11 @@
     background: rgba(255, 248, 248, 0.82);
     border-bottom: 1px solid var(--line);
   }
-
+  .brand-logo {
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+  }
   .topbar {
     display: flex;
     align-items: center;
@@ -63,14 +70,6 @@
     gap: 12px;
     font-weight: 800;
     letter-spacing: 0.2px;
-  }
-
-  .brand-mark {
-    width: 38px;
-    height: 38px;
-    border-radius: 12px;
-  background: linear-gradient(135deg, var(--accent) 0%, #ff7a7b 100%);
-    box-shadow: 0 12px 30px rgba(230,34,35,0.28);
   }
 
   .nav {
@@ -103,6 +102,7 @@
     border: 1px solid transparent;
     transition: transform .18s ease, background .18s ease, border-color .18s ease;
     white-space: nowrap;
+    cursor: pointer;
   }
 
   .btn:hover {
@@ -121,125 +121,105 @@
     border-color: rgba(230,34,35,0.12);
   }
 
-  .hero {
-    padding: 72px 0 32px;
+  /* Стили для секции Поиска */
+  .search-section {
+    padding: 60px 0 30px;
   }
 
-  .hero-grid {
-    display: grid;
-    grid-template-columns: 1.2fr .8fr;
-    gap: 32px;
+  .search-container {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    text-align: center;
+  }
+
+  .large-search-box {
+    display: flex;
+    background: var(--white);
+    border: 1px solid rgba(230,34,35,0.2);
+    border-radius: 999px;
+    padding: 8px 8px 8px 24px;
     align-items: center;
+    box-shadow: 0 12px 36px rgba(230,34,35,0.08);
+    margin-bottom: 16px;
   }
 
-  h1 {
-    font-size: clamp(3rem, 6vw, 4.5rem);
-    line-height: .96;
-    letter-spacing: -0.04em;
-    margin-bottom: 12px;
-    max-width: 10ch;
+  .large-search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: 1.1rem;
+    color: var(--text);
   }
 
-  .hero p {
+  .large-search-btn {
+    background: linear-gradient(135deg, var(--accent) 0%, #ff7a7b 100%);
+    color: var(--white);
+    border: none;
+    padding: 14px 32px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(230,34,35,0.15);
+  }
+
+  .search-meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: 0.98rem;
     color: var(--muted);
-    font-size: 1.12rem;
-    max-width: 60ch;
-    margin-bottom: 22px;
+    flex-wrap: wrap;
   }
 
-  .section {
-    padding: 48px 0;
+  .btn-inline-generate {
+    background: rgba(230,34,35,0.06);
+    color: var(--accent);
+    border: 1px solid rgba(230,34,35,0.15);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: background 0.18s;
   }
 
-  .section-title {
-    font-size: clamp(2rem, 3vw, 2.8rem);
-    letter-spacing: -0.03em;
-    margin-bottom: 12px;
+  .btn-inline-generate:hover {
+    background: rgba(230,34,35,0.1);
   }
 
-  .section-lead {
-    color: var(--muted);
-    max-width: 68ch;
-    margin-bottom: 18px;
-  }
-
-  .panel-grid {
+  /* Сетка Видео (4 в ряд) */
+  .video-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 60px;
   }
 
-  .panel {
-    background: rgba(255,255,255,0.72);
+  .grid-video-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 16px;
+    overflow: hidden;
     border: 1px solid var(--line);
-    border-radius: 22px;
-    padding: 20px;
-    min-height: 160px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    background: #000;
   }
 
-  .panel h3 {
-    margin-bottom: 8px;
-    font-size: 1.12rem;
+  .grid-video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
   }
 
-  .panel p {
-    color: var(--muted);
-    font-size: .96rem;
-    line-height: 1.5;
-  }
-
-  .tools {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-  }
-
-  .tool-card {
-    background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,240,240,0.8));
-    border: 1px solid var(--line);
-    border-radius: 22px;
-    padding: 20px;
-  }
-
-  .tool-card h3 {
-    margin-bottom: 8px;
-  }
-
-  .tool-card p {
-    color: var(--muted);
-    font-size: .96rem;
-    line-height: 1.5;
-  }
-
-  .testimonials {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    margin-top: 16px;
-  }
-
-  .quote {
-    padding: 24px;
-    border-radius: 22px;
-    border: 1px solid var(--line);
-    background: rgba(255,255,255,0.74);
-  }
-
-  .quote p {
-    color: #4f2020;
-    margin-bottom: 12px;
-  }
-
-  .quote .author {
-    color: var(--muted);
-    font-size: .92rem;
-  }
-
-  .footer {
-    padding: 28px 0 44px;
-    color: var(--muted);
-    border-top: 1px solid var(--line);
-  }
+  /* Подвал страницы */
   .site-footer {
     margin-top: 56px;
     padding: 34px 0 18px;
@@ -276,14 +256,6 @@
     line-height: 1.65;
   }
 
-  .footer-desc a {
-    color: var(--accent);
-  }
-
-  .footer-desc a:hover {
-    text-decoration: underline;
-  }
-
   .footer-contact {
     background: rgba(255,255,255,0.58);
     border: 1px solid rgba(230,34,35,0.10);
@@ -296,12 +268,6 @@
     font-size: 1rem;
     margin-bottom: 14px;
     color: var(--text);
-  }
-
-  .brand-logo {
-    width: 38px;
-    height: 38px;
-    object-fit: contain;
   }
 
   .contact-item {
@@ -331,6 +297,14 @@
     text-decoration: underline;
   }
 
+  .footer-desc a {
+    color: var(--accent);
+  }
+
+  .footer-desc a:hover {
+    text-decoration: underline;
+  }
+
   .footer-bottom {
     margin-top: 26px;
     padding-top: 16px;
@@ -340,63 +314,46 @@
     font-size: 0.92rem;
     letter-spacing: 0.02em;
   }
-  @media (max-width: 980px) {
-    .hero-grid,
-    .panel-grid,
-    .tools,
-    .testimonials {
-      grid-template-columns: 1fr;
-    }
+}
 
-    .nav a {
-      font-size: 0.94rem;
-    }
+  /* Адаптивность */
+@media (max-width: 980px) {
+  .video-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
-
-  @media (max-width: 640px) {
-    .topbar {
-      align-items: flex-start;
-      flex-direction: column;
-    }
-
-    .actions {
-      width: 100%;
-    }
-
-    .btn {
-      width: 100%;
-    }
-
-    .container {
-      width: min(100% - 24px, 1180px);
-    }
-
-    h1 {
-      max-width: 100%;
-    }
-
-    .hero {
-      padding-top: 48px;
-    }
+  .footer-grid {
+    grid-template-columns: 1fr;
   }
-
-
-
-  @media @large {
-  }
-  @media @desktop, @desktop-strict {
-  }
-  @media @tablet, @tablet-strict {
-  }
-  @media @phone, @phone-strict {
+  .nav {
+    display: none;
   }
 }
 
-.YouRailsAboutBody_display_none {
+@media (max-width: 640px) {
+  .topbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .actions {
+    width: 100%;
+  }
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
+  .large-search-box {
+    padding: 4px 4px 4px 16px;
+  }
+  .large-search-btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+.VideoQaCatalogBody_display_none {
   display: none;
 }
 
-.YouRailsAboutBody_visible_none {
+.VideoQaCatalogBody_visible_none {
   visibility: hidden;
   opacity: 0;
 }

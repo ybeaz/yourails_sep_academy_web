@@ -1,24 +1,26 @@
 import React, { useEffect, ReactElement } from 'react'
 import { Helmet } from 'react-helmet-async'
-
-import { ScreensEnumType } from 'yourails_common'
-import { DICTIONARY } from 'yourails_common'
-import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
-import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
-import { useLoadedInitialTeachContent } from '../../Hooks/useLoadedInitialTeachContent'
-import { MainFrame } from '../../Frames/MainFrame/MainFrame'
-import { SITE_META_DATA } from 'yourails_common'
-import { PAGINATION_OFFSET } from 'yourails_common'
-import { SERVERS_MAIN } from 'yourails_common'
-import { withStoreStateSelectedYrl, withPropsYrl } from 'yourails_common'
+import {
+  DICTIONARY,
+  getTagLine,
+  PAGINATION_OFFSET,
+  PaginationNameEnumType,
+  ScreensEnumType,
+  SERVERS_MAIN,
+  SITE_META_DATA,
+  withPropsYrl,
+  withStoreStateSelectedYrl,
+} from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { ModulesBody } from '../../Components/ModulesBody/ModulesBody'
-import { PaginationNameEnumType } from 'yourails_common'
-import { getTagLine } from 'yourails_common'
+import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
+import { MainFrame } from '../../Frames/MainFrame/MainFrame'
+import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
+import { useLoadedInitialTeachContent } from '../../Hooks/useLoadedInitialTeachContent'
 import {
-  ModulesPresentPropsType,
-  ModulesPresentPropsOutType,
   ModulesPresentComponentType,
+  ModulesPresentPropsOutType,
+  ModulesPresentPropsType,
   ModulesPresentType,
 } from './ModulesPresentTypes'
 
@@ -34,7 +36,7 @@ const ModulesPresentComponent: ModulesPresentComponentType = (props: ModulesPres
   } = props
 
   const screenType = ScreensEnumType['ModulesPresent']
-  const { titleSite, descriptionSite, canonicalUrlSite, langSite } = SITE_META_DATA
+  const { titleSite, descriptionSite, langSite } = SITE_META_DATA.ACADEMY
   const canonicalUrl = `${SERVERS_MAIN.remote}${decodeURIComponent(location.pathname)}`
 
   const pageModulesOffset = PAGINATION_OFFSET['pageModules']
@@ -107,11 +109,10 @@ const ModulesPresent: ModulesPresentType = withPropsYrl({
   handleEvents: handleEventsIn,
 })(withStoreStateSelectedYrl(storeStateSliceProps, React.memo(ModulesPresentComponent)))
 
-export { ModulesPresent as default }
-
 export type {
-  ModulesPresentPropsType,
-  ModulesPresentPropsOutType,
   ModulesPresentComponentType,
+  ModulesPresentPropsOutType,
+  ModulesPresentPropsType,
   ModulesPresentType,
 }
+export { ModulesPresent as default }
